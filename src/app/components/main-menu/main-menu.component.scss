@@ -1,3 +1,5 @@
+@import "./styles/fonts";
+
 .app-main-nav {
   display: flex;
   flex-direction: column;
@@ -64,7 +66,7 @@
     margin-top: 2rem;
   }
   .social__list {
-    font-size: 1.8rem;
+    font-size: $alt-font-size;
     display: flex;
     gap: 2rem;
     align-items: center;
@@ -86,9 +88,9 @@
     gap: 2rem;
 
     &__link {
-      font-size: 1.8rem;
+      font-size: $alt-font-size;
       font-weight: 600;
-      font-family: "Expressway", sans-serif;
+      font-family: $alt-font-family;
     }
   }
 

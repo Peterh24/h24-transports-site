@@ -17,4 +17,8 @@ export class KeyDataComponent implements OnInit {
   ngOnInit(): void {
     this.datas$ = this.globalService.getDataComponent('KeyDataComponent');
   }
+
+  goToAnchor(anchor:any): void {
+    console.log('Go to ', anchor)
+  }
 }

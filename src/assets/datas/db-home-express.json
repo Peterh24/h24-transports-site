@@ -11,6 +11,7 @@
       "title" : "Chiffres clés",
       "data": {
           "info": {
+              "img" : "https://static.actu.fr/uploads/2022/12/camion-renversejpg-photos.jpg",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -18,15 +19,15 @@
           },
           "list": [
               {
-                  "value": "162",
+                  "value": "5",
                   "label": "clients satisfaits"
                   },
                   {
-                  "value": "4500",
+                  "value": "157",
                   "label": "Kilomètres parcourus"
                   },
                   {
-                  "value": "980",
+                  "value": "14",
                   "label": "course réalisées"
                   }
           ]

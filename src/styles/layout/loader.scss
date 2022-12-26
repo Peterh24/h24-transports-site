@@ -1,3 +1,5 @@
+@import "./styles/fonts";
+
 /*
 * Default Theme - event
 */
@@ -46,7 +48,7 @@
       font-weight: 800;
       height: 3rem;
       text-transform: uppercase;
-      font-family: "Expressway", sans-serif;
+      font-family: $alt-font-family;
     }
   }
 }

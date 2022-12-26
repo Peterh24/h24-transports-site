@@ -1,0 +1,36 @@
+@import "./styles/fonts";
+
+.key-data {
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 7rem;
+    margin-bottom: 4rem;
+  }
+
+  &__List {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    justify-content: flex-start;
+    align-items: center;
+    &__val {
+      font-size: 4rem;
+      font-family: $alt-font-family;
+      font-weight: 800;
+    }
+  }
+}

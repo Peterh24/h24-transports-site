@@ -10,7 +10,8 @@
   background: transparent;
   height: 150px;
   padding: 0 40px;
-
+  position: fixed;
+  z-index: 100;
   &__burger {
     background: none;
     position: relative;
@@ -18,7 +19,7 @@
     cursor: pointer;
     position: fixed;
     right: 4rem;
-    z-index: 100;
+    z-index: 10000;
     svg {
       width: 40px;
       cursor: pointer;

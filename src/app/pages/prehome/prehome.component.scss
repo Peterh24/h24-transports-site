@@ -1,5 +1,6 @@
 @import "./styles/colors";
 @import "./styles/mixins";
+@import "./styles/fonts";
 
 /*Configuration*/
 $themeNb: 3;
@@ -82,7 +83,7 @@ $overlayOpacity: .8;
     visibility: hidden;
     opacity: 0;
     &__title {
-      font-family: "Expressway", sans-serif;
+      font-family: $alt-font-family;
       text-transform: uppercase;
       &:after {
         content: "";

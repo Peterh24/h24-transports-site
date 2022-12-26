@@ -6,40 +6,12 @@
     },
     "componentsList": [
         {
-            "id": "contact",
-            "title" : "Contactez-nous",
-            "component": "ContactComponent",
-            "data": {
-                "list": [
-                    {
-                        "label": "Nom",
-                        "type": "text",
-                        "require": "true"
-                    },
-                    {
-                        "label": "Prénom",
-                        "type": "text",
-                        "require": "true"
-                    },
-                    {
-                        "label": "Sujet",
-                        "type": "text",
-                        "require": "true"
-                    },
-                    {
-                        "label": "Votre message",
-                        "type": "textarea",
-                        "require": "true"
-                    }
-                ]
-            }
-            },
-        {
         "id": "keydata",
         "component": "KeyDataComponent",
         "title" : "Chiffres clés",
         "data": {
             "info": {
+                "img" : "https://cdn-s-www.ledauphine.com/images/D3B7067D-5358-4AC2-93B1-9F1054E77A1C/NW_raw/l-integralite-du-chargement-a-termine-sa-course-sur-le-bitume-photo-dr-1671129423.jpg",
                 "link": {
                     "label": "DEMANDEZ VOTRE DEVIS",
                     "url": "#contact"

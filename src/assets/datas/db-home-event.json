@@ -11,6 +11,7 @@
       "title" : "Chiffres clés",
       "data": {
           "info": {
+              "img" : "https://remeng.rosselcdn.net/sites/default/files/dpistyles_v2/rem_16_9_1124w/2022/12/22/node_439595/12953917/public/2022/12/22/B9733014458Z.1_20221222091018_000%2BG51LTIHND.1-0.jpg?itok=u07UZT8Q1671696626",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -18,15 +19,15 @@
           },
           "list": [
               {
-                  "value": "162",
+                  "value": "45",
                   "label": "clients satisfaits"
                   },
                   {
-                  "value": "4500",
+                  "value": "356 000",
                   "label": "Kilomètres parcourus"
                   },
                   {
-                  "value": "980",
+                  "value": "98",
                   "label": "course réalisées"
                   }
           ]
