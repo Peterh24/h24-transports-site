@@ -1,0 +1,72 @@
+==== TSCONFIG.JSON ====
+=======================
+
+- Changing base SRC for work with custom path and scss files
+- Adding custom path for shorter import url ("@app/*" & "@src/*")
+- Adding "resolveJsonModule": true for authorized the import of json file
+- Adding "esModuleInterop": true for generates the helpers outlined in the docs
+
+
+==== ENVIRONMENTS ====
+=======================
+
+- Adding Environments folder and files
+
+=======================
+
+
+==== ANGULAR.JSON ====
+=======================
+
+- Changing the output path for build (because of only one project)
+- Changind/Adding build configurations for work with our custom environment files
+- Changind/Adding serve configurations for work with our custom environment files
+- Changind default port to 5200
+- Optimization of compiling
+
+=======================
+
+
+==== PACKAGE.JSON ====
+=======================
+
+- Adding custom starting and build script:
+    -- Adding "start:dev"
+    -- Adding "build:dev"
+    -- Adding "start:prod"
+    -- Adding "build:prod"
+
+- Changing default starting and build script for using with our custom script
+=======================
+
+
+==== PACKAGE INSTALL ====
+=======================
+
+- @angular/cdk
+- @angular/localize
+- @angular/material
+
+- @ngrx/effects
+- @ngrx/entity
+- @ngrx/store
+- @ngrx/store-devtools
+
+=======================
+
+
+==== STYLES ====
+=======================
+
+- Implementation of BEM Naming (Blocks__Elements-Modifiers)
+- Creation of a style folder structure for more scallability
+- Creation of the main.scss file for import all other styles in the default styles.scss files
+- Creation of the reset.scss file for have the same behavior on all browsers
+- Creation of color.scss (color of the website --> theme)
+- Creation of fonts.scss (default font family size etc of the website)
+- Creation of mixins.scss (scss mixins)
+- Creation of base folder for basic html elements button, input etc...
+- Creation of layout folder for
+- Creation of vendor folder for
+
+=======================

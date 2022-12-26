@@ -1,0 +1,22 @@
+/*
+* Default Theme - event
+*/
+.app-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: .2rem solid transparent;
+  height: 3.4rem;
+  padding: 0;
+  outline: none;
+  font-family: $base-font-family;
+  letter-spacing: $base-letter-spacing;
+  background: transparent;
+
+  &:disabled {
+    border-color: rgba(255, 255, 255, .4);
+    color: rgba(255, 255, 255, .38);
+    cursor: not-allowed;
+  }
+}
+

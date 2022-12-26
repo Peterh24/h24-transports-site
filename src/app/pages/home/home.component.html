@@ -1,0 +1,11 @@
+<div [class]="'app-page theme_' + (currentTheme$ | async)">
+  <app-header></app-header>
+
+  <app-main-menu></app-main-menu>
+
+  <div class="components" [appLoader]="globalService.flag"></div>
+
+  <app-footer></app-footer>
+
+  <!-- <app-loading *ngIf="loadingState$ | async"></app-loading> -->
+</div>

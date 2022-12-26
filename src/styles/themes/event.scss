@@ -1,0 +1,126 @@
+.theme_event {
+  color: $on-event;
+  background: $event;
+
+  /*Global Links*/
+  .app-a {
+    color: $event-link;
+    &:hover, &_active {
+      color: $on-event;
+    }
+  }
+
+  /*Global Button*/
+  .app-button {
+    border-color: $on-event;
+    color: $on-event;
+    &:hover, &:focus{
+      background: $on-event;
+      color: $event;
+    }
+  }
+
+  /*Global Input*/
+  .app-input {
+    color: $on-event;
+    border-color: $on-event;
+    &:focus, &:hover {
+      color: $event-input;
+      border-color: $event-input;
+    }
+  }
+
+  /*Loader*/
+  .app-loader {
+    &__backdrop {
+      background-color: rgba(32, 32, 29, .8);
+    }
+  }
+
+  /*Loading*/
+  .app-loading {
+    &__loader {
+      color: $on-event;
+      &::before,
+      &::after {
+        content: '';
+        border: 2px solid rgba($on-event, .1);
+        border-top: 4px solid $on-event;
+      }
+
+      &::before {
+        border-right: 4px solid $on-event;
+      }
+    }
+  }
+
+  /*Page*/
+  .app-page {
+    background: $event;
+    color: $on-event;
+
+    &__footer {
+      background: $event;
+    }
+  }
+
+  /*Header*/
+  .header {
+    &__burger {
+      path {
+        stroke: $on-event;
+      }
+    }
+  }
+
+  /*Logo*/
+  .logo {
+    svg {
+      fill: $on-event;
+    }
+  }
+
+  /*Main nav*/
+  .app-main-nav {
+    background-color: $event;
+    color: $on-event;
+  }
+  .tds-modal-backdrop {
+    background-color: rgba(255,255,255,0);
+  }
+  .tds-modal-backdrop--open {
+    background-color: rgba(255,255,255,0.3);
+  }
+  .submenu {
+    ol {
+      &::after {
+        background: $on-event;
+      }
+    }
+    &__item{
+      &::before {
+        background: $on-event;
+      }
+    }
+  }
+
+  .social__list {
+    &__link {
+      &:nth-child(1) {
+        &:hover {
+          color: $social-fb;
+        }
+      }
+      &:nth-child(2) {
+        &:hover {
+          color: $social-tw;
+        }
+      }
+      &:nth-child(3) {
+        &:hover {
+          color: $social-ig;
+        }
+      }
+    }
+  }
+}

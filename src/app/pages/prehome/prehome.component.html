@@ -1,0 +1,27 @@
+<div [class]="'app-page theme_' + (currentTheme$ | async)" class="">
+<div class="prehome">
+  <div class="prehome__nav">
+    <a class="app-a" *ngFor="let item of menu$ |async" (click)="goToTheme(item.id)" [innerHTML]="item.title"></a>
+  </div>
+
+
+  <br><br><br>
+  <div>
+    <div *ngFor="let data of datas$ |async">
+      <p [innerHTML]="data.title"></p>
+      <p>
+        {{data.text}}
+      </p>
+      <p>
+        {{data.img}}
+      </p>
+      <div>
+        <button (click)="goToTheme(data.id)" class="app-button">{{data.cta}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <app-loading *ngIf="loadingState$ | async"></app-loading> -->
+
+</div>

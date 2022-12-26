@@ -1,0 +1,42 @@
+/*Import custom fonts*/
+@font-face {
+  font-family: 'Expressway';
+  src: url('../assets/fonts/ExpresswayBk.woff2') format('woff2'),
+      url('../assets/fonts/ExpresswayBk.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Expressway';
+  src: url('../assets/fonts/ExpresswaySb.woff2') format('woff2'),
+      url('../assets/fonts/ExpresswaySb.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Expressway';
+  src: url('../assets/fonts/ExpresswayRg-Bold.woff2') format('woff2'),
+      url('../assets/fonts/ExpresswayRg-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Expressway';
+  src: url('../assets/fonts/ExpresswayXb.woff2') format('woff2'),
+      url('../assets/fonts/ExpresswayXb.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+$base-font-family: 'Roboto', sans-serif;
+$base-font-size: 1.3rem;
+$base-line-height: 1.2;
+$base-letter-spacing: .03em;
+
+$alt-font-family: "Expressway", sans-serif;
+$alt-font-size: 1.8rem;

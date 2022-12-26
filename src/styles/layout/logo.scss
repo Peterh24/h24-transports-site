@@ -1,0 +1,18 @@
+app-logo {
+  position: fixed;
+  z-index: 5;
+}
+
+.logo {
+  width: 8rem;
+  height: 8rem;
+  &__link {
+    &__logo {
+      svg {
+        stroke-width: 0;
+      }
+    }
+  }
+}
+
+

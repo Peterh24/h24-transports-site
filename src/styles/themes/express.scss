@@ -1,0 +1,133 @@
+.theme_express {
+  background: $express;
+  color: $on-express;
+
+  /*Global Links*/
+  .app-a {
+    color: $event-link;
+    &:hover, &_active {
+      color: $on-express;
+    }
+  }
+
+  /*Global Button*/
+  .app-button {
+    border-color: $on-express;
+    color: $on-express;
+    &:hover, &:focus{
+      background: $on-express;
+      color: $express;
+    }
+  }
+
+  /*Global Input*/
+  .app-input {
+    color: $on-express;
+    border-color: $on-express;
+    &:focus, &:hover {
+      color: $event-input;
+      border-color: $event-input;
+    }
+  }
+
+  /*Loader*/
+  .app-loader {
+    &__backdrop {
+      background-color: rgba(255, 255, 255, .8);
+    }
+  }
+
+  /*Loading*/
+  .app-loading {
+    &__loader {
+      color: $on-express;
+      &::before,
+      &::after {
+        content: '';
+        border: 2px solid rgba($on-express, .1);
+        border-top: 4px solid $on-express;
+      }
+
+      &::before {
+        border-right: 4px solid $on-express;
+      }
+    }
+  }
+
+  /*Page*/
+  .app-page {
+    background: $express;
+    color: $on-express;
+
+    &__footer {
+      background: $express;
+    }
+  }
+
+  /*Header*/
+  .header {
+    &__logo {
+      svg {
+        fill: $on-express;
+      }
+    }
+
+    &__burger {
+      path {
+        stroke: $on-express;
+      }
+    }
+  }
+
+  /*Logo*/
+  .logo {
+    svg {
+      fill: $on-express;
+    }
+  }
+
+  /*Main nav*/
+  .app-main-nav {
+    background-color: $express;
+    color: $on-express;
+  }
+  .tds-modal-backdrop {
+    background-color: rgba(32,32,29,0);
+  }
+  .tds-modal-backdrop--open {
+    background-color: rgba(32,32,29,0.3);
+  }
+  .submenu {
+    ol {
+      &::after {
+        background: $on-express;
+      }
+    }
+    &__item{
+      &::before {
+        background: $on-express;
+      }
+    }
+  }
+
+  .social__list {
+    &__link {
+      &:nth-child(1) {
+        &:hover {
+          color: $social-fb;
+        }
+      }
+      &:nth-child(2) {
+        &:hover {
+          color: $social-tw;
+        }
+      }
+      &:nth-child(3) {
+        &:hover {
+          color: $social-ig;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,52 @@
+/*
+* Default Theme - event
+*/
+.loader-open{
+  overflow: hidden;
+}
+.app-loader {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 1000;
+  br {
+    display: none;
+  }
+  &__backdrop {
+    block-size: 120vh;
+    inline-size: 120vw;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    transition: background-color .5s ease,backdrop-filter .5s ease;
+    z-index: 1100;
+    backdrop-filter: blur(.8rem);
+    pointer-events: inherit;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    gap: 10.8rem;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1200;
+    p {
+      font-size: 4.5rem;
+      font-weight: 800;
+      height: 3rem;
+      text-transform: uppercase;
+      font-family: "Expressway", sans-serif;
+    }
+  }
+}

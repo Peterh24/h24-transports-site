@@ -1,0 +1,52 @@
+[
+  {
+    "id": "event",
+    "title": "Transport & logistique événementiel",
+    "componentsList": [
+      {
+        "id": "keydata",
+        "component": "KeydataComponent",
+        "componentData": {
+          "data": [
+            {
+              "value": "162",
+              "label": "clients satisfaits"
+            },
+            {
+              "value": "4500",
+              "label": "Kilomètres parcourus"
+            },
+            {
+              "value": "980",
+              "label": "course réalisées"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ourvalues",
+        "component": "OurValuesComponent",
+        "componentData": {
+          "data": [
+            {
+              "title": "7j/7 24h/24",
+              "text": "TODO Texte a remplir"
+            },
+            {
+              "title": "Sécurité",
+              "text": "TODO Texte a remplir"
+            },
+            {
+              "title": "Optimisation",
+              "text": "TODO Texte a remplir"
+            },
+            {
+              "title": "Confiance",
+              "text": "TODO Texte a remplir"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
