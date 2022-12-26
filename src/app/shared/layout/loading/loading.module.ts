@@ -9,11 +9,11 @@ import { TypeWritterDirective } from '@app/directives/typewriter';
 @NgModule({
   declarations: [
     LoadingComponent,
-    TypeWritterDirective
+    TypeWritterDirective,
   ],
   imports: [
     CommonModule,
-    LoaderModule
+    LoaderModule,
   ],
   exports: [
     LoadingComponent

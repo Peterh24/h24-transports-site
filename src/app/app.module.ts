@@ -1,5 +1,6 @@
 import { APP_INITIALIZER, Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 // Store
@@ -37,6 +38,7 @@ export function initApplicationFactory(store: Store<fromRoot.State>) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     RouterModule,

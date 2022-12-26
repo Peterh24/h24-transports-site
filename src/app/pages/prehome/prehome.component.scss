@@ -1,0 +1,146 @@
+@import "./styles/colors";
+@import "./styles/mixins";
+
+/*Configuration*/
+$themeNb: 3;
+$contentDuration: .3s;
+$sliderHoverSize: 60%;
+$textBlockSize: 50%;
+$overlayOpacity: .8;
+
+.prehome {
+  background: $event;
+  color: #fff;
+  height: 100vh;
+  &__header {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4rem;
+    z-index: 5;
+    app-logo {
+      position: relative;
+    }
+  }
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    text-align: center;
+  }
+}
+
+.theme-slider {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  visibility: hidden;
+  &__slide {
+    @include transition-mix($duration: $contentDuration);
+    width: calc(100% / $themeNb);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    visibility: visible;
+
+    //overlay
+    &:after {
+      @include position-absolute($top: 0, $left: 0);
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($event, .8);
+      z-index: 2;
+      opacity: 0;
+      top: -100%;
+    }
+  }
+  &__img {
+    @include position-absolute($top: 50%, $left: 50%);
+    height: auto;
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  &__content {
+    @include position-absolute($bottom: 0, $left: 0);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fff;
+    z-index: 4;
+    visibility: hidden;
+    opacity: 0;
+    &__title {
+      font-family: "Expressway", sans-serif;
+      text-transform: uppercase;
+      &:after {
+        content: "";
+        display: block;
+        background: #fff;
+        width:7.5rem;
+        height: .2px;
+        margin: 2rem 0 3rem 0;
+      }
+    }
+    &__cta {
+      margin-top: 3rem;
+      .app-button {
+        color: #fff;
+        border-color: #fff;
+        padding: 1rem 3rem;
+        @include transition-mix();
+        &:hover {
+          background: #fff;
+          color: #20201d;
+        }
+      }
+    }
+
+
+    &__wrapper {
+      width: 50%;
+    }
+  }
+  &:hover {
+    .theme-slider__slide {
+      &:not(:hover) {
+        &:after {
+          @include transition-mix;
+          top: 0;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &:hover {
+        flex-shrink: 0;
+        width: $sliderHoverSize;
+        .theme-slider__content {
+          @include transition-mix($delay: .2s);
+          transform: scale(1);
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+/*Color Logo*/
+::ng-deep {
+  app-logo {
+    svg {
+      fill: #fff !important;
+    }
+  }
+}

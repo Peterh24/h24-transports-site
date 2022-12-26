@@ -4,7 +4,6 @@ import { select, Store } from '@ngrx/store';
 import * as fromRoot from '@app/store/';
 import * as fromThemes from '@app/store/themes';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { GlobalService } from '@app/services/global';
 
 @Component({
@@ -19,8 +18,7 @@ export class PrehomeComponent implements OnInit {
     loadingState$: Observable<boolean>;
     constructor(
         private store: Store<fromRoot.State>,
-        private router: Router,
-        private globalService: GlobalService
+        private globalService: GlobalService,
     ){}
 
     ngOnInit() {

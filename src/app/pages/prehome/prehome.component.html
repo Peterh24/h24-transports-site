@@ -1,27 +1,24 @@
-<div [class]="'app-page theme_' + (currentTheme$ | async)" class="">
 <div class="prehome">
-  <div class="prehome__nav">
-    <a class="app-a" *ngFor="let item of menu$ |async" (click)="goToTheme(item.id)" [innerHTML]="item.title"></a>
+  <div class="prehome__header">
+    <app-logo></app-logo>
+
+    <div class="prehome__nav">
+      <a class="app-a" *ngFor="let item of menu$ |async" (click)="goToTheme(item.id)" [innerHTML]="item.title"></a>
+    </div>
   </div>
 
-
-  <br><br><br>
-  <div>
-    <div *ngFor="let data of datas$ |async">
-      <p [innerHTML]="data.title"></p>
-      <p>
-        {{data.text}}
-      </p>
-      <p>
-        {{data.img}}
-      </p>
-      <div>
-        <button (click)="goToTheme(data.id)" class="app-button">{{data.cta}}</button>
+  <div class="theme-slider flexbox-slider-4">
+    <div *ngFor="let data of datas$ |async" class="theme-slider__slide">
+      <img [src]="data.img" alt="" class="theme-slider__img">
+      <div class="theme-slider__content">
+        <div class="theme-slider__content__wrapper">
+          <h2 class="theme-slider__content__title" [innerHTML]="data.title"></h2>
+          <p class="theme-slider__content__text">{{data.text}}</p>
+          <div class="theme-slider__content__cta">
+            <button (click)="goToTheme(data.id)" class="app-button">{{data.cta}}</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- <app-loading *ngIf="loadingState$ | async"></app-loading> -->
-
 </div>

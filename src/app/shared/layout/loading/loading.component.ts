@@ -30,13 +30,11 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'loader-open');
-
     this.datas$ = this.store.pipe(select(fromThemes.getCurrentThemeData));
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
     this.store.dispatch(new fromThemes.AddCurrentTheme(this.globalService.currentTheme));
     this.globalService.flag = !this.globalService.flag;
-
     if(this.router.url == '/prehome') {
 
       window.setTimeout(()=>{
@@ -49,7 +47,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
     } else {
       window.setTimeout(()=>{
         window.setTimeout(()=>{
-          this.store.dispatch(new fromThemes.LoaderStop());
+         this.store.dispatch(new fromThemes.LoaderStop());
         }, this.timer)
         this.store.dispatch(new fromNavigation.NavClose);
       }, 1000)
