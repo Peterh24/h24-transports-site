@@ -2,7 +2,7 @@
   <div class="key-data__content">
     <div class="key-data__List">
       <div class="key-data__item" *ngFor="let key of (datas$ | async).list">
-        <div class="key-data__item__val">{{key.value}}</div>
+        <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value"></div>
         <div class="key-data__item__label">{{key.label}}</div>
       </div>
     </div>
@@ -16,11 +16,3 @@
     </a>
   </div>
 </div>
-
-<!-- <br /><br />
-Key data Works
-{{(datas$ | async | json)}}
-<h1>{{(datas$ | async).info.link.label}}</h1>
-
-<p>key-data works!</p>
-<br /><br /> -->
