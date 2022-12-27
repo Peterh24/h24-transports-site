@@ -11,7 +11,7 @@
         "title" : "Chiffres clés",
         "data": {
             "info": {
-                "img" : "https://cdn-s-www.ledauphine.com/images/D3B7067D-5358-4AC2-93B1-9F1054E77A1C/NW_raw/l-integralite-du-chargement-a-termine-sa-course-sur-le-bitume-photo-dr-1671129423.jpg",
+                "img" : "./assets/img/application-cover-picture.jpg",
                 "link": {
                     "label": "DEMANDEZ VOTRE DEVIS",
                     "url": "#contact"
@@ -28,7 +28,7 @@
                     },
                     {
                     "value": "980",
-                    "label": "course réalisées"
+                    "label": "courses réalisées"
                     }
             ]
         }

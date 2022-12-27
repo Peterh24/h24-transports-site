@@ -3,21 +3,21 @@
         "id": "event",
         "title": "Transport & logistique<br /> événementiel",
         "text": "Transport & logistique événementiel text TODO",
-        "img": "https://remeng.rosselcdn.net/sites/default/files/dpistyles_v2/rem_16_9_1124w/2022/12/22/node_439595/12953917/public/2022/12/22/B9733014458Z.1_20221222091018_000%2BG51LTIHND.1-0.jpg?itok=u07UZT8Q1671696626",
+        "img": "./assets/img/event-cover-picture.jpg",
         "cta": "CTA Button"
     },
     {
         "id": "express",
         "title": "Transport<br /> Express Dédié",
         "text": "Transport Express Dédié text TODO",
-        "img": "https://static.actu.fr/uploads/2022/12/camion-renversejpg-photos.jpg",
+        "img": "./assets/img/express-cover-picture.jpg",
         "cta": "CTA Button"
     },
     {
         "id": "application",
         "title": "Notre nouvelle<br /> application mobile",
         "text": "Notre nouvelle application mobile text TODO",
-        "img": "https://cdn-s-www.ledauphine.com/images/D3B7067D-5358-4AC2-93B1-9F1054E77A1C/NW_raw/l-integralite-du-chargement-a-termine-sa-course-sur-le-bitume-photo-dr-1671129423.jpg",
+        "img": "./assets/img/application-cover-picture.jpg",
         "cta": "CTA Button"
     }
 ]

@@ -11,7 +11,7 @@
       "title" : "Chiffres clés",
       "data": {
           "info": {
-              "img" : "https://static.actu.fr/uploads/2022/12/camion-renversejpg-photos.jpg",
+              "img" : "./assets/img/express-cover-picture.jpg",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -28,7 +28,7 @@
                   },
                   {
                   "value": "14",
-                  "label": "course réalisées"
+                  "label": "courses réalisées"
                   }
           ]
       }
