@@ -4,9 +4,11 @@
 
   /*Global Links*/
   .app-a {
-    color: $event-link;
+    color: $on-application;
+    opacity: .75;
     &:hover, &_active {
       color: $on-application;
+      opacity: 1;
     }
   }
 
@@ -14,7 +16,7 @@
   .app-button {
     border-color: $on-application;
     color: $on-application;
-    &:hover, &:focus{
+    &:hover, &:focus {
       background: $on-application;
       color: $application;
     }
