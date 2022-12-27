@@ -1,3 +1,4 @@
+import { SmoothScrollDirective } from './../../directives/smooth-scroll/index';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -37,7 +38,8 @@ import { AnimatedCounterDirective } from '@app/directives/animated-counter';
         NewsComponent,
         ContactComponent,
         LoaderDirective,
-        AnimatedCounterDirective
+        AnimatedCounterDirective,
+        SmoothScrollDirective
     ],
     imports: [
         CommonModule,

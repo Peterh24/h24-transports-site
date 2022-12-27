@@ -1,5 +1,7 @@
 <div class="key-data" [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}">
   <div class="key-data__content">
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <div class="key-data__List">
       <div class="key-data__item" *ngFor="let key of (datas$ | async).list">
         <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value"></div>

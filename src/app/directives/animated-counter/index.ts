@@ -4,7 +4,7 @@ import { timer, Subject, takeUntil } from "rxjs";
 @Directive({
   selector: '[appAnimatedCounter]'
 })
-export class AnimatedCounterDirective {
+export class AnimatedCounterDirective implements OnInit, OnDestroy {
   @Input('appAnimatedCounter') value: number;
   @Input() delay: number;
   @Input() speed: number;

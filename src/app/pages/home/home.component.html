@@ -1,11 +1,17 @@
 <div [class]="'app-page theme_' + (currentTheme$ | async)">
-  <app-header></app-header>
+  <div appSmoothScroll>
+    <app-header></app-header>
 
-  <app-main-menu></app-main-menu>
+    <app-main-menu></app-main-menu>
+    <div class="components">
+      <div>
+        <div  [appLoader]="globalService.flag"></div>
+      </div>
 
-  <div class="components" [appLoader]="globalService.flag"></div>
+    </div>
 
-  <app-footer></app-footer>
 
-  <!-- <app-loading *ngIf="loadingState$ | async"></app-loading> -->
+    <app-footer></app-footer>
+  </div>
+
 </div>

@@ -34,7 +34,7 @@ export function initApplicationFactory(store: Store<fromRoot.State>) {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
