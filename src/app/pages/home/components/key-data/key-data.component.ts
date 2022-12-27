@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { KeyData } from '@app/models/backend/components/keydata';
 import { GlobalService } from '@app/services/global';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
+import * as fromRoot from '@app/store/';
+import * as fromThemes from '@app/store/themes';
 
 @Component({
   selector: 'app-key-data',
@@ -11,11 +15,13 @@ import { Observable } from 'rxjs';
 export class KeyDataComponent implements OnInit {
   public datas$: Observable<KeyData>;
   constructor(
-    private globalService: GlobalService
+    private globalService: GlobalService,
+    private store: Store<fromRoot.State>,
   ) {}
-
+  loadingState$: Observable<boolean>;
   ngOnInit(): void {
     this.datas$ = this.globalService.getDataComponent('KeyDataComponent');
+    this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
   }
 
   goToAnchor(anchor:any): void {

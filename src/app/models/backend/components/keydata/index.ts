@@ -7,7 +7,7 @@ export interface KeyData {
     }
   };
   list: Array<{
-    value: string;
+    value: number;
     label: string;
   }>;
 }

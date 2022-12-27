@@ -18,6 +18,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { LoaderDirective } from '@app/directives/loader';
 import { LayoutModule, LoadingModule } from '@app/shared';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AnimatedCounterDirective } from '@app/directives/animated-counter';
 
 
 
@@ -35,7 +36,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         ClientComponent,
         NewsComponent,
         ContactComponent,
-        LoaderDirective
+        LoaderDirective,
+        AnimatedCounterDirective
     ],
     imports: [
         CommonModule,
