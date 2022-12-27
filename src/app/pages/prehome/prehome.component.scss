@@ -35,6 +35,25 @@ $overlayOpacity: .8;
     gap: 6rem;
     text-align: center;
   }
+  .app-a {
+    &:after {
+      content: "";
+      display: block;
+      background: #fff;
+      width: 0;
+      height: 2px;
+      margin: 2rem auto;
+      opacity: 0;
+      transition: all .25s;
+    }
+
+    &:hover, &:focus {
+      &:after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .theme-slider {
