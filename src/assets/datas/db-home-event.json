@@ -11,7 +11,7 @@
       "title" : "Chiffres clés",
       "data": {
           "info": {
-              "img" : "https://remeng.rosselcdn.net/sites/default/files/dpistyles_v2/rem_16_9_1124w/2022/12/22/node_439595/12953917/public/2022/12/22/B9733014458Z.1_20221222091018_000%2BG51LTIHND.1-0.jpg?itok=u07UZT8Q1671696626",
+              "img" : "./assets/img/event-cover-picture.jpg",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -28,7 +28,7 @@
                   },
                   {
                   "value": "98",
-                  "label": "course réalisées"
+                  "label": "courses réalisées"
                   }
           ]
       }

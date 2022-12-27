@@ -4,9 +4,11 @@
 
   /*Global Links*/
   .app-a {
-    color: $event-link;
+    color: $on-express;
+    opacity: .75;
     &:hover, &_active {
       color: $on-express;
+      opacity: 1;
     }
   }
 
