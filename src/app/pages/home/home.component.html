@@ -1,5 +1,5 @@
-<div [class]="'app-page theme_' + (currentTheme$ | async)">
-  <div appSmoothScroll>
+<div [class]="'app-page theme_' + (currentTheme$ | async)" appSmoothScroll [domReady]="loadingState$ | async">
+  <div >
     <app-header></app-header>
 
     <app-main-menu></app-main-menu>

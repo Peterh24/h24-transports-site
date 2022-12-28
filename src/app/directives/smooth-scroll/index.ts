@@ -1,10 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, Inject, OnInit } from '@angular/core';
+import { Directive, ElementRef, Inject, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[appSmoothScroll]',
 })
-export class SmoothScrollDirective implements OnInit {
+export class SmoothScrollDirective implements OnInit, OnChanges {
+  @Input() domReady: boolean;
   private data = {
     ease: 0.1,
     curr: 0,
@@ -19,7 +20,6 @@ export class SmoothScrollDirective implements OnInit {
     height: '100%',
     width: '100%',
     overflow: 'hidden',
-    pointerEvents: 'none',
   } as CSSStyleDeclaration;
 
   constructor(
@@ -29,19 +29,20 @@ export class SmoothScrollDirective implements OnInit {
 
   ngOnInit(): void {
     requestAnimationFrame(() => this.smoothScroll());
-    this.initScrollStyles();
-    window.setTimeout(() => {
-      this.setBodyHeight();
-    }, 10000)
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(!this.domReady) {
+      this.initScrollStyles();
+      this.setBodyHeight();
+    }
   }
 
   private initScrollStyles(): void {
     (this.document.body.style as any).overscrollBehaviorY = 'none';
 
     if (this.elementInitialized) {
-      const appRootStyleObj: CSSStyleDeclaration = (this.el.nativeElement
-        .parentNode as HTMLElement).style;
+      const appRootStyleObj: CSSStyleDeclaration = (this.el.nativeElement.parentNode as HTMLElement).style;
 
       // because style object is marked as read-only, we have to iterate and manually assign styles
       for (const key in this.parentNodeStyles) {
@@ -58,14 +59,8 @@ export class SmoothScrollDirective implements OnInit {
   }
 
   private setBodyHeight(): void {
-    const containerMargin = '100px'; // optional
     if (this.elementInitialized) {
-      console.log('this.el:', this.el.nativeElement);
-      console.log('test:', this.el.nativeElement.getBoundingClientRect().height);
-      this.document.body.style.height = `calc(${
-
-        this.el.nativeElement.getBoundingClientRect().height
-      }px + ${containerMargin})`;
+      this.document.body.style.height = this.el.nativeElement.getBoundingClientRect().height + 'px';
     }
   }
 
