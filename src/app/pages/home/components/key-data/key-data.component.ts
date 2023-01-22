@@ -14,13 +14,14 @@ import * as fromThemes from '@app/store/themes';
 })
 export class KeyDataComponent implements OnInit {
   public datas$: Observable<KeyData>;
+  private id: string;
   constructor(
     private globalService: GlobalService,
     private store: Store<fromRoot.State>,
   ) {}
   loadingState$: Observable<boolean>;
   ngOnInit(): void {
-    this.datas$ = this.globalService.getDataComponent('KeyDataComponent');
+    this.datas$ = this.globalService.getDataComponent(this.id);
     this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
   }
 

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, Renderer2, ViewContainerRef } from "@angular/core";
+import { ComponentRef, Directive, ElementRef, Input, Renderer2, ViewContainerRef } from "@angular/core";
 import { ClientComponent } from "@app/pages/home/components/client/client.component";
 import { ContactComponent } from "@app/pages/home/components/contact/contact.component";
 import { KeyDataComponent } from "@app/pages/home/components/key-data/key-data.component";
@@ -79,7 +79,8 @@ export class LoaderDirective {
     this.subscription = this.componentList$.pipe(skip(1)).subscribe((data:Array<Component>) => {
       data.map((elem: Component, index)=> {
         this.currentComponents.push(elem.component);
-        this.vcr.createComponent(this.componentsRef[elem.component as keyof null]);
+        const component = this.vcr.createComponent(this.componentsRef[elem.component as keyof null]) as ComponentRef<any>;
+        component.instance.id = elem.id;
       })
     })
 

@@ -41,8 +41,8 @@ export class GlobalService {
 
   }
 
-  getDataComponent(component: string) {
-    this.data$ = this.store.pipe(select(fromDictionaries.getComponentData(component)));
+  getDataComponent(componentId: string) {
+    this.data$ = this.store.pipe(select(fromDictionaries.getComponentData(componentId)));
 
     return this.data$.pipe(take(1));
   }

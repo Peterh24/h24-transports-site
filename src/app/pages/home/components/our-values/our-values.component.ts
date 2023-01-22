@@ -10,11 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class OurValuesComponent {
   public datas$: Observable<OurValues>;
+  private id: string;
   constructor(
     private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
-    this.datas$ = this.globalService.getDataComponent('OurValuesComponent');
+    this.datas$ = this.globalService.getDataComponent(this.id);
   }
 }

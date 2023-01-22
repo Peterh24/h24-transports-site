@@ -28,12 +28,12 @@ export const getComponentList = createSelector(
 );
 
 
-export const getComponentData = (componentName: string) => createSelector(
+export const getComponentData = (componentID: string) => createSelector(
   getDictionaries,
   (state) => {
     let component:any;
     state.map(list => {
-      component = list.componentsList.filter(components =>components.component == componentName)
+      component = list.componentsList.filter(components =>components.id == componentID)
     })
 
     return component[0].data;

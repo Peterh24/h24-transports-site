@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class NewsComponent implements OnInit {
   public datas$: Observable<News>;
+  private id: string;
   constructor(
     private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
-    this.datas$ = this.globalService.getDataComponent('NewsComponent');
+    this.datas$ = this.globalService.getDataComponent(this.id);
   }
 
 }

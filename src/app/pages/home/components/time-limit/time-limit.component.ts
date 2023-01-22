@@ -10,11 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class TimeLimitComponent {
   public datas$: Observable<TimeLimit>;
+  private id: string;
   constructor(
     private globalService: GlobalService
   ) {}
 
   ngOnInit(): void {
-    this.datas$ = this.globalService.getDataComponent('TimeLimitComponent');
+    this.datas$ = this.globalService.getDataComponent(this.id);
   }
 }
