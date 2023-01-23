@@ -1,6 +1,11 @@
-<div class="test">
-  Our values works
-  {{(datas$ | async | json)}}
-  <br /><br />
+<div class="our-values">
+  <div class="value" *ngFor="let value of (datas$ | async).list" [ngStyle]="{'background-image': 'url(' + value.img + ')'}">
+    <div class="value__content">
+      <mat-icon>{{value.picto}}</mat-icon>
+      <h2>{{value.title}}</h2>
+      <p>
+        {{value.text}}
+      </p>
+    </div>
+  </div>
 </div>
-
