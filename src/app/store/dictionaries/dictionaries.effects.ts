@@ -38,27 +38,6 @@ export class DictionariesEffects {
       }
     })
   ))
-
-
-
-  //GET FULL THEME
-  // read$ = createEffect(() => this.actions.pipe(
-  //   ofType(fromActions.Types.READ),
-  //   switchMap(() =>  {
-  //       return forkJoin(
-  //           {
-  //               event: this.dictionariesService.getDictionaries('event'),
-  //               express: this.dictionariesService.getDictionaries('express'),
-  //               application: this.dictionariesService.getDictionaries('application'),
-  //           }
-  //       ).pipe(
-  //           map(data => {
-  //               return new fromActions.ReadSuccess(data);
-  //             }),
-  //             catchError(err => of(new fromActions.ReadError(err)))
-  //       )
-  //   })
-  // ))
 }
 
 

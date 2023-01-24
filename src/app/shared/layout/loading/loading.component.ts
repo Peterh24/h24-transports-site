@@ -38,7 +38,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
     if(this.router.url == '/prehome') {
 
       window.setTimeout(()=>{
-        this.router.navigateByUrl("/home").then(() => {
+        this.router.navigate(['/home', this.globalService.currentTheme]).then(() => {
           window.setTimeout(()=>{
             this.store.dispatch(new fromThemes.LoaderStop());
           }, this.timer)
@@ -46,9 +46,11 @@ export class LoadingComponent implements OnInit, OnDestroy {
       }, 1000)
     } else {
       window.setTimeout(()=>{
-        window.setTimeout(()=>{
-         this.store.dispatch(new fromThemes.LoaderStop());
-        }, this.timer)
+        this.router.navigate(['/home', this.globalService.currentTheme]).then(() => {
+          window.setTimeout(()=>{
+            this.store.dispatch(new fromThemes.LoaderStop());
+           }, this.timer)
+        });
         this.store.dispatch(new fromNavigation.NavClose);
       }, 1000)
     }

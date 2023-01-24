@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
     this.dictionaries$ = this.store.pipe(select(fromDictionaries.getDictionaries));
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
-
   }
 
 }
