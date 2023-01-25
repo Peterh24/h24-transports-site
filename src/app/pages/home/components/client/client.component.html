@@ -1,4 +1,24 @@
-<div class="test">
-Client Works
-{{(datas$ | async | json)}}
+<div class="clients">
+  <h2>{{(datas$ | async).info.title}}</h2>
+
+  <div>
+    <swiper [autoplay]="{delay: 2500, pauseOnMouseEnter:true, disableOnInteraction:false}" [loop]="true">
+      <ng-template swiperSlide>Slide 1</ng-template>
+      <ng-template swiperSlide>Slide 2</ng-template>
+      <ng-template swiperSlide>Slide 3</ng-template>
+  </swiper>
+  </div>
+
+
+  <!-- <div class="clients__slider">
+    <div class="clients__slider__track">
+      <div class="clients__slider__slide" [ngStyle]="{'width': imageSize+'rem'}" *ngFor="let slide of (datas$ | async).list">
+        <a [href]="slide.url" target="_blank" *ngIf="slide.img">
+            <img [src]="'/assets/img/clients/logos/'+(datas$ | async).info.imgStyle+'/' + slide.img" [alt]="slide.name" />
+        </a>
+      </div>
+    </div>
+  </div> -->
+
+
 </div>

@@ -116,6 +116,7 @@
       "title": "Nos véhicules",
       "data": {
           "info": {
+              "title": "Nos véhicules",
               "img": ""
           },
           "list": [
@@ -259,40 +260,44 @@
       "component":"ClientComponent",
       "title": "Ils nous font confiance",
       "data": {
+          "info": {
+            "title": "Ils nous font confiance",
+            "imgStyle":"white"
+          },
           "list": [
               {
                   "name": "Vantage",
-                  "img": "",
-                  "url": ""
+                  "img": "vantage.png",
+                  "url": "https://www.vantagemarkets.com/fr-fr/"
               },
               {
                   "name": "LB Studio",
-                  "img": "",
-                  "url": ""
+                  "img": "lb-studio.png",
+                  "url": "http://lb-studiophoto.eu/"
               },
               {
                   "name": "Cininter",
-                  "img": "",
-                  "url": ""
+                  "img": "cininter.png",
+                  "url": "https://www.cininter.fr/"
               },
               {
                   "name": "Eye lite",
-                  "img": "",
-                  "url": ""
+                  "img": "eye-lite.png",
+                  "url": "https://www.eye-lite.com/fr/"
               },
               {
                   "name": "Direct Digital",
-                  "img": "",
-                  "url": ""
+                  "img": "direct-digital.png",
+                  "url": "https://www.direct-digital.com/fr-fr"
               },
               {
                   "name": "Next shot",
-                  "img": "",
-                  "url": ""
+                  "img": "next-shot.png",
+                  "url": "https://www.nextshot.com/"
               },                {
                   "name": "Rouchon",
-                  "img": "",
-                  "url": ""
+                  "img": "rouchon.png",
+                  "url": "https://rouchonparis.com/"
               }
           ]
       }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
+import { SwiperModule } from 'swiper/angular';
+
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from '@app/components/header/header.component';
@@ -47,7 +49,8 @@ import { AnimatedCounterDirective } from '@app/directives/animated-counter';
         LayoutModule,
         MatIconModule,
         FontAwesomeModule,
-        LoadingModule
+        LoadingModule,
+        SwiperModule
     ]
 })
 export class HomeModule { }

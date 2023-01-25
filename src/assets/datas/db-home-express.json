@@ -259,6 +259,10 @@
       "component":"ClientComponent",
       "title": "Ils nous font confiance",
       "data": {
+        "info": {
+            "title": "Ils nous font confiance",
+            "imgStyle":"black"
+          },
           "list": [
               {
                   "name": "Vantage",
