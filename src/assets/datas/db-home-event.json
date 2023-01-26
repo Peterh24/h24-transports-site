@@ -67,6 +67,19 @@
       }
       },
       {
+        "id": "teasing",
+        "component": "TeasingComponent",
+        "data": {
+            "info": {
+                "title": "Teasing",
+                "videoId": "W0LHTWG-UmQ",
+                "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
+                "icon": "local_shipping",
+                "text": "Un service dédié, un transport unique"
+            }
+        }
+        },
+      {
       "id": "timelimit",
       "component": "TimeLimitComponent",
       "title": "Nos délais d'intervention",
@@ -96,18 +109,6 @@
                   "time": "Selon le pays"
                   }
           ]
-      }
-      },
-      {
-      "id": "teasing",
-      "component": "TeasingComponent",
-      "title": "Teasing",
-      "data": {
-          "info": {
-              "icon": "",
-              "text": "Un service dédié, un transport unique",
-              "video": ""
-          }
       }
       },
       {
