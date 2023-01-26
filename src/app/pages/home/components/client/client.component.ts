@@ -3,9 +3,9 @@
   import { GlobalService } from '@app/services/global';
   import { Observable } from 'rxjs';
 
-  import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
+  import SwiperCore, { Autoplay, SwiperOptions } from 'swiper';
 
-  SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
+  SwiperCore.use([Autoplay]);
 
 
   @Component({
@@ -16,6 +16,11 @@
   export class ClientComponent implements OnInit, AfterViewInit {
     public datas$: Observable<Client>;
     private id: string;
+    public config: SwiperOptions = {
+      autoplay: {delay: 2500, pauseOnMouseEnter:true, disableOnInteraction:false},
+      loop: true,
+      slidesPerView: 5
+    };
     constructor(
       private globalService: GlobalService,
     ) {}
@@ -27,9 +32,5 @@
 
     ngAfterViewInit(): void {
       SwiperCore.use([]);
-    }
-
-    onSlideChange() {
-      console.log('slide change');
     }
   }
