@@ -3,6 +3,20 @@
   width: 100vw;
   position: relative;
   overflow: hidden;
+  &__without-video {
+    .teasing__info {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__without-video-img {
+    height: auto;
+    .teasing__info {
+      position: relative;
+      align-items: center;
+      justify-content: center;
+    }
+  }
   &__background {
     background: #000;
     position: absolute;
@@ -26,7 +40,7 @@
       width: 100vw;
       height: 100vh;
     }
-    iframe {
+    iframe, img {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -47,8 +61,13 @@
     z-index: 200;
     gap: 2rem;
     padding: 4rem 0;
+    text-align: center;
     &__title {
       margin: 0;
+      font-size: 2.8rem;
+    }
+    &__text {
+      font-size: 1.6rem;
     }
   }
 }

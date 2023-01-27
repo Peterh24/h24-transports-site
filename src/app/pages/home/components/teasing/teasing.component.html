@@ -1,29 +1,19 @@
-<!--Default add title, icon and url -->
-<!--IF Image add class and disables video -->
-<!--If text Add class and disabled video-->
-<div class="teasing">
-  <div class="teasing__background">
+<div class="teasing" [class.teasing__without-video]="!(datas$ | async).info.videoId" [class.teasing__without-video-img]="!(datas$ | async).info.videoId && !(datas$ | async).info.img">
+  <div class="teasing__background" >
     <div class="teasing__background__video"></div>
+    <div class="teasing__background__img" *ngIf="(datas$ | async).info.img && !(datas$ | async).info.videoId">
+      <img [src]="(datas$ | async).info.img" alt="" />
+    </div>
   </div>
 
 
 
   <div class="teasing__info">
-    <div class="teasing__info__icon">
-      <mat-icon>local_shipping</mat-icon>
+    <div *ngIf="(datas$ | async).info.icon" class="teasing__info__icon" >
+      <mat-icon>{{(datas$ | async).info.icon}}</mat-icon>
     </div>
-    <h2 class="teasing__info__title">Title</h2>
-    <div class="teasing__info__text" [innerHTML]="'<p>Ceci est un <strong>texte</strong></p>  <p>Ceci est un texte</p> <p>Ceci est un texte</p>'"></div>
-
-    {{'https://www.youtube.com/embed/'+(datas$ | async).info.videoId+'?controls=0&autoplay=1&mute=1&playsinline=1&playlist='+(datas$ | async).info.videoId+'&loop=1'}}
+    <h2 *ngIf="(datas$ | async).info.title" class="teasing__info__title">{{(datas$ | async).info.title}}</h2>
+    <div *ngIf="(datas$ | async).info.text" class="teasing__info__text" [innerHTML]="(datas$ | async).info.text"></div>
   </div>
 </div>
-
-
-<div class="test">
-  Teasing works
-  {{(datas$ | async | json)}}
-  <br /><br />
-</div>
-
 

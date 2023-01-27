@@ -67,17 +67,42 @@
       }
       },
       {
-        "id": "teasing",
+        "id": "teasingFull",
         "component": "TeasingComponent",
+        "title": "Teasing Full Video",
         "data": {
             "info": {
-                "title": "Teasing",
+                "title": "TeasingFull",
                 "videoId": "W0LHTWG-UmQ",
                 "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
                 "icon": "local_shipping",
-                "text": "Un service dédié, un transport unique"
+                "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
             }
         }
+        },
+        {
+          "id": "teasingImgFull",
+          "component": "TeasingComponent",
+          "title": "Teasing Full img",
+          "data": {
+              "info": {
+                  "title": "TeasingFull",
+                  "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
+                  "icon": "local_shipping",
+                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+              }
+          }
+        },
+        {
+          "id": "teasingText",
+          "component": "TeasingComponent",
+          "title": "Teasing Text",
+          "data": {
+              "info": {
+                  "title": "TeasingFull",
+                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+              }
+          }
         },
       {
       "id": "timelimit",

@@ -22,10 +22,13 @@ export class TeasingComponent {
   ngOnInit(): void {
     this.datas$ = this.globalService.getDataComponent(this.id);
     this.datas$.pipe(take(1)).subscribe(data => {
+      if(data.info.videoId || (data.info.videoId && data.info.img)){
       this.iframe = this.renderer.createElement('iframe');
       this.renderer.setAttribute(this.iframe, 'src', `https://www.youtube.com/embed/${data.info.videoId}?controls=0&autoplay=1&mute=1&playsinline=1&playlist=${data.info.videoId}&loop=1`);
       this.renderer.setAttribute(this.iframe, 'frameBorder', '0');
-      this.renderer.appendChild(this.el.nativeElement.querySelector('.teasing__background__video'), this.iframe);
+        this.renderer.appendChild(this.el.nativeElement.querySelector('.teasing__background__video'), this.iframe);
+      }
+
     });
   }
 }
