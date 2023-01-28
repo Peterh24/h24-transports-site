@@ -125,4 +125,17 @@
       }
     }
   }
+
+  /*Block Clients*/
+  .clients {
+    background: $event-dark;
+
+    &__slider {
+      &::before,
+      &::after {
+        background: linear-gradient(to right, rgba(16, 16 ,14 ,1) 0, rgba(16, 16, 14, 0) 100%);
+      }
+    }
+  }
+
 }

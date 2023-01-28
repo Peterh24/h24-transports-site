@@ -19,7 +19,15 @@
     public config: SwiperOptions = {
       autoplay: {delay: 2500, pauseOnMouseEnter:true, disableOnInteraction:false},
       loop: true,
-      slidesPerView: 5
+      spaceBetween: 80,
+      slidesPerView: 5,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 1,
+          // spaceBetween: 80
+        }
+      }
     };
     constructor(
       private globalService: GlobalService,

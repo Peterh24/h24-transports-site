@@ -255,51 +255,52 @@
       }
       },
       {
-      "id": "client",
-      "component":"ClientComponent",
-      "title": "Ils nous font confiance",
-      "data": {
-        "info": {
-            "title": "Ils nous font confiance",
-            "imgStyle":"black"
-          },
-          "list": [
-              {
-                  "name": "Vantage",
-                  "img": "",
-                  "url": ""
-              },
-              {
-                  "name": "LB Studio",
-                  "img": "",
-                  "url": ""
-              },
-              {
-                  "name": "Cininter",
-                  "img": "",
-                  "url": ""
-              },
-              {
-                  "name": "Eye lite",
-                  "img": "",
-                  "url": ""
-              },
-              {
-                  "name": "Direct Digital",
-                  "img": "",
-                  "url": ""
-              },
-              {
-                  "name": "Next shot",
-                  "img": "",
-                  "url": ""
-              },                {
-                  "name": "Rouchon",
-                  "img": "",
-                  "url": ""
-              }
-          ]
-      }
+        "id": "client",
+        "component":"ClientComponent",
+        "title": "Ils nous font confiance",
+        "data": {
+            "info": {
+              "title": "Ils nous font confiance",
+              "imgStyle":"black"
+            },
+            "list": [
+                {
+                    "name": "Vantage",
+                    "img": "vantage.png",
+                    "url": "https://www.vantagemarkets.com/fr-fr/"
+                },
+                {
+                    "name": "LB Studio",
+                    "img": "lb-studio.png",
+                    "url": "http://lb-studiophoto.eu/"
+                },
+                {
+                    "name": "Cininter",
+                    "img": "cininter.png",
+                    "url": "https://www.cininter.fr/"
+                },
+                {
+                    "name": "Eye lite",
+                    "img": "eye-lite.png",
+                    "url": "https://www.eye-lite.com/fr/"
+                },
+                {
+                    "name": "Direct Digital",
+                    "img": "direct-digital.png",
+                    "url": "https://www.direct-digital.com/fr-fr"
+                },
+                {
+                    "name": "Next shot",
+                    "img": "next-shot.png",
+                    "url": "https://www.nextshot.com/"
+                },
+                {
+                    "name": "Rouchon",
+                    "img": "rouchon.png",
+                    "url": "https://rouchonparis.com/"
+                }
+            ]
+        }
       },
       {
       "id": "news",
