@@ -16,3 +16,51 @@
     }
   }
 }
+
+.news {
+  .customPagination {
+    .swiper-pagination-bullet {
+      display: inline-flex;
+      position: relative;
+      width: 1.8rem;
+      height: 1.8rem;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-color: #fff;
+      border-radius: 50%;
+      &:after {
+        content: '';
+        background-color: #20201d;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: .2;
+        left: .2;
+        z-index: 10;
+      }
+      &:before {
+        content: '';
+        border-radius: 50%;
+        width: 0.8rem;
+        height: 0.8rem;
+        position: absolute;
+        background-color: #fff;
+        top: .4;
+        left: .4;
+        z-index: 15;
+      }
+      &-active {
+        &:after {
+          width: 1.4rem;
+          height: 1.4rem;
+        }
+        &:before {
+          width: 0.8rem;
+          height: 0.8rem;
+        }
+      }
+    }
+  }
+}

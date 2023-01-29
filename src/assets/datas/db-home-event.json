@@ -334,6 +334,9 @@
       "component":"NewsComponent",
       "title": "Actualités",
       "data": {
+        "info": {
+          "title": "Actualités"
+        },
           "list": [
               {
                   "title": "Titre de l'actualité sur 2 lignes",
