@@ -2,25 +2,21 @@
   <h2>{{(datas$ | async).info.title}}</h2>
 
   <div class="news__slider">
-    <div class="customPagination"></div>
-    <button class="swiper-button-prev" (click)="slidePrev()"><mat-icon>arrow_back</mat-icon></button>
-    <button class="swiper-button-next" (click)="slideNext()"><mat-icon>arrow_forward</mat-icon></button>
-
     <swiper [config]="config">
-      <ng-template class="news__slider__slide" swiperSlide>
+      <ng-template class="news__slider__slide" swiperSlide *ngFor="let slide of (datas$ | async).list">
         <div class="news__slider__content">
           <div class="news__block">
             <h3 class="news__block__title">
-              Titre 1
+              {{slide.title}}
             </h3>
-            <div class="news__block__text" [innerHTML]="'<p>df gdfg df gdf gfd gd gdf gdf gdf gdf</p><p>gdf d gd g fd gd gd gd gdgd gd</p>'"></div>
-            <div class="news__block__date">01/01/2023</div>
+            <div class="news__block__text" [innerHTML]="slide.text"></div>
+            <div class="news__block__date">{{slide.date}}</div>
           </div>
           <div class="img__block">
             <div class="img__block__wrap">
               <div class="img__block__content">
                 <div class="img__block__inner">
-                  <img src="https://cdn.ferrari.com/cms/network/media/img/resize/63c95719e52b7e0021b04b1a-2023-ferrari-tofm-learning-together-gtw2" alt="">
+                  <img [src]="slide.img" alt="">
                 </div>
               </div>
             </div>
@@ -28,91 +24,12 @@
         </div>
       </ng-template>
 
+    </swiper>
+    <div class="news__slider__controls">
+      <button class="swiper-button swiper-button-prev" (click)="slidePrev()"><mat-icon>arrow_back</mat-icon></button>
+      <div class="customPagination"></div>
+      <button class="swiper-button swiper-button-next" (click)="slideNext()"><mat-icon>arrow_forward</mat-icon></button>
+    </div>
 
-
-      <ng-template class="news__slider__slide" swiperSlide>
-        <div class="news__slider__content">
-          <div class="news__block">
-            <h3 class="news__block__title">
-              Titre 2
-            </h3>
-            <div class="news__block__text" [innerHTML]="'<p>df gdfg df gdf gfd gd gdf gdf gdf gdf</p><p>gdf d gd g fd gd gd gd gdgd gd</p>'"></div>
-            <div class="news__block__date">01/01/2023</div>
-          </div>
-          <div class="img__block">
-            <div class="img__block__wrap">
-              <div class="img__block__content">
-                <div class="img__block__inner">
-                  <img src="https://cdn.ferrari.com/cms/network/media/img/resize/63d4218a18573e0127a88a48-scuderia-ferrari-2023-fred-vasseur-interview-rullo-2" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-
-
-
-
-
-      <ng-template class="news__slider__slide" swiperSlide>
-        <div class="news__slider__content">
-          <div class="news__block">
-            <h3 class="news__block__title">
-              Titre 3
-            </h3>
-            <div class="news__block__text" [innerHTML]="'<p>df gdfg df gdf gfd gd gdf gdf gdf gdf</p><p>gdf d gd g fd gd gd gd gdgd gd</p>'"></div>
-            <div class="news__block__date">01/01/2023</div>
-          </div>
-          <div class="img__block">
-            <div class="img__block__wrap">
-              <div class="img__block__content">
-                <div class="img__block__inner">
-                  <img src="https://cdn.ferrari.com/cms/network/media/img/resize/63d6ea4318573e0127a88b23-2023-ferrari-24h-daytona-race-report-gtw2" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-  </swiper>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="test">
-  <br /><br />
-  News Works
-  {{(datas$ | async | json)}}
-</div>
-
-
-
