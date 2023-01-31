@@ -1,13 +1,11 @@
-<div [class]="'app-page theme_' + (currentTheme$ | async)" appSmoothScroll [domReady]="loadingState$ | async">
-  <div >
-    <app-header></app-header>
-
-    <app-main-menu></app-main-menu>
+<div [class]="'app-page theme_' + (currentTheme$ | async)">
+  <app-header></app-header>
+  <app-main-menu></app-main-menu>
+  <div appSmoothScroll [domReady]="loadingState$ | async">
     <div class="components">
       <div>
         <div  [appLoader]="globalService.flag"></div>
       </div>
-
     </div>
 
 

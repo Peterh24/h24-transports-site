@@ -29,12 +29,10 @@
 .tds-modal-backdrop {
   block-size: 120vh;
   inline-size: 120vw;
-  left: 50%;
   position: fixed;
-  top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  transition: background-color .5s ease,backdrop-filter .5s ease;
+  left: 0;
+  top: 0;
+  transition: background-color .5s ease, backdrop-filter .5s ease;
   z-index: 10;
   backdrop-filter: blur(0);
   pointer-events: none;
