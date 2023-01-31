@@ -3,8 +3,10 @@
     <app-logo></app-logo>
 
     <div class="prehome__nav">
-      <a class="app-a" *ngFor="let item of menu$ |async" (click)="goToTheme(item.id)" [innerHTML]="item.title"></a>
-    </div>
+      <div class="prehome__links">
+        <a class="app-a" *ngFor="let item of menu$ |async" (click)="goToTheme(item.id)" [innerHTML]="item.title"></a>
+      </div>
+  </div>
   </div>
 
   <div class="theme-slider flexbox-slider-4">

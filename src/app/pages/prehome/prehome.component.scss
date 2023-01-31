@@ -11,8 +11,9 @@ $overlayOpacity: .8;
 
 .prehome {
   background: $event;
-  color: #fff;
+  color: $on-event;
   height: 100vh;
+
   &__header {
     width: 100%;
     position: fixed;
@@ -21,7 +22,19 @@ $overlayOpacity: .8;
     justify-content: flex-start;
     padding: 4rem;
     z-index: 5;
-    background: linear-gradient(180deg, rgba(32, 32, 29, 0.75) 0%, rgba(32, 32, 29, 0) 100%);
+    pointer-events: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 25rem;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(red($event), green($event), blue($event), .75) 0%, rgba(red($event), green($event), blue($event), 0) 100%);
+    }
 
     app-logo {
       position: relative;
@@ -35,11 +48,36 @@ $overlayOpacity: .8;
     gap: 6rem;
     text-align: center;
   }
+  &__links {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    text-align: center;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background: transparent;
+      pointer-events: initial;
+      overflow: hidden;
+    }
+  }
   .app-a {
+    pointer-events: initial;
+    z-index: 5;
+
     &:after {
       content: "";
       display: block;
-      background: #fff;
+      background: $on-event;
       width: 0;
       height: 2px;
       margin: 2rem auto;
@@ -99,7 +137,7 @@ $overlayOpacity: .8;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    color: #fff;
+    color: $on-event;
     z-index: 4;
     visibility: hidden;
     opacity: 0;
@@ -109,7 +147,7 @@ $overlayOpacity: .8;
       &:after {
         content: "";
         display: block;
-        background: #fff;
+        background: $on-event;
         width: 7.5rem;
         height: 2px;
         margin: 2rem 0 3rem 0;
@@ -118,12 +156,12 @@ $overlayOpacity: .8;
     &__cta {
       margin-top: 3rem;
       .app-button {
-        color: #fff;
-        border-color: #fff;
+        color: $on-event;
+        border-color: $on-event;
         padding: 1rem 3rem;
         @include transition-mix();
         &:hover {
-          background: #fff;
+          background: $on-event;
           color: #20201d;
         }
       }
@@ -160,7 +198,7 @@ $overlayOpacity: .8;
 ::ng-deep {
   app-logo {
     svg {
-      fill: #fff;
+      fill: $on-event;
     }
   }
 }
