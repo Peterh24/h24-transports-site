@@ -7,7 +7,7 @@
 }
 
 //position absolute mixin
-@mixin position-absolute ($top: null, $left: null, $right: null, $bottom: null) {
+@mixin position-absolute($top: null, $left: null, $right: null, $bottom: null) {
   position: absolute;
   top: $top;
   left: $left;

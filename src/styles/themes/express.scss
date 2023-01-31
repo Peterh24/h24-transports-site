@@ -35,7 +35,7 @@
   /*Loader*/
   .app-loader {
     &__backdrop {
-      background-color: rgba(255, 255, 255, .8);
+      background-color: rgba(red($express), green($express), blue($express), .8);
     }
   }
 
@@ -95,10 +95,10 @@
     color: $on-express;
   }
   .tds-modal-backdrop {
-    background-color: rgba(32,32,29,0);
+    background-color: rgba(red($on-express), green($on-express), blue($on-express), 0);
   }
   .tds-modal-backdrop--open {
-    background-color: rgba(32,32,29,0.3);
+    background-color: rgba(red($on-express), green($on-express), blue($on-express), .3);
   }
   .submenu {
     ol {
@@ -133,16 +133,26 @@
     }
   }
 
-  /*Block Clients*/
-  .clients {
-    background: $express-dark;
-
-    &__slider {
-      &::before,
-      &::after {
-        background: linear-gradient(to right, rgba(230, 230 ,230 ,1) 0, rgba(230, 230, 230, 0) 100%);
-      }
+  /*Block Our Values*/
+  .value {
+    .value__content {
+      background: linear-gradient(
+        180deg, rgba(red($express), green($express), blue($express), 0) 0%,
+        rgba(red($express), green($express), blue($express), .5) 25%,
+        rgba(red($express), green($express), blue($express), 1) 100%);
     }
   }
 
+  /*Block Clients*/
+  .clients {
+    background: $express-dark;
+    &__slider {
+      &::before,
+      &::after {
+        background: linear-gradient(
+          to right, rgba(red($express-dark), green($express-dark), blue($express-dark), 1) 0%,
+          rgba(red($express-dark), green($express-dark), blue($express-dark), 0) 100%);
+      }
+    }
+  }
 }

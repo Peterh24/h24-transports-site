@@ -35,7 +35,7 @@
   /*Loader*/
   .app-loader {
     &__backdrop {
-      background-color: rgba(255, 251, 233, .8);
+      background-color: rgba(red($application), green($application), blue($application), .8);
     }
   }
 
@@ -91,10 +91,10 @@
     color: $on-application;
   }
   .tds-modal-backdrop {
-    background-color: rgba(32,32,29,0);
+    background-color: rgba(red($on-application), green($on-application), blue($on-application), 0);
   }
   .tds-modal-backdrop--open {
-    background-color: rgba(32,32,29,0.3);
+    background-color: rgba(red($on-application), green($on-application), blue($on-application), .3);
   }
   .submenu {
     ol {
@@ -102,14 +102,14 @@
         background: $on-application;
       }
     }
-    &__item{
+    &__item {
       &::before {
         background: $on-application;
       }
     }
   }
 
-    .social__list {
+  .social__list {
     &__link {
       &:nth-child(1) {
         &:hover {
@@ -129,14 +129,25 @@
     }
   }
 
+  /*Block Our Values*/
+  .value {
+    .value__content {
+      background: linear-gradient(
+        180deg, rgba(red($application), green($application), blue($application), 0) 0%,
+        rgba(red($application), green($application), blue($application), .5) 25%,
+        rgba(red($application), green($application), blue($application), 1) 100%);
+    }
+  }
+
   /*Block Clients*/
   .clients {
     background: $application-dark;
-
     &__slider {
       &::before,
       &::after {
-        background: linear-gradient(to right, rgba(230, 187 ,54 ,1) 0, rgba(230, 187, 54, 0) 100%);
+        background: linear-gradient(
+          to right, rgba(red($application-dark), green($application-dark), blue($application-dark), 1) 0%,
+          rgba(red($application-dark), green($application-dark), blue($application-dark), 0) 100%);
       }
     }
   }

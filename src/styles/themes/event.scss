@@ -26,6 +26,7 @@
   .app-input {
     color: $on-event;
     border-color: $on-event;
+
     &:focus, &:hover {
       color: $event-input;
       border-color: $event-input;
@@ -35,7 +36,7 @@
   /*Loader*/
   .app-loader {
     &__backdrop {
-      background-color: rgba(32, 32, 29, .8);
+      background-color: rgba(red($event), green($event), blue($event), .8);
     }
   }
 
@@ -61,7 +62,6 @@
   .app-page {
     background: $event;
     color: $on-event;
-
     &__footer {
       background: $event;
     }
@@ -89,10 +89,10 @@
     color: $on-event;
   }
   .tds-modal-backdrop {
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(red($on-event), green($on-event), blue($on-event), 0);
   }
   .tds-modal-backdrop--open {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(red($on-event), green($on-event), blue($on-event), .3);
   }
   .submenu {
     ol {
@@ -127,16 +127,26 @@
     }
   }
 
-  /*Block Clients*/
-  .clients {
-    background: $event-dark;
-
-    &__slider {
-      &::before,
-      &::after {
-        background: linear-gradient(to right, rgba(16, 16 ,14 ,1) 0, rgba(16, 16, 14, 0) 100%);
-      }
+  /*Block Our Values*/
+  .value {
+    .value__content {
+      background: linear-gradient(
+          180deg, rgba(red($event), green($event), blue($event), 0) 0%,
+          rgba(red($event), green($event), blue($event), .5) 25%,
+          rgba(red($event), green($event), blue($event), .1) 100%);
     }
   }
 
+  /*Block Clients*/
+  .clients {
+    background: $event-dark;
+    &__slider {
+      &::before,
+      &::after {
+        background: linear-gradient(
+          to right, rgba(red($event-dark), green($event-dark), blue($event-dark), 1) 0%,
+          rgba(red($event-dark), green($event-dark), blue($event-dark), 0) 100%);
+      }
+    }
+  }
 }
