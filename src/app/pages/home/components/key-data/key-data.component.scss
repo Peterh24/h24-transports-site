@@ -7,9 +7,10 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
   &__content {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     gap: 7rem;
     margin-bottom: 4rem;
   }
