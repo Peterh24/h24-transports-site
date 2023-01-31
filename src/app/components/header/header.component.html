@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" [class.header__nav--open]="menuState$ | async">
   <app-logo></app-logo>
 
   <button type="button" class="header__burger" [class.header__burger--open]="menuState$ | async" (click)="toggleMenu()">

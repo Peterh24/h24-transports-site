@@ -12,6 +12,28 @@
   padding: 0 40px;
   position: fixed;
   z-index: 100;
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25rem;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 1;
+    background: linear-gradient(180deg, rgba(red($event), green($event), blue($event), .75) 0%, rgba(red($event), green($event), blue($event), 0) 100%);
+    transition: opacity .3s ease-in-out;
+  }
+
+  app-logo {
+    pointer-events: initial;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+  }
+
   &__burger {
     background: none;
     position: relative;
@@ -20,6 +42,8 @@
     position: fixed;
     right: 4rem;
     z-index: 10000;
+    pointer-events: initial;
+
     svg {
       width: 40px;
       cursor: pointer;
@@ -30,10 +54,11 @@
       -ms-user-select: none;
       user-select: none;
     }
+
     path {
-      fill:none;
+      fill: none;
       transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-      stroke-width:5.5;
+      stroke-width: 5.5;
       stroke-linecap: round;
       &:nth-child(1) {
         stroke-dasharray: 40 139;
@@ -42,18 +67,26 @@
         stroke-dasharray: 40 180;
       }
     }
-      &--open {
-        svg {
-          transform: rotate(45deg);
-          path {
-            &:nth-child(1) {
-              stroke-dashoffset: -98px;
-            }
-            &:nth-child(3) {
-              stroke-dashoffset: -138px;
-            }
+
+    &--open {
+      svg {
+        transform: rotate(45deg);
+        path {
+          &:nth-child(1) {
+            stroke-dashoffset: -98px;
+          }
+          &:nth-child(3) {
+            stroke-dashoffset: -138px;
           }
         }
       }
+    }
+  }
+
+  &__nav--open {
+    &::after,
+    app-logo {
+      opacity: 0;
+    }
   }
 }
