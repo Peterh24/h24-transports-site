@@ -26,7 +26,7 @@ export class NewsComponent implements OnInit {
     loop: true,
     slidesPerView: 1,
     effect: 'fade',
-    speed:1000,
+    speed: 1000,
     fadeEffect: {
       crossFade: true
     },
