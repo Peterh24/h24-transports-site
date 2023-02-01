@@ -1,5 +1,20 @@
-<div class="test">
-  Time Limit works
-  {{(datas$ | async | json)}}
-  <br /><br />
+<div class="timelimit">
+  <swiper [config]="config">
+    <ng-template class="map" swiperSlide *ngFor="let slide of (datas$ | async).list">
+      <div class="map__wrapper">
+        <div class="map__wrapper__img">
+          <img src="https://geology.com/world/world-map.gif" alt="" />
+        </div>
+
+        <div class="map__wrapper__text">
+          <h3>{{slide.country}}</h3>
+          <p>{{slide.text}}</p>
+        </div>
+      </div>
+    </ng-template>
+  </swiper>
+  <div class="map__interaction"></div>
 </div>
+
+
+
