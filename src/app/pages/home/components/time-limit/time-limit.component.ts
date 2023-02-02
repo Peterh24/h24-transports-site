@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { TimeLimit, Location } from '@app/models/backend/components/timelimit';
 import { GlobalService } from '@app/services/global';
 import { Observable, take } from 'rxjs';
@@ -12,6 +12,7 @@ let menu:any = [];
   styleUrls: ['./time-limit.component.scss']
 })
 export class TimeLimitComponent {
+  @ViewChild('mapRef', { static: true }) mapRef: ElementRef;
   public datas$: Observable<TimeLimit>;
   private id: string;
   private locationList: Array<Location> = [];
@@ -42,9 +43,9 @@ export class TimeLimitComponent {
     },
     on: {
       slideChange: (event) => {
-        const currentSlide = event.slides[event.activeIndex];
-        this.renderer.removeClass(currentSlide, 'active--' + menu[event.previousIndex].id);
-        this.renderer.addClass(currentSlide, 'active--' + menu[event.activeIndex].id);
+        const currentSlide = this.mapRef.nativeElement;
+        this.renderer.removeClass(currentSlide, 'timelimit__swipper__wrap-' + menu[event.previousIndex].id);
+        this.renderer.addClass(currentSlide, 'timelimit__swipper__wrap-' + menu[event.activeIndex].id);
       }
     }
   };

@@ -1,13 +1,23 @@
 .timelimit {
   text-align: center;
   min-height: 100vh;
-  h2 {
-    padding-top: 10rem;
-  }
-  &__intro {
-    font-size: 1.4rem;
-  }
+  &__info {
+    &__wrap {
+      padding: 6rem 0 4rem 0;
 
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  &__swipper {
+    &__wrap {
+      width: 120rem;
+      margin: 0 auto;
+      display: flex;
+      gap: 3rem;
+    }
+  }
 }
 
 
@@ -18,27 +28,71 @@
     align-items: center;
     justify-content: space-between;
     gap: 5.3rem;
+    height: 100%;
+    text-align: left;
 
     &__img {
-      flex: 1;
       overflow: hidden;
+      position: relative;
+      width: 55rem;
+      height: 60rem;
+
+      img {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        transform: scale(0);
+        object-fit: cover;
+        transition: all ease-in-out .50s;
+      }
     }
     &__text {
       flex: 1;
+      h3 {
+        font-size: 2.4rem;
+        margin-bottom: 2.8rem;
+      }
     }
   }
 }
 
-.map__interaction {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  .location{
-    font-size: 1.7rem;
+
+.timelimit__swipper__wrap {
+  &-international {
+    .map__wrapper__img {
+      img {
+        top: -56px !important;
+        left: -298px !important;
+        transform: scale(.5) !important;
+      }
+    }
   }
-  .time {
-    font-size: 2.4rem;
-    font-weight: bold;
+  &-france {
+    .map__wrapper__img {
+      img {
+        top: 340px !important;
+        left: -131px !important;
+        transform: scale(6) !important;
+      }
+    }
+  }
+  &-idf {
+    .map__wrapper__img {
+      img {
+        top: 2243px!important;
+        left: 590px !important;
+        transform: scale(30) !important;
+      }
+    }
+  }
+  &-paris {
+    .map__wrapper__img {
+      img {
+        top: 3200px !important;
+        left: 1000px !important;
+        transform: scale(50) !important;
+      }
+    }
   }
 }

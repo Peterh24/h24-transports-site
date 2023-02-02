@@ -1,18 +1,26 @@
 <div class="timelimit">
-  <swiper [config]="config">
-    <ng-template class="map" swiperSlide *ngFor="let slide of (datas$ | async).list">
-      <div class="map__wrapper">
-        <div class="map__wrapper__img">
-          <img src="https://geology.com/world/world-map.gif" alt="" />
-        </div>
+  <div class="timelimit__info__wrap">
+    <h2>{{(datas$ | async).info.title}}</h2>
+    <p class="timelimit__intro">{{(datas$ | async).info.text}}</p>
+  </div>
 
-        <div class="map__wrapper__text">
-          <h3>{{slide.country}}</h3>
-          <p>{{slide.text}}</p>
+  <div class="timelimit__swipper__wrap" #mapRef>
+    <div class="map__wrapper__img">
+      <img src="https://geology.com/world/world-map.gif" alt="" />
+    </div>
+
+    <swiper [config]="config">
+      <ng-template  [attr.class]="'map ' + 'slide-'+ slide.id" swiperSlide *ngFor="let slide of (datas$ | async).list">
+        <div class="map__wrapper">
+          <div class="map__wrapper__text">
+            <h3>{{slide.country}}</h3>
+            <p>{{slide.text}}</p>
+          </div>
         </div>
-      </div>
-    </ng-template>
-  </swiper>
+      </ng-template>
+    </swiper>
+
+  </div>
   <div class="map__interaction"></div>
 </div>
 
