@@ -14,7 +14,7 @@ let menu:any = [];
 export class TimeLimitComponent {
   @ViewChild('mapRef', { static: true }) mapRef: ElementRef;
   public datas$: Observable<TimeLimit>;
-  private id: string;
+  public id: string;
   private locationList: Array<Location> = [];
   public locationCurrent: Location;
 

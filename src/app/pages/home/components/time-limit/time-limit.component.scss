@@ -37,11 +37,8 @@
       width: 55rem;
       height: 60rem;
 
-      img {
+      svg {
         position: absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%, -50%);
         transform: scale(0);
         object-fit: cover;
         transition: all ease-in-out .50s;
@@ -61,37 +58,32 @@
 .timelimit__swipper__wrap {
   &-international {
     .map__wrapper__img {
-      img {
-        top: -56px !important;
-        left: -298px !important;
-        transform: scale(.5) !important;
+      svg {
+        transform: translate(-96px, 267px) scale(3) !important;
       }
     }
   }
   &-france {
     .map__wrapper__img {
-      img {
-        top: 340px !important;
-        left: -131px !important;
-        transform: scale(6) !important;
+      svg {
+        transform: translate(268px, 1266px) scale(54) !important;
       }
     }
   }
   &-idf {
     .map__wrapper__img {
-      img {
-        top: 2243px!important;
-        left: 590px !important;
-        transform: scale(30) !important;
+      svg {
+        transform: translate(855px, 3084px) scale(137) !important;
       }
     }
   }
   &-paris {
     .map__wrapper__img {
-      img {
-        top: 3200px !important;
-        left: 1000px !important;
-        transform: scale(50) !important;
+      svg {
+        transform: translate(2326px, 7252px) scale(338) !important;
+        path {
+          stroke-width: 1;
+        }
       }
     }
   }

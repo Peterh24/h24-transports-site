@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ContactComponent {
 
   public datas$: Observable<Contact>;
-  private id: string;
+  public id: string;
   constructor(
     private globalService: GlobalService
   ) {}

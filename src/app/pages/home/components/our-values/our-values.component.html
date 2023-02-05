@@ -1,4 +1,4 @@
-<div class="our-values">
+<div class="our-values" [id]="id">
   <div class="value" *ngFor="let value of (datas$ | async).list" [ngStyle]="{'background-image': 'url(' + value.img + ')'}">
     <div class="value__content">
       <mat-icon>{{value.picto}}</mat-icon>

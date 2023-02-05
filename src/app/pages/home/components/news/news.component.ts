@@ -16,7 +16,7 @@ SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade ]);
 })
 export class NewsComponent implements OnInit {
   public datas$: Observable<News>;
-  private id: string;
+  public id: string;
   public config: SwiperOptions = {
     autoplay: {
       delay: 5000,

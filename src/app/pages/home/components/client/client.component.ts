@@ -15,7 +15,7 @@
   })
   export class ClientComponent implements OnInit, AfterViewInit {
     public datas$: Observable<Client>;
-    private id: string;
+    public id: string;
     public config: SwiperOptions = {
       autoplay: {delay: 2500, pauseOnMouseEnter:true, disableOnInteraction:false},
       loop: true,
@@ -44,7 +44,6 @@
 
     ngOnInit(): void {
       this.datas$ = this.globalService.getDataComponent(this.id);
-
     }
 
     ngAfterViewInit(): void {

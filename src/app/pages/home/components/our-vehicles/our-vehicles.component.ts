@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class OurVehiclesComponent {
   public datas$: Observable<OurVehicles>;
-  private id: string;
+  public id: string;
   constructor(
     private globalService: GlobalService
   ) {}

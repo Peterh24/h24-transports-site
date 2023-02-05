@@ -14,7 +14,7 @@ import * as fromThemes from '@app/store/themes';
 })
 export class KeyDataComponent implements OnInit {
   public datas$: Observable<KeyData>;
-  private id: string;
+  public id: string;
   constructor(
     private globalService: GlobalService,
     private store: Store<fromRoot.State>,

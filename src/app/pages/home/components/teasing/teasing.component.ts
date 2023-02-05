@@ -10,7 +10,7 @@ import { Observable, take } from 'rxjs';
 })
 export class TeasingComponent {
   public datas$: Observable<Teasing>;
-  private id: string;
+  public id: string;
   public iframe: HTMLIFrameElement;
 
   constructor(

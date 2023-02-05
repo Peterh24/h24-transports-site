@@ -46,3 +46,12 @@ export const getCurrentThemeData = createSelector(
       return theme.find(elem => elem.id == item)
   }
 )
+
+
+export const themeExist = (params: string) => createSelector(
+  getThemes,
+  (themes) => {
+      return themes.some(theme => theme.id === params);
+  }
+)
+

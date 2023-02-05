@@ -9,6 +9,8 @@ import * as fromNavigation from '@app/store/navigation';
 import * as fromThemes from '@app/store/themes';
 import * as fromDictionaries from '@app/store/dictionaries';
 import { GlobalService } from '@app/services/global';
+import { ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 
@@ -33,6 +35,8 @@ export class MainMenuComponent implements OnInit {
   constructor(
     private store: Store<fromRoot.State>,
     private globalService: GlobalService,
+    private viewportScroller: ViewportScroller,
+    private router: Router,
   ){}
 
   ngOnInit(): void {
@@ -49,6 +53,8 @@ export class MainMenuComponent implements OnInit {
   }
 
   goToAnchor(id: string){
+    this.viewportScroller.scrollToAnchor(id);
+    this.router.navigate([], { fragment: id });
     this.closeMenu();
   }
 

@@ -13,7 +13,7 @@
 
     <ol class="anchor__list">
       <li *ngFor="let component of componentList$ | async">
-        <a class="app-a anchor__list__link" (click)="goToAnchor('#'+component.id)">{{component.title}}</a>
+        <a class="app-a anchor__list__link" (click)="goToAnchor(component.id)">{{component.title}}</a>
       </li>
     </ol>
 

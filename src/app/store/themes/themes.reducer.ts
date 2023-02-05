@@ -2,7 +2,6 @@ import { Themes } from './themes.models';
 import * as fromActions from './themes.actions';
 
 
-
 export interface ThemesState {
   entities: Array<Themes>;
   currentTheme: string;

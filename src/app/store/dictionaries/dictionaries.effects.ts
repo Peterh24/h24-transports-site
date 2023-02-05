@@ -26,7 +26,6 @@ export class DictionariesEffects {
     switchMap((theme) =>  {
       let currentTheme = theme[1];
       if(!currentTheme){
-        this.router.navigateByUrl('/');
         return [];
       } else {
         return this.dictionariesService.getDictionaries(currentTheme).pipe(
