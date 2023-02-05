@@ -32,9 +32,11 @@ export class SmoothScrollDirective implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(!this.domReady) {
-      this.initScrollStyles();
-      this.setBodyHeight();
+    if (!this.domReady) {
+      setTimeout(() => {
+        this.initScrollStyles();
+        this.setBodyHeight();
+      }, 100);
     }
   }
 

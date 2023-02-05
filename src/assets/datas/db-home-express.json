@@ -11,7 +11,7 @@
       "title" : "Chiffres clés",
       "data": {
           "info": {
-              "img" : "./assets/img/express-cover-picture.jpg",
+              "img" : "./assets/img/event-cover-picture.jpg",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -19,15 +19,15 @@
           },
           "list": [
               {
-                  "value": "5",
+                  "value": "45",
                   "label": "clients satisfaits"
                   },
                   {
-                  "value": "157",
+                  "value": "356",
                   "label": "Kilomètres parcourus"
                   },
                   {
-                  "value": "14",
+                  "value": "98",
                   "label": "courses réalisées"
                   }
           ]
@@ -40,74 +40,105 @@
       "data": {
           "list": [
               {
-                  "img": "",
-                  "picto": "",
-                  "title": "7j/7 24h/24",
-                  "text": "TODO Texte a remplir"
-                  },
-                  {
-                  "img": "",
-                  "picto": "",
-                  "title": "Sécurité",
-                  "text": "TODO Texte a remplir"
-                  },
-                  {
-                  "img": "",
-                  "picto": "",
-                  "title": "Optimisation",
-                  "text": "TODO Texte a remplir"
-                  },
-                  {
-                  "img": "",
-                  "picto": "",
-                  "title": "Confiance",
-                  "text": "TODO Texte a remplir"
-                  }
+                "img": "https://hospitality-on.com/sites/default/files/2021-08/airplane-4974678_1280%20%281%29.jpg",
+                "picto": "timer",
+                "title": "7j/7 24h/24",
+                "text": "TODO Texte a remplir"
+              },
+              {
+                "img": "https://myngi.fr/wp-content/uploads/2021/01/truck-lorry-transportation-1030846.jpg",
+                "picto": "security",
+                "title": "Sécurité",
+                "text": "TODO Texte a remplir"
+              },
+              {
+                "img": "https://equipmentfinance.societegenerale.com/typo3temp/assets/_processed_/8/c/csm_industrial_container_cargo_freight_ship_for_logistic_import_export_concept_beautiful_sunset_nature_background_high_01_0012ac7af6_optimized.jpg",
+                "picto": "settings",
+                "title": "Optimisation",
+                "text": "TODO Texte a remplir"
+              },
+              {
+                "img": "https://img2.goodfon.com/wallpaper/nbig/e/32/samolet-airplane-sredniy.jpg",
+                "picto": "key",
+                "title": "Confiance",
+                "text": "TODO Texte a remplir"
+              }
           ]
       }
       },
+      {
+        "id": "teasingFull",
+        "component": "TeasingComponent",
+        "title": "Teasing Full Video",
+        "data": {
+            "info": {
+                "title": "TeasingFull",
+                "videoId": "W0LHTWG-UmQ",
+                "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
+                "icon": "local_shipping",
+                "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+            }
+        }
+        },
+        {
+          "id": "teasingImgFull",
+          "component": "TeasingComponent",
+          "title": "Teasing Full img",
+          "data": {
+              "info": {
+                  "title": "TeasingFull",
+                  "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
+                  "icon": "local_shipping",
+                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+              }
+          }
+        },
+        {
+          "id": "teasingText",
+          "component": "TeasingComponent",
+          "title": "Teasing Text",
+          "data": {
+              "info": {
+                  "title": "TeasingFull",
+                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+              }
+          }
+        },
       {
       "id": "timelimit",
       "component": "TimeLimitComponent",
       "title": "Nos délais d'intervention",
       "data": {
           "info": {
+              "title": "Nos délais d'intervention",
               "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic."
           },
           "list":[
               {
-                  "country": "Paris",
-                  "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                  "time": "1h"
-                  },
-                  {
-                  "country": "Île-de-France",
-                  "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                  "time": "3h"
-                  },
-              {
-                  "country": "France",
-                  "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                  "time": "12h"
+                "id": "paris",
+                "country": "Paris",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "1h"
               },
               {
-                  "country": "International",
-                  "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                  "time": "Selon le pays"
-                  }
+                "id": "idf",
+                "country": "Île-de-France",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "3h"
+              },
+              {
+                "id": "france",
+                "country": "France",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "12h"
+              },
+              {
+                "id": "international",
+                "country": "International",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "Selon le pays"
+              }
           ]
-      }
-      },
-      {
-      "id": "teasing",
-      "component": "TeasingComponent",
-      "title": "Teasing",
-      "data": {
-          "info": {
-              "icon": "",
-              "text": "Un service dédié, un transport unique",
-              "video": ""
-          }
       }
       },
       {
@@ -116,6 +147,7 @@
       "title": "Nos véhicules",
       "data": {
           "info": {
+              "title": "Nos véhicules",
               "img": ""
           },
           "list": [
@@ -255,81 +287,84 @@
       }
       },
       {
-        "id": "client",
-        "component":"ClientComponent",
-        "title": "Ils nous font confiance",
-        "data": {
-            "info": {
-              "title": "Ils nous font confiance",
-              "imgStyle":"black"
-            },
-            "list": [
-                {
-                    "name": "Vantage",
-                    "img": "vantage.png",
-                    "url": "https://www.vantagemarkets.com/fr-fr/"
-                },
-                {
-                    "name": "LB Studio",
-                    "img": "lb-studio.png",
-                    "url": "http://lb-studiophoto.eu/"
-                },
-                {
-                    "name": "Cininter",
-                    "img": "cininter.png",
-                    "url": "https://www.cininter.fr/"
-                },
-                {
-                    "name": "Eye lite",
-                    "img": "eye-lite.png",
-                    "url": "https://www.eye-lite.com/fr/"
-                },
-                {
-                    "name": "Direct Digital",
-                    "img": "direct-digital.png",
-                    "url": "https://www.direct-digital.com/fr-fr"
-                },
-                {
-                    "name": "Next shot",
-                    "img": "next-shot.png",
-                    "url": "https://www.nextshot.com/"
-                },
-                {
-                    "name": "Rouchon",
-                    "img": "rouchon.png",
-                    "url": "https://rouchonparis.com/"
-                }
-            ]
-        }
+      "id": "client",
+      "component":"ClientComponent",
+      "title": "Ils nous font confiance",
+      "data": {
+          "info": {
+            "title": "Ils nous font confiance",
+            "imgStyle":"white"
+          },
+          "list": [
+              {
+                  "name": "Vantage",
+                  "img": "vantage.png",
+                  "url": "https://www.vantagemarkets.com/fr-fr/"
+              },
+              {
+                  "name": "LB Studio",
+                  "img": "lb-studio.png",
+                  "url": "http://lb-studiophoto.eu/"
+              },
+              {
+                  "name": "Cininter",
+                  "img": "cininter.png",
+                  "url": "https://www.cininter.fr/"
+              },
+              {
+                  "name": "Eye lite",
+                  "img": "eye-lite.png",
+                  "url": "https://www.eye-lite.com/fr/"
+              },
+              {
+                  "name": "Direct Digital",
+                  "img": "direct-digital.png",
+                  "url": "https://www.direct-digital.com/fr-fr"
+              },
+              {
+                  "name": "Next shot",
+                  "img": "next-shot.png",
+                  "url": "https://www.nextshot.com/"
+              },
+              {
+                  "name": "Rouchon",
+                  "img": "rouchon.png",
+                  "url": "https://rouchonparis.com/"
+              }
+          ]
+      }
       },
       {
       "id": "news",
       "component":"NewsComponent",
       "title": "Actualités",
       "data": {
+        "info": {
+          "title": "Actualités"
+        },
           "list": [
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "",
-                  "date": "01/01/2023"
+                  "img": "https://a.storyblok.com/f/171339/1920x1080/1ebd616f31/perspectives-transport-routier-2021.jpg",
+                  "date": "01/02/2023"
               },
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "",
-                  "date": "01/01/2023"
+                  "img": "https://img.lemde.fr/2022/04/29/70/0/5513/3675/1440/960/60/0/4e20781_1651238101331-000-9pm7v6.jpg",
+                  "date": "01/11/2021"
               },
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "",
-                  "date": "01/01/2023"
+                  "img": "https://www.ddslogistics.com/w2018/wp-content/uploads/2019/04/camion-2.jpg.webp",
+                  "date": "01/07/2022"
               },
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "",
+                  "img": "https://a.storyblok.com/f/171339/2000x1335/ede93ac208/transport-de-fret.jpeg",
                   "date": "01/01/2023"
               }
           ]

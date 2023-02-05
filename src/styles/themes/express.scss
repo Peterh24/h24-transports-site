@@ -27,8 +27,8 @@
     color: $on-express;
     border-color: $on-express;
     &:focus, &:hover {
-      color: $event-input;
-      border-color: $event-input;
+      color: $express-input;
+      border-color: $express-input;
     }
   }
 
@@ -69,6 +69,9 @@
 
   /*Header*/
   .header {
+    &::after {
+      background: linear-gradient(180deg, rgba(red($express), green($express), blue($express), .75) 0%, rgba(red($express), green($express), blue($express), 0) 90%);
+    }
     &__logo {
       svg {
         fill: $on-express;
@@ -138,8 +141,8 @@
     .value__content {
       background: linear-gradient(
         180deg, rgba(red($express), green($express), blue($express), 0) 0%,
-        rgba(red($express), green($express), blue($express), .5) 25%,
-        rgba(red($express), green($express), blue($express), 1) 100%);
+        rgba(red($express), green($express), blue($express), .45) 35%,
+        rgba(red($express), green($express), blue($express), .75) 100%);
     }
   }
 

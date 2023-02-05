@@ -56,34 +56,48 @@
 
 
 .timelimit__swipper__wrap {
-  &-international {
+  &-international,
+  &-france,
+  &-idf,
+  &-paris {
     .map__wrapper__img {
       svg {
+        path {
+          fill: none;
+          stroke:#FFFFFF;
+          stroke-width: 1;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-miterlimit: 10;
+        }
+      }
+    }
+  }
+  &-international {
+    .map__wrapper__img {
+      img {
         transform: translate(-96px, 267px) scale(3) !important;
       }
     }
   }
   &-france {
     .map__wrapper__img {
-      svg {
+      img {
         transform: translate(268px, 1266px) scale(54) !important;
       }
     }
   }
   &-idf {
     .map__wrapper__img {
-      svg {
+      img {
         transform: translate(855px, 3084px) scale(137) !important;
       }
     }
   }
   &-paris {
     .map__wrapper__img {
-      svg {
+      img {
         transform: translate(2326px, 7252px) scale(338) !important;
-        path {
-          stroke-width: 1;
-        }
       }
     }
   }

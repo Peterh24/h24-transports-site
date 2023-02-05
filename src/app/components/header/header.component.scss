@@ -24,7 +24,6 @@
     z-index: 0;
     pointer-events: none;
     opacity: 1;
-    background: linear-gradient(180deg, rgba(red($event), green($event), blue($event), .75) 0%, rgba(red($event), green($event), blue($event), 0) 100%);
     transition: opacity .3s ease-in-out;
   }
 

@@ -27,8 +27,8 @@
     color: $on-express;
     border-color: $on-express;
     &:focus, &:hover {
-      color: $event-input;
-      border-color: $event-input;
+      color: $application-input;
+      border-color: $application-input;
     }
   }
 
@@ -69,8 +69,9 @@
 
   /*Header*/
   .header {
-
-
+    &::after {
+      background: linear-gradient(180deg, rgba(red($application), green($application), blue($application), .75) 0%, rgba(red($application), green($application), blue($application), 0) 90%);
+    }
     &__burger {
       path {
         stroke: $on-application;
@@ -134,8 +135,8 @@
     .value__content {
       background: linear-gradient(
         180deg, rgba(red($application), green($application), blue($application), 0) 0%,
-        rgba(red($application), green($application), blue($application), .5) 25%,
-        rgba(red($application), green($application), blue($application), 1) 100%);
+          rgba(red($application), green($application), blue($application), .45) 35%,
+          rgba(red($application), green($application), blue($application), .75) 100%);
     }
   }
 

@@ -1,6 +1,8 @@
 <div [class]="'app-page theme_' + (currentTheme$ | async)">
   <app-header></app-header>
   <app-main-menu></app-main-menu>
+  <!-- /** TODO: Debug smoothscroll **/ -->
+  <!-- <div appSmoothScroll [domReady]="loadingState$ | async"> -->
   <div>
     <div class="components">
       <div>
