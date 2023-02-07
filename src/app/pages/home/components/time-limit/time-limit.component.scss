@@ -61,15 +61,8 @@
   &-idf,
   &-paris {
     .map__wrapper__img {
-      svg {
-        path {
-          fill: none;
-          stroke:#FFFFFF;
-          stroke-width: 1;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          stroke-miterlimit: 10;
-        }
+      img {
+        transition: transform .4s ease-in-out;
       }
     }
   }
@@ -83,21 +76,21 @@
   &-france {
     .map__wrapper__img {
       img {
-        transform: translate(268px, 1266px) scale(54) !important;
+        transform: translate(398px, 1156px) scale(26) !important;
       }
     }
   }
   &-idf {
     .map__wrapper__img {
       img {
-        transform: translate(855px, 3084px) scale(137) !important;
+        transform: translate(2248px, 6836px) scale(160) !important;
       }
     }
   }
   &-paris {
     .map__wrapper__img {
       img {
-        transform: translate(2326px, 7252px) scale(338) !important;
+        transform: translate(5268px, 15716px) scale(371) !important;
       }
     }
   }

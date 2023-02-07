@@ -11,7 +11,7 @@
       "title" : "Chiffres clés",
       "data": {
           "info": {
-              "img" : "./assets/img/event-cover-picture.jpg",
+              "img" : "./assets/img/express-cover-picture.jpg",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -40,25 +40,25 @@
       "data": {
           "list": [
               {
-                "img": "https://hospitality-on.com/sites/default/files/2021-08/airplane-4974678_1280%20%281%29.jpg",
+                "img": "./assets/img/camions-flotte.jpg",
                 "picto": "timer",
                 "title": "7j/7 24h/24",
                 "text": "TODO Texte a remplir"
               },
               {
-                "img": "https://myngi.fr/wp-content/uploads/2021/01/truck-lorry-transportation-1030846.jpg",
+                "img": "./assets/img/securite.jpg",
                 "picto": "security",
                 "title": "Sécurité",
                 "text": "TODO Texte a remplir"
               },
               {
-                "img": "https://equipmentfinance.societegenerale.com/typo3temp/assets/_processed_/8/c/csm_industrial_container_cargo_freight_ship_for_logistic_import_export_concept_beautiful_sunset_nature_background_high_01_0012ac7af6_optimized.jpg",
+                "img": "./assets/img/optimisation.jpg",
                 "picto": "settings",
                 "title": "Optimisation",
                 "text": "TODO Texte a remplir"
               },
               {
-                "img": "https://img2.goodfon.com/wallpaper/nbig/e/32/samolet-airplane-sredniy.jpg",
+                "img": "./assets/img/confiance.jpg",
                 "picto": "key",
                 "title": "Confiance",
                 "text": "TODO Texte a remplir"
@@ -74,24 +74,11 @@
             "info": {
                 "title": "TeasingFull",
                 "videoId": "W0LHTWG-UmQ",
-                "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
+                "img": "./assets/img/h24-transports-picture.jpg",
                 "icon": "local_shipping",
                 "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
             }
         }
-        },
-        {
-          "id": "teasingImgFull",
-          "component": "TeasingComponent",
-          "title": "Teasing Full img",
-          "data": {
-              "info": {
-                  "title": "TeasingFull",
-                  "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
-                  "icon": "local_shipping",
-                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
-              }
-          }
         },
         {
           "id": "teasingText",
@@ -147,45 +134,38 @@
       "title": "Nos véhicules",
       "data": {
           "info": {
-              "title": "Nos véhicules",
-              "img": ""
+              "title": "Nos véhicules"
           },
           "list": [
               {
-                  "title": "3m3",
+                  "title": "3m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.jpg",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
-                          "value": "4,9 mètres"
+                          "value": "4,5 mètres"
                       },
                       {
                           "label": "Hauteur du véhicule",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Largeur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hayon",
-                          "value": "inclus"
+                          "value": "1,85 mètres"
                       },
                       {
                           "label": "Profondeur du coffre",
-                          "value": "2,4 mètres"
+                          "value": "1,7 mètres"
                       },
                       {
                           "label": "Hauteur du coffre",
-                          "value": "1,3 mètres"
+                          "value": "1,15 mètres"
                       },
                       {
                           "label": "Charge utile",
-                          "value": "1000 kg"
+                          "value": "415 kg"
                       }
                   ]
               },
               {
-                  "title": "6/8m3",
+                  "title": "6/8m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.jpg",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
@@ -194,14 +174,6 @@
                       {
                           "label": "Hauteur du véhicule",
                           "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Largeur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hayon",
-                          "value": "inclus"
                       },
                       {
                           "label": "Profondeur du coffre",
@@ -213,24 +185,21 @@
                       },
                       {
                           "label": "Charge utile",
-                          "value": "1000 kg"
+                          "value": "820 kg"
                       }
                   ]
               },
               {
-                  "title": "12/14m3",
+                  "title": "12/14m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.jpg",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
-                          "value": "4,9 mètres"
+                          "value": "6,8 mètres"
                       },
                       {
                           "label": "Hauteur du véhicule",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Largeur du véhicule",
-                          "value": "4,9 mètres"
+                          "value": "2,6 mètres"
                       },
                       {
                           "label": "Hayon",
@@ -238,32 +207,29 @@
                       },
                       {
                           "label": "Profondeur du coffre",
-                          "value": "2,4 mètres"
+                          "value": "4,0 mètres"
                       },
                       {
                           "label": "Hauteur du coffre",
-                          "value": "1,3 mètres"
+                          "value": "1,9 mètres"
                       },
                       {
                           "label": "Charge utile",
-                          "value": "1000 kg"
+                          "value": "1300 kg"
                       }
                   ]
               },
               {
-                  "title": "20m3",
+                  "title": "20m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.jpg",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
-                          "value": "4,9 mètres"
+                          "value": "6,8 mètres"
                       },
                       {
                           "label": "Hauteur du véhicule",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Largeur du véhicule",
-                          "value": "4,9 mètres"
+                          "value": "3,4 mètres"
                       },
                       {
                           "label": "Hayon",
@@ -271,15 +237,15 @@
                       },
                       {
                           "label": "Profondeur du coffre",
-                          "value": "2,4 mètres"
+                          "value": "4,2 mètres"
                       },
                       {
                           "label": "Hauteur du coffre",
-                          "value": "1,3 mètres"
+                          "value": "2,2 mètres"
                       },
                       {
                           "label": "Charge utile",
-                          "value": "1000 kg"
+                          "value": "700 kg"
                       }
                   ]
               }
@@ -346,25 +312,25 @@
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "https://a.storyblok.com/f/171339/1920x1080/1ebd616f31/perspectives-transport-routier-2021.jpg",
+                  "img": "./assets/img/express-cover-picture.jpg",
                   "date": "01/02/2023"
               },
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "https://img.lemde.fr/2022/04/29/70/0/5513/3675/1440/960/60/0/4e20781_1651238101331-000-9pm7v6.jpg",
+                  "img": "./assets/img/event-cover-picture.jpg",
                   "date": "01/11/2021"
               },
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "https://www.ddslogistics.com/w2018/wp-content/uploads/2019/04/camion-2.jpg.webp",
+                  "img": "./assets/img/confiance.jpg",
                   "date": "01/07/2022"
               },
               {
                   "title": "Titre de l'actualité sur 2 lignes",
                   "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "https://a.storyblok.com/f/171339/2000x1335/ede93ac208/transport-de-fret.jpeg",
+                  "img": "./assets/img/h24-transports-picture.jpg",
                   "date": "01/01/2023"
               }
           ]
@@ -398,6 +364,6 @@
               }
           ]
       }
-      }
+    }
   ]
 }
