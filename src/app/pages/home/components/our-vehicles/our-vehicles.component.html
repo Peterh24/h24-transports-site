@@ -1,6 +1,27 @@
-<div class="test" [id]="id">
-  Our vehicles Works
-  {{(datas$ | async | json)}}
-  <br /><br />
+<div class="our-vehicles">
+  <div class="vehicle__illustration" #illustrationContainer></div>
+
+  <div class="our-vehicles__wrap">
+    <div class="vehicle">
+      <h2>{{(datas$ | async).info.title}}</h2>
+
+      <div class="vehicle__interaction"></div>
+      <swiper [config]="config">
+
+        <ng-template swiperSlide *ngFor="let slide of (datas$ | async).list">
+          <div class="vehicle__details">
+            <div class="vehicle__details__wrap">
+              <div class="vehicle__detail" *ngFor="let detail of slide.description">
+                <div class="vehicle__detail__label">{{detail.label}}</div>
+                <div class="vehicle__detail__value">{{detail.value}}</div>
+
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+
 </div>
 

@@ -81,19 +81,6 @@
         }
         },
         {
-          "id": "teasingImgFull",
-          "component": "TeasingComponent",
-          "title": "Teasing Full img",
-          "data": {
-              "info": {
-                  "title": "TeasingFull",
-                  "img": "https://t3.ftcdn.net/jpg/00/94/25/52/360_F_94255289_bLOLo8dVkESH4wP4QNVUg4hWBlcBEEOg.jpg",
-                  "icon": "local_shipping",
-                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
-              }
-          }
-        },
-        {
           "id": "teasingText",
           "component": "TeasingComponent",
           "title": "Teasing Text",
@@ -147,15 +134,83 @@
       "title": "Nos véhicules",
       "data": {
           "info": {
-              "title": "Nos véhicules",
-              "img": ""
+              "title": "Nos véhicules"
           },
           "list": [
               {
-                  "title": "3m3",
+                  "title": "3m<sup>3</sup>",
+                  "illustration": "https://hospitality-on.com/sites/default/files/2021-08/airplane-4974678_1280%20%281%29.jpg",
                   "description": [
                       {
-                          "label": "Longueur du véhicule",
+                          "label": "Longueur du véhiculefsd",
+                          "value": "4,9 mètres"
+                      },
+                      {
+                          "label": "Hauteur du véhicule",
+                          "value": "1,9 mètres"
+                      },
+                      {
+                          "label": "Largeur du véhiculefds",
+                          "value": "4,9 mètres"
+                      },
+                      {
+                          "label": "Hayon",
+                          "value": "inclus"
+                      },
+                      {
+                          "label": "Profondeur du coffre",
+                          "value": "2,4 mètres"
+                      },
+                      {
+                          "label": "Hauteur du coffre",
+                          "value": "1,3 mètres"
+                      },
+                      {
+                          "label": "Charge utile",
+                          "value": "1000 kg"
+                      }
+                  ]
+              },
+              {
+                  "title": "6/8m<sup>3</sup>",
+                  "illustration": "https://myngi.fr/wp-content/uploads/2021/01/truck-lorry-transportation-1030846.jpg",
+                  "description": [
+                      {
+                          "label": "Longueur du véhiculerezr",
+                          "value": "4,9 mètres"
+                      },
+                      {
+                          "label": "Hauteur du véhicule",
+                          "value": "1,9 mètres"
+                      },
+                      {
+                          "label": "Largeur du véhiculerzerz",
+                          "value": "4,9 mètres"
+                      },
+                      {
+                          "label": "Hayon",
+                          "value": "inclus"
+                      },
+                      {
+                          "label": "Profondeur du coffre",
+                          "value": "2,4 mètres"
+                      },
+                      {
+                          "label": "Hauteur du coffre",
+                          "value": "1,3 mètres"
+                      },
+                      {
+                          "label": "Charge utile",
+                          "value": "1000 kg"
+                      }
+                  ]
+              },
+              {
+                  "title": "12/14m<sup>3</sup>",
+                  "illustration": "https://equipmentfinance.societegenerale.com/typo3temp/assets/_processed_/8/c/csm_industrial_container_cargo_freight_ship_for_logistic_import_export_concept_beautiful_sunset_nature_background_high_01_0012ac7af6_optimized.jpg",
+                  "description": [
+                      {
+                          "label": "Longueur du véhiculemiom",
                           "value": "4,9 mètres"
                       },
                       {
@@ -185,76 +240,11 @@
                   ]
               },
               {
-                  "title": "6/8m3",
+                  "title": "20m<sup>3</sup>",
+                  "illustration": "https://img2.goodfon.com/wallpaper/nbig/e/32/samolet-airplane-sredniy.jpg",
                   "description": [
                       {
-                          "label": "Longueur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hauteur du véhicule",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Largeur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hayon",
-                          "value": "inclus"
-                      },
-                      {
-                          "label": "Profondeur du coffre",
-                          "value": "2,4 mètres"
-                      },
-                      {
-                          "label": "Hauteur du coffre",
-                          "value": "1,3 mètres"
-                      },
-                      {
-                          "label": "Charge utile",
-                          "value": "1000 kg"
-                      }
-                  ]
-              },
-              {
-                  "title": "12/14m3",
-                  "description": [
-                      {
-                          "label": "Longueur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hauteur du véhicule",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Largeur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hayon",
-                          "value": "inclus"
-                      },
-                      {
-                          "label": "Profondeur du coffre",
-                          "value": "2,4 mètres"
-                      },
-                      {
-                          "label": "Hauteur du coffre",
-                          "value": "1,3 mètres"
-                      },
-                      {
-                          "label": "Charge utile",
-                          "value": "1000 kg"
-                      }
-                  ]
-              },
-              {
-                  "title": "20m3",
-                  "description": [
-                      {
-                          "label": "Longueur du véhicule",
+                          "label": "Longueur du véhicule:jk;j",
                           "value": "4,9 mètres"
                       },
                       {
