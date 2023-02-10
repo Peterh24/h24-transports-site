@@ -51,7 +51,7 @@ export function initApplicationFactory(store: Store<fromRoot.State>) {
     }),
     EffectsModule.forRoot(effects),
     StoreDevTools,
-    LoadingModule
+    LoadingModule,
   ],
   providers: [
     {

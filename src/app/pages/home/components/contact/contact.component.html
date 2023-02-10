@@ -1,6 +1,23 @@
-<div class="test" [id]="id">
+<div class="contact">
+  <h2>Contactez-nous</h2>
+  <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
+    <app-form-field label="Input" [required]="true" [control]="form.controls['input']">
+      <app-input formControlName="input"></app-input>
+    </app-form-field>
+
+  </form>
+
+  <code>
+    {{form.value | json}}
+  </code>
+</div>
+
+
+
+
+<!-- <div class="test" [id]="id">
   Contact Works
   {{(datas$ | async | json)}}
   <br /><br />
-</div>
+</div> -->
 

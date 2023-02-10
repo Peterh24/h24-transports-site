@@ -1,3 +1,4 @@
+import { ControlsModule } from '@app/shared/controls';
 import { SmoothScrollDirective } from './../../directives/smooth-scroll/index';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,8 @@ import { LoaderDirective } from '@app/directives/loader';
 import { LayoutModule, LoadingModule } from '@app/shared';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AnimatedCounterDirective } from '@app/directives/animated-counter';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -46,11 +49,13 @@ import { AnimatedCounterDirective } from '@app/directives/animated-counter';
     imports: [
         CommonModule,
         HomeRoutingModule,
+        ReactiveFormsModule,
         LayoutModule,
         MatIconModule,
         FontAwesomeModule,
         LoadingModule,
-        SwiperModule
+        SwiperModule,
+        ControlsModule
     ]
 })
 export class HomeModule { }
