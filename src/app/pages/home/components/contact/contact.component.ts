@@ -21,14 +21,34 @@ export class ContactComponent {
 
   ngOnInit(): void {
     this.datas$ = this.globalService.getDataComponent(this.id);
-    this.form = this.fb.group({
-      input: [null, {
+    this.form = this.fb.group(
+    {
+      lastname: [null, {
         updateOn: 'blur',
         validators: [
           Validators.required, Validators.minLength(3)
         ]
-      }]
-    });
+      }],
+      firstname: [null, {
+        updateOn: 'blur',
+        validators: [
+          Validators.required, Validators.minLength(3)
+        ]
+      }],
+      subject: [null, {
+        updateOn: 'blur',
+        validators: [
+          Validators.required, Validators.minLength(3)
+        ]
+      }],
+      message: [null, {
+        updateOn: 'blur',
+        validators: [
+          Validators.required, Validators.minLength(3)
+        ]
+      }],
+    }
+    );
   }
 
   onPatchValue(): void {

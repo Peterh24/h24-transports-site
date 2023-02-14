@@ -1,14 +1,13 @@
 <mat-form-field appearance="fill">
   <mat-label>{{ label }} <span class="form-field__req" *ngIf="required">*</span></mat-label>
 
-  <input matInput
+
+  <textarea matInput
   class="app-input"
   [value]="value"
   [placeholder]="placeholder || ''"
   [attr.disabled]="isDisabled ? true : null"
   (keyup)="onKeyup($event)"
-  (blur)="onBlur()">
+  (blur)="onBlur()"></textarea>
 
 </mat-form-field>
-
-

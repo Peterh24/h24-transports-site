@@ -7,9 +7,6 @@ import { AbstractControl } from '@angular/forms';
   styleUrls: ['./form-field.component.scss']
 })
 export class FormFieldComponent {
-  @Input() label: string;
-  @Input() required: boolean;
-
   @Input() control: AbstractControl;
 
   hasError(): boolean {

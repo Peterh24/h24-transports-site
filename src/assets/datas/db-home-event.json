@@ -341,6 +341,9 @@
       "component": "ContactComponent",
       "title" : "Contactez-nous",
       "data": {
+          "info": {
+            "title": "Contactez-nous"
+          },
           "list": [
               {
                   "label": "Nom",

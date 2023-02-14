@@ -1,15 +1,31 @@
 <div class="contact">
-  <h2>Contactez-nous</h2>
   <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
-    <app-form-field label="Input" [required]="true" [control]="form.controls['input']">
-      <app-input formControlName="input"></app-input>
-    </app-form-field>
+    <h2>{{(datas$ | async).info.title}}</h2>
 
+    <div class="contact__fields__wrap">
+      <div class="contact__fields--inline">
+        <app-form-field [control]="form.controls['lastname']">
+          <app-input formControlName="lastname" label="Nom" [required]="true"></app-input>
+        </app-form-field>
+
+        <app-form-field [control]="form.controls['firstname']">
+          <app-input formControlName="firstname" label="Prénom" [required]="true"></app-input>
+        </app-form-field>
+      </div>
+      <app-form-field [control]="form.controls['subject']">
+        <app-input formControlName="subject" label="Sujet" [required]="true"></app-input>
+      </app-form-field>
+
+      <app-form-field [control]="form.controls['message']">
+        <app-textarea formControlName="message" label="Votre message" [required]="true"></app-textarea>
+      </app-form-field>
+    </div>
+
+
+    <code>
+      {{form.value | json}}
+    </code>
   </form>
-
-  <code>
-    {{form.value | json}}
-  </code>
 </div>
 
 

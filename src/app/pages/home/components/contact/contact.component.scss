@@ -1,3 +1,29 @@
 .contact {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  form {
+    width: 60rem;
+    h2 {
+      margin: 8rem 0 2rem 0;
+      text-align: center;
+    }
+  }
+
+  &__fields--inline {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  &__fields__wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    app-form-field {
+      flex: 1;
+      .mat-mdc-form-field {
+        display: block;
+      }
+    }
+  }
 }
