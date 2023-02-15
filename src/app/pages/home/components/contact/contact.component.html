@@ -3,23 +3,29 @@
     <h2>{{(datas$ | async).info.title}}</h2>
 
     <div class="contact__fields__wrap">
-      <div class="contact__fields--inline">
-        <app-form-field [control]="form.controls['lastname']">
-          <app-input formControlName="lastname" label="Nom" [required]="true"></app-input>
-        </app-form-field>
-
-        <app-form-field [control]="form.controls['firstname']">
-          <app-input formControlName="firstname" label="Prénom" [required]="true"></app-input>
+      <div class="contact__fields--inline" *ngFor="let field of (datas$ | async).list">
+        <app-form-field [control]="form.controls[field.name]">
+          <ng-container [ngSwitch]="field.type">
+            <app-input *ngSwitchCase="'text'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-input>
+            <app-textarea *ngSwitchCase="'textarea'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-textarea>
+          </ng-container>
         </app-form-field>
       </div>
-      <app-form-field [control]="form.controls['subject']">
-        <app-input formControlName="subject" label="Sujet" [required]="true"></app-input>
-      </app-form-field>
-
-      <app-form-field [control]="form.controls['message']">
-        <app-textarea formControlName="message" label="Votre message" [required]="true"></app-textarea>
-      </app-form-field>
     </div>
+
+
+
+    <!-- <div class="contact__fields__wrap">
+      <div class="contact__fields--inline" *ngFor="let field of (datas$ | async).list">
+        {{form.controls | json}}
+        <app-form-field [control]="form.controls[field.name]">
+          <ng-container [ngSwitch]="field.type">
+            <app-input *ngSwitchCase="'text'" formControlName="{{field.label}}" label="{{field.label}}" [required]="field.require"></app-input>
+            <app-textarea *ngSwitchCase="'textarea'" formControlName="{{field.label}}" label="{{field.label}}" [required]="field.require"></app-textarea>
+          </ng-container>
+        </app-form-field>
+      </div>
+    </div> -->
 
 
     <code>
