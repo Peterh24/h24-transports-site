@@ -50,6 +50,16 @@
 
 @media screen and (max-width: 102.4rem) {
   .key-data {
+    &__List,
+    &__cta {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media screen and (max-width: 47.9rem) {
+  .key-data {
     &__content {
       gap: 4rem;
       margin-bottom: 4rem;
@@ -76,10 +86,4 @@
       text-align: center;
     }
   }
-}
-
-@media screen and (max-width: 64rem) {
-}
-
-@media screen and (max-width: 32rem) {
 }

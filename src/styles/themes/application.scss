@@ -204,4 +204,17 @@
       }
     }
   }
+
+  /*Block Teasing*/
+  .teasing {
+    &__background {
+      background: $application-dark;
+      &::before {
+        background-image: linear-gradient(to bottom, rgba(red($application), green($application), blue($application), 0.75) 50%, rgba(red($application), green($application), blue($application)));
+      }
+    }
+    #text {
+      color: $on-application;
+    }
+  }
 }

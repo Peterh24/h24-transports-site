@@ -89,10 +89,7 @@
   }
 }
 
-@media screen and (max-width: 64rem) {
-}
-
-@media screen and (max-width: 32rem) {
+@media screen and (max-width: 47.9rem) {
   .news {
     margin: 4rem 0;
 
@@ -106,6 +103,10 @@
       &__content {
         flex-flow: column wrap;
         gap: 0;
+      }
+
+      &__controls {
+        justify-content: center;
       }
     }
 

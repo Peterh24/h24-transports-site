@@ -64,12 +64,15 @@
 }
 
 @media screen and (max-width: 102.4rem) {
+  .our-vehicles {
+    &__wrap {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
 }
 
-@media screen and (max-width: 64rem) {
-}
-
-@media screen and (max-width: 39rem) {
+@media screen and (max-width: 47.9rem) {
   .our-vehicles {
     height: auto;
 
