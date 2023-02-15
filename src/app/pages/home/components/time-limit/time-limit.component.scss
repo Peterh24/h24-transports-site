@@ -20,7 +20,6 @@
   }
 }
 
-
 .map {
   margin-top: 4rem;
   &__wrapper {
@@ -91,6 +90,109 @@
     .map__wrapper__img {
       img {
         transform: translate(5268px, 15716px) scale(371) !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 102.4rem) {
+  .timelimit {
+    &__info,
+    &__swipper {
+      &__wrap {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 64rem) {
+}
+
+@media screen and (max-width: 39rem) {
+  .timelimit {
+    display: flex;
+    flex-direction: column;
+
+    &__info,
+    &__swipper {
+      &__wrap {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+    &__swipper {
+      &__wrap {
+        flex-direction: column;
+        gap: unset;
+      }
+    }
+    &__info__wrap {
+      order: 1;
+    }
+    &__swipper__wrap {
+      order: 2;
+    }
+  }
+
+  .map {
+    margin-top: 2rem;
+
+    &__interaction {
+      width: 90%;
+      gap: 0.5rem;
+      order: 3;
+    }
+
+    &__wrapper {
+      gap: 2rem;
+
+      &__img {
+        display: flex;
+        width: 100%;
+        height: 50vh;
+        order: 2;
+      }
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        order: 1;
+      }
+    }
+  }
+
+  /*Map positions*/
+  .timelimit__swipper__wrap {
+    &-international {
+      .map__wrapper__img {
+        img {
+          transform: translate(-35.6rem, 0) scale(1) !important;
+        }
+      }
+    }
+
+    &-france {
+      .map__wrapper__img {
+        img {
+          transform: translate(-3rem, 60.5rem) scale(10) !important
+        }
+      }
+    }
+    &-idf {
+      .map__wrapper__img {
+        img {
+          transform: translate(107rem, 397rem) scale(61) !important;
+        }
+      }
+    }
+    &-paris {
+      .map__wrapper__img {
+        img {
+          transform: translate(280rem, 923rem) scale(140) !important;
+        }
       }
     }
   }

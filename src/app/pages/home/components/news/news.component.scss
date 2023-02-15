@@ -76,3 +76,18 @@
     }
   }
 }
+
+@media screen and (max-width: 102.4rem) {
+  .news {
+    margin: 4rem 0;
+    &__slider {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 64rem) {
+}
+
+@media screen and (max-width: 32rem) {
+}
