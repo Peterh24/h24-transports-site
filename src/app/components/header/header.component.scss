@@ -8,8 +8,8 @@
   width: 100%;
   justify-content: space-between;
   background: transparent;
-  height: 150px;
-  padding: 0 40px;
+  height: 15rem;
+  padding: 0 4rem;
   position: fixed;
   z-index: 100;
   pointer-events: none;
@@ -86,6 +86,20 @@
     &::after,
     app-logo {
       opacity: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 102.4rem) {
+}
+
+@media screen and (max-width: 47.9rem) {
+  .header {
+    padding: 0 2rem;
+    height: 11rem;
+
+    &__burger {
+      right: 2rem;
     }
   }
 }
