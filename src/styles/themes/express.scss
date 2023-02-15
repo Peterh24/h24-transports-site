@@ -146,6 +146,41 @@
     }
   }
 
+  /*Block Time limit*/
+  .timelimit {
+    .map__interaction {
+      .swiper-pagination-bullet {
+        &:before {
+          background: $on-express;
+        }
+      }
+    }
+  }
+
+  /*Block News*/
+  .news {
+    .customPagination {
+      .swiper-pagination-bullet {
+        background-color: $on-express;
+        &:after {
+          background-color: $express;
+        }
+        &:before {
+          background-color: $on-express;
+        }
+      }
+    }
+  }
+
+  /*Block Vehicles*/
+  .our-vehicles {
+    button {
+      border-color: $on-express;
+      color: $on-express;
+    }
+  }
+
+
   /*Block Clients*/
   .clients {
     background: $express-dark;

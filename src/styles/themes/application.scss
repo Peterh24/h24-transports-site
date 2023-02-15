@@ -140,6 +140,40 @@
     }
   }
 
+  /*Block Time limit*/
+  .timelimit {
+    .map__interaction {
+      .swiper-pagination-bullet {
+        &:before {
+          background: $on-application;
+        }
+      }
+    }
+  }
+
+  /*Block News*/
+  .news {
+    .customPagination {
+      .swiper-pagination-bullet {
+        background-color: $on-application;
+        &:after {
+          background-color: $application;
+        }
+        &:before {
+          background-color: $on-application;
+        }
+      }
+    }
+  }
+
+  /*Block Vehicles*/
+  .our-vehicles {
+    button {
+      border-color: $on-application;
+      color: $on-application;
+    }
+  }
+
   /*Block Clients*/
   .clients {
     background: $application-dark;

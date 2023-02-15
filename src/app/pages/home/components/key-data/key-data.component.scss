@@ -28,9 +28,10 @@
     gap: .7rem;
     justify-content: flex-start;
     align-items: center;
+
     &:nth-child(2) {
-      .key-data__item__val{
-        &:after{
+      .key-data__item__val {
+        &::after {
           content:'K';
           display: inline-block;
           margin-left: 5px;
@@ -38,10 +39,47 @@
         }
       }
     }
+
     &__val {
       font-size: 4rem;
       font-family: $alt-font-family;
       font-weight: 800;
     }
   }
+}
+
+@media screen and (max-width: 102.4rem) {
+  .key-data {
+    &__content {
+      gap: 4rem;
+      margin-bottom: 4rem;
+      flex-direction: column;
+    }
+
+    &__List,
+    &__cta {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    &__List {
+      justify-content: space-around;
+      gap: 4rem;
+    }
+
+    &__cta {
+      display: inline-flex;
+      justify-content: center;
+    }
+
+    &__item {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 64rem) {
+}
+
+@media screen and (max-width: 32rem) {
 }
