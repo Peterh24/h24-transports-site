@@ -200,4 +200,15 @@
       }
     }
   }
+
+  /*Block News*/
+  .news {
+    &__slider {
+      &__controls {
+        .swiper-button {
+          color: $on-express;
+        }
+      }
+    }
+  }
 }
