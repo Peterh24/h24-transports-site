@@ -173,6 +173,13 @@
       color: $on-event;
     }
   }
+  .vehicle {
+    &__detail {
+      &::before {
+        background: $on-event;
+      }
+    }
+  }
 
   /*Block Clients*/
   .clients {

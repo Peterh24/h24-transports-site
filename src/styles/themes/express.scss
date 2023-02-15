@@ -179,6 +179,13 @@
       color: $on-express;
     }
   }
+  .vehicle {
+    &__detail {
+      &::before {
+        background: $on-express;
+      }
+    }
+  }
 
 
   /*Block Clients*/

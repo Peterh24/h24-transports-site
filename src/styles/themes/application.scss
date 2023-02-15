@@ -173,6 +173,13 @@
       color: $on-application;
     }
   }
+  .vehicle {
+    &__detail {
+      &::before {
+        background: $on-application;
+      }
+    }
+  }
 
   /*Block Clients*/
   .clients {
