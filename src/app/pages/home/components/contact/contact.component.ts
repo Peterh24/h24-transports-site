@@ -28,9 +28,10 @@ export class ContactComponent implements OnInit  {
     })
   }
 
-  createForm(controls: JsonFormControls[]){
-      for (const control of controls) {
-        const validatorsToAdd:any = [];
+  createForm(controls: JsonFormControls[][]){
+    for (const row of controls) {
+      for (const control of row) {
+        const validatorsToAdd: any[] = [];
         for (const [key, value] of Object.entries(control.validators)) {
           switch (key) {
             case 'min':
@@ -72,14 +73,10 @@ export class ContactComponent implements OnInit  {
               break;
           }
         }
-
-        // Ajoutez des contrôles à la FormGroup
-        this.form.addControl(
-          control.name,
-          new FormControl(control.value, validatorsToAdd)
-        );
-        console.log('form: ', this.form);
+        // Ajouter le contrôle à la FormGroup
+        this.form.addControl(control.name, new FormControl(control.value, validatorsToAdd));
       }
+    }
   }
 
   onPatchValue(): void {

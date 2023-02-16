@@ -24,6 +24,7 @@ import { LayoutModule, LoadingModule } from '@app/shared';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AnimatedCounterDirective } from '@app/directives/animated-counter';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from '@app/shared/buttons';
 
 
 
@@ -55,7 +56,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         FontAwesomeModule,
         LoadingModule,
         SwiperModule,
-        ControlsModule
+        ControlsModule,
+        ButtonModule
     ]
 })
 export class HomeModule { }

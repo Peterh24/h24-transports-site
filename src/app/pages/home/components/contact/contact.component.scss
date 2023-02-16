@@ -10,11 +10,6 @@
     }
   }
 
-  &__fields--inline {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-  }
   &__fields__wrap {
     display: flex;
     flex-direction: column;
@@ -24,6 +19,15 @@
       flex: 1;
       .mat-mdc-form-field {
         display: block;
+      }
+    }
+
+    .field--inline {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      div {
+        flex: 1;
       }
     }
   }

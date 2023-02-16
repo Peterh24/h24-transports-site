@@ -345,17 +345,18 @@
             "title": "Contactez-nous"
           },
           "list": [
-              {
-                  "name": "lastname",
-                  "label": "Nom",
-                  "type": "text",
-                  "value:": "",
-                  "validators": {
-                    "required": true,
-                    "minLength": 12
-                  }
-              },
-              {
+              [
+                {
+                    "name": "lastname",
+                    "label": "Nom",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 12
+                    }
+                },
+                {
                   "name": "firstname",
                   "label": "Prénom",
                   "type": "text",
@@ -364,37 +365,44 @@
                     "required": true,
                     "minLength": 5
                   }
-              },
-              {
-                  "name": "gender",
-                  "label": "genre",
-                  "type": "text",
-                  "value:": "",
-                  "validators": {
-                    "required": true,
-                    "minLength": 7
-                  }
-              },
-              {
-                  "name": "subject",
-                  "label": "Sujet",
-                  "type": "text",
-                  "value:": "",
-                  "validators": {
-                    "required": true,
-                    "minLength": 54
-                  }
-              },
-              {
-                  "name": "message",
-                  "label": "Votre message",
-                  "type": "textarea",
-                  "value:": "",
-                  "validators": {
-                    "required": true,
-                    "minLength": 12
-                  }
               }
+              ],
+              [
+                {
+                    "name": "gender",
+                    "label": "genre",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 7
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "subject",
+                    "label": "Sujet",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 54
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "message",
+                    "label": "Votre message",
+                    "type": "textarea",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 12
+                    }
+                }
+              ]
           ]
       }
     }

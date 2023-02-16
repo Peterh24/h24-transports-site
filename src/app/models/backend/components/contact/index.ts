@@ -2,7 +2,7 @@ export interface Contact {
   info: {
     title: string;
   },
-  list: Array<JsonFormControls>;
+  list: Array<Array<JsonFormControls>>;
 }
 
 export interface JsonFormControls {

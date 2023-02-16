@@ -3,31 +3,19 @@
     <h2>{{(datas$ | async).info.title}}</h2>
 
     <div class="contact__fields__wrap">
-      <div class="contact__fields--inline" *ngFor="let field of (datas$ | async).list">
-        <app-form-field [control]="form.controls[field.name]">
-          <ng-container [ngSwitch]="field.type">
-            <app-input *ngSwitchCase="'text'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-input>
-            <app-textarea *ngSwitchCase="'textarea'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-textarea>
-          </ng-container>
-        </app-form-field>
+      <div class="contact__fields" *ngFor="let row of (datas$ | async).list" [class.field--inline]="row.length > 1">
+        <div *ngFor="let field of row">
+          <app-form-field [control]="form.controls[field.name]">
+            <ng-container [ngSwitch]="field.type">
+              <app-input *ngSwitchCase="'text'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-input>
+              <app-textarea *ngSwitchCase="'textarea'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-textarea>
+            </ng-container>
+          </app-form-field>
+        </div>
       </div>
     </div>
 
-
-
-    <!-- <div class="contact__fields__wrap">
-      <div class="contact__fields--inline" *ngFor="let field of (datas$ | async).list">
-        {{form.controls | json}}
-        <app-form-field [control]="form.controls[field.name]">
-          <ng-container [ngSwitch]="field.type">
-            <app-input *ngSwitchCase="'text'" formControlName="{{field.label}}" label="{{field.label}}" [required]="field.require"></app-input>
-            <app-textarea *ngSwitchCase="'textarea'" formControlName="{{field.label}}" label="{{field.label}}" [required]="field.require"></app-textarea>
-          </ng-container>
-        </app-form-field>
-      </div>
-    </div> -->
-
-
+    <app-button type="submit">Envoyer</app-button>
     <code>
       {{form.value | json}}
     </code>
