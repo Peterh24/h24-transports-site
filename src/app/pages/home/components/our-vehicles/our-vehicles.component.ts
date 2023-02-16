@@ -55,6 +55,7 @@ export class OurVehiclesComponent {
   updateIllustration(index: number) {
     const illustration = menu[index].illustration;
     const img = new Image();
+    /**TODO: Calculate window width and apply different styles for responsive */
     img.src = illustration;
     img.style
     img.style.width = '100%';

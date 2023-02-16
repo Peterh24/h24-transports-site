@@ -18,7 +18,6 @@
     }
   }
   &__background {
-    background: #000;
     position: absolute;
     top: 0;
     right: 0;
@@ -28,7 +27,6 @@
     &::before {
       content: '';
       display: block;
-      background-image: linear-gradient(to bottom, rgba(34,35,46,0.75) 50%, rgba(34,35,46));
       position: absolute;
       top: 0;
       left: 0;
@@ -74,7 +72,6 @@
 
 #text {
   position: absolute;
-  color: #FFFFFF;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

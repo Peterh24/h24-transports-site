@@ -141,12 +141,16 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
+
     .swiper-pagination-bullet {
       background: none;
-      &-active, &:hover {
+
+      &-active,
+      &:hover {
         opacity: 1;
       }
     }
+
     button {
       display: flex;
       align-items: center;
@@ -175,10 +179,7 @@
 @media screen and (max-width: 102.4rem) {
 }
 
-@media screen and (max-width: 64rem) {
-}
-
-@media screen and (max-width: 39rem) {
+@media screen and (max-width: 47.9rem) {
   .timelimit {
     .swiper {
       width: 100%;
@@ -202,6 +203,7 @@
         flex-flow: row wrap;
         justify-content: space-between;
         align-items: baseline;
+        margin: 0;
 
         .location,
         .time {
@@ -214,6 +216,19 @@
           text-align: right;
           font-size: 1.7rem;
         }
+      }
+    }
+  }
+
+  .our-vehicles {
+    .vehicle {
+      &__interaction {
+        justify-content: space-around;
+        align-self: flex-end;
+        margin-top: 32rem;
+      }
+      .swiper {
+        width: 100%;
       }
     }
   }

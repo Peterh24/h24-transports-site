@@ -173,6 +173,13 @@
       color: $on-event;
     }
   }
+  .vehicle {
+    &__detail {
+      &::before {
+        background: $on-event;
+      }
+    }
+  }
 
   /*Block Clients*/
   .clients {
@@ -184,6 +191,30 @@
           to right, rgba(red($event-dark), green($event-dark), blue($event-dark), 1) 0%,
           rgba(red($event-dark), green($event-dark), blue($event-dark), 0) 100%);
       }
+    }
+  }
+
+  /*Block News*/
+  .news {
+    &__slider {
+      &__controls {
+        .swiper-button {
+          color: $on-event;
+        }
+      }
+    }
+  }
+
+  /*Block Teasing*/
+  .teasing {
+    &__background {
+      background: $event-dark;
+      &::before {
+        background-image: linear-gradient(to bottom, rgba(red($event), green($event), blue($event), 0.75) 50%, rgba(red($event), green($event), blue($event)));
+      }
+    }
+    #text {
+      color: $on-event;
     }
   }
 }

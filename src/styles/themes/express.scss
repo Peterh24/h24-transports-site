@@ -179,6 +179,13 @@
       color: $on-express;
     }
   }
+  .vehicle {
+    &__detail {
+      &::before {
+        background: $on-express;
+      }
+    }
+  }
 
 
   /*Block Clients*/
@@ -191,6 +198,30 @@
           to right, rgba(red($express-dark), green($express-dark), blue($express-dark), 1) 0%,
           rgba(red($express-dark), green($express-dark), blue($express-dark), 0) 100%);
       }
+    }
+  }
+
+  /*Block News*/
+  .news {
+    &__slider {
+      &__controls {
+        .swiper-button {
+          color: $on-express;
+        }
+      }
+    }
+  }
+
+  /*Block Teasing*/
+  .teasing {
+    &__background {
+      background: $express-dark;
+      &::before {
+        background-image: linear-gradient(to bottom, rgba(red($express), green($express), blue($express), 0.75) 50%, rgba(red($express), green($express), blue($express)));
+      }
+    }
+    #text {
+      color: $on-express;
     }
   }
 }

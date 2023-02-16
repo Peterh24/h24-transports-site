@@ -37,6 +37,17 @@
   .contact {
     form {
       width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 64rem) {
+}
+
+@media screen and (max-width: 32rem) {
+  .contact {
+    form {
+      width: 90%;
 
       h2 {
         margin: 4rem 0 2rem 0;
@@ -47,10 +58,4 @@
       flex-wrap: wrap;
     }
   }
-}
-
-@media screen and (max-width: 64rem) {
-}
-
-@media screen and (max-width: 32rem) {
 }

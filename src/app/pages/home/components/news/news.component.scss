@@ -1,13 +1,16 @@
 .news {
   margin: 8rem 0;
+
   h2 {
     text-align: center;
     padding: 6rem 0;
   }
+
   &__slider {
     width: 120rem;
     margin: 0 auto;
     position: relative;
+
     &__content {
       display: flex;
       width: 100%;
@@ -15,6 +18,7 @@
       justify-content: space-between;
       gap: 8rem;
     }
+
     &__controls {
       display: inline-flex;
       align-items: center;
@@ -23,8 +27,8 @@
       position: absolute;
       bottom: 0;
       left: 0;
+
       .swiper-button {
-        color: #fff;
         background: transparent;
         padding: 0;
         margin: 0;
@@ -79,15 +83,45 @@
 
 @media screen and (max-width: 102.4rem) {
   .news {
-    margin: 4rem 0;
     &__slider {
       width: 90%;
     }
   }
 }
 
-@media screen and (max-width: 64rem) {
-}
+@media screen and (max-width: 47.9rem) {
+  .news {
+    margin: 4rem 0;
 
-@media screen and (max-width: 32rem) {
+    h2 {
+      padding: 0 0 3rem 0;
+    }
+
+    &__slider {
+      width: 90%;
+
+      &__content {
+        flex-flow: column wrap;
+        gap: 0;
+      }
+
+      &__controls {
+        justify-content: center;
+      }
+    }
+
+    .news__block {
+      order: 2;
+      gap: 2rem;
+
+      &__title {
+        margin-bottom: 0;
+      }
+    }
+
+    .img__block {
+      order: 1;
+    }
+
+  }
 }
