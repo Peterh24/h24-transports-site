@@ -30,7 +30,7 @@ export class PrehomeComponent implements OnInit {
 
     goToTheme(theme:string):void {
       //Add current Theme on store
-      this.globalService.currentTheme = theme;
+      this.store.dispatch(new fromThemes.AddCurrentTheme(theme));
 
       this.store.dispatch(new fromThemes.LoaderStart());
     }

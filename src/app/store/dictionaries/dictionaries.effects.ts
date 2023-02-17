@@ -7,6 +7,7 @@ import { catchError, map, Observable, of, switchMap, withLatestFrom } from 'rxjs
 import * as fromRoot from '@app/store/';
 import * as fromActions from './dictionaries.actions';
 import * as fromThemes from '@app/store/themes';
+import * as fromLanguage from '@app/store/language';
 import { Router } from '@angular/router';
 
 
@@ -22,21 +23,23 @@ export class DictionariesEffects {
 
   read$ = createEffect(() => this.actions.pipe(
     ofType(fromActions.Types.READ),
-    withLatestFrom(this.store.select(fromThemes.getCurrentTheme)),
-    switchMap((theme) =>  {
-      let currentTheme = theme[1];
-      if(!currentTheme){
+    withLatestFrom(
+      this.store.select(fromThemes.getCurrentTheme),
+      this.store.select(fromLanguage.getLanguage)
+    ),
+    switchMap(([action, currentTheme, currentlang]) => {
+      if (!currentTheme) {
         return [];
       } else {
-        return this.dictionariesService.getDictionaries(currentTheme).pipe(
+        return this.dictionariesService.getDictionaries(currentTheme, currentlang).pipe(
           map(data => {
             return new fromActions.ReadSuccess([data]);
           }),
           catchError(err => of(new fromActions.ReadError(err)))
-        )
+        );
       }
     })
-  ))
+  ));
 }
 
 

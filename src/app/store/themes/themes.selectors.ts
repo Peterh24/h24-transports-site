@@ -36,7 +36,9 @@ export const getThemeData = createSelector(
 
 export const getCurrentTheme = createSelector(
   getThemesState,
-  (state) => state.currentTheme
+  (state) => {
+    return state.currentTheme
+  }
 );
 
 export const getCurrentThemeData = createSelector(

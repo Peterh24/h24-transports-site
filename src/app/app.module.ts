@@ -11,6 +11,7 @@ import { reducers, effects } from './store';
 import * as fromRoot from '@app/store';
 import * as fromThemes from '@app/store/themes';
 import * as fromNavigation from '@app/store/navigation';
+import * as fromLanguage from '@app/store/language';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,9 +26,11 @@ import { LoadingModule } from './shared/layout/loading/loading.module';
 const StoreDevTools: any = !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [];
 
 export function initApplicationFactory(store: Store<fromRoot.State>) {
+  const defaultLanguage = navigator.language.split('-')[0];
     return () => new Promise(resolve => {
         store.dispatch(new fromThemes.Read);
         store.dispatch(new fromNavigation.NavClose);
+        store.dispatch(new fromLanguage.LanguageChange(defaultLanguage));
         resolve(true)
     });
 }

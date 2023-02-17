@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -8,6 +8,7 @@ import * as fromRoot from '@app/store';
 import * as fromNavigation from '@app/store/navigation';
 import * as fromThemes from '@app/store/themes';
 import * as fromDictionaries from '@app/store/dictionaries';
+import * as fromLanguage from '@app/store/language';
 import { GlobalService } from '@app/services/global';
 import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
@@ -48,7 +49,7 @@ export class MainMenuComponent implements OnInit {
   }
 
   switchTheme(theme: string){
-    this.globalService.currentTheme = theme;
+    this.store.dispatch(new fromThemes.AddCurrentTheme(theme));
     this.store.dispatch(new fromThemes.LoaderStart());
   }
 
@@ -60,5 +61,11 @@ export class MainMenuComponent implements OnInit {
 
   closeMenu(): void {
     this.store.dispatch(new fromNavigation.NavClose);
+  }
+
+  langChange(lang: string): void {
+    //this.globalService.currentTheme = theme;
+    this.store.dispatch(new fromLanguage.LanguageChange(lang));
+    this.store.dispatch(new fromThemes.LoaderStart());
   }
 }

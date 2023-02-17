@@ -1,6 +1,6 @@
 {
-    "id": "event",
-    "title": "Transport & logistique événementiel",
+    "id": "express",
+    "title": "Transport Express Dédié",
     "loader": {
         "img": ""
     },
@@ -8,7 +8,7 @@
       {
       "id": "keydata",
       "component": "KeyDataComponent",
-      "title" : "Chiffres clés",
+      "title" : "Chiffres clés fr Express",
       "data": {
           "info": {
               "img" : "./assets/img/event-cover-picture.jpg",
@@ -36,7 +36,7 @@
       {
       "id": "ourvalues",
       "component": "OurValuesComponent",
-      "title" : "Nos Valeurs",
+      "title" : "Nos Valeurs fr Express",
       "data": {
           "list": [
               {
@@ -69,7 +69,7 @@
       {
         "id": "teasingFull",
         "component": "TeasingComponent",
-        "title": "Teasing Full Video",
+        "title": "Teasing Full Video fr Express",
         "data": {
             "info": {
                 "title": "TeasingFull",
@@ -83,7 +83,7 @@
         {
           "id": "teasingText",
           "component": "TeasingComponent",
-          "title": "Teasing Text",
+          "title": "Teasing Text fr Express",
           "data": {
               "info": {
                   "title": "TeasingFull",
@@ -94,7 +94,7 @@
       {
       "id": "timelimit",
       "component": "TimeLimitComponent",
-      "title": "Nos délais d'intervention",
+      "title": "Nos délais d'intervention fr Express",
       "data": {
           "info": {
               "title": "Nos délais d'intervention",
@@ -131,7 +131,7 @@
       {
       "id": "ourVehicles",
       "component": "OurVehiclesComponent",
-      "title": "Nos véhicules",
+      "title": "Nos véhicules fr Express",
       "data": {
           "info": {
               "title": "Nos véhicules"
@@ -255,7 +255,7 @@
       {
       "id": "client",
       "component":"ClientComponent",
-      "title": "Ils nous font confiance",
+      "title": "Ils nous font confiance fr Express",
       "data": {
           "info": {
             "title": "Ils nous font confiance",
@@ -303,7 +303,7 @@
       {
       "id": "news",
       "component":"NewsComponent",
-      "title": "Actualités",
+      "title": "Actualités fr Express",
       "data": {
         "info": {
           "title": "Actualités"
@@ -339,10 +339,11 @@
       {
       "id": "contact",
       "component": "ContactComponent",
-      "title" : "Contactez-nous",
+      "title" : "Contactez-nous fr Express",
       "data": {
           "info": {
-            "title": "Contactez-nous"
+            "title": "Contactez-nous",
+            "btn" : "Envoyer"
           },
           "list": [
               [

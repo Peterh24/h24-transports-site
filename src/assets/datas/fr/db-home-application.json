@@ -1,6 +1,6 @@
 {
-    "id": "express",
-    "title": "Transport Express Dédié",
+    "id": "application",
+    "title": "Notre nouvelle application mobile",
     "loader": {
         "img": ""
     },
@@ -8,10 +8,10 @@
       {
       "id": "keydata",
       "component": "KeyDataComponent",
-      "title" : "Chiffres clés",
+      "title" : "Chiffres clés fr Application",
       "data": {
           "info": {
-              "img" : "./assets/img/express-cover-picture.jpg",
+              "img" : "./assets/img/event-cover-picture.jpg",
               "link": {
                   "label": "DEMANDEZ VOTRE DEVIS",
                   "url": "#contact"
@@ -36,7 +36,7 @@
       {
       "id": "ourvalues",
       "component": "OurValuesComponent",
-      "title" : "Nos Valeurs",
+      "title" : "Nos Valeurs fr Application",
       "data": {
           "list": [
               {
@@ -69,7 +69,7 @@
       {
         "id": "teasingFull",
         "component": "TeasingComponent",
-        "title": "Teasing Full Video",
+        "title": "Teasing Full Video fr Application",
         "data": {
             "info": {
                 "title": "TeasingFull",
@@ -83,7 +83,7 @@
         {
           "id": "teasingText",
           "component": "TeasingComponent",
-          "title": "Teasing Text",
+          "title": "Teasing Text fr Application",
           "data": {
               "info": {
                   "title": "TeasingFull",
@@ -94,7 +94,7 @@
       {
       "id": "timelimit",
       "component": "TimeLimitComponent",
-      "title": "Nos délais d'intervention",
+      "title": "Nos délais d'intervention fr Application",
       "data": {
           "info": {
               "title": "Nos délais d'intervention",
@@ -131,7 +131,7 @@
       {
       "id": "ourVehicles",
       "component": "OurVehiclesComponent",
-      "title": "Nos véhicules",
+      "title": "Nos véhicules fr Application",
       "data": {
           "info": {
               "title": "Nos véhicules"
@@ -255,11 +255,11 @@
       {
       "id": "client",
       "component":"ClientComponent",
-      "title": "Ils nous font confiance",
+      "title": "Ils nous font confiance fr Application",
       "data": {
           "info": {
             "title": "Ils nous font confiance",
-            "imgStyle":"black"
+            "imgStyle":"white"
           },
           "list": [
               {
@@ -303,7 +303,7 @@
       {
       "id": "news",
       "component":"NewsComponent",
-      "title": "Actualités",
+      "title": "Actualités fr Application",
       "data": {
         "info": {
           "title": "Actualités"
@@ -339,29 +339,71 @@
       {
       "id": "contact",
       "component": "ContactComponent",
-      "title" : "Contactez-nous",
+      "title" : "Contactez-nous fr Application",
       "data": {
+          "info": {
+            "title": "Contactez-nous",
+            "btn" : "Envoyer"
+          },
           "list": [
-              {
-                  "label": "Nom",
-                  "type": "text",
-                  "require": "true"
-              },
-              {
+              [
+                {
+                    "name": "lastname",
+                    "label": "Nom",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 12
+                    }
+                },
+                {
+                  "name": "firstname",
                   "label": "Prénom",
                   "type": "text",
-                  "require": "true"
-              },
-              {
-                  "label": "Sujet",
-                  "type": "text",
-                  "require": "true"
-              },
-              {
-                  "label": "Votre message",
-                  "type": "textarea",
-                  "require": "true"
+                  "value:": "",
+                  "validators": {
+                    "required": true,
+                    "minLength": 5
+                  }
               }
+              ],
+              [
+                {
+                    "name": "gender",
+                    "label": "genre",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 7
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "subject",
+                    "label": "Sujet",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 54
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "message",
+                    "label": "Votre message",
+                    "type": "textarea",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 12
+                    }
+                }
+              ]
           ]
       }
     }

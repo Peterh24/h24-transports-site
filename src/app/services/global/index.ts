@@ -17,7 +17,6 @@ import * as fromDictionaries from '@app/store/dictionaries';
 export class GlobalService {
   public container: any;
   public flag: boolean = false;
-  public currentTheme: string;
   data$: Observable<any>;
   public components = {
     'ContactComponent': ContactComponent,

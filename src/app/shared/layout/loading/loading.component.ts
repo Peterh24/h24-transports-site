@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 
 import * as fromRoot from '@app/store';
@@ -33,24 +33,33 @@ export class LoadingComponent implements OnInit, OnDestroy {
     this.datas$ = this.store.pipe(select(fromThemes.getCurrentThemeData));
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
-    this.store.dispatch(new fromThemes.AddCurrentTheme(this.globalService.currentTheme));
     this.globalService.flag = !this.globalService.flag;
     if(this.router.url == '/prehome') {
 
       window.setTimeout(()=>{
-        this.router.navigate(['/home', this.globalService.currentTheme]).then(() => {
-          window.setTimeout(()=>{
-            this.store.dispatch(new fromThemes.LoaderStop());
-          }, this.timer)
-        });
+        this.currentTheme$.pipe(take(1)).subscribe(
+          theme => {
+            this.router.navigate(['/home', theme]).then(() => {
+              window.setTimeout(()=>{
+                this.store.dispatch(new fromThemes.LoaderStop());
+              }, this.timer)
+            });
+          }
+        )
+
       }, 1000)
     } else {
       window.setTimeout(()=>{
-        this.router.navigate(['/home', this.globalService.currentTheme]).then(() => {
-          window.setTimeout(()=>{
-            this.store.dispatch(new fromThemes.LoaderStop());
-           }, this.timer)
-        });
+        this.currentTheme$.pipe(take(1)).subscribe(
+          theme => {
+            this.router.navigate(['/home', theme]).then(() => {
+              window.setTimeout(()=>{
+                this.store.dispatch(new fromThemes.LoaderStop());
+               }, this.timer)
+            });
+          }
+        )
+
         this.store.dispatch(new fromNavigation.NavClose);
       }, 1000)
     }
