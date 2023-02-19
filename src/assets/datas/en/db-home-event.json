@@ -139,7 +139,7 @@
           "list": [
               {
                   "title": "3m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.jpg",
+                  "illustration": "./assets/img/camion-6-8m3.png",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
@@ -165,7 +165,7 @@
               },
               {
                   "title": "6/8m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.jpg",
+                  "illustration": "./assets/img/camion-6-8m3.png",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
@@ -191,7 +191,7 @@
               },
               {
                   "title": "12/14m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.jpg",
+                  "illustration": "./assets/img/camion-6-8m3.png",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
@@ -221,7 +221,7 @@
               },
               {
                   "title": "20m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.jpg",
+                  "illustration": "./assets/img/camion-6-8m3.png",
                   "description": [
                       {
                           "label": "Longueur du véhicule",
