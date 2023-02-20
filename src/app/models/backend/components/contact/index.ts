@@ -1,10 +1,3 @@
-export interface Contact {
-  info: {
-    title: string;
-  },
-  list: Array<Array<JsonFormControls>>;
-}
-
 export interface JsonFormControls {
   name: string;
   label: string;
@@ -23,4 +16,20 @@ export interface JsonFormValidators {
   maxLength?: boolean;
   pattern?: string;
   nullValidator?: boolean;
+}
+
+export class Contact {
+  info: {
+    title: string;
+  };
+  list: Array<Array<JsonFormControls>>;
+  options?: {
+    darkenBg:boolean;
+  }
+
+  constructor(info: { title: string }, list: Array<Array<JsonFormControls>>, options?: { darkenBg?: boolean }) {
+    this.info = info;
+    this.list = list;
+    this.options = { darkenBg: false, ...options };
+  }
 }

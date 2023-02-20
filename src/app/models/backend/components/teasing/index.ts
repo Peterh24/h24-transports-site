@@ -1,4 +1,4 @@
-export interface Teasing {
+export class Teasing {
   info: {
     icon?: string;
     title?: string;
@@ -6,4 +6,12 @@ export interface Teasing {
     videoId?: string;
     img?: string;
   };
+  options?: {
+    darkenBg:boolean;
+  }
+
+  constructor(info: { icon: string; title: string; text: string; videoId: string;  img: string; }, options?: { darkenBg?: boolean }){
+    this.info = info;
+    this.options = { darkenBg: false, ...options };
+  }
 }

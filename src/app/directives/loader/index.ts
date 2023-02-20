@@ -8,12 +8,16 @@ import { OurVehiclesComponent } from "@app/pages/home/components/our-vehicles/ou
 import { TeasingComponent } from "@app/pages/home/components/teasing/teasing.component";
 import { TimeLimitComponent } from "@app/pages/home/components/time-limit/time-limit.component";
 import { OurValuesComponent } from "@app/pages/home/components/our-values/our-values.component";
+import { InfosComponent } from "@app/pages/home/components/infos/infos.component";
+import { InfosImgComponent } from "@app/pages/home/components/infos-img/infos-img.component";
+
 import { select, Store } from "@ngrx/store";
 import { Observable, skip, Subscription } from "rxjs";
 
 import * as fromRoot from '@app/store/';
 import * as fromDictionaries from '@app/store/dictionaries';
 import { Component } from "@app/models/backend";
+
 
 
 @Directive({
@@ -38,7 +42,9 @@ export class LoaderDirective {
     'OurVehiclesComponent': OurVehiclesComponent,
     'TeasingComponent': TeasingComponent,
     'TimeLimitComponent': TimeLimitComponent,
-    'ClientComponent': ClientComponent
+    'ClientComponent': ClientComponent,
+    'InfosComponent': InfosComponent,
+    'InfosImgComponent': InfosImgComponent,
   }
 
   private currentComponents:Array<string> = [];

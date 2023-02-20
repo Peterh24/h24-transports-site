@@ -6,3 +6,5 @@ export * from './ourvalues';
 export * from './ourvehicles';
 export * from './teasing';
 export * from './timelimit';
+export * from './infos';
+export * from './infosimg';

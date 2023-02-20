@@ -25,6 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AnimatedCounterDirective } from '@app/directives/animated-counter';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from '@app/shared/buttons';
+import { InfosComponent } from './components/infos/infos.component';
+import { InfosImgComponent } from './components/infos-img/infos-img.component';
 
 
 
@@ -45,7 +47,9 @@ import { ButtonModule } from '@app/shared/buttons';
         ContactComponent,
         LoaderDirective,
         AnimatedCounterDirective,
-        SmoothScrollDirective
+        SmoothScrollDirective,
+        InfosComponent,
+        InfosImgComponent
     ],
     imports: [
         CommonModule,
