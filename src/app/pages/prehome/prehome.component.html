@@ -15,7 +15,7 @@
       <div class="theme-slider__content">
         <div class="theme-slider__content__wrapper">
           <h2 class="theme-slider__content__title" [innerHTML]="data.title"></h2>
-          <p class="theme-slider__content__text">{{data.text}}</p>
+          <p class="theme-slider__content__text" [innerHTML]="data.text"></p>
           <div class="theme-slider__content__cta">
             <button (click)="goToTheme(data.id)" class="app-button">{{data.cta}}</button>
           </div>

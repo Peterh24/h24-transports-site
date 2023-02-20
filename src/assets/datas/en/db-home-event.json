@@ -337,6 +337,41 @@
       }
       },
       {
+        "id": "infosblock1",
+        "component": "InfosComponent",
+        "title": "Titre info Block",
+        "data": {
+            "options": {
+              "imgTo": "right"
+            },
+            "info": {
+                "title": "Titre Info Block EN",
+                "text": "Texte info Block 1 EN",
+                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg"
+            }
+        }
+      },
+      {
+        "id": "infosblock2",
+        "component": "InfosImgComponent",
+        "title": "Titre info Block Images List",
+        "data": {
+          "options": {
+            "darkenBg": true
+          },
+          "info": {
+            "title": "Titre Info Block EN",
+            "text": "Texte info Block 1 EN"
+          },
+          "list": [
+            {
+              "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+              "caption": "caption 1"
+            }
+          ]
+        }
+      },
+      {
       "id": "contact",
       "component": "ContactComponent",
       "title" : "Contactez-nous",
