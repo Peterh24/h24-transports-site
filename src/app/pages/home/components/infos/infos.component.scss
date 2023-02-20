@@ -1,3 +1,36 @@
 .infos {
-  min-height: 100vh;
+  margin: 8rem 0;
+  &__reverse {
+    .infos__wrapper {
+      flex-direction: row-reverse;
+      .infos__text {
+        align-items: flex-end;
+      }
+    }
+  }
+  &__wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 120rem;
+    margin: 0 auto;
+  }
+  &__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+  }
+
+  &__img {
+    flex: 1;
+    overflow: hidden;
+    img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+  }
 }

@@ -1,3 +1,15 @@
-<div class="infos">
-  {{(datas$ | async |json)}}
+<div class="infos" [id]="id" [class.infos__reverse]="(datas$ | async).options.imgTo == 'left'">
+  <div class="infos__wrapper">
+    <div class="infos__text">
+      <h2 class="infos__text__title">
+        {{(datas$ | async).info.title}}
+      </h2>
+
+      <div class="infos__text__text" [innerHTML]="(datas$ | async).info.text"></div>
+
+    </div>
+    <div class="infos__img">
+      <img [src]="(datas$ | async).info.img" alt="" />
+    </div>
+  </div>
 </div>
