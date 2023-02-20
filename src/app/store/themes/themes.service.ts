@@ -3,13 +3,15 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Themes } from "./themes.models";
 
-const url = "assets/datas/db-themes.json";
+
 
 @Injectable()
 export class ThemesService {
   constructor(private http: HttpClient) {}
 
-  getDictionaries(): Observable<Array<Themes>> {
+  getDictionaries(lang:string): Observable<Array<Themes>> {
+    let url = "assets/datas/" + lang + "/db-themes.json";
+    console.log('url: ', url);
     return this.http.get<Array<Themes>>(url);
   }
 }

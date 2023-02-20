@@ -67,5 +67,6 @@ export class MainMenuComponent implements OnInit {
     //this.globalService.currentTheme = theme;
     this.store.dispatch(new fromLanguage.LanguageChange(lang));
     this.store.dispatch(new fromThemes.LoaderStart());
+    this.store.dispatch(new fromThemes.Read());
   }
 }

@@ -1,11 +1,11 @@
 import { ThemesService } from './themes.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
 
 import * as fromRoot from '@app/store/';
 import * as fromActions from './themes.actions';
-import * as fromThemes from '@app/store/themes';
+import * as fromLanguage from '@app/store/language';
 import { Store } from '@ngrx/store';
 
 
@@ -20,8 +20,11 @@ export class ThemesEffects {
 
   read$ = createEffect(() => this.actions.pipe(
     ofType(fromActions.Types.READ),
-    switchMap(() =>  {
-      return this.themesService.getDictionaries().pipe(
+    withLatestFrom(
+      this.store.select(fromLanguage.getLanguage)
+    ),
+    switchMap(([action, currentlang]) =>  {
+      return this.themesService.getDictionaries(currentlang).pipe(
         map(data => {
           return new fromActions.ReadSuccess(data);
         }),

@@ -1,0 +1,23 @@
+[
+    {
+        "id": "event",
+        "title": "Transport & logistique<br /> événementiel EN",
+        "text": "Transport & logistique événementiel text TODO EN",
+        "img": "./assets/img/event-cover-picture.jpg",
+        "cta": "CTA Button"
+    },
+    {
+        "id": "express",
+        "title": "Transport<br /> Express Dédié EN",
+        "text": "Transport Express Dédié text TODO EN",
+        "img": "./assets/img/express-cover-picture.jpg",
+        "cta": "CTA Button"
+    },
+    {
+        "id": "application",
+        "title": "Notre nouvelle<br /> application mobile EN",
+        "text": "Notre nouvelle application mobile text TODO EN",
+        "img": "./assets/img/application-cover-picture.jpg",
+        "cta": "CTA Button"
+    }
+]
