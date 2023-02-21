@@ -8,7 +8,7 @@ import { AbstractControl } from '@angular/forms';
 })
 export class FormFieldComponent {
   @Input() control: AbstractControl;
-
+  @Input() patternError: string;
   hasError(): boolean {
     return this.control && this.control.invalid && this.control.touched;
   }

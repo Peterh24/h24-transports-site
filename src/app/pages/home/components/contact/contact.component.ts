@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Contact, JsonFormControls } from '@app/models/backend/components/contact';
 import { GlobalService } from '@app/services/global';
 import { Observable, take } from 'rxjs';
-
+import { regex, regexErrors } from '@app/shared/utils/regex';
 
 @Component({
   selector: 'app-contact',
@@ -14,6 +14,8 @@ export class ContactComponent implements OnInit  {
   public form: FormGroup = this.fb.group({});
   public datas$: Observable<Contact>;
   public id: string;
+  public regex: any = regex;
+  public regexErrors: any = regexErrors;
 
   constructor(
     private fb: FormBuilder,
@@ -62,7 +64,9 @@ export class ContactComponent implements OnInit  {
               validatorsToAdd.push(Validators.maxLength(value));
               break;
             case 'pattern':
-              validatorsToAdd.push(Validators.pattern(value));
+              if (value && this.regex[value]) {
+                validatorsToAdd.push(Validators.pattern(new RegExp(this.regex[value])));
+              }
               break;
             case 'nullValidator':
               if (value) {
@@ -84,7 +88,7 @@ export class ContactComponent implements OnInit  {
   }
 
   onSubmit(): void {
-    console.log('Submit !')
+    console.log('Submit !:', this.form)
   }
 
 }

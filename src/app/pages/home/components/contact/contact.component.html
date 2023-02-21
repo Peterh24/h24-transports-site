@@ -5,7 +5,7 @@
     <div class="contact__fields__wrap">
       <div class="contact__fields" *ngFor="let row of (datas$ | async).list" [class.field--inline]="row.length > 1">
         <div *ngFor="let field of row">
-          <app-form-field [control]="form.controls[field.name]">
+          <app-form-field [control]="form.controls[field.name]" [patternError]="field.validators.pattern ? regexErrors[field.name] : null">
             <ng-container [ngSwitch]="field.type">
               <app-input *ngSwitchCase="'text'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-input>
               <app-textarea *ngSwitchCase="'textarea'" formControlName="{{field.name}}" label="{{field.label}}" [required]="field.validators.required"></app-textarea>

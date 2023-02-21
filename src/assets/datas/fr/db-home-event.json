@@ -408,6 +408,18 @@
               ],
               [
                 {
+                    "name": "email",
+                    "label": "Email",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "pattern": "email"
+                    }
+                }
+              ],
+              [
+                {
                     "name": "gender",
                     "label": "genre",
                     "type": "text",
