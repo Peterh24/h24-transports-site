@@ -34,8 +34,13 @@ export class LoadingComponent implements OnInit, OnDestroy {
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
     this.globalService.flag = !this.globalService.flag;
-    if(this.router.url == '/prehome') {
 
+
+
+
+
+
+    if(this.router.url == '/prehome') {
       window.setTimeout(()=>{
         this.currentTheme$.pipe(take(1)).subscribe(
           theme => {
@@ -46,7 +51,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
             });
           }
         )
-
       }, 1000)
     } else {
       window.setTimeout(()=>{

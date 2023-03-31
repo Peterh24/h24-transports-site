@@ -19,7 +19,7 @@ export const getThemeNav = createSelector(
   getThemes,
   (state) => {
       return state.map(elem => {
-          return {'id': elem.id, 'title': elem.title}
+          return {'id': elem.id, 'title': elem.title, 'child': elem.child}
       })
   }
 );
@@ -29,7 +29,7 @@ export const getThemeData = createSelector(
   getThemes,
   (state) => {
       return state.map(elem => {
-          return {'id': elem.id, 'title': elem.title, 'text': elem.text, 'img': elem.img, 'cta': elem.cta}
+          return {'id': elem.id, 'title': elem.title, 'text': elem.text, 'img': elem.img, 'cta': elem.cta, 'child': elem.child}
       })
   }
 );
@@ -45,9 +45,22 @@ export const getCurrentThemeData = createSelector(
   getThemeData,
   getCurrentTheme,
   (theme, item) => {
-      return theme.find(elem => elem.id == item)
+    const foundTheme = theme.find(elem => elem.id == item);
+    if (foundTheme) {
+      return foundTheme;
+    } else {
+      // Si le thème n'est pas trouvé, chercher parmi les sous-thèmes
+      for (const t of theme) {
+        const foundChild = t.child.find(elem => elem.id == item);
+        if (foundChild) {
+          return foundChild;
+        }
+      }
+      // Si ni le thème ni aucun sous-thème n'a été trouvé, renvoyer null
+      return null;
+    }
   }
-)
+);
 
 
 export const themeExist = (params: string) => createSelector(

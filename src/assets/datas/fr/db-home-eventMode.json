@@ -1,6 +1,6 @@
 {
-    "id": "event",
-    "title": "Transport & logistique événementiel",
+    "id": "mode",
+    "title": "Transport Mode & luxe",
     "loader": {
         "img": ""
     },
@@ -28,7 +28,7 @@
                   },
                   {
                   "value": "98",
-                  "label": "courses réalisées"
+                  "label": "courses Mode réalisées"
                   }
           ]
       }

@@ -5,6 +5,7 @@ export interface Themes {
   img: string;
   cta: CTA;
   Loading: boolean
+  child?: Array<any>;
 }
 
 export interface CTA {

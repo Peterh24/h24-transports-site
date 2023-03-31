@@ -4,7 +4,24 @@
         "title": "Transport & logistique<br /> événementiel EN",
         "text": "Transport & logistique événementiel text TODO EN",
         "img": "./assets/img/event-cover-picture.jpg",
-        "cta": "CTA Button"
+        "cta": "CTA Button",
+        "child": [
+          {
+            "id": "eventAudiovisuel",
+            "title": "Transport Audiovisuel",
+            "img": "./assets/img/event-cover-picture.jpg"
+          },
+          {
+            "id": "eventMode",
+            "title": "Transport Mode & luxe",
+            "img": "./assets/img/event-cover-picture.jpg"
+          },
+          {
+            "id": "eventEvent",
+            "title": "Transport Événementiel",
+            "img": "./assets/img/event-cover-picture.jpg"
+          }
+        ]
     },
     {
         "id": "express",

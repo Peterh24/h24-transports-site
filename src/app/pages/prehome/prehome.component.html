@@ -1,12 +1,6 @@
 <div class="prehome">
   <div class="prehome__header">
     <app-logo></app-logo>
-
-    <div class="prehome__nav">
-      <div class="prehome__links">
-        <a class="app-a" *ngFor="let item of menu$ |async" (click)="goToTheme(item.id)" [innerHTML]="item.title"></a>
-      </div>
-  </div>
   </div>
 
   <div class="theme-slider flexbox-slider-4">
@@ -15,9 +9,14 @@
       <div class="theme-slider__content">
         <div class="theme-slider__content__wrapper">
           <h2 class="theme-slider__content__title" [innerHTML]="data.title"></h2>
-          <p class="theme-slider__content__text" [innerHTML]="data.text"></p>
-          <div class="theme-slider__content__cta">
+          <div class="theme-slider__content__text" [innerHTML]="data.text"></div>
+          <div class="theme-slider__content__cta" *ngIf="!data.cta || data.child?.length == 0">
             <button (click)="goToTheme(data.id)" class="app-button">{{data.cta}}</button>
+          </div>
+        </div>
+        <div class="theme-slider__child" *ngIf="data.child?.length > 0">
+          <div class="theme-slider__child__item" *ngFor="let child of data.child" (click)="goToTheme(child.id)">
+            {{child.title}}
           </div>
         </div>
       </div>

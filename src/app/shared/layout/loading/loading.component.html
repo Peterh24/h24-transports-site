@@ -1,4 +1,5 @@
 <div [class]="'app-page theme_' + (currentTheme$ | async)">
+  {{(datas$ | async)}}
   <div class="app-loader" [ngStyle]="{'background-image': 'url(' + (datas$ | async).img + ')'}">
 
     <div class="app-loader__content">

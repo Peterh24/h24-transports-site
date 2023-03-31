@@ -26,8 +26,6 @@ export class PrehomeComponent implements OnInit {
         this.datas$ = this.store.pipe(select(fromThemes.getThemeData));
         this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
         this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
-
-        console.log('this.datas$: ', this.datas$);
     }
 
     goToTheme(theme:string):void {

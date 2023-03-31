@@ -1,6 +1,6 @@
 {
-    "id": "event",
-    "title": "Transport & logistique événementiel",
+    "id": "mode",
+    "title": "Transport Mode & luxe",
     "loader": {
         "img": ""
     },
@@ -8,7 +8,7 @@
       {
       "id": "keydata",
       "component": "KeyDataComponent",
-      "title" : "Chiffres clés",
+      "title" : "Chiffres clés fr Event",
       "data": {
           "info": {
               "img" : "./assets/img/event-cover-picture.jpg",
@@ -28,7 +28,7 @@
                   },
                   {
                   "value": "98",
-                  "label": "courses réalisées"
+                  "label": "courses Mode réalisées"
                   }
           ]
       }
@@ -36,7 +36,7 @@
       {
       "id": "ourvalues",
       "component": "OurValuesComponent",
-      "title" : "Nos Valeurs",
+      "title" : "Nos Valeurs fr Event",
       "data": {
           "list": [
               {
@@ -69,7 +69,7 @@
       {
         "id": "teasingFull",
         "component": "TeasingComponent",
-        "title": "Teasing Full Video",
+        "title": "Teasing Full Video fr Event",
         "data": {
             "info": {
                 "title": "TeasingFull",
@@ -83,7 +83,7 @@
         {
           "id": "teasingText",
           "component": "TeasingComponent",
-          "title": "Teasing Text",
+          "title": "Teasing Text fr Event",
           "data": {
               "info": {
                   "title": "TeasingFull",
@@ -94,7 +94,7 @@
       {
       "id": "timelimit",
       "component": "TimeLimitComponent",
-      "title": "Nos délais d'intervention",
+      "title": "Nos délais d'intervention fr Event",
       "data": {
           "info": {
               "title": "Nos délais d'intervention",
@@ -131,7 +131,7 @@
       {
       "id": "ourVehicles",
       "component": "OurVehiclesComponent",
-      "title": "Nos véhicules",
+      "title": "Nos véhicules fr Event",
       "data": {
           "info": {
               "title": "Nos véhicules"
@@ -255,7 +255,7 @@
       {
       "id": "client",
       "component":"ClientComponent",
-      "title": "Ils nous font confiance",
+      "title": "Ils nous font confiance fr Event",
       "data": {
           "info": {
             "title": "Ils nous font confiance",
@@ -303,8 +303,11 @@
       {
       "id": "news",
       "component":"NewsComponent",
-      "title": "Actualités",
+      "title": "Actualités fr Event",
       "data": {
+        "options": {
+          "darkenBg": true
+        },
         "info": {
           "title": "Actualités"
         },
@@ -345,8 +348,8 @@
               "imgTo": "right"
             },
             "info": {
-                "title": "Titre Info Block EN",
-                "text": "Texte info Block 1 EN",
+                "title": "Titre Info Block",
+                "text": "Texte info Block 1",
                 "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg"
             }
         }
@@ -360,8 +363,8 @@
             "darkenBg": true
           },
           "info": {
-            "title": "Titre Info Block EN",
-            "text": "Texte info Block 1 EN"
+            "title": "Titre Info Block",
+            "text": "Texte info Block 1"
           },
           "list": [
             {
@@ -374,7 +377,7 @@
       {
       "id": "contact",
       "component": "ContactComponent",
-      "title" : "Contactez-nous",
+      "title" : "Contactez-nous fr Event",
       "data": {
           "info": {
             "title": "Contactez-nous",
@@ -402,6 +405,18 @@
                     "minLength": 5
                   }
               }
+              ],
+              [
+                {
+                    "name": "email",
+                    "label": "Email",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "pattern": "email"
+                    }
+                }
               ],
               [
                 {

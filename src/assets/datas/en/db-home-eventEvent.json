@@ -1,0 +1,461 @@
+{
+    "id": "event",
+    "title": "Transport événementiel",
+    "loader": {
+        "img": ""
+    },
+    "componentsList": [
+      {
+      "id": "keydata",
+      "component": "KeyDataComponent",
+      "title" : "Chiffres clés fr Event",
+      "data": {
+          "info": {
+              "img" : "./assets/img/event-cover-picture.jpg",
+              "link": {
+                  "label": "DEMANDEZ VOTRE DEVIS",
+                  "url": "#contact"
+              }
+          },
+          "list": [
+              {
+                  "value": "45",
+                  "label": "clients satisfaits"
+                  },
+                  {
+                  "value": "356",
+                  "label": "Kilomètres parcourus"
+                  },
+                  {
+                  "value": "98",
+                  "label": "courses Event réalisées"
+                  }
+          ]
+      }
+      },
+      {
+      "id": "ourvalues",
+      "component": "OurValuesComponent",
+      "title" : "Nos Valeurs fr Event",
+      "data": {
+          "list": [
+              {
+                "img": "./assets/img/camions-flotte.jpg",
+                "picto": "timer",
+                "title": "7j/7 24h/24",
+                "text": "TODO Texte a remplir"
+              },
+              {
+                "img": "./assets/img/securite.jpg",
+                "picto": "security",
+                "title": "Sécurité",
+                "text": "TODO Texte a remplir"
+              },
+              {
+                "img": "./assets/img/optimisation.jpg",
+                "picto": "settings",
+                "title": "Optimisation",
+                "text": "TODO Texte a remplir"
+              },
+              {
+                "img": "./assets/img/confiance.jpg",
+                "picto": "key",
+                "title": "Confiance",
+                "text": "TODO Texte a remplir"
+              }
+          ]
+      }
+      },
+      {
+        "id": "teasingFull",
+        "component": "TeasingComponent",
+        "title": "Teasing Full Video fr Event",
+        "data": {
+            "info": {
+                "title": "TeasingFull",
+                "videoId": "W0LHTWG-UmQ",
+                "img": "./assets/img/h24-transports-picture.jpg",
+                "icon": "local_shipping",
+                "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+            }
+        }
+        },
+        {
+          "id": "teasingText",
+          "component": "TeasingComponent",
+          "title": "Teasing Text fr Event",
+          "data": {
+              "info": {
+                  "title": "TeasingFull",
+                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+              }
+          }
+        },
+      {
+      "id": "timelimit",
+      "component": "TimeLimitComponent",
+      "title": "Nos délais d'intervention fr Event",
+      "data": {
+          "info": {
+              "title": "Nos délais d'intervention",
+              "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic."
+          },
+          "list":[
+              {
+                "id": "paris",
+                "country": "Paris",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "1h"
+              },
+              {
+                "id": "idf",
+                "country": "Île-de-France",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "3h"
+              },
+              {
+                "id": "france",
+                "country": "France",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "12h"
+              },
+              {
+                "id": "international",
+                "country": "International",
+                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+                "time": "Selon le pays"
+              }
+          ]
+      }
+      },
+      {
+      "id": "ourVehicles",
+      "component": "OurVehiclesComponent",
+      "title": "Nos véhicules fr Event",
+      "data": {
+          "info": {
+              "title": "Nos véhicules"
+          },
+          "list": [
+              {
+                  "title": "3m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.png",
+                  "description": [
+                      {
+                          "label": "Longueur du véhicule",
+                          "value": "4,5 mètres"
+                      },
+                      {
+                          "label": "Hauteur du véhicule",
+                          "value": "1,85 mètres"
+                      },
+                      {
+                          "label": "Profondeur du coffre",
+                          "value": "1,7 mètres"
+                      },
+                      {
+                          "label": "Hauteur du coffre",
+                          "value": "1,15 mètres"
+                      },
+                      {
+                          "label": "Charge utile",
+                          "value": "415 kg"
+                      }
+                  ]
+              },
+              {
+                  "title": "6/8m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.png",
+                  "description": [
+                      {
+                          "label": "Longueur du véhicule",
+                          "value": "4,9 mètres"
+                      },
+                      {
+                          "label": "Hauteur du véhicule",
+                          "value": "1,9 mètres"
+                      },
+                      {
+                          "label": "Profondeur du coffre",
+                          "value": "2,4 mètres"
+                      },
+                      {
+                          "label": "Hauteur du coffre",
+                          "value": "1,3 mètres"
+                      },
+                      {
+                          "label": "Charge utile",
+                          "value": "820 kg"
+                      }
+                  ]
+              },
+              {
+                  "title": "12/14m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.png",
+                  "description": [
+                      {
+                          "label": "Longueur du véhicule",
+                          "value": "6,8 mètres"
+                      },
+                      {
+                          "label": "Hauteur du véhicule",
+                          "value": "2,6 mètres"
+                      },
+                      {
+                          "label": "Hayon",
+                          "value": "inclus"
+                      },
+                      {
+                          "label": "Profondeur du coffre",
+                          "value": "4,0 mètres"
+                      },
+                      {
+                          "label": "Hauteur du coffre",
+                          "value": "1,9 mètres"
+                      },
+                      {
+                          "label": "Charge utile",
+                          "value": "1300 kg"
+                      }
+                  ]
+              },
+              {
+                  "title": "20m<sup>3</sup>",
+                  "illustration": "./assets/img/camion-6-8m3.png",
+                  "description": [
+                      {
+                          "label": "Longueur du véhicule",
+                          "value": "6,8 mètres"
+                      },
+                      {
+                          "label": "Hauteur du véhicule",
+                          "value": "3,4 mètres"
+                      },
+                      {
+                          "label": "Hayon",
+                          "value": "inclus"
+                      },
+                      {
+                          "label": "Profondeur du coffre",
+                          "value": "4,2 mètres"
+                      },
+                      {
+                          "label": "Hauteur du coffre",
+                          "value": "2,2 mètres"
+                      },
+                      {
+                          "label": "Charge utile",
+                          "value": "700 kg"
+                      }
+                  ]
+              }
+          ]
+      }
+      },
+      {
+      "id": "client",
+      "component":"ClientComponent",
+      "title": "Ils nous font confiance fr Event",
+      "data": {
+          "info": {
+            "title": "Ils nous font confiance",
+            "imgStyle":"white"
+          },
+          "list": [
+              {
+                  "name": "Vantage",
+                  "img": "vantage.png",
+                  "url": "https://www.vantagemarkets.com/fr-fr/"
+              },
+              {
+                  "name": "LB Studio",
+                  "img": "lb-studio.png",
+                  "url": "http://lb-studiophoto.eu/"
+              },
+              {
+                  "name": "Cininter",
+                  "img": "cininter.png",
+                  "url": "https://www.cininter.fr/"
+              },
+              {
+                  "name": "Eye lite",
+                  "img": "eye-lite.png",
+                  "url": "https://www.eye-lite.com/fr/"
+              },
+              {
+                  "name": "Direct Digital",
+                  "img": "direct-digital.png",
+                  "url": "https://www.direct-digital.com/fr-fr"
+              },
+              {
+                  "name": "Next shot",
+                  "img": "next-shot.png",
+                  "url": "https://www.nextshot.com/"
+              },
+              {
+                  "name": "Rouchon",
+                  "img": "rouchon.png",
+                  "url": "https://rouchonparis.com/"
+              }
+          ]
+      }
+      },
+      {
+      "id": "news",
+      "component":"NewsComponent",
+      "title": "Actualités fr Event",
+      "data": {
+        "options": {
+          "darkenBg": true
+        },
+        "info": {
+          "title": "Actualités"
+        },
+          "list": [
+              {
+                  "title": "Titre de l'actualité sur 2 lignes",
+                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
+                  "img": "./assets/img/express-cover-picture.jpg",
+                  "date": "01/02/2023"
+              },
+              {
+                  "title": "Titre de l'actualité sur 2 lignes",
+                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
+                  "img": "./assets/img/event-cover-picture.jpg",
+                  "date": "01/11/2021"
+              },
+              {
+                  "title": "Titre de l'actualité sur 2 lignes",
+                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
+                  "img": "./assets/img/confiance.jpg",
+                  "date": "01/07/2022"
+              },
+              {
+                  "title": "Titre de l'actualité sur 2 lignes",
+                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
+                  "img": "./assets/img/h24-transports-picture.jpg",
+                  "date": "01/01/2023"
+              }
+          ]
+      }
+      },
+      {
+        "id": "infosblock1",
+        "component": "InfosComponent",
+        "title": "Titre info Block",
+        "data": {
+            "options": {
+              "imgTo": "right"
+            },
+            "info": {
+                "title": "Titre Info Block",
+                "text": "Texte info Block 1",
+                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg"
+            }
+        }
+      },
+      {
+        "id": "infosblock2",
+        "component": "InfosImgComponent",
+        "title": "Titre info Block Images List",
+        "data": {
+          "options": {
+            "darkenBg": true
+          },
+          "info": {
+            "title": "Titre Info Block",
+            "text": "Texte info Block 1"
+          },
+          "list": [
+            {
+              "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+              "caption": "caption 1"
+            }
+          ]
+        }
+      },
+      {
+      "id": "contact",
+      "component": "ContactComponent",
+      "title" : "Contactez-nous fr Event",
+      "data": {
+          "info": {
+            "title": "Contactez-nous",
+            "btn" : "Envoyer"
+          },
+          "list": [
+              [
+                {
+                    "name": "lastname",
+                    "label": "Nom",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 12
+                    }
+                },
+                {
+                  "name": "firstname",
+                  "label": "Prénom",
+                  "type": "text",
+                  "value:": "",
+                  "validators": {
+                    "required": true,
+                    "minLength": 5
+                  }
+              }
+              ],
+              [
+                {
+                    "name": "email",
+                    "label": "Email",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "pattern": "email"
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "gender",
+                    "label": "genre",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 7
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "subject",
+                    "label": "Sujet",
+                    "type": "text",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 54
+                    }
+                }
+              ],
+              [
+                {
+                    "name": "message",
+                    "label": "Votre message",
+                    "type": "textarea",
+                    "value:": "",
+                    "validators": {
+                      "required": true,
+                      "minLength": 12
+                    }
+                }
+              ]
+          ]
+      }
+    }
+  ]
+}

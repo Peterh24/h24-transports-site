@@ -11,7 +11,6 @@ export class ThemesService {
 
   getDictionaries(lang:string): Observable<Array<Themes>> {
     let url = "assets/datas/" + lang + "/db-themes.json";
-    console.log('url: ', url);
     return this.http.get<Array<Themes>>(url);
   }
 }
