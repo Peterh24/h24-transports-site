@@ -7,7 +7,7 @@ import { Dictionaries } from "./dictionaries.models";
 export class DictionariesService {
   constructor(private http: HttpClient) {}
 
-  getDictionaries(theme: string, lang:string): Observable<Dictionaries> {
+  getDictionaries(theme: any, lang:string): Observable<Dictionaries> {
     return this.http.get<Dictionaries>("assets/datas/"+ lang +"/db-home-"+ theme +".json");
   }
 }

@@ -31,7 +31,7 @@ export class DictionariesEffects {
       if (!currentTheme) {
         return [];
       } else {
-        return this.dictionariesService.getDictionaries(currentTheme, currentlang).pipe(
+        return this.dictionariesService.getDictionaries((currentTheme.child || currentTheme.currentTheme), currentlang).pipe(
           map(data => {
             return new fromActions.ReadSuccess([data]);
           }),

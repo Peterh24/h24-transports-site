@@ -24,7 +24,7 @@ export class MainMenuComponent implements OnInit {
   @Input()test: any;
   menuState$: Observable<boolean>;
   themeList$: Observable<any>;
-  currentTheme$: Observable<string>;
+  currentTheme$: Observable<any>;
   componentList$: Observable<any>;
 
   faIcons:any = {

@@ -14,7 +14,7 @@ import { GlobalService } from '@app/services/global';
 export class PrehomeComponent implements OnInit {
     menu$: Observable<any>;
     datas$: Observable<any>;
-    currentTheme$: Observable<string>;
+    currentTheme$: Observable<any>;
     loadingState$: Observable<boolean>;
     constructor(
         private store: Store<fromRoot.State>,

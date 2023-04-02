@@ -19,6 +19,7 @@ export class LoadingComponent implements OnInit, OnDestroy {
   datas$: Observable<any>;
   currentTheme$: Observable<any>;
   loadingState$: Observable<boolean>;
+  localCurrentTheme: string;
   constructor(
     private store: Store<fromRoot.State>,
     private router: Router,
@@ -37,36 +38,58 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
 
 
+    this.currentTheme$.pipe(take(1)).subscribe(
+      theme => {
+        this.localCurrentTheme = (theme.child || theme.currentTheme);
+        let route: string;
+        if(!theme.child){
+          route = '/home/' + theme.currentTheme;
+        } else {
+          route = '/home/' + theme.currentTheme + '/' + theme.child
+        }
+        console.log('route: ', route);
+        window.setTimeout(()=>{
+          this.router.navigate([route]).then(() => {
+            window.setTimeout(()=>{
+              this.store.dispatch(new fromThemes.LoaderStop());
+            }, this.timer)
+          })
+
+          this.store.dispatch(new fromNavigation.NavClose);
+
+        }, 1000)
+      }
+    )
 
 
+    // if(this.router.url == '/prehome') {
+    //   window.setTimeout(()=>{
+    //     this.currentTheme$.pipe(take(1)).subscribe(
+    //       theme => {
+    //         this.localCurrentTheme = (theme.child || theme.currentTheme);
+    //         this.router.navigate(['/home', (theme.child || theme.currentTheme)]).then(() => {
+    //           window.setTimeout(()=>{
+    //             this.store.dispatch(new fromThemes.LoaderStop());
+    //           }, this.timer)
+    //         });
+    //       }
+    //     )
+    //   }, 1000)
+    // } else {
+    //   window.setTimeout(()=>{
+    //     this.currentTheme$.pipe(take(1)).subscribe(
+    //       theme => {
+    //         this.router.navigate(['/home', (theme.child || theme.currentTheme)]).then(() => {
+    //           window.setTimeout(()=>{
+    //             this.store.dispatch(new fromThemes.LoaderStop());
+    //            }, this.timer)
+    //         });
+    //       }
+    //     )
 
-    if(this.router.url == '/prehome') {
-      window.setTimeout(()=>{
-        this.currentTheme$.pipe(take(1)).subscribe(
-          theme => {
-            this.router.navigate(['/home', theme]).then(() => {
-              window.setTimeout(()=>{
-                this.store.dispatch(new fromThemes.LoaderStop());
-              }, this.timer)
-            });
-          }
-        )
-      }, 1000)
-    } else {
-      window.setTimeout(()=>{
-        this.currentTheme$.pipe(take(1)).subscribe(
-          theme => {
-            this.router.navigate(['/home', theme]).then(() => {
-              window.setTimeout(()=>{
-                this.store.dispatch(new fromThemes.LoaderStop());
-               }, this.timer)
-            });
-          }
-        )
-
-        this.store.dispatch(new fromNavigation.NavClose);
-      }, 1000)
-    }
+    //     this.store.dispatch(new fromNavigation.NavClose);
+    //   }, 1000)
+    // }
 
   }
 

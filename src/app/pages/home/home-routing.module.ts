@@ -10,6 +10,12 @@ const routes: Routes = [
   {
     path: ':theme',
     component: HomeComponent,
+    children: [
+      {
+        path: ':childTheme',
+        component: HomeComponent,
+      }
+    ]
   }
 ];
 
