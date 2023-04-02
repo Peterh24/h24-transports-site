@@ -9,17 +9,17 @@
           {
             "id": "eventAudiovisuel",
             "title": "Transport Audiovisuel",
-            "img": "./assets/img/event-cover-picture.jpg"
+            "img": "https://img.freepik.com/photos-gratuite/texture-mur-stuc-bleu-marine-relief-decoratif-abstrait-grunge-fond-colore-rugueux-grand-angle_1258-28311.jpg?w=1380&t=st=1680468968~exp=1680469568~hmac=eb296465d6f4e4f04f33cbff1d51127d876e573f8e2188fc517763855d720a6f"
           },
           {
             "id": "eventMode",
             "title": "Transport Mode & luxe",
-            "img": "./assets/img/event-cover-picture.jpg"
+            "img": "https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           },
           {
             "id": "eventEvent",
             "title": "Transport Événementiel",
-            "img": "./assets/img/event-cover-picture.jpg"
+            "img": "https://img.freepik.com/free-photo/beautiful-milky-way-night-sky_53876-139825.jpg?w=1800&t=st=1680469041~exp=1680469641~hmac=79aee0ea571f1cc8680c9801aac7da7b9761fc1a737a6b71b160941a2eea38e7"
           }
         ]
     },

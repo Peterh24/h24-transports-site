@@ -16,6 +16,7 @@ export class PrehomeComponent implements OnInit {
     datas$: Observable<any>;
     currentTheme$: Observable<any>;
     loadingState$: Observable<boolean>;
+    currentchild: string;
     constructor(
         private store: Store<fromRoot.State>,
         private globalService: GlobalService,
@@ -33,5 +34,9 @@ export class PrehomeComponent implements OnInit {
       this.store.dispatch(new fromThemes.AddCurrentTheme(theme));
 
       this.store.dispatch(new fromThemes.LoaderStart());
+    }
+
+    changePicture(id: string) {
+      this.currentchild = id;
     }
 }
