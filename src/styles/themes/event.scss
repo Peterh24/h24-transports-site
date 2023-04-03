@@ -116,7 +116,7 @@
     }
     &::after {
       background: $on-event;
-      // box-shadow: 0 0 0vw 0vw $on-event;
+      box-shadow: 0 0 0vw 0vw $on-event;
     }
   }
 
