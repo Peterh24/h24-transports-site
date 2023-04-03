@@ -119,11 +119,11 @@
 
   .firefly {
     &::before {
-      background: #000;
+      background: $on-express;
     }
     &::after {
-      background: #000;
-      box-shadow: 0 0 0vw 0vw orange;
+      background: $on-express;
+      box-shadow: 0 0 0vw 0vw $on-express;
     }
   }
 
