@@ -1,26 +1,27 @@
 $event: #20201d;
 $event-dark: #10100e;
-$event-input: #90908e;
-$on-event: #ffffff;
+$on-event: #FFFFFF;
+$event-input: rgba(red($on-event), green($on-event), blue($on-event), .65);
 
-$express: #ffffff;
-$express-dark: #e6e6e6;
-$express-input: #90908e;
-$on-express: #20201d;
+$express: #13264A;
+$express-dark: #111F3A;
+$on-express: #FFFFFF;
+$express-input: rgba(red($on-express), green($on-express), blue($on-express), .65);
 
-$application: #FFCF3B;
-$application-dark: #e6bb36;
-$application-input: #90908e;
+$application: #FFFFFF;
+$application-dark: #E7E7E7;
 $on-application: #20201d;
+$on-application-alt: #F59239;
+$application-input: rgba(red($on-application), green($on-application), blue($on-application), .65);
 
 $error: #f44336;
-$on-error: #fff;
+$on-error: #FFFFFF;
 
 $success: #8bc34a;
-$on-success: #ffffff;
+$on-success: #FFFFFF;
 
 $waiting: #ffa726;
-$on-waiting: #ffffff;
+$on-waiting: #FFFFFF;
 
 $social-fb: #1877f2;
 $social-tw: #1d98f0;
