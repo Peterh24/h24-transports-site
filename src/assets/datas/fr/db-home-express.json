@@ -8,7 +8,7 @@
       {
       "id": "keydata",
       "component": "KeyDataComponent",
-      "title" : "Chiffres clés fr Express",
+      "title" : "Chiffres clés",
       "data": {
           "info": {
               "img" : "./assets/img/express-cover-picture.jpg",
@@ -36,7 +36,7 @@
       {
       "id": "ourvalues",
       "component": "OurValuesComponent",
-      "title" : "Nos Valeurs fr Express",
+      "title" : "Nos Valeurs",
       "data": {
           "list": [
               {
@@ -69,7 +69,7 @@
       {
         "id": "teasingFull",
         "component": "TeasingComponent",
-        "title": "Teasing Full Video fr Express",
+        "title": "Teasing Full Video",
         "data": {
             "info": {
                 "title": "TeasingFull",
@@ -83,7 +83,7 @@
         {
           "id": "teasingText",
           "component": "TeasingComponent",
-          "title": "Teasing Text fr Express",
+          "title": "Teasing Text",
           "data": {
               "info": {
                   "title": "TeasingFull",
@@ -94,7 +94,7 @@
       {
       "id": "timelimit",
       "component": "TimeLimitComponent",
-      "title": "Nos délais d'intervention fr Express",
+      "title": "Nos délais d'intervention",
       "data": {
           "info": {
               "title": "Nos délais d'intervention",
@@ -131,7 +131,7 @@
       {
       "id": "ourVehicles",
       "component": "OurVehiclesComponent",
-      "title": "Nos véhicules fr Express",
+      "title": "Nos véhicules",
       "data": {
           "info": {
               "title": "Nos véhicules"
@@ -255,7 +255,7 @@
       {
       "id": "client",
       "component":"ClientComponent",
-      "title": "Ils nous font confiance fr Express",
+      "title": "Ils nous font confiance",
       "data": {
           "info": {
             "title": "Ils nous font confiance",
@@ -303,7 +303,7 @@
       {
       "id": "news",
       "component":"NewsComponent",
-      "title": "Actualités fr Express",
+      "title": "Actualités",
       "data": {
         "info": {
           "title": "Actualités"
@@ -339,7 +339,7 @@
       {
       "id": "contact",
       "component": "ContactComponent",
-      "title" : "Contactez-nous fr Express",
+      "title" : "Contactez-nous",
       "data": {
           "info": {
             "title": "Contactez-nous",

@@ -97,16 +97,27 @@
   .tds-modal-backdrop--open {
     background-color: rgba(red($on-application), green($on-application), blue($on-application), .3);
   }
+
   .submenu {
-    ol {
+    &__list {
       &::after {
         background: $on-application;
       }
     }
-    &__item {
+    &__item, &__item ul li {
       &::before {
         background: $on-application;
       }
+    }
+  }
+
+  .firefly {
+    &::before {
+      background: #000;
+    }
+    &::after {
+      background: #000;
+      box-shadow: 0 0 0vw 0vw blue;
     }
   }
 

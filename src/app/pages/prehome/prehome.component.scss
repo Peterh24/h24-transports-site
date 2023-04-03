@@ -168,6 +168,7 @@ $overlayOpacity: .8;
     &__title {
       font-family: $alt-font-family;
       text-transform: uppercase;
+      max-width: 40rem;
       &:after {
         content: "";
         display: block;

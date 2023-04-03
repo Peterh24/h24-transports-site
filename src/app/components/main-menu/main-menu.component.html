@@ -1,26 +1,43 @@
 <nav class="app-main-nav main-nav" [class.app-main-nav--open]="menuState$ | async">
+  <div class="bg-animation">
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+  </div>
   <div class="main-nav__header">
     <app-logo></app-logo>
   </div>
 
   <div class="submenu">
-    <ol class="submenu__list">
-      <li *ngFor="let theme of themeList$ | async" class="submenu__item" [class.submenu__item--active]="(currentTheme$ | async) == theme.id" >
-        <a class="submenu__list__link" (click)="switchTheme(theme.id)" [innerHTML]="theme.title"></a>
+    <ul class="submenu__list">
+      <li *ngFor="let theme of themeList$ | async" class="submenu__item" [class.submenu__item--active]="(currentTheme$ | async).currentTheme == theme.id" >
+        <a class="submenu__list__link" (click)="theme.child.length === 0 ? switchTheme(theme.id) : null">{{theme.title}}</a>
         <ul *ngIf="theme.child.length > 0">
-          <li *ngFor="let child of theme.child">
-            <a class="submenu__list__link" (click)="switchTheme(child.id)" [innerHTML]="child.title"></a>
+          <li *ngFor="let child of theme.child" [class.submenu__item--active]="(currentTheme$ | async).child == child.id">
+            <a class="submenu__list__link" (click)="switchTheme(child.id)">{{child.title}}</a>
           </li>
         </ul>
       </li>
-    </ol>
+    </ul>
 
 
-    <ol class="anchor__list">
+    <ul class="anchor__list">
       <li *ngFor="let component of componentList$ | async">
         <a class="app-a anchor__list__link" (click)="goToAnchor(component.id)">{{component.title}}</a>
       </li>
-    </ol>
+    </ul>
 
     <div class="social__list">
         <a class="social__list__link app-a" href="https://www.facebook.com/"><fa-icon [icon]="faIcons.faFacebookF"></fa-icon></a>
@@ -28,42 +45,47 @@
         <a class="social__list__link app-a" href="https://www.instagram.com/"><fa-icon [icon]="faIcons.faInstagram"></fa-icon></a>
     </div>
 
-    <div class="contact">
-      <div class="contact__info">
-        <div class="contact__icon"><mat-icon fontIcon="pin_drop"></mat-icon></div>
-        <div class="contact__text">
-          <p>
-            5 rue pelloutier
-          </p>
-          <p>
-            77183 CROISSY BEAUBOURG
-          </p>
+    <div class="footer">
+      <div class="contact">
+        <div class="contact__info">
+          <div class="contact__icon"><mat-icon fontIcon="pin_drop"></mat-icon></div>
+          <div class="contact__text">
+            <p>
+              5 rue pelloutier
+            </p>
+            <p>
+              77183 CROISSY BEAUBOURG
+            </p>
+          </div>
+        </div>
+
+        <div class="contact__info">
+          <div class="contact__icon"><mat-icon fontIcon="phone"></mat-icon></div>
+          <div class="contact__text">
+            <p>
+              +33(0)1 80 27 54 60
+            </p>
+          </div>
+        </div>
+
+        <div class="contact__info">
+          <div class="contact__icon"><mat-icon fontIcon="mail_outline"></mat-icon></div>
+          <div class="contact__text">
+            <p>
+              contact@h24transports.com
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="contact__info">
-        <div class="contact__icon"><mat-icon fontIcon="phone"></mat-icon></div>
-        <div class="contact__text">
-          <p>
-            +33(0)1 80 27 54 60
-          </p>
-        </div>
-      </div>
-
-      <div class="contact__info">
-        <div class="contact__icon"><mat-icon fontIcon="mail_outline"></mat-icon></div>
-        <div class="contact__text">
-          <p>
-            contact@h24transports.com
-          </p>
-        </div>
+      <div class="language">
+        <a (click)="langChange('fr')">Fr</a> | <a (click)="langChange('en')">En</a>
       </div>
     </div>
+
   </div>
 
-  <div class="language">
-    <a (click)="langChange('fr')">Fr</a> | <a (click)="langChange('en')">En</a>
-  </div>
+
 
 
 </nav>

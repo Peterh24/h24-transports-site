@@ -98,19 +98,32 @@
     background-color: rgba(red($on-event), green($on-event), blue($on-event), .3);
   }
   .submenu {
-    ol {
+    &__list {
       &::after {
         background: $on-event;
       }
     }
-    &__item{
+    &__item, &__item ul li {
       &::before {
         background: $on-event;
       }
     }
   }
 
+  .firefly {
+    &::before {
+      background: #fff;
+    }
+    &::after {
+      background: #fff;
+      box-shadow: 0 0 0vw 0vw yellow;
+    }
+  }
+
   .social__list {
+    &::before {
+      background: $on-event;
+    }
     &__link {
       &:nth-child(1) {
         &:hover {

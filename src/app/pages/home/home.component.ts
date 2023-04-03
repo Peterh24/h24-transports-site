@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   loadingState$: Observable<boolean>;
 
   domReady: boolean = false;
-  paramMap: string;
   currentTheme: string;
   constructor(
     public globalService: GlobalService,
@@ -47,29 +46,24 @@ export class HomeComponent implements OnInit {
         }
       }
        else {
-          this.activatedRoute.paramMap.subscribe(paramMap => {
+          const lastUrlPart = this.router.url.split('?')[0].split('/').pop()
+          // Detect if the param exist
 
-            console.log('paramMap', paramMap);
+          if(lastUrlPart) {
+            // Test if the param theme exist in available theme
+            this.store.pipe(select(fromThemes.themeExist(lastUrlPart)), take(1)).subscribe(isThemeExist => {
+              if(isThemeExist) {
+                this.store.dispatch(new fromThemes.AddCurrentTheme(lastUrlPart));
+                this.domReady = true;
+              } else {
+                this.router.navigateByUrl('/');
+              }
+            })
 
-            this.paramMap = paramMap.get('childTheme') || paramMap.get('theme');
-            // Detect if the param exist
+          } else {
+            this.router.navigateByUrl('/');
+          }
 
-            if(this.paramMap) {
-              // Test if the param theme exist in available theme
-              this.store.pipe(select(fromThemes.themeExist(this.paramMap)), take(1)).subscribe(isThemeExist => {
-                if(isThemeExist) {
-                  this.store.dispatch(new fromThemes.AddCurrentTheme(this.paramMap));
-                  this.domReady = true;
-                } else {
-                  this.router.navigateByUrl('/');
-                }
-              })
-
-            } else {
-              this.router.navigateByUrl('/');
-            }
-
-          })
       }
     })
   }

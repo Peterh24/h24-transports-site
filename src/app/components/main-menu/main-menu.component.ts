@@ -46,6 +46,9 @@ export class MainMenuComponent implements OnInit {
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.componentList$ = this.store.pipe(select(fromDictionaries.getComponentList));
 
+    this.currentTheme$.pipe(take(1)).subscribe(theme => {
+      console.log('theme from menu: ', theme);
+    })
   }
 
   switchTheme(theme: string){

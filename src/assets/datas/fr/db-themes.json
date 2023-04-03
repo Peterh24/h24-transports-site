@@ -1,7 +1,7 @@
 [
     {
         "id": "event",
-        "title": "Logistique & Transport express<br /> audiovisuel et événementiel",
+        "title": "Logistique & Transport express audiovisuel et événementiel",
         "text": "<p>Spécialisée dans le transport de matériel audiovisuel et événementiel, notre équipe experte met tout en œuvre pour mener à bien chacun de vos projets.</p> <p>Quel que soit l’évènement :</p><ul><li>Publicité & Cinéma</li><li>Mode & Luxe</li><li>Concert & Salon</li></ul><p>La team H24 Transports vous apporte conseil et expertise afin de réaliser chacune de vos missions, aussi complexes soient-elles, avec un service personnalisé et de haute qualité.</p>",
         "img": "./assets/img/event-cover-picture.jpg",
         "cta": "En savoir plus",
@@ -25,7 +25,7 @@
     },
     {
         "id": "express",
-        "title": "Transport<br /> Express Dédié",
+        "title": "Transport Express Dédié",
         "text": "Transport Express Dédié text TODO",
         "img": "./assets/img/express-cover-picture.jpg",
         "cta": "En savoir plus",
@@ -33,7 +33,7 @@
     },
     {
         "id": "application",
-        "title": "Notre nouvelle<br /> application mobile",
+        "title": "Notre nouvelle application mobile",
         "text": "Notre nouvelle application mobile text TODO",
         "img": "./assets/img/application-cover-picture.jpg",
         "cta": "En savoir plus",
