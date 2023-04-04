@@ -4,7 +4,8 @@ export interface Themes {
   text: string;
   img: string;
   cta: CTA;
-  Loading: boolean
+  Loading: boolean;
+  inPrenav: boolean;
   child?: Array<any>;
 }
 

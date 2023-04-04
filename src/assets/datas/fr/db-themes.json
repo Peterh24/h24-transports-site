@@ -5,6 +5,7 @@
         "text": "<p>Spécialisée dans le transport de matériel audiovisuel et événementiel, notre équipe experte met tout en œuvre pour mener à bien chacun de vos projets.</p> <p>Quel que soit l’évènement :</p><ul><li>Publicité & Cinéma</li><li>Mode & Luxe</li><li>Concert & Salon</li></ul><p>La team H24 Transports vous apporte conseil et expertise afin de réaliser chacune de vos missions, aussi complexes soient-elles, avec un service personnalisé et de haute qualité.</p>",
         "img": "./assets/img/event-cover-picture.jpg",
         "cta": "En savoir plus",
+        "inPrenav": true,
         "child": [
           {
             "id": "eventAudiovisuel",
@@ -29,6 +30,7 @@
         "text": "Transport Express Dédié text TODO",
         "img": "./assets/img/express-cover-picture.jpg",
         "cta": "En savoir plus",
+        "inPrenav": true,
         "child": []
     },
     {
@@ -37,6 +39,16 @@
         "text": "Notre nouvelle application mobile text TODO",
         "img": "./assets/img/application-cover-picture.jpg",
         "cta": "En savoir plus",
+        "inPrenav": true,
         "child": []
+    },
+    {
+      "id": "aboutUs",
+      "title": "À propos",
+      "text": "Chez H24 Transports, votre satisfaction est notre engagement.",
+      "img": "./assets/img/application-cover-picture.jpg",
+      "cta": "En savoir plus",
+      "inPrenav": false,
+      "child": []
     }
 ]

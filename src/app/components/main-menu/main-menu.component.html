@@ -23,17 +23,17 @@
   <div class="submenu">
     <ul class="submenu__list">
       <li *ngFor="let theme of themeList$ | async" class="submenu__item" [class.submenu__item--active]="(currentTheme$ | async).currentTheme == theme.id" >
-        <a class="submenu__list__link" (click)="theme.child.length === 0 ? switchTheme(theme.id) : null">{{theme.title}}</a>
+        <a [routerLink]="!theme.inPrenav ? ('/'+theme.id): null" class="submenu__list__link" (click)="(theme.child.length === 0 && theme.inPrenav) ? switchTheme(theme.id) : null">{{theme.title}}</a>
         <ul *ngIf="theme.child.length > 0">
           <li *ngFor="let child of theme.child" [class.submenu__item--active]="(currentTheme$ | async).child == child.id">
-            <a class="submenu__list__link" (click)="switchTheme(child.id)">{{child.title}}</a>
+            <a class="submenu__list__link"  (click)="switchTheme(child.id)">{{child.title}}</a>
           </li>
         </ul>
       </li>
     </ul>
 
 
-    <ul class="anchor__list">
+    <ul class="anchor__list" *ngIf="(componentList$ | async).length > 0">
       <li *ngFor="let component of componentList$ | async">
         <a class="app-a anchor__list__link" (click)="goToAnchor(component.id)">{{component.title}}</a>
       </li>

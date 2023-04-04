@@ -103,6 +103,9 @@
       &::after {
         background: $on-application;
       }
+      &__link {
+        color: $on-application;
+      }
     }
     &__item, &__item ul li {
       &::before {

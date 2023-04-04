@@ -1,3 +1,5 @@
+import { MainMenuModule } from './../../components/main-menu/main-menu.module';
+import { FooterModule } from './../../components/footer/footer.module';
 import { ControlsModule } from '@app/shared/controls';
 import { SmoothScrollDirective } from './../../directives/smooth-scroll/index';
 import { NgModule } from '@angular/core';
@@ -8,9 +10,6 @@ import { SwiperModule } from 'swiper/angular';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { HeaderComponent } from '@app/components/header/header.component';
-import { MainMenuComponent } from '@app/components/main-menu/main-menu.component';
-import { FooterComponent } from '@app/components/footer/footer.component';
 import { KeyDataComponent } from './components/key-data/key-data.component';
 import { OurValuesComponent } from './components/our-values/our-values.component';
 import { TimeLimitComponent } from './components/time-limit/time-limit.component';
@@ -27,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from '@app/shared/buttons';
 import { InfosComponent } from './components/infos/infos.component';
 import { InfosImgComponent } from './components/infos-img/infos-img.component';
+import { HeaderModule } from '@app/components/header/header.module';
 
 
 
@@ -34,9 +34,6 @@ import { InfosImgComponent } from './components/infos-img/infos-img.component';
 @NgModule({
     declarations: [
         HomeComponent,
-        HeaderComponent,
-        MainMenuComponent,
-        FooterComponent,
         KeyDataComponent,
         OurValuesComponent,
         TimeLimitComponent,
@@ -61,7 +58,10 @@ import { InfosImgComponent } from './components/infos-img/infos-img.component';
         LoadingModule,
         SwiperModule,
         ControlsModule,
-        ButtonModule
+        ButtonModule,
+        FooterModule,
+        HeaderModule,
+        MainMenuModule
     ]
 })
 export class HomeModule { }

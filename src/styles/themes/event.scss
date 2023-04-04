@@ -1,4 +1,4 @@
-.theme_eventMode, .theme_eventEvent, .theme_eventAudiovisuel {
+.theme_eventMode, .theme_eventEvent, .theme_eventAudiovisuel, .theme_aboutUs {
   color: $on-event;
   background: $event;
 
@@ -101,6 +101,9 @@
     &__list {
       &::after {
         background: $on-event;
+      }
+      &__link {
+        color: $on-event;
       }
     }
     &__item, &__item ul li {

@@ -27,6 +27,7 @@ export class MainMenuComponent implements OnInit {
   currentTheme$: Observable<any>;
   componentList$: Observable<any>;
 
+  lastUrlPart: string;
   faIcons:any = {
     faFacebookF: faFacebookF,
     faInstagram: faInstagram,
@@ -46,8 +47,13 @@ export class MainMenuComponent implements OnInit {
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.componentList$ = this.store.pipe(select(fromDictionaries.getComponentList));
 
+    this.lastUrlPart = this.router.url.split('?')[0].split('/').pop();
+
     this.currentTheme$.pipe(take(1)).subscribe(theme => {
-      console.log('theme from menu: ', theme);
+
+      if(this.lastUrlPart == "aboutUs"){
+        this.store.dispatch(new fromThemes.AddCurrentTheme('aboutUs'));
+      }
     })
   }
 
@@ -67,9 +73,14 @@ export class MainMenuComponent implements OnInit {
   }
 
   langChange(lang: string): void {
-    //this.globalService.currentTheme = theme;
+
+
     this.store.dispatch(new fromLanguage.LanguageChange(lang));
-    this.store.dispatch(new fromThemes.LoaderStart());
-    this.store.dispatch(new fromThemes.Read());
+
+    if(this.lastUrlPart != "aboutUs" && this.lastUrlPart != "delay"){
+      this.store.dispatch(new fromThemes.LoaderStart());
+      this.store.dispatch(new fromThemes.Read());
+    }
+    this.closeMenu();
   }
 }

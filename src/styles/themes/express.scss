@@ -109,6 +109,9 @@
       &::after {
         background: $on-express;
       }
+      &__link {
+        color: $on-express;
+      }
     }
     &__item, &__item ul li {
       &::before {

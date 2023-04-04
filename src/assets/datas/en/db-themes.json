@@ -1,40 +1,54 @@
 [
     {
         "id": "event",
-        "title": "Transport & logistique<br /> événementiel EN",
-        "text": "Transport & logistique événementiel text TODO EN",
+        "title": "Logistique & Transport express audiovisuel et événementiel",
+        "text": "<p>Spécialisée dans le transport de matériel audiovisuel et événementiel, notre équipe experte met tout en œuvre pour mener à bien chacun de vos projets.</p> <p>Quel que soit l’évènement :</p><ul><li>Publicité & Cinéma</li><li>Mode & Luxe</li><li>Concert & Salon</li></ul><p>La team H24 Transports vous apporte conseil et expertise afin de réaliser chacune de vos missions, aussi complexes soient-elles, avec un service personnalisé et de haute qualité.</p>",
         "img": "./assets/img/event-cover-picture.jpg",
-        "cta": "CTA Button",
+        "cta": "En savoir plus",
+        "inPrenav": true,
         "child": [
           {
             "id": "eventAudiovisuel",
             "title": "Transport Audiovisuel",
-            "img": "./assets/img/event-cover-picture.jpg"
+            "img": "https://img.freepik.com/photos-gratuite/texture-mur-stuc-bleu-marine-relief-decoratif-abstrait-grunge-fond-colore-rugueux-grand-angle_1258-28311.jpg?w=1380&t=st=1680468968~exp=1680469568~hmac=eb296465d6f4e4f04f33cbff1d51127d876e573f8e2188fc517763855d720a6f"
           },
           {
             "id": "eventMode",
             "title": "Transport Mode & luxe",
-            "img": "./assets/img/event-cover-picture.jpg"
+            "img": "https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           },
           {
             "id": "eventEvent",
             "title": "Transport Événementiel",
-            "img": "./assets/img/event-cover-picture.jpg"
+            "img": "https://img.freepik.com/free-photo/beautiful-milky-way-night-sky_53876-139825.jpg?w=1800&t=st=1680469041~exp=1680469641~hmac=79aee0ea571f1cc8680c9801aac7da7b9761fc1a737a6b71b160941a2eea38e7"
           }
         ]
     },
     {
         "id": "express",
-        "title": "Transport<br /> Express Dédié EN",
-        "text": "Transport Express Dédié text TODO EN",
+        "title": "Transport Express Dédié",
+        "text": "Transport Express Dédié text TODO",
         "img": "./assets/img/express-cover-picture.jpg",
-        "cta": "CTA Button"
+        "cta": "En savoir plus",
+        "inPrenav": true,
+        "child": []
     },
     {
         "id": "application",
-        "title": "Notre nouvelle<br /> application mobile EN",
-        "text": "Notre nouvelle application mobile text TODO EN",
+        "title": "Notre nouvelle application mobile",
+        "text": "Notre nouvelle application mobile text TODO",
         "img": "./assets/img/application-cover-picture.jpg",
-        "cta": "CTA Button"
+        "cta": "En savoir plus",
+        "inPrenav": true,
+        "child": []
+    },
+    {
+      "id": "aboutUs",
+      "title": "À propos",
+      "text": "Chez H24 Transports, votre satisfaction est notre engagement.",
+      "img": "./assets/img/application-cover-picture.jpg",
+      "cta": "En savoir plus",
+      "inPrenav": false,
+      "child": []
     }
 ]

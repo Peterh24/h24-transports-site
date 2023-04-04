@@ -19,7 +19,7 @@ export const getThemeNav = createSelector(
   getThemes,
   (state) => {
       return state.map(elem => {
-          return {'id': elem.id, 'title': elem.title, 'child': elem.child}
+          return {'id': elem.id, 'title': elem.title, 'inPrenav': elem.inPrenav, 'child': elem.child}
       })
   }
 );
@@ -28,9 +28,13 @@ export const getThemeNav = createSelector(
 export const getThemeData = createSelector(
   getThemes,
   (state) => {
-      return state.map(elem => {
-          return {'id': elem.id, 'title': elem.title, 'text': elem.text, 'img': elem.img, 'cta': elem.cta, 'child': elem.child}
-      })
+    return state.map(elem => {
+      if (elem.inPrenav) {
+        return {'id': elem.id, 'title': elem.title, 'text': elem.text, 'img': elem.img, 'cta': elem.cta, 'inPrenav': elem.inPrenav, 'child': elem.child};
+      } else {
+        return null; // Ignore elements that don't meet the condition
+      }
+    }).filter(Boolean); // Filter out null elements
   }
 );
 

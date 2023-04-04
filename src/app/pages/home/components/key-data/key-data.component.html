@@ -1,13 +1,21 @@
 <div class="key-data" [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}" [id]="id">
   <div class="key-data__content">
-    <div class="key-data__List">
-      <div class="key-data__item" *ngFor="let key of (datas$ | async).list">
-        <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value"></div>
-        <div class="key-data__item__label">{{key.label}} </div>
-      </div>
+    <div class="key-data__content__text" *ngIf="(datas$ | async).info.text">
+      <h2>{{(datas$ | async).info.title}}</h2>
+      <p *ngFor="let text of (datas$ | async).info.text">{{text}}</p>
+      <a class="app-button" routerLink="/aboutUs">{{(datas$ | async).info.cta}}</a>
     </div>
-    <div class="key-data__cta" *ngIf="(datas$ | async).info.link.url as url">
-      <a class="app-button" (click)="goToAnchor(url)">{{(datas$ | async).info.link.label}}</a>
+
+    <div class="key-data__List__wrap">
+      <div class="key-data__List">
+        <div class="key-data__item" *ngFor="let key of (datas$ | async).list">
+          <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value"></div>
+          <div class="key-data__item__label">{{key.label}} </div>
+        </div>
+      </div>
+      <div class="key-data__cta" *ngIf="(datas$ | async).info.link.url as url">
+        <a class="app-button" (click)="goToAnchor(url)">{{(datas$ | async).info.link.label}}</a>
+      </div>
     </div>
   </div>
 </div>
