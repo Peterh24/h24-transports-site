@@ -68,6 +68,7 @@ export class TimeLimitComponent {
       return elem.id === locationId
     }).map(elem => {
       this.locationCurrent = elem;
+      menu.push(this.locationCurrent);
     })
   }
 }

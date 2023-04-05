@@ -83,6 +83,21 @@
       }
       },
       {
+        "id": "delay",
+        "component": "SimpleTextComponent",
+        "title": "Nos délais d'intervention",
+        "data": {
+          "info": {
+            "title": "Nos délais d'intervention",
+            "text": [
+              "Ils sont essentiels pour garantir la qualité et la ponctualité de la production et de la diffusion des contenus. Nous devons être rapides, fiables et capables de nous adapter aux imprévus."
+            ],
+            "cta": "voir les délais",
+            "url": "/delay"
+          }
+        }
+      },
+      {
         "id": "teasingFull",
         "component": "TeasingComponent",
         "title": "Teasing Full Video",
@@ -107,43 +122,6 @@
               }
           }
         },
-      {
-      "id": "timelimit",
-      "component": "TimeLimitComponent",
-      "title": "Nos délais d'intervention",
-      "data": {
-          "info": {
-              "title": "Nos délais d'intervention",
-              "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic."
-          },
-          "list":[
-              {
-                "id": "paris",
-                "country": "Paris",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "1h"
-              },
-              {
-                "id": "idf",
-                "country": "Île-de-France",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "3h"
-              },
-              {
-                "id": "france",
-                "country": "France",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "12h"
-              },
-              {
-                "id": "international",
-                "country": "International",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "Selon le pays"
-              }
-          ]
-      }
-      },
       {
       "id": "ourVehicles",
       "component": "OurVehiclesComponent",

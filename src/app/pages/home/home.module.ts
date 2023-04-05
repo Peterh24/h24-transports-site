@@ -27,6 +27,7 @@ import { ButtonModule } from '@app/shared/buttons';
 import { InfosComponent } from './components/infos/infos.component';
 import { InfosImgComponent } from './components/infos-img/infos-img.component';
 import { HeaderModule } from '@app/components/header/header.module';
+import { SimpleTextComponent } from './components/simple-text/simple-text.component';
 
 
 
@@ -46,7 +47,8 @@ import { HeaderModule } from '@app/components/header/header.module';
         AnimatedCounterDirective,
         SmoothScrollDirective,
         InfosComponent,
-        InfosImgComponent
+        InfosImgComponent,
+        SimpleTextComponent
     ],
     imports: [
         CommonModule,

@@ -50,5 +50,14 @@
       "cta": "En savoir plus",
       "inPrenav": false,
       "child": []
+    },
+    {
+      "id": "delay",
+      "title": "Nos délais d'intervention",
+      "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic.",
+      "img": "./assets/img/application-cover-picture.jpg",
+      "cta": "En savoir plus",
+      "inPrenav": false,
+      "child": []
     }
 ]

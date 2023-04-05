@@ -1,0 +1,11 @@
+<div class="simple-text" [id]="id">
+  <h2 class="simple-text__title">{{(datas$ | async).info.title}}</h2>
+  <div class="simple-text__textwrap">
+    <p *ngFor="let text of (datas$ | async).info.text">
+      {{text}}
+    </p>
+    <div class="simple-text__cta" *ngIf="(datas$ | async).info.cta">
+      <a class="app-button" [routerLink]="(datas$ | async).info.url">{{(datas$ | async).info.cta}}</a>
+    </div>
+  </div>
+</div>

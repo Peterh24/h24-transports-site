@@ -7,11 +7,13 @@ import { OurValuesComponent } from "@app/pages/home/components/our-values/our-va
 import { OurVehiclesComponent } from "@app/pages/home/components/our-vehicles/our-vehicles.component";
 import { TeasingComponent } from "@app/pages/home/components/teasing/teasing.component";
 import { TimeLimitComponent } from "@app/pages/home/components/time-limit/time-limit.component";
+import { SimpleTextComponent } from "@app/pages/home/components/simple-text/simple-text.component";
 import { select, Store } from "@ngrx/store";
 import { Observable, take } from "rxjs";
 
 import * as fromRoot from '@app/store/';
 import * as fromDictionaries from '@app/store/dictionaries';
+
 
 @Injectable()
 export class GlobalService {
@@ -26,7 +28,8 @@ export class GlobalService {
     'OurVehiclesComponent': OurVehiclesComponent,
     'TeasingComponent': TeasingComponent,
     'TimeLimitComponent': TimeLimitComponent,
-    'ClientComponent': ClientComponent
+    'ClientComponent': ClientComponent,
+    'SimpleTextComponent': SimpleTextComponent
   }
 
   public currentComponents = [ContactComponent, KeyDataComponent];

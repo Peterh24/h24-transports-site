@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'aboutUs',
         loadChildren: () => import('./pages/about-us/about-us.module').then(m => m.AboutUsModule),
+      },
+      {
+        path: 'delay',
+        loadChildren: () => import('./pages/delay/delay.module').then(m => m.DelayModule),
       }
     ]
   }

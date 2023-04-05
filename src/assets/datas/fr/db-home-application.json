@@ -67,6 +67,16 @@
       }
       },
       {
+        "id": "delay",
+        "component": "SimpleTextComponent",
+        "title": "Nos délais d'intervention",
+        "data": {
+          "info": {
+            "title": "Nos délais d'intervention"
+          }
+        }
+      },
+      {
         "id": "teasingFull",
         "component": "TeasingComponent",
         "title": "Teasing Full Video",

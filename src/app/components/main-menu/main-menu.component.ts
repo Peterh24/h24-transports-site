@@ -53,6 +53,10 @@ export class MainMenuComponent implements OnInit {
 
       if(this.lastUrlPart == "aboutUs"){
         this.store.dispatch(new fromThemes.AddCurrentTheme('aboutUs'));
+      } else if(this.lastUrlPart == "delay") {
+        this.store.dispatch(new fromThemes.AddCurrentTheme('delay'));
+      } else {
+        this.store.dispatch(new fromThemes.AddCurrentTheme('default'));
       }
     })
   }

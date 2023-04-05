@@ -1,0 +1,30 @@
+<div [class]="'app-page theme_' + (themeName$ | async)">
+  <app-header></app-header>
+  <app-main-menu></app-main-menu>
+
+  <div class="timelimit">
+    <div class="timelimit__info__wrap">
+      <h2>{{data.title}}</h2>
+      <p class="timelimit__intro">{{data.intro}}</p>
+    </div>
+
+    <div class="timelimit__swipper__wrap" #mapRef>
+      <div class="map__wrapper__img">
+        <img src="/assets/img/time-limit-map_white.svg" alt="">
+      </div>
+
+      <swiper [config]="config" *ngIf="flag">
+        <ng-template  [attr.class]="'map ' + 'slide-'+ slide.id" swiperSlide *ngFor="let slide of data.content">
+          <div class="map__wrapper">
+            <div class="map__wrapper__text">
+              <h3>{{slide.country}}</h3>
+              <p>{{slide.text}}</p>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
+    <div class="map__interaction"></div>
+  </div>
+  <app-footer></app-footer>
+</div>

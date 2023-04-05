@@ -10,6 +10,7 @@ import { TimeLimitComponent } from "@app/pages/home/components/time-limit/time-l
 import { OurValuesComponent } from "@app/pages/home/components/our-values/our-values.component";
 import { InfosComponent } from "@app/pages/home/components/infos/infos.component";
 import { InfosImgComponent } from "@app/pages/home/components/infos-img/infos-img.component";
+import { SimpleTextComponent } from "@app/pages/home/components/simple-text/simple-text.component";
 
 import { select, Store } from "@ngrx/store";
 import { Observable, skip, Subscription } from "rxjs";
@@ -17,6 +18,7 @@ import { Observable, skip, Subscription } from "rxjs";
 import * as fromRoot from '@app/store/';
 import * as fromDictionaries from '@app/store/dictionaries';
 import { Component } from "@app/models/backend";
+
 
 
 
@@ -45,6 +47,7 @@ export class LoaderDirective {
     'ClientComponent': ClientComponent,
     'InfosComponent': InfosComponent,
     'InfosImgComponent': InfosImgComponent,
+    'SimpleTextComponent': SimpleTextComponent,
   }
 
   private currentComponents:Array<string> = [];
