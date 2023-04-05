@@ -47,28 +47,37 @@
       "data": {
           "list": [
               {
-                "img": "./assets/img/camions-flotte.jpg",
-                "picto": "timer",
-                "title": "7j/7 24h/24",
-                "text": "TODO Texte a remplir"
-              },
-              {
                 "img": "./assets/img/securite.jpg",
                 "picto": "security",
                 "title": "Sécurité",
-                "text": "TODO Texte a remplir"
+                "text": [
+                  "Nos services s’adressent à une clientèle exigeante.",
+                  "H24 Transports propose des solutions de gardiennage sécurisé & vidéo-surveillé à l’intérieur même de nos locaux. Ce service vous est proposé lorsque vos départs et ou retours matériels ne sont pas réalisables dans l’immédiat."
+                ]
+              },
+              {
+                "img": "./assets/img/camions-flotte.jpg",
+                "picto": "timer",
+                "title": "Flexibilité",
+                "text": [
+                  "Nos services sont disponibles 24h/24 et 7j/7.",
+                  "Que vos besoins soient ponctuels, récurrents, urgents ou planifiés depuis longtemps, nous sommes à votre disposition. Si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
+                ]
               },
               {
                 "img": "./assets/img/optimisation.jpg",
                 "picto": "settings",
                 "title": "Optimisation",
-                "text": "TODO Texte a remplir"
+                "text": [
+                  "Conscients que les délais sont souvent courts, la logistique est au cœur de nos préoccupations. ",
+                  "En étroite collaboration avec les équipes de production et les loueurs de matériel audiovisuel, nous saurons réaliser des feuilles de route afin de préparer les différentes équipes pour notre passage."
+                ]
               },
               {
                 "img": "./assets/img/confiance.jpg",
-                "picto": "key",
+                "picto": "thumb_up",
                 "title": "Confiance",
-                "text": "TODO Texte a remplir"
+                "text": ["Déjà reconnues et recommandées par les plus grands loueurs de matériel audiovisuel en Île-de-France, les équipes H24 Transports ont à cœur de respecter les délais et le matériel."]
               }
           ]
       }
