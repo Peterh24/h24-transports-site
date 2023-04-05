@@ -51,14 +51,12 @@ export class MainMenuComponent implements OnInit {
 
     this.currentTheme$.pipe(take(1)).subscribe(theme => {
 
-      if(this.lastUrlPart == "aboutUs"){
-        this.store.dispatch(new fromThemes.AddCurrentTheme('aboutUs'));
-      }
-      if(this.lastUrlPart == "delay"){
-        this.store.dispatch(new fromThemes.AddCurrentTheme('aboutUs'));
-      }
+      this.store.dispatch(new fromThemes.AddCurrentTheme(this.lastUrlPart));
 
     })
+    if(this.lastUrlPart == "aboutUs" || this.lastUrlPart == "delay"){
+      this.closeMenu();
+    }
   }
 
   switchTheme(theme: string){
