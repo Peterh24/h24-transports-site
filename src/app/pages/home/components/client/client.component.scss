@@ -1,7 +1,9 @@
 .clients {
   padding: 50px 0;
   text-align: center;
-
+  &__text {
+    margin-bottom: 3rem;
+  }
   &__slider {
     width: 120rem;
     position: relative;

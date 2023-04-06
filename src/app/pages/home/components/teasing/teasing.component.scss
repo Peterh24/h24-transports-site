@@ -6,7 +6,15 @@
   &__without-video {
     .teasing__info {
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
+
+      &__text {
+        max-width: 120rem;
+        p {
+          font-size: 4.2rem;
+          line-height: 1.2;
+        }
+      }
     }
   }
   &__without-video-img {
@@ -26,7 +34,7 @@
     z-index: 5;
     &::before {
       content: '';
-      display: block;
+      display: none; //Deactivate for now
       position: absolute;
       top: 0;
       left: 0;
