@@ -150,6 +150,19 @@
     }
   }
 
+  /*Block Key Data*/
+  .key-data {
+    &__content {
+      &__text {
+        h2 {
+          &:after {
+            background-color: $on-express;
+          }
+        }
+      }
+    }
+  }
+
   /*Block Our Values*/
   .value {
     background-color: rgba(red($express), green($express), blue($express), .5);

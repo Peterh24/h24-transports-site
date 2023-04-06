@@ -144,6 +144,19 @@
     }
   }
 
+  /*Block Key Data*/
+  .key-data {
+    &__content {
+      &__text {
+        h2 {
+          &:after {
+            background-color: $on-application;
+          }
+        }
+      }
+    }
+  }
+
   /*Block Our Values*/
   .value {
     background-color: rgba(red($application), green($application), blue($application), .5);
