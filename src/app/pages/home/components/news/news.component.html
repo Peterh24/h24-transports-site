@@ -1,4 +1,4 @@
-<div class="news" [id]="id">
+<div class="news" [id]="id" [class.news__darken]="(datas$ | async).options.darkenBg">
   <h2>{{(datas$ | async).info.title}}</h2>
 
   <div class="news__slider">

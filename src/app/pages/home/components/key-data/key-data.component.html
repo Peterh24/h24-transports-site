@@ -1,4 +1,4 @@
-<div class="key-data" [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}" [id]="id">
+<div class="key-data" [class.key-data__darken]="(datas$ | async).options.darkenBg" [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}" [id]="id">
   <div class="key-data__content">
     <div class="key-data__content__text" *ngIf="(datas$ | async).info.text">
       <h2>{{(datas$ | async).info.title}}</h2>

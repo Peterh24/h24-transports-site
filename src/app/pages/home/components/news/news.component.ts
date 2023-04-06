@@ -1,11 +1,9 @@
-import { transition } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { News } from '@app/models/backend/components/news';
 import { GlobalService } from '@app/services/global';
 import { Observable } from 'rxjs';
 
 import SwiperCore, { Navigation, Pagination, Autoplay, EffectFade, SwiperOptions } from 'swiper';
-import { EventsParams } from 'swiper/angular';
 
 SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade ]);
 

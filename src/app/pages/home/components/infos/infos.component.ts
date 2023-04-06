@@ -19,4 +19,8 @@ export class InfosComponent {
   ngOnInit(): void {
     this.datas$ = this.globalService.getDataComponent(this.id);
   }
+
+  toggleItemVisibility(item: any) {
+    item.isVisible = !item.isVisible;
+  }
 }

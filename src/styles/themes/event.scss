@@ -2,6 +2,24 @@
   color: $on-event;
   background: $event;
 
+  /*Darken*/
+  .citation,
+  .contact,
+  .infos,
+  .clients,
+  .infos-img,
+  .key-data,
+  .news,
+  .our-values,
+  .our-vehicles,
+  .simple-text,
+  .teasing,
+  .timelimit {
+    &__darken {
+      background: $event-dark;
+    }
+  }
+
   /*Global Links*/
   .app-a {
     color: $on-event;
@@ -184,6 +202,23 @@
     }
   }
 
+
+  /*Dropdown*/
+  .dropdown {
+    &__item {
+      &__title {
+        .icon {
+          &:after {
+            background: $event;
+          }
+        }
+        &:after {
+          background: #fff;
+        }
+      }
+    }
+  }
+
   /*Block News*/
   .news {
     .customPagination {
@@ -214,9 +249,9 @@
     }
   }
 
+
   /*Block Clients*/
   .clients {
-    background: $event-dark;
     &__slider {
       &::before,
       &::after {

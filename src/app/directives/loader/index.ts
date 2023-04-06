@@ -18,6 +18,7 @@ import { Observable, skip, Subscription } from "rxjs";
 import * as fromRoot from '@app/store/';
 import * as fromDictionaries from '@app/store/dictionaries';
 import { Component } from "@app/models/backend";
+import { CitationComponent } from "@app/pages/home/components/citation/citation.component";
 
 
 
@@ -48,6 +49,7 @@ export class LoaderDirective {
     'InfosComponent': InfosComponent,
     'InfosImgComponent': InfosImgComponent,
     'SimpleTextComponent': SimpleTextComponent,
+    'CitationComponent': CitationComponent
   }
 
   private currentComponents:Array<string> = [];

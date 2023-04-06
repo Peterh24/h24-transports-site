@@ -1,4 +1,4 @@
-<div class="our-vehicles">
+<div class="our-vehicles" [id]="id" [class.our-vehicles__darken]="(datas$ | async).options.darkenBg">
   <div class="vehicle__illustration" #illustrationContainer></div>
 
   <div class="our-vehicles__wrap">

@@ -1,4 +1,4 @@
-<div class="timelimit" [id]="id">
+<div class="timelimit" [id]="id" [class.timelimit__darken]="(datas$ | async).options.darkenBg">
   <div class="timelimit__info__wrap">
     <h2>{{(datas$ | async).info.title}}</h2>
     <p class="timelimit__intro">{{(datas$ | async).info.text}}</p>

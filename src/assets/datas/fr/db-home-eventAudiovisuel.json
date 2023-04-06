@@ -37,7 +37,10 @@
                   "value": "98",
                   "label": "courses Audiovisuel réalisées"
                   }
-          ]
+          ],
+          "options": {
+            "darkenBg": false
+          }
       }
       },
       {
@@ -79,7 +82,10 @@
                 "title": "Confiance",
                 "text": ["Déjà reconnues et recommandées par les plus grands loueurs de matériel audiovisuel en Île-de-France, les équipes H24 Transports ont à cœur de respecter les délais et le matériel."]
               }
-          ]
+          ],
+          "options": {
+            "darkenBg": false
+          }
       }
       },
       {
@@ -94,13 +100,15 @@
             ],
             "cta": "voir les délais",
             "url": "/delay"
+          },
+          "options": {
+            "darkenBg": false
           }
         }
       },
       {
         "id": "teasingFull",
         "component": "TeasingComponent",
-        "title": "Des prestations sur mesure",
         "data": {
             "info": {
                 "img": "./assets/img/h24-transports-picture.jpg",
@@ -108,6 +116,9 @@
                 "text": [
                   "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
                 ]
+            },
+            "options": {
+              "darkenBg": false
             }
         }
         },
@@ -232,7 +243,10 @@
                       }
                   ]
               }
-          ]
+          ],
+          "options": {
+            "darkenBg": false
+          }
       }
       },
       {
@@ -284,17 +298,77 @@
                   "img": "rouchon.png",
                   "url": "https://rouchonparis.com/"
               }
-          ]
+          ],
+          "options": {
+            "darkenBg": true
+          }
       }
+      },
+      {
+        "id": "solutions",
+        "component": "InfosComponent",
+        "title": "Solutions logistiques adaptées",
+        "data": {
+            "info": {
+                "title": "Solutions logistiques adaptées",
+                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                "dropdown": [
+                  {
+                    "title": "Votre partenaire logistique de transport",
+                    "text": [
+                      "Organiser une production audiovisuelle peut être un défi logistique. Forte de son expérience, H24 Transports vous aide à respecter des délais parfois très courts avec efficacité. Nous prenons en charge toute l'organisation de la logistique des transports du matériel pour que vous puissiez vous concentrer sur votre cœur de métier."
+                    ],
+                    "isVisible": true
+                  },
+                  {
+                    "title": "Collecte d'informations clés pour votre tournage",
+                    "text": [
+                      "En étroite collaboration avec les équipes de production ou le régisseur général, nous collectons les informations clés pour assurer le bon déroulement de votre tournage. Si nécessaire, nous pouvons mettre en place une feuille de route pour préparer notre mission et vous informer de notre passage."
+                    ]
+                  },
+                  {
+                    "title": "Solutions adaptées à la production audiovisuelle",
+                    "text": [
+                      "Nos équipes connaissent parfaitement les loueurs de matériel audiovisuel et les studios parisiens, avec qui nous collaborons depuis plusieurs années. Nous sommes en mesure de vous offrir des solutions logistiques adaptées à vos besoins, de l’enlèvement à la livraison avec la possibilité de stocker votre matériel en gardiennage sécurisé et vidéo-surveillé."
+                    ]
+                  }
+                ]
+            },
+            "options": {
+              "imgTo": "left",
+              "darkenBg": false
+            }
+        }
+      },
+      {
+        "id": "citation1",
+        "component":"CitationComponent",
+        "data": {
+          "info": {
+            "text": "Quels que soient vos besoins, H24 Transports s'adapte à la virgule près en vous proposant un service dédié (pas de groupage client)."
+          },
+          "options": {
+            "darkenBg": true
+          }
+        }
+      },
+      {
+        "id": "citation2",
+        "component":"CitationComponent",
+        "data": {
+          "info": {
+            "text": "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
+          },
+          "options": {
+            "darkenBg": true
+          }
+        }
       },
       {
       "id": "news",
       "component":"NewsComponent",
       "title": "Actualités",
       "data": {
-        "options": {
-          "darkenBg": true
-        },
         "info": {
           "title": "Actualités"
         },
@@ -323,7 +397,10 @@
                   "img": "./assets/img/h24-transports-picture.jpg",
                   "date": "01/01/2023"
               }
-          ]
+          ],
+          "options": {
+            "darkenBg": true
+          }
       }
       },
       {
@@ -331,13 +408,14 @@
         "component": "InfosComponent",
         "title": "Titre info Block",
         "data": {
-            "options": {
-              "imgTo": "right"
-            },
             "info": {
                 "title": "Titre Info Block",
                 "text": "Texte info Block 1",
                 "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg"
+            },
+            "options": {
+              "imgTo": "right",
+              "darkenBg": true
             }
         }
       },
@@ -346,9 +424,6 @@
         "component": "InfosImgComponent",
         "title": "Titre info Block Images List",
         "data": {
-          "options": {
-            "darkenBg": true
-          },
           "info": {
             "title": "Titre Info Block",
             "text": "Texte info Block 1"
@@ -358,7 +433,10 @@
               "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
               "caption": "caption 1"
             }
-          ]
+          ],
+          "options": {
+            "darkenBg": true
+          }
         }
       },
       {
@@ -441,7 +519,10 @@
                     }
                 }
               ]
-          ]
+          ],
+          "options": {
+            "darkenBg": true
+          }
       }
     }
   ]
