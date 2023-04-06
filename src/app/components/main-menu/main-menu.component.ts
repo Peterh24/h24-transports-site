@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable, take } from 'rxjs';
+import { Observable, skip, take } from 'rxjs';
 
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -26,7 +26,7 @@ export class MainMenuComponent implements OnInit {
   themeList$: Observable<any>;
   currentTheme$: Observable<any>;
   componentList$: Observable<any>;
-
+  data: any = [];
   lastUrlPart: string;
   faIcons:any = {
     faFacebookF: faFacebookF,
@@ -36,7 +36,6 @@ export class MainMenuComponent implements OnInit {
 
   constructor(
     private store: Store<fromRoot.State>,
-    private globalService: GlobalService,
     private viewportScroller: ViewportScroller,
     private router: Router,
   ){}
@@ -46,6 +45,16 @@ export class MainMenuComponent implements OnInit {
     this.themeList$ = this.store.pipe(select(fromThemes.getThemeNav));
     this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
     this.componentList$ = this.store.pipe(select(fromDictionaries.getComponentList));
+
+    this.componentList$.pipe(skip(1)).subscribe(components => {
+        components.forEach((element: any) => {
+          if(element.title) {
+            this.data.push(element);
+          }
+        });
+
+      console.log('components: ',   components);
+    })
 
     this.lastUrlPart = this.router.url.split('?')[0].split('/').pop();
 

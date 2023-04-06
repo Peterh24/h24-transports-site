@@ -1,4 +1,4 @@
-<div class="clients" [id]="id">
+<div class="clients" [id]="id" [class.clients__darken]="(datas$ | async).options.darkenBg">
   <h2>{{(datas$ | async).info.title}}</h2>
   <div class="clients__text" *ngIf="(datas$ | async).info.text.length > 0">
     <p *ngFor="let text of (datas$ | async).info.text">{{text}}</p>

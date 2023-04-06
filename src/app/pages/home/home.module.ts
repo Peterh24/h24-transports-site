@@ -28,6 +28,7 @@ import { InfosComponent } from './components/infos/infos.component';
 import { InfosImgComponent } from './components/infos-img/infos-img.component';
 import { HeaderModule } from '@app/components/header/header.module';
 import { SimpleTextComponent } from './components/simple-text/simple-text.component';
+import { CitationComponent } from './components/citation/citation.component';
 
 
 
@@ -48,7 +49,8 @@ import { SimpleTextComponent } from './components/simple-text/simple-text.compon
         SmoothScrollDirective,
         InfosComponent,
         InfosImgComponent,
-        SimpleTextComponent
+        SimpleTextComponent,
+        CitationComponent
     ],
     imports: [
         CommonModule,

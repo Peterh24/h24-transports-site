@@ -2,6 +2,24 @@
   background: $application;
   color: $on-application;
 
+  /*Darken*/
+  .citation,
+  .contact,
+  .infos,
+  .clients,
+  .infos-img,
+  .key-data,
+  .news,
+  .our-values,
+  .our-vehicles,
+  .simple-text,
+  .teasing,
+  .timelimit {
+    &__darken {
+      background: $application-dark;
+    }
+  }
+
   /*Global Links*/
   .app-a {
     color: $on-application;
@@ -197,13 +215,28 @@
 
   /*Block Clients*/
   .clients {
-    background: $application-dark;
     &__slider {
       &::before,
       &::after {
         background: linear-gradient(
           to right, rgba(red($application-dark), green($application-dark), blue($application-dark), 1) 0%,
           rgba(red($application-dark), green($application-dark), blue($application-dark), 0) 100%);
+      }
+    }
+  }
+
+  /*Dropdown*/
+  .dropdown {
+    &__item {
+      &__title {
+        .icon {
+          &:after {
+            background: $application;
+          }
+        }
+        &:after {
+          background: #fff;
+        }
       }
     }
   }

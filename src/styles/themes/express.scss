@@ -2,6 +2,25 @@
   background: $express;
   color: $on-express;
 
+  /*Darken*/
+  .citation,
+  .contact,
+  .infos,
+  .clients,
+  .infos-img,
+  .key-data,
+  .news,
+  .our-values,
+  .our-vehicles,
+  .simple-text,
+  .teasing,
+  .timelimit {
+    &__darken {
+      background: $express-dark;
+    }
+  }
+
+
   /*Global Links*/
   .app-a {
     color: $on-express;
@@ -202,15 +221,32 @@
   }
 
 
+
+
   /*Block Clients*/
   .clients {
-    background: $express-dark;
     &__slider {
       &::before,
       &::after {
         background: linear-gradient(
           to right, rgba(red($express-dark), green($express-dark), blue($express-dark), 1) 0%,
           rgba(red($express-dark), green($express-dark), blue($express-dark), 0) 100%);
+      }
+    }
+  }
+
+  /*Dropdown*/
+  .dropdown {
+    &__item {
+      &__title {
+        .icon {
+          &:after {
+            background: $express;
+          }
+        }
+        &:after {
+          background: #fff;
+        }
       }
     }
   }

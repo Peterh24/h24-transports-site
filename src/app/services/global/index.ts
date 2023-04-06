@@ -1,13 +1,4 @@
 import { Injectable } from "@angular/core";
-import { ClientComponent } from "@app/pages/home/components/client/client.component";
-import { ContactComponent } from "@app/pages/home/components/contact/contact.component";
-import { KeyDataComponent } from "@app/pages/home/components/key-data/key-data.component";
-import { NewsComponent } from "@app/pages/home/components/news/news.component";
-import { OurValuesComponent } from "@app/pages/home/components/our-values/our-values.component";
-import { OurVehiclesComponent } from "@app/pages/home/components/our-vehicles/our-vehicles.component";
-import { TeasingComponent } from "@app/pages/home/components/teasing/teasing.component";
-import { TimeLimitComponent } from "@app/pages/home/components/time-limit/time-limit.component";
-import { SimpleTextComponent } from "@app/pages/home/components/simple-text/simple-text.component";
 import { select, Store } from "@ngrx/store";
 import { Observable, take } from "rxjs";
 
@@ -20,19 +11,6 @@ export class GlobalService {
   public container: any;
   public flag: boolean = false;
   data$: Observable<any>;
-  public components = {
-    'ContactComponent': ContactComponent,
-    'KeyDataComponent': KeyDataComponent,
-    'NewsComponent': NewsComponent,
-    'OurValuesComponent': OurValuesComponent,
-    'OurVehiclesComponent': OurVehiclesComponent,
-    'TeasingComponent': TeasingComponent,
-    'TimeLimitComponent': TimeLimitComponent,
-    'ClientComponent': ClientComponent,
-    'SimpleTextComponent': SimpleTextComponent
-  }
-
-  public currentComponents = [ContactComponent, KeyDataComponent];
 
   public switchComponent(): void {
   }

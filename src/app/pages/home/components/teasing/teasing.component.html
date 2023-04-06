@@ -1,4 +1,4 @@
-<div class="teasing" [class.teasing__without-video]="!(datas$ | async).info.videoId" [class.teasing__without-video-img]="!(datas$ | async).info.videoId && !(datas$ | async).info.img" [id]="id">
+<div class="teasing" [class.teasing__darken]="(datas$ | async).options.darkenBg" [class.teasing__without-video]="!(datas$ | async).info.videoId" [class.teasing__without-video-img]="!(datas$ | async).info.videoId && !(datas$ | async).info.img" [id]="id">
   <div class="teasing__background" >
     <div class="teasing__background__video"></div>
     <div class="teasing__background__img" *ngIf="(datas$ | async).info.img && !(datas$ | async).info.videoId">

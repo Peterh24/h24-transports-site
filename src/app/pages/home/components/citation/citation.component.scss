@@ -1,0 +1,40 @@
+.citation {
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  padding: 8rem 0;
+  blockquote {
+    text-align: center;
+    font-weight: 500;
+    font-size: 2.4rem;
+    max-width: 60%;
+    line-height: 1.4;
+    position: relative;
+    margin: 0;
+    padding: .5rem;
+  }
+
+  blockquote:before,
+  blockquote:after {
+    position: absolute;
+    color: #f1efe6;
+    font-size: 20rem;
+    width: 10rem;
+    height: 10rem;
+    opacity: .3;
+  }
+
+  blockquote:before {
+    content: '“';
+    left: -8rem;
+    top: -10rem;
+  }
+
+  blockquote:after {
+    content: '”';
+    right: -8rem;
+    bottom: -3rem;
+  }
+}
+

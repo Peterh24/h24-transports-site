@@ -34,7 +34,7 @@
 
 
     <ul class="anchor__list" *ngIf="(componentList$ | async).length > 0">
-      <li *ngFor="let component of componentList$ | async">
+      <li *ngFor="let component of data">
         <a class="app-a anchor__list__link" (click)="goToAnchor(component.id)">{{component.title}}</a>
       </li>
     </ul>

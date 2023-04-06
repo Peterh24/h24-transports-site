@@ -1,4 +1,4 @@
-<div class="contact">
+<div class="contact" [class.contact__darken]="(datas$ | async).options.darkenBg">
   <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
     <h2>{{(datas$ | async).info.title}}</h2>
 
