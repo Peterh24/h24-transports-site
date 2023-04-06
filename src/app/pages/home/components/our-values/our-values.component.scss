@@ -24,9 +24,8 @@
     flex-flow: column wrap;
     align-items: center;
     justify-content: flex-end;
-    max-height: 13.6rem;
     z-index: 1;
-    transition: max-height .3s ease;
+    transition: transform .3s ease-in-out;
 
     &__title {
       display: flex;
@@ -74,7 +73,7 @@
 
   &:hover {
     .value__content {
-      max-height: 50vh;
+      transform: translateY(0);
     }
     .value__background {
       opacity: .5;
