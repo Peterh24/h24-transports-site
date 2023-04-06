@@ -8,6 +8,7 @@ $contentDuration: .3s;
 $sliderHoverSize: 60%;
 $textBlockSize: 50%;
 $overlayOpacity: .8;
+
 .prehome {
   background: $event;
   color: $on-event;
@@ -32,13 +33,14 @@ $overlayOpacity: .8;
       height: 25rem;
       z-index: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(red($event), green($event), blue($event), .75) 0%, rgba(red($event), green($event), blue($event), 0) 100%);
+      background: linear-gradient(180deg, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, 0) 100%);
     }
 
     app-logo {
       position: relative;
     }
   }
+
   &__nav {
     flex: 1;
     display: flex;
@@ -69,11 +71,12 @@ $overlayOpacity: .8;
       overflow: hidden;
     }
   }
+
   .app-a {
     pointer-events: initial;
     z-index: 5;
 
-    &:after {
+    &::after {
       content: "";
       display: block;
       background: $on-event;
@@ -81,11 +84,12 @@ $overlayOpacity: .8;
       height: 2px;
       margin: 2rem auto;
       opacity: 0;
-      transition: all .25s;
+      transition: all .25s ease-in-out;
     }
 
-    &:hover, &:focus {
-      &:after {
+    &:hover,
+    &:focus {
+      &::after {
         width: 100%;
         opacity: 1;
       }
@@ -98,6 +102,7 @@ $overlayOpacity: .8;
   width: 100%;
   height: 100vh;
   visibility: hidden;
+
   &__slide {
     @include transition-mix($duration: $contentDuration);
     width: calc(100% / $themeNb);
@@ -106,19 +111,33 @@ $overlayOpacity: .8;
     overflow: hidden;
     visibility: visible;
 
-    //overlay
-    &:after {
+    // overlay
+    &::after {
       @include position-absolute($top: 0, $left: 0);
       content: "";
       display: block;
       width: 100%;
       height: 100%;
-      background-color: rgba($event, .8);
+      background: #000;
+      mix-blend-mode: color;
+      opacity: 0.8;
       z-index: 2;
+      transition: all .25s ease-in-out;
+    }
+    // gradient text
+    &::before {
+      @include position-absolute($bottom: 0, $left: 0);
+      content: "";
+      display: block;
+      width: 100%;
+      height: 90vh;
       opacity: 0;
-      top: -100%;
+      z-index: 3;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.75) 100%);
+      transition: opacity .25s ease-in-out;
     }
   }
+
   &__img {
     @include position-absolute($top: 50%, $left: 50%);
     width: auto;
@@ -127,7 +146,9 @@ $overlayOpacity: .8;
     max-height: 100vh;
     transform: translate(-50%, -50%);
     z-index: 1;
+    transition: all .25s ease-in-out;
   }
+
   &__subimg {
     @include position-absolute($top: 50%, $left: 50%);
     width: auto;
@@ -145,6 +166,7 @@ $overlayOpacity: .8;
       transition: all .5s ease-in-out;
       width: 100%;
       height: 100%;
+
       &.active {
         opacity: 1;
       }
@@ -165,11 +187,17 @@ $overlayOpacity: .8;
     visibility: hidden;
     opacity: 0;
     padding-bottom: 4rem;
+
     &__title {
       font-family: $alt-font-family;
+      font-weight: 600;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      letter-spacing: .02em;
       text-transform: uppercase;
       max-width: 40rem;
-      &:after {
+
+      &::after {
         content: "";
         display: block;
         background: $on-event;
@@ -178,6 +206,15 @@ $overlayOpacity: .8;
         margin: 2rem 0 3rem 0;
       }
     }
+
+    &__text {
+      font-family: $base-font-family;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: .02em;
+    }
+
     &__cta {
       margin-top: 3rem;
       .app-button {
@@ -185,12 +222,14 @@ $overlayOpacity: .8;
         border-color: $on-event;
         padding: 1rem 3rem;
         @include transition-mix();
+
         &:hover {
           background: $on-event;
-          color: #20201d;
+          color: $event;
         }
       }
     }
+
     &__wrapper {
       width: 50%;
       flex: 1;
@@ -199,6 +238,7 @@ $overlayOpacity: .8;
       justify-content: center;
     }
   }
+
   &__child {
     width: 100%;
     display: flex;
@@ -206,6 +246,7 @@ $overlayOpacity: .8;
     align-items: flex-end;
     padding: 0 4rem;
     min-height: 18rem;
+
     &__item {
       width: 28%;
       height: 15rem;
@@ -224,36 +265,52 @@ $overlayOpacity: .8;
       background-size: cover;
       background-position: center center;
       filter: brightness(60%);
+
       &:hover {
-        border-color: #fff;
+        border-color: $on-event;
         height: 18rem;
         width: 35%;
         filter: brightness(100%);
       }
     }
   }
+
   &:hover {
-    .theme-slider__slide {
-      &:not(:hover) {
-        &:after {
-          @include transition-mix;
-          top: 0;
-          opacity: 1;
-          visibility: visible;
+    .theme-slider {
+      &__slide {
+        &:not(:hover) {
+          z-index: 0;
+          &::after {
+            @include transition-mix;
+            opacity: 1;
+          }
+          .theme-slider__img {
+            opacity: .5;
+          }
         }
-      }
-      &:hover {
-        flex-shrink: 0;
-        width: $sliderHoverSize;
-        .theme-slider__content {
-          @include transition-mix($delay: .2s);
-          transform: scale(1);
-          opacity: 1;
-          visibility: visible;
+        &:hover {
+          z-index: 3;
+          flex-shrink: 0;
+          width: $sliderHoverSize;
+          box-shadow: 0px 0px 150px rgba(0, 0, 0, .5);
+
+          &::after {
+            opacity: .25;
+          }
+          &::before {
+            opacity: 1;
+          }
+
+          .theme-slider__content {
+            @include transition-mix($delay: .2s);
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+          }
         }
       }
     }
-  }
+}
 }
 
 /*Color Logo*/
@@ -263,7 +320,7 @@ $overlayOpacity: .8;
       fill: $on-event;
     }
   }
-  .theme-slider{
+  .theme-slider {
     &__content {
       &__text {
         ul {
