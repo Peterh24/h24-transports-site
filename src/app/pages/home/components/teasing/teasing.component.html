@@ -13,7 +13,9 @@
       <mat-icon>{{(datas$ | async).info.icon}}</mat-icon>
     </div>
     <h2 *ngIf="(datas$ | async).info.title" class="teasing__info__title">{{(datas$ | async).info.title}}</h2>
-    <div *ngIf="(datas$ | async).info.text" class="teasing__info__text" [innerHTML]="(datas$ | async).info.text"></div>
+    <div *ngIf="(datas$ | async).info.text.length > 0" class="teasing__info__text">
+      <p *ngFor="let text of (datas$ | async).info.text" >{{text}}</p>
+    </div>
   </div>
 </div>
 

@@ -72,24 +72,13 @@
         "title": "Teasing Full Video",
         "data": {
             "info": {
-                "title": "TeasingFull",
-                "videoId": "W0LHTWG-UmQ",
                 "img": "./assets/img/h24-transports-picture.jpg",
                 "icon": "local_shipping",
-                "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+                "text": [
+                  "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
+                ]
             }
         }
-        },
-        {
-          "id": "teasingText",
-          "component": "TeasingComponent",
-          "title": "Teasing Text",
-          "data": {
-              "info": {
-                  "title": "TeasingFull",
-                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
-              }
-          }
         },
       {
       "id": "timelimit",
