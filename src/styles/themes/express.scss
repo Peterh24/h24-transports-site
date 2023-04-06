@@ -152,11 +152,15 @@
 
   /*Block Our Values*/
   .value {
+    background-color: rgba(red($express), green($express), blue($express), .5);
+
     .value__content {
-      background: linear-gradient(
-        180deg, rgba(red($express), green($express), blue($express), 0) 0%,
-        rgba(red($express), green($express), blue($express), .45) 35%,
-        rgba(red($express), green($express), blue($express), .75) 100%);
+      &__title {
+        background: linear-gradient(0deg, rgba(red($express), green($express), blue($express), .85) 0%, rgba(red($express), green($express), blue($express), .5) 40%, rgba(red($express), green($express), blue($express), 0) 100%);
+      }
+      &__text {
+        background: rgba(red($express), green($express), blue($express), .85);
+      }
     }
   }
 

@@ -3,54 +3,81 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .value {
   position: relative;
   flex-basis: 50%;
-  min-height: 50vh;
+  height: 50vh;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  background-size: cover;
+  justify-content: flex-end;
   text-align: center;
+  overflow: hidden;
+  transition: all .3s ease-in-out;
 
   &__content {
-    padding: 4rem;
-    height: 100%;
-    overflow: hidden;
     position: absolute;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    z-index: 5;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: center;
     justify-content: flex-end;
-    transition: all .2s ease-in-out;
+    max-height: 13.6rem;
+    z-index: 1;
+    transition: max-height .3s ease;
 
-    h2 {
-      font-size: 4.2rem;
-      font-size: 500;
+    &__title {
+      display: flex;
+      gap: 4rem;
+      padding: 4rem;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+
+      h2 {
+        font-size: 4.2rem;
+        font-size: 500;
+        margin-bottom: 0;
+      }
     }
 
     &__text {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease-in-out;
-      font-weight: normal;
-      font-size: 1.6rem;
       display: flex;
       gap: 2rem;
-      flex-direction: column;
+      padding: 0 4rem 4rem;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      font-weight: normal;
+      font-size: 1.6rem;
+
+      p {
+        margin: 0;
+      }
     }
   }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: opacity .25s ease-in-out;
+  }
+
   &:hover {
     .value__content {
-      &__text {
-        max-height: 50vh;
-      }
+      max-height: 50vh;
+    }
+    .value__background {
+      opacity: .5;
     }
   }
 }
@@ -64,3 +91,11 @@
     min-height: 50vh;
   }
 }
+
+// @keyframes ShowUp {
+//   0% {}
+//   25% {}
+//   100% {
+
+//   }
+// }

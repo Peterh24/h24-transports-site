@@ -1,8 +1,10 @@
 <div class="our-values" [id]="id">
-  <div class="value" *ngFor="let value of (datas$ | async).list" [ngStyle]="{'background-image': 'url(' + value.img + ')'}">
+  <div class="value" *ngFor="let value of (datas$ | async).list;">
     <div class="value__content">
-      <mat-icon>{{value.picto}}</mat-icon>
-      <h2>{{value.title}}</h2>
+      <div class="value__content__title">
+        <mat-icon>{{value.picto}}</mat-icon>
+        <h2>{{value.title}}</h2>
+      </div>
 
       <div class="value__content__text">
         <p *ngFor="let text of value.text">
@@ -10,5 +12,7 @@
         </p>
       </div>
     </div>
+
+    <div class="value__background" [ngStyle]="{'background-image': 'url(' + value.img + ')'}"></div>
   </div>
 </div>
