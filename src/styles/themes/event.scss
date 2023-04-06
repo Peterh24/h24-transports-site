@@ -164,13 +164,30 @@
     }
   }
 
+  /*Block Key Data*/
+  .key-data {
+    &__content {
+      &__text {
+        h2 {
+          &:after {
+            background-color: $on-event;
+          }
+        }
+      }
+    }
+  }
+
   /*Block Our Values*/
   .value {
+    background-color: rgba(red($event), green($event), blue($event), .5);
+
     .value__content {
-      background: linear-gradient(
-          180deg, rgba(red($event), green($event), blue($event), 0) 0%,
-          rgba(red($event), green($event), blue($event), .45) 35%,
-          rgba(red($event), green($event), blue($event), .75) 100%);
+      &__title {
+        background: linear-gradient(0deg, rgba(red($event), green($event), blue($event), .85) 0%, rgba(red($event), green($event), blue($event), .5) 40%, rgba(red($event), green($event), blue($event), 0) 100%);
+      }
+      &__text {
+        background: rgba(red($event), green($event), blue($event), .85);
+      }
     }
   }
 

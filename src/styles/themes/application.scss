@@ -162,13 +162,30 @@
     }
   }
 
+  /*Block Key Data*/
+  .key-data {
+    &__content {
+      &__text {
+        h2 {
+          &:after {
+            background-color: $on-application;
+          }
+        }
+      }
+    }
+  }
+
   /*Block Our Values*/
   .value {
+    background-color: rgba(red($application), green($application), blue($application), .5);
+
     .value__content {
-      background: linear-gradient(
-        180deg, rgba(red($application), green($application), blue($application), 0) 0%,
-          rgba(red($application), green($application), blue($application), .45) 35%,
-          rgba(red($application), green($application), blue($application), .75) 100%);
+      &__title {
+        background: linear-gradient(0deg, rgba(red($application), green($application), blue($application), .85) 0%, rgba(red($application), green($application), blue($application), .5) 40%, rgba(red($application), green($application), blue($application), 0) 100%);
+      }
+      &__text {
+        background: rgba(red($application), green($application), blue($application), .85);
+      }
     }
   }
 
