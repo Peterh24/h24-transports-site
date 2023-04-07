@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
         }
       }
        else {
-          const lastUrlPart = this.router.url.split('?')[0].split('/').pop();
+          const lastUrlPart = this.router.url.split('?')[0].split('/').pop().split('#')[0];
           // Detect if the param exist
 
           if(lastUrlPart) {

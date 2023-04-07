@@ -1,4 +1,4 @@
-<div class="contact" [class.contact__darken]="(datas$ | async).options.darkenBg">
+<div class="contact" [class.contact__darken]="(datas$ | async).options.darkenBg" [id]="id">
   <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
     <h2>{{(datas$ | async).info.title}}</h2>
     <div class="contact__messages" *ngIf="message.validation !== '' || message.error !== '' " [ngClass]="{'contact__messages--success': message.validation !== '', 'contact__messages--error': message.error !== ''}">

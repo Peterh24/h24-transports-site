@@ -53,14 +53,14 @@ export class MainMenuComponent implements OnInit {
           }
         });
 
-      console.log('components: ',   components);
     })
 
     this.lastUrlPart = this.router.url.split('?')[0].split('/').pop();
 
+
     this.currentTheme$.pipe(take(1)).subscribe(theme => {
 
-      this.store.dispatch(new fromThemes.AddCurrentTheme(this.lastUrlPart));
+      this.store.dispatch(new fromThemes.AddCurrentTheme(this.lastUrlPart.split('#')[0]));
 
     })
     if(this.lastUrlPart == "aboutUs" || this.lastUrlPart == "delay"){
@@ -84,7 +84,8 @@ export class MainMenuComponent implements OnInit {
   }
 
   langChange(lang: string): void {
-
+    //delete all data
+    this.data = [];
 
     this.store.dispatch(new fromLanguage.LanguageChange(lang));
 

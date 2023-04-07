@@ -8,7 +8,7 @@
       {
       "id": "keydata",
       "component": "KeyDataComponent",
-      "title" : "Chiffres clés",
+      "title" : "Transport Publicité & Cinéma",
       "data": {
           "info": {
               "title": "Transport Publicité & Cinéma",
@@ -35,7 +35,7 @@
                   },
                   {
                   "value": "98",
-                  "label": "courses Audiovisuel réalisées"
+                  "label": "courses réalisées"
                   }
           ],
           "options": {

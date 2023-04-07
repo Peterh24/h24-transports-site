@@ -6,406 +6,475 @@
     },
     "componentsList": [
       {
-      "id": "keydata",
-      "component": "KeyDataComponent",
-      "title" : "Chiffres clés",
-      "data": {
-          "info": {
-              "img" : "./assets/img/express-cover-picture.jpg",
-              "link": {
-                  "label": "DEMANDEZ VOTRE DEVIS",
-                  "url": "#contact"
-              }
-          },
-          "list": [
-              {
-                  "value": "45",
-                  "label": "clients satisfaits"
-                  },
-                  {
-                  "value": "356",
-                  "label": "Kilomètres parcourus"
-                  },
-                  {
-                  "value": "98",
-                  "label": "courses réalisées"
-                  }
-          ]
-      }
-      },
-      {
-      "id": "ourvalues",
-      "component": "OurValuesComponent",
-      "title" : "Nos Valeurs",
-      "data": {
-          "list": [
-              {
-                "img": "./assets/img/camions-flotte.jpg",
-                "picto": "timer",
-                "title": "7j/7 24h/24",
-                "text": "TODO Texte a remplir"
-              },
-              {
-                "img": "./assets/img/securite.jpg",
-                "picto": "security",
-                "title": "Sécurité",
-                "text": "TODO Texte a remplir"
-              },
-              {
-                "img": "./assets/img/optimisation.jpg",
-                "picto": "settings",
-                "title": "Optimisation",
-                "text": "TODO Texte a remplir"
-              },
-              {
-                "img": "./assets/img/confiance.jpg",
-                "picto": "key",
-                "title": "Confiance",
-                "text": "TODO Texte a remplir"
-              }
-          ]
-      }
-      },
-      {
-        "id": "teasingFull",
-        "component": "TeasingComponent",
-        "title": "Teasing Full Video",
+        "id": "keydata",
+        "component": "KeyDataComponent",
+        "title" : "Transport urgent exclusif",
         "data": {
             "info": {
-                "title": "TeasingFull",
-                "videoId": "W0LHTWG-UmQ",
-                "img": "./assets/img/h24-transports-picture.jpg",
-                "icon": "local_shipping",
-                "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+                "title": "Transport urgent exclusif",
+                "text": [
+                  "Notre équipe est spécialisée dans le transport urgent exclusif. Nous sommes à votre disposition pour répondre à tout type de demandes, qu’elles soient ponctuelles ou récurrentes, spéciales ou standards.",
+                  "Notre prestation exclusive vous permet d'optimiser votre temps efficacement. Nous proposons deux catégories de services pour répondre à vos besoins spécifiques : Express exclusif et tournée navette.",
+                  "Nous accordons une grande importance au service client et sommes à votre écoute pour vous apporter des solutions et des conseils sur mesure. "
+                ],
+                "cta": "À propos",
+                "img" : "./assets/img/event-cover-picture.jpg",
+                "link": {
+                    "label": "DEMANDEZ VOTRE DEVIS",
+                    "url": "#contact"
+                }
+            },
+            "list": [
+                {
+                    "value": "70",
+                    "label": "clients satisfaits"
+                    },
+                    {
+                    "value": "379",
+                    "label": "Kilomètres parcourus"
+                    },
+                    {
+                    "value": "79",
+                    "label": "courses réalisées"
+                    }
+            ],
+            "options": {
+              "darkenBg": false
             }
         }
         },
         {
-          "id": "teasingText",
-          "component": "TeasingComponent",
-          "title": "Teasing Text",
+          "id": "ourvalues",
+          "component": "OurValuesComponent",
+          "title" : "Nos Valeurs",
           "data": {
-              "info": {
-                  "title": "TeasingFull",
-                  "text": "<p>Un <strong>service dédié</strong>, un transport unique</p> <p>Le reste du texte ici</p>"
+              "list": [
+                  {
+                    "img": "./assets/img/securite.jpg",
+                    "picto": "security",
+                    "title": "Rapidité",
+                    "text": [
+                      "Nos services s’adressent à une clientèle exigeante.",
+                      "H24 Transports propose des solutions de gardiennage sécurisé & vidéo-surveillé à l’intérieur même de nos locaux. Ce service vous est proposé lorsque vos départs et ou retours matériels ne sont pas réalisables dans l’immédiat."
+                    ]
+                  },
+                  {
+                    "img": "./assets/img/camions-flotte.jpg",
+                    "picto": "lock",
+                    "title": "Fiabilité",
+                    "text": [
+                      "Chez H24 Transports, nous mettons tout en œuvre pour garantir une fiabilité absolue à chaque étape de la mission.",
+                      "Nous disposons d'une flotte de véhicules adaptée pour répondre à l’ensemble besoins, et nous employons une équipe de professionnels qualifiés pour assurer le bon déroulement de chaque mission."
+                    ]
+                  },
+                  {
+                    "img": "./assets/img/optimisation.jpg",
+                    "picto": "timer",
+                    "title": "Ponctualité",
+                    "text": [
+                      "Nous ferons toujours en sorte de livrer votre marchandise en temps et en heure, car nous avons conscience de l’impact que les retards peuvent avoir dans ce secteur d’activité. "
+                    ]
+                  },
+                  {
+                    "img": "./assets/img/confiance.jpg",
+                    "picto": "timer",
+                    "title": "Flexibilité",
+                    "text": [
+                      "Nos services sont disponibles 24h/24 et 7j/7.",
+                      "Que vos besoins soient ponctuels, récurrents, urgents ou planifiés depuis longtemps. Nous sommes à votre disposition, si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
+                    ]
+                  }
+              ],
+              "options": {
+                "darkenBg": false
               }
           }
-        },
-      {
-      "id": "timelimit",
-      "component": "TimeLimitComponent",
-      "title": "Nos délais d'intervention",
-      "data": {
-          "info": {
-              "title": "Nos délais d'intervention",
-              "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic."
           },
-          "list":[
-              {
-                "id": "paris",
-                "country": "Paris",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "1h"
+          {
+            "id": "delay",
+            "component": "SimpleTextComponent",
+            "title": "Nos délais d'intervention",
+            "data": {
+              "info": {
+                "title": "Nos délais d'intervention",
+                "text": [
+                  "Nous nous engageons à fournir des délais d'intervention rapides et précis pour répondre à vos besoins et assurer la réussite de chaque événement. Notre mission consiste à garantir la qualité et la ponctualité des prestations fournies en transportant rapidement et en toute sécurité les équipements nécessaires."
+                ],
+                "cta": "voir les délais",
+                "url": "/delay"
               },
-              {
-                "id": "idf",
-                "country": "Île-de-France",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "3h"
-              },
-              {
-                "id": "france",
-                "country": "France",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "12h"
-              },
-              {
-                "id": "international",
-                "country": "International",
-                "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-                "time": "Selon le pays"
+              "options": {
+                "darkenBg": false
               }
-          ]
-      }
-      },
-      {
-      "id": "ourVehicles",
-      "component": "OurVehiclesComponent",
-      "title": "Nos véhicules",
-      "data": {
-          "info": {
-              "title": "Nos véhicules"
+            }
           },
-          "list": [
-              {
-                  "title": "3m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.png",
-                  "description": [
-                      {
-                          "label": "Longueur du véhicule",
-                          "value": "4,5 mètres"
-                      },
-                      {
-                          "label": "Hauteur du véhicule",
-                          "value": "1,85 mètres"
-                      },
-                      {
-                          "label": "Profondeur du coffre",
-                          "value": "1,7 mètres"
-                      },
-                      {
-                          "label": "Hauteur du coffre",
-                          "value": "1,15 mètres"
-                      },
-                      {
-                          "label": "Charge utile",
-                          "value": "415 kg"
-                      }
-                  ]
-              },
-              {
-                  "title": "6/8m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.png",
-                  "description": [
-                      {
-                          "label": "Longueur du véhicule",
-                          "value": "4,9 mètres"
-                      },
-                      {
-                          "label": "Hauteur du véhicule",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Profondeur du coffre",
-                          "value": "2,4 mètres"
-                      },
-                      {
-                          "label": "Hauteur du coffre",
-                          "value": "1,3 mètres"
-                      },
-                      {
-                          "label": "Charge utile",
-                          "value": "820 kg"
-                      }
-                  ]
-              },
-              {
-                  "title": "12/14m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.png",
-                  "description": [
-                      {
-                          "label": "Longueur du véhicule",
-                          "value": "6,8 mètres"
-                      },
-                      {
-                          "label": "Hauteur du véhicule",
-                          "value": "2,6 mètres"
-                      },
-                      {
-                          "label": "Hayon",
-                          "value": "inclus"
-                      },
-                      {
-                          "label": "Profondeur du coffre",
-                          "value": "4,0 mètres"
-                      },
-                      {
-                          "label": "Hauteur du coffre",
-                          "value": "1,9 mètres"
-                      },
-                      {
-                          "label": "Charge utile",
-                          "value": "1300 kg"
-                      }
-                  ]
-              },
-              {
-                  "title": "20m<sup>3</sup>",
-                  "illustration": "./assets/img/camion-6-8m3.png",
-                  "description": [
-                      {
-                          "label": "Longueur du véhicule",
-                          "value": "6,8 mètres"
-                      },
-                      {
-                          "label": "Hauteur du véhicule",
-                          "value": "3,4 mètres"
-                      },
-                      {
-                          "label": "Hayon",
-                          "value": "inclus"
-                      },
-                      {
-                          "label": "Profondeur du coffre",
-                          "value": "4,2 mètres"
-                      },
-                      {
-                          "label": "Hauteur du coffre",
-                          "value": "2,2 mètres"
-                      },
-                      {
-                          "label": "Charge utile",
-                          "value": "700 kg"
-                      }
-                  ]
-              }
-          ]
-      }
-      },
-      {
-      "id": "client",
-      "component":"ClientComponent",
-      "title": "Ils nous font confiance",
-      "data": {
-          "info": {
-            "title": "Ils nous font confiance",
-            "imgStyle":"black"
-          },
-          "list": [
-              {
-                  "name": "Vantage",
-                  "img": "vantage.png",
-                  "url": "https://www.vantagemarkets.com/fr-fr/"
-              },
-              {
-                  "name": "LB Studio",
-                  "img": "lb-studio.png",
-                  "url": "http://lb-studiophoto.eu/"
-              },
-              {
-                  "name": "Cininter",
-                  "img": "cininter.png",
-                  "url": "https://www.cininter.fr/"
-              },
-              {
-                  "name": "Eye lite",
-                  "img": "eye-lite.png",
-                  "url": "https://www.eye-lite.com/fr/"
-              },
-              {
-                  "name": "Direct Digital",
-                  "img": "direct-digital.png",
-                  "url": "https://www.direct-digital.com/fr-fr"
-              },
-              {
-                  "name": "Next shot",
-                  "img": "next-shot.png",
-                  "url": "https://www.nextshot.com/"
-              },
-              {
-                  "name": "Rouchon",
-                  "img": "rouchon.png",
-                  "url": "https://rouchonparis.com/"
-              }
-          ]
-      }
-      },
-      {
-      "id": "news",
-      "component":"NewsComponent",
-      "title": "Actualités",
-      "data": {
-        "info": {
-          "title": "Actualités"
-        },
-          "list": [
-              {
-                  "title": "Titre de l'actualité sur 2 lignes",
-                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "./assets/img/express-cover-picture.jpg",
-                  "date": "01/02/2023"
-              },
-              {
-                  "title": "Titre de l'actualité sur 2 lignes",
-                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "./assets/img/express-cover-picture.jpg",
-                  "date": "01/11/2021"
-              },
-              {
-                  "title": "Titre de l'actualité sur 2 lignes",
-                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "./assets/img/confiance.jpg",
-                  "date": "01/07/2022"
-              },
-              {
-                  "title": "Titre de l'actualité sur 2 lignes",
-                  "text": "Lorem ipsum dolor sit amet. Sed temporibus unde sit deserunt numquam sed optio doloremque et nobis error est enim similique qui rerum porro. Sed illo doloremque qui fuga tenetur aut fugiat consequatur eum quibusdam reiciendis non quae consequatur sed magni officia qui fugiat veritatis! Eos minus sapiente non similique porro nam minus accusantium id possimus aspernatur.",
-                  "img": "./assets/img/h24-transports-picture.jpg",
-                  "date": "01/01/2023"
-              }
-          ]
-      }
-      },
-      {
-      "id": "contact",
-      "component": "ContactComponent",
-      "title" : "Contactez-nous",
-      "data": {
-          "info": {
-            "title": "Contactez-nous",
-            "btn" : "Envoyer"
-          },
-          "list": [
-              [
-                {
-                    "name": "lastname",
-                    "label": "Nom",
-                    "type": "text",
-                    "value:": "",
-                    "validators": {
-                      "required": true,
-                      "minLength": 12
-                    }
+          {
+            "id": "teasingFull",
+            "component": "TeasingComponent",
+            "data": {
+                "info": {
+                    "img": "./assets/img/h24-transports-picture.jpg",
+                    "icon": "local_shipping",
+                    "text": [
+                      "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
+                    ]
                 },
-                {
-                  "name": "firstname",
-                  "label": "Prénom",
-                  "type": "text",
-                  "value:": "",
-                  "validators": {
-                    "required": true,
-                    "minLength": 5
+                "options": {
+                  "darkenBg": false
+                }
+            }
+            },
+            {
+              "id": "ourVehicles",
+              "component": "OurVehiclesComponent",
+              "title": "Nos véhicules",
+              "data": {
+                  "info": {
+                      "title": "Nos véhicules"
+                  },
+                  "list": [
+                      {
+                          "title": "3m<sup>3</sup>",
+                          "illustration": "./assets/img/camion-6-8m3.png",
+                          "description": [
+                              {
+                                  "label": "Longueur du véhicule",
+                                  "value": "4,5 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du véhicule",
+                                  "value": "1,85 mètres"
+                              },
+                              {
+                                  "label": "Profondeur du coffre",
+                                  "value": "1,7 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du coffre",
+                                  "value": "1,15 mètres"
+                              },
+                              {
+                                  "label": "Charge utile",
+                                  "value": "415 kg"
+                              }
+                          ]
+                      },
+                      {
+                          "title": "6/8m<sup>3</sup>",
+                          "illustration": "./assets/img/camion-6-8m3.png",
+                          "description": [
+                              {
+                                  "label": "Longueur du véhicule",
+                                  "value": "4,9 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du véhicule",
+                                  "value": "1,9 mètres"
+                              },
+                              {
+                                  "label": "Profondeur du coffre",
+                                  "value": "2,4 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du coffre",
+                                  "value": "1,3 mètres"
+                              },
+                              {
+                                  "label": "Charge utile",
+                                  "value": "820 kg"
+                              }
+                          ]
+                      },
+                      {
+                          "title": "12/14m<sup>3</sup>",
+                          "illustration": "./assets/img/camion-6-8m3.png",
+                          "description": [
+                              {
+                                  "label": "Longueur du véhicule",
+                                  "value": "6,8 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du véhicule",
+                                  "value": "2,6 mètres"
+                              },
+                              {
+                                  "label": "Hayon",
+                                  "value": "inclus"
+                              },
+                              {
+                                  "label": "Profondeur du coffre",
+                                  "value": "4,0 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du coffre",
+                                  "value": "1,9 mètres"
+                              },
+                              {
+                                  "label": "Charge utile",
+                                  "value": "1300 kg"
+                              }
+                          ]
+                      },
+                      {
+                          "title": "20m<sup>3</sup>",
+                          "illustration": "./assets/img/camion-6-8m3.png",
+                          "description": [
+                              {
+                                  "label": "Longueur du véhicule",
+                                  "value": "6,8 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du véhicule",
+                                  "value": "3,4 mètres"
+                              },
+                              {
+                                  "label": "Hayon",
+                                  "value": "inclus"
+                              },
+                              {
+                                  "label": "Profondeur du coffre",
+                                  "value": "4,2 mètres"
+                              },
+                              {
+                                  "label": "Hauteur du coffre",
+                                  "value": "2,2 mètres"
+                              },
+                              {
+                                  "label": "Charge utile",
+                                  "value": "700 kg"
+                              }
+                          ]
+                      }
+                  ],
+                  "options": {
+                    "darkenBg": false
                   }
               }
-              ],
-              [
-                {
-                    "name": "gender",
-                    "label": "genre",
-                    "type": "text",
-                    "value:": "",
-                    "validators": {
-                      "required": true,
-                      "minLength": 7
+              },
+              {
+                "id": "fiability",
+                "component": "InfosComponent",
+                "title": "Rapidité et efficacité",
+                "data": {
+                    "info": {
+                        "title": "Rapidité et efficacité",
+                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                        "dropdown": [
+                          {
+                            "title": "Un service de coursier en plein essor",
+                            "text": [
+                              "Parce que le temps, c'est de l'argent, le transport urgent exclusif devient de plus en plus populaire. Les entreprises et les particuliers cherchent des moyens rapides et fiables pour faire livrer des colis, des documents et même des produits périssables. Avec un service de coursier exclusif, les clients bénéficient d'une livraison porte-à-porte, rapide et sécurisée, avec une traçabilité en temps réel."
+                            ],
+                            "isVisible": true
+                          },
+                          {
+                            "title": "Les avantages d'un service de transport urgent exclusif",
+                            "text": [
+                              "TODO"
+                            ]
+                          },
+                          {
+                            "title": "Comment choisir un service de coursier exclusif",
+                            "text": [
+                              "TODO"
+                            ]
+                          }
+                        ]
+                    },
+                    "options": {
+                      "imgTo": "left",
+                      "darkenBg": true
                     }
                 }
-              ],
-              [
-                {
-                    "name": "subject",
-                    "label": "Sujet",
-                    "type": "text",
-                    "value:": "",
-                    "validators": {
-                      "required": true,
-                      "minLength": 54
+              },
+              {
+                "id": "realTime",
+                "component": "InfosComponent",
+                "title": "Sécurité et assurances",
+                "data": {
+                    "info": {
+                        "globalTitle": "Sécurité et assurances",
+                        "title": "La traçabilité en temps réel",
+                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                        "text": [
+                          "Grâce à des outils de suivi et de géolocalisation, vous pouvez suivre l'avancée de vos envois en temps réel et avoir une visibilité totale sur leur cheminement."
+                        ]
+                    },
+                    "options": {
+                      "imgTo": "right",
+                      "darkenBg": false
                     }
                 }
-              ],
-              [
-                {
-                    "name": "message",
-                    "label": "Votre message",
-                    "type": "textarea",
-                    "value:": "",
-                    "validators": {
-                      "required": true,
-                      "minLength": 12
+              },
+              {
+                "id": "rapidity",
+                "component": "InfosComponent",
+                "data": {
+                    "info": {
+                        "title": "La rapidité comme assurance",
+                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                        "text": [
+                          "La rapidité de livraison est une forme de sécurité en soi, car elle permet de réduire les risques de vol ou de détérioration des envois."
+                        ]
+                    },
+                    "options": {
+                      "imgTo": "left",
+                      "darkenBg": false
                     }
                 }
-              ]
-          ]
-      }
-    }
+              },
+              {
+                "id": "send",
+                "component": "InfosComponent",
+                "data": {
+                    "info": {
+                        "title": "Des assurances adaptées à vos envois",
+                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                        "text": [
+                          "Nous proposons des assurances pour couvrir les risques de perte, de vol ou de dommage des envois. Vous pouvez ainsi avoir l'esprit tranquille en cas de problème."
+                        ]
+                    },
+                    "options": {
+                      "imgTo": "right",
+                      "darkenBg": false
+                    }
+                }
+              },
+              {
+                "id": "news",
+                "component":"NewsComponent",
+                "title": "Actualités",
+                "data": {
+                  "info": {
+                    "title": "Actualités"
+                  },
+                    "list": [
+                        {
+                            "title": "Shooting avec Emilie Couput chargé de production chez Sézane",
+                            "text": [
+                              "Cette prestation à été réalisée à Milan (Italie), la prod a donc souhaitée garder nos chauffeurs en presta #ManAndVan sur ce projet.",
+                              "Un choix judicieux lorsque vos projets ne durent que 1, 2 ou 3 jours. Gardez nos chauffeurs qui enfilent une casquette de régisseur 'junior' sur votre set tout en impactant le moins possible votre empreinte #carbone en évitant des A-R à PARIS.",
+                              "Nous tenons à remercier la marque Sézane pour la confiance accordée depuis plus d'un an."
+                            ],
+                            "img": "https://media.licdn.com/dms/image/C4E22AQE8mcCl6masGw/feedshare-shrink_800/0/1679059379313?e=1683763200&v=beta&t=1C8fCpsdMjD0P3Mh5VF4MWu9Xp99ia9I8HUHE4bXXy8",
+                            "date": "01/02/2023"
+                        },
+                        {
+                            "title": "Tournage pour Nike",
+                            "text": [
+                              "Depuis maintenant quelques années nous travaillons sur des #tournages pour Nike, toujours via des productions photos ou vidéos. Aujourd'hui nous avons l'honneur de pouvoir dire que nous travaillons en direct avec !",
+                              "Un grand MERCI Mary Deville pour cette nouvelle collaboration"
+                            ],
+                            "img": "https://media.licdn.com/dms/image/C4E22AQESBpIh1pXbHg/feedshare-shrink_800/0/1678206579301?e=1683763200&v=beta&t=5q3_fsAzhK9hdAlbAByYquYr5Vq_xE8Vh4vEkJf6rBM",
+                            "date": "01/11/2021"
+                        },
+                        {
+                            "title": "Balenciaga",
+                            "text": [
+                              "Retour Matériel Balenciaga chez son loueur Vantage Film.",
+                              "Merci à @titreprovisoire pour la confiance. a bientôt sur un nouvel évènement."
+                            ],
+                            "img": "https://media.licdn.com/dms/image/C4E22AQEUMYz8Ae9YWA/feedshare-shrink_800/0/1678092871229?e=1683763200&v=beta&t=_jLI13cnv4lg9NrCVxRYwrv3lXKPko-kLfA74t5hK00",
+                            "date": "01/07/2022"
+                        },
+                        {
+                            "title": "Show de DIOR",
+                            "text": [
+                              "Merci à la production Tender Night plus particulièrement à Leyla Sassi pour la confiance accordée depuis 2018.",
+                              "Un plaisir de vous accompagner à chaque show de DIOR, qu'il soit Paris - Londres - Athènes."
+                            ],
+                            "img": "https://media.licdn.com/dms/image/C4E22AQGz0KoC2o-g5A/feedshare-shrink_800/0/1678093650541?e=1683763200&v=beta&t=BaVMrCtEr9DkFYEFxn3p5mhuPBj-YRJqxM-wlayY3fc",
+                            "date": "01/01/2023"
+                        }
+                    ],
+                    "options": {
+                      "darkenBg": true
+                    }
+                }
+                },
+                {
+                  "id": "contact",
+                  "component": "ContactComponent",
+                  "title" : "Contactez-nous",
+                  "data": {
+                      "info": {
+                        "title": "Contactez-nous",
+                        "btn" : "Envoyer"
+                      },
+                      "list": [
+                          [
+                            {
+                                "name": "nom",
+                                "label": "Nom",
+                                "type": "text",
+                                "value:": "",
+                                "validators": {
+                                  "required": true
+                                }
+                            },
+                            {
+                              "name": "prenom",
+                              "label": "Prénom",
+                              "type": "text",
+                              "value:": "",
+                              "validators": {
+                                "required": true
+                              }
+                          }
+                          ],
+                          [
+                            {
+                                "name": "societe",
+                                "label": "Société",
+                                "type": "text",
+                                "value:": "",
+                                "validators": {
+                                  "required": true
+                                }
+                            }
+                          ],
+                          [
+                            {
+                                "name": "email",
+                                "label": "Email",
+                                "type": "text",
+                                "value:": "",
+                                "validators": {
+                                  "required": true,
+                                  "pattern": "email"
+                                }
+                            }
+                          ],
+                          [
+                            {
+                                "name": "tel",
+                                "label": "Téléphone",
+                                "type": "text",
+                                "value:": "",
+                                "validators": {
+                                  "required": true,
+                                  "pattern": "phone"
+                                }
+                            }
+                          ],
+                          [
+                            {
+                                "name": "message",
+                                "label": "Votre message",
+                                "type": "textarea",
+                                "value:": "",
+                                "validators": {
+                                  "required": true,
+                                  "minLength": 12
+                                }
+                            }
+                          ]
+                      ],
+                      "options": {
+                        "darkenBg": false
+                      }
+                  }
+                }
+
   ]
 }
