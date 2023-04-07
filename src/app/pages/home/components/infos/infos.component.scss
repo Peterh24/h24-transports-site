@@ -1,7 +1,16 @@
 .infos {
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin: 8rem 0 4rem 0;
+    text-align: center;
+  }
   &__reverse {
     .infos__wrapper {
       flex-direction: row-reverse;
+      .infos__text__wrapper {
+        padding-left: 4rem;
+      }
       .infos__text {
         align-items: flex-end;
       }
@@ -11,7 +20,6 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    gap: 4rem;
     width: 120rem;
     margin: 0 auto;
   }
@@ -22,8 +30,19 @@
     flex-direction: column;
     gap: 4rem;
     justify-content: center;
+    &__wrapper {
+      padding-right: 4rem;
+    }
     &__title {
       width: 100%;
+      &:after {
+        content: '';
+        display: block;
+        height: .2rem;
+        width: 3.5rem;
+        margin-top: 1.3rem;
+        background: #fff;
+      }
       &__dropdown {
         font-size: 2.4rem;
         &:after {

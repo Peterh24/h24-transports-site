@@ -9,7 +9,11 @@
             <h3 class="news__block__title">
               {{slide.title}}
             </h3>
-            <div class="news__block__text" [innerHTML]="slide.text"></div>
+            <div class="news__block__text">
+              <p *ngFor="let text of slide.text">
+                {{text}}
+              </p>
+            </div>
             <div class="news__block__date">{{slide.date}}</div>
           </div>
           <div class="img__block">

@@ -1,7 +1,26 @@
+@import "src/styles/colors";
 .contact {
   height: 100vh;
   display: flex;
   justify-content: center;
+  &__messages {
+    margin: 3rem 0;
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    p {
+      margin-bottom: 0;
+    }
+    &--error {
+      background: $error;
+      color:$on-error;
+    }
+    &--success {
+      background: $success;
+      color:$on-success;
+    }
+  }
   form {
     width: 60rem;
     h2 {

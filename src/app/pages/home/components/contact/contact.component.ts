@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contact, JsonFormControls } from '@app/models/backend/components/contact';
 import { GlobalService } from '@app/services/global';
 import { Observable, take } from 'rxjs';
 import { regex, regexErrors } from '@app/shared/utils/regex';
-
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -16,10 +16,14 @@ export class ContactComponent implements OnInit  {
   public id: string;
   public regex: any = regex;
   public regexErrors: any = regexErrors;
-
+  public message: any = {
+    validation: '',
+    error: ''
+  }
   constructor(
     private fb: FormBuilder,
-    private globalService: GlobalService
+    private globalService: GlobalService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +92,18 @@ export class ContactComponent implements OnInit  {
   }
 
   onSubmit(): void {
-    console.log('Submit !:', this.form)
+    console.log('Submit !:', this.form.value)
+    const apiUrl = 'https://127.0.0.1:8000/fr/api/send-email';
+    this.http.post(apiUrl, this.form.value)
+    .subscribe({
+      next: (response) => {
+        this.message.validation = 'Ok! Message send';
+      },
+      error: (error) => {
+        this.message.error = 'Failed ! Your message was not send please try again later';
+      }
+    });
+
   }
 
 }
