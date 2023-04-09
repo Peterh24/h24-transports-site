@@ -124,27 +124,19 @@
         color: $on-event;
       }
     }
-    &__item, &__item ul li {
+    &__item,
+    &__item ul li {
       &::before {
         background: $on-event;
       }
     }
   }
-
-  .firefly {
-    &::before {
-      background: $on-event;
-    }
+  .anchor__list {
     &::after {
       background: $on-event;
-      box-shadow: 0 0 0vw 0vw $on-event;
     }
   }
-
   .social__list {
-    &::before {
-      background: $on-event;
-    }
     &__link {
       &:nth-child(1) {
         &:hover {
@@ -163,6 +155,16 @@
       }
     }
   }
+  .firefly {
+    &::before {
+      background: $on-event;
+    }
+    &::after {
+      background: $on-event;
+      box-shadow: 0 0 0vw 0vw $on-event;
+    }
+  }
+
 
   /*Block Key Data*/
   .key-data {

@@ -39,13 +39,20 @@
       </li>
     </ul>
 
-    <div class="social__list">
-        <a class="social__list__link app-a" href="https://www.facebook.com/"><fa-icon [icon]="faIcons.faFacebookF"></fa-icon></a>
-        <a class="social__list__link app-a" href="https://twitter.com/"><fa-icon [icon]="faIcons.faTwitter"></fa-icon></a>
-        <a class="social__list__link app-a" href="https://www.instagram.com/"><fa-icon [icon]="faIcons.faInstagram"></fa-icon></a>
-    </div>
-
     <div class="footer">
+      <div class="social_language">
+        <div class="social__list">
+          <a class="social__list__link app-a" href="https://www.facebook.com/"><fa-icon [icon]="faIcons.faFacebookF"></fa-icon></a>
+          <a class="social__list__link app-a" href="https://twitter.com/"><fa-icon [icon]="faIcons.faTwitter"></fa-icon></a>
+          <a class="social__list__link app-a" href="https://www.instagram.com/"><fa-icon [icon]="faIcons.faInstagram"></fa-icon></a>
+        </div>
+
+        <div class="language">
+          <a (click)="langChange('fr')"><img src="./assets/img/flags/flag_FR.png" alt="FR" class="language__flag">Français</a>
+          <a (click)="langChange('en')"><img src="./assets/img/flags/flag_UK.png" alt="UK" class="language__flag">English</a>
+        </div>
+      </div>
+
       <div class="contact">
         <div class="contact__info">
           <div class="contact__icon"><mat-icon fontIcon="pin_drop"></mat-icon></div>
@@ -78,9 +85,6 @@
         </div>
       </div>
 
-      <div class="language">
-        <a (click)="langChange('fr')">Fr</a> | <a (click)="langChange('en')">En</a>
-      </div>
     </div>
 
   </div>

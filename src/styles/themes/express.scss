@@ -132,23 +132,18 @@
         color: $on-express;
       }
     }
-    &__item, &__item ul li {
+    &__item,
+    &__item ul li {
       &::before {
         background: $on-express;
       }
     }
   }
-
-  .firefly {
-    &::before {
-      background: $on-express;
-    }
+  .anchor__list {
     &::after {
       background: $on-express;
-      box-shadow: 0 0 0vw 0vw $on-express;
     }
   }
-
   .social__list {
     &__link {
       &:nth-child(1) {
@@ -168,6 +163,16 @@
       }
     }
   }
+  .firefly {
+    &::before {
+      background: $on-express;
+    }
+    &::after {
+      background: $on-express;
+      box-shadow: 0 0 0vw 0vw $on-express;
+    }
+  }
+
 
   /*Block Key Data*/
   .key-data {

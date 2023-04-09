@@ -125,23 +125,18 @@
         color: $on-application;
       }
     }
-    &__item, &__item ul li {
+    &__item,
+    &__item ul li {
       &::before {
         background: $on-application;
       }
     }
   }
-
-  .firefly {
-    &::before {
-      background: $on-application;
-    }
+  .anchor__list {
     &::after {
       background: $on-application;
-      box-shadow: 0 0 0vw 0vw $on-application;
     }
   }
-
   .social__list {
     &__link {
       &:nth-child(1) {
@@ -159,6 +154,15 @@
           color: $social-ig;
         }
       }
+    }
+  }
+  .firefly {
+    &::before {
+      background: $on-application;
+    }
+    &::after {
+      background: $on-application;
+      box-shadow: 0 0 0vw 0vw $on-application;
     }
   }
 

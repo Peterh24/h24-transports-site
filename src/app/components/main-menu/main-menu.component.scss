@@ -3,7 +3,7 @@
 .app-main-nav {
   display: flex;
   flex-direction: column;
-  width: 64rem;
+  width: calc(100vw / 3);
   height: 100vh;
   overflow: hidden;
   overflow-y: auto;
@@ -48,8 +48,7 @@
 
 .main-nav {
   &__header {
-    padding: 4rem;
-    padding-bottom: 0;
+    padding: 4rem 4rem 2rem;
 
     app-logo {
       position: relative;
@@ -63,75 +62,71 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 4rem;
 
-  ul, .social__list {
+  ul {
     list-style: none;
-    width:46.4rem;
-    margin-top: 2rem;
-  }
-
-  .social__list {
-    &::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: .1rem;
-    }
-    flex-wrap: wrap;
-    font-size: $alt-font-size;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-
-    &__link {
-      transition: color .25s;
-    }
+    width: calc(100% - 16rem);
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
     &::after {
       content: '';
       display: block;
       height: .1rem;
+      margin-top: 2rem;
     }
+
     &__link {
+      font-family: $alt-font-family;
       font-size: $alt-font-size;
       font-weight: 600;
-      font-family: $alt-font-family;
     }
   }
+
   &__item {
     a {
       opacity: .65;
       text-decoration: none;
     }
   }
-  &__item, &__item li {
+
+  &__item,
+  &__item li {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
-    transition: all .25s;
+    transition: all .2s  ease-in-out;
+
     a {
       flex: 1;
+      line-height: 95%;
+      transition: all .2s  ease-in-out;
     }
+
     &::before {
       opacity: .65;
       content: "";
       display: block;
       width: .2rem;
-      height: 4rem;
+      height: 2rem;
       transition: all .2s ease-in-out;
     }
 
     ul {
       width: 100%;
       margin: 0;
+      display: flex;
+      gap: 2rem;
+      flex-direction: column;
+
       li {
-        margin: 1rem 0 1rem 2rem;
+        margin: 0 0 0 2rem;
       }
     }
 
@@ -141,18 +136,29 @@
         opacity: 1;
         width: .4rem;
       }
+
       & > a {
         opacity: 1;
       }
+
       & > ul {
         li.submenu__item--active {
           &::before {
             opacity: 1;
             width: .4rem;
           }
+
           a {
             opacity: 1;
           }
+        }
+      }
+    }
+
+    &--active {
+      &:hover {
+        & > a {
+          padding-left: 1rem;
         }
       }
     }
@@ -161,10 +167,13 @@
   .anchor__list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+
     li {
-      width: 50%;
-      margin: 1rem 0;
+      flex-basis: calc(50% - .5rem);
     }
+
     &__link {
       transition: all .25s;
 
@@ -173,23 +182,87 @@
         padding-left: 1rem;
       }
     }
-  }
 
-  .contact {
-    &__info {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.5rem;
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: .1rem;
+      margin-top: 2rem;
     }
   }
+
   .footer {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 0 8rem;
+    flex-direction: column;
     align-items: flex-start;
-    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    gap: 2rem;
+
+    .social_language {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      .social__list {
+        flex-wrap: wrap;
+        font-size: $alt-font-size;
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+
+        &__link {
+          transition: color .25s;
+        }
+      }
+
+      /**TODO: language switcher*/
+      .language {
+        display: flex;
+        flex-flow: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4rem;
+
+        a {
+          display: flex;
+          align-items: center;
+        }
+
+        &__flag {
+          width: 2.4rem;
+          height: 2.4rem;
+          margin-right: 1.2rem;
+        }
+      }
+    }
+
+    .contact {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+
+      &__info,
+      &__icon {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+      }
+
+      &__info {
+        gap: 2rem;
+
+        p {
+          margin: 0;
+          font-size: 1.4rem;
+          line-height: 1.6rem;
+        }
+      }
+    }
   }
 }
 
@@ -1377,6 +1450,64 @@ $after-delay: 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 5224ms, 5144ms, 4914m
 
 // Responsive
 @media screen and (max-width: 102.4rem) {
+  .main-nav {
+    width: 48vw;
+
+    &__header {
+      padding: 2rem;
+    }
+  }
+
+  .submenu {
+    gap: .5rem;
+
+    ul {
+      width: calc(100% - 12rem);
+    }
+
+    &__item {
+      gap: 1rem;
+
+      ul {
+        gap: 1rem;
+      }
+    }
+
+    &__list {
+      gap: 1.5rem;
+
+      &::after {
+        margin-top: 0;
+      }
+    }
+
+    .anchor {
+      &__list {
+        margin-top: .5rem;
+
+        &::after {
+          margin-top: 0;
+        }
+      }
+    }
+
+    .footer {
+      gap: 1rem;
+      margin-top: .5rem;
+      padding: 0 6rem;
+
+      .contact {
+        gap: 1rem;
+        flex-flow: row wrap;
+        margin-top: 0;
+
+        &__info {
+          gap: 1rem;
+          flex-basis: calc(50% - .5rem);
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 47.9rem) {
