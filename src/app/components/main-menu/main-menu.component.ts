@@ -68,7 +68,8 @@ export class MainMenuComponent implements OnInit {
     }
   }
 
-  switchTheme(theme: string){
+  switchTheme(theme: string) {
+    this.resetData();
     this.store.dispatch(new fromThemes.AddCurrentTheme(theme));
     this.store.dispatch(new fromThemes.LoaderStart());
   }
@@ -85,7 +86,7 @@ export class MainMenuComponent implements OnInit {
 
   langChange(lang: string): void {
     //delete all data
-    this.data = [];
+    this.resetData();
 
     this.store.dispatch(new fromLanguage.LanguageChange(lang));
 
@@ -94,5 +95,9 @@ export class MainMenuComponent implements OnInit {
       this.store.dispatch(new fromThemes.Read());
     }
     this.closeMenu();
+  }
+
+  resetData(): void {
+    this.data = [];
   }
 }
