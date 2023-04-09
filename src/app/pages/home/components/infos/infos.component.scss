@@ -30,19 +30,23 @@
     flex-direction: column;
     gap: 4rem;
     justify-content: center;
+    margin: 4rem 0;
+
     &__wrapper {
       padding-right: 4rem;
     }
+
     &__title {
       width: 100%;
-      &:after {
+
+      &::after {
         content: '';
         display: block;
         height: .2rem;
         width: 3.5rem;
         margin-top: 1.3rem;
-        background: #fff;
       }
+
       &__dropdown {
         font-size: 2.4rem;
         &:after {
@@ -56,45 +60,58 @@
     flex: 1;
     overflow: hidden;
     img {
-      width:100%;
-      height:100%;
+      width: 100%;
+      height: 100%;
       object-fit:cover;
     }
   }
 }
+
 .dropdown {
   &__item {
     &__title {
       font-size: 1.8rem;
       font-weight: 500;
       cursor: pointer;
+
       &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
+
       .icon {
-        &:after {
-          content: "+";
-          align-items: center;
-          width: 1.6rem;
-          height: 1.6rem;
-          border-radius: 50%;
-          font-weight: normal;
-          font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        transition: all .2s ease-in-out;
+
+        &::after {
+          content: "\e145";
           display: inline-block;
+          font-family: 'Material Icons';
+          font-weight: normal;
           text-align: center;
-          line-height: 1.6rem;
-          letter-spacing: -2px;
-          filter: brightness(200%);
+          font-size: 1.3rem;
+          background: transparent;
         }
       }
-      &:after {
+
+      &::after {
         content: "";
         height: .2rem;
         width:3.5rem;
         display: block;
         margin: 1rem 0;
+      }
+
+      &:hover {
+        .icon {
+          transform: scale(1.15);
+        }
       }
     }
     &__content {
@@ -108,7 +125,7 @@
       .dropdown__item__title {
         .icon {
           &:after {
-            content: "-";
+            content: "\e15b";
           }
         }
       }

@@ -171,11 +171,24 @@
     &__content {
       &__text {
         h2 {
+          text-shadow: 0px 1px 2px $event;
           &:after {
             background-color: $on-event;
+            text-shadow: 0px 1px 2px $event;
           }
         }
+        p {
+          text-shadow: 0px 1px 2px $event;
+        }
+        a {
+          filter: drop-shadow(0, 1px, 2px, $event);
+          text-shadow: 0px 1px 2px $event;
+        }
       }
+    }
+
+    &::after {
+      background: linear-gradient(0deg, rgba(red($event), green($event), blue($event), 0.75) 0%, rgba(red($event), green($event), blue($event), 0.75) 60%, rgba(red($event), green($event), blue($event), 0) 100%);
     }
   }
 
@@ -203,7 +216,6 @@
       }
     }
   }
-
 
   /*Dropdown*/
   .dropdown {
@@ -285,6 +297,41 @@
     }
     #text {
       color: $on-event;
+    }
+  }
+
+  /*Block Citation*/
+  .citation {
+    blockquote {
+      &::before,
+      &::after {
+        color: rgba(red($on-event), green($on-event), blue($on-event), .1);
+      }
+    }
+  }
+
+  /*Block Infos*/
+  .infos {
+      &__title {
+        &::after {
+          background: $on-event;
+        }
+      }
+    }
+
+    .dropdown {
+      &__item {
+        &__title {
+          .icon {
+            background: rgba(red($on-event), green($on-event), blue($on-event), .1);
+
+          &:hover {
+            .icon {
+              background: rgba(red($on-event), green($on-event), blue($on-event), .25);
+            }
+          }
+        }
+      }
     }
   }
 }

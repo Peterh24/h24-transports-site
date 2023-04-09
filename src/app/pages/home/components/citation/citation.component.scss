@@ -4,37 +4,39 @@
 	align-items: center;
 	justify-content: center;
   padding: 8rem 0;
+
+
   blockquote {
     text-align: center;
     font-weight: 500;
     font-size: 2.4rem;
-    max-width: 60%;
+    max-width: calc(120rem * 0.8);
     line-height: 1.4;
     position: relative;
-    margin: 0;
-    padding: .5rem;
-  }
+    margin: 0 auto;
 
-  blockquote:before,
-  blockquote:after {
-    position: absolute;
-    color: #f1efe6;
-    font-size: 20rem;
-    width: 10rem;
-    height: 10rem;
-    opacity: .3;
-  }
+    &::before,
+    &::after {
+      content: "\e244";
+      font-family: 'Material Icons';
+      font-weight: normal;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      font-size: 20rem;
+      width: 15rem;
+      height: 15rem;
+    }
 
-  blockquote:before {
-    content: '“';
-    left: -8rem;
-    top: -10rem;
-  }
-
-  blockquote:after {
-    content: '”';
-    right: -8rem;
-    bottom: -3rem;
+    &::before {
+      left: 0;
+      transform: rotate(180deg) translateX(75%);
+    }
+    &::after {
+      right: 0;
+      transform: translateX(75%) translateY(-50%);
+    }
   }
 }
 

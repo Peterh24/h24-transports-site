@@ -144,6 +144,7 @@
 
     .swiper-pagination-bullet {
       background: none;
+      transition:  all .25s ease-in-out;
 
       &-active,
       &:hover {
@@ -163,6 +164,9 @@
       border: solid .3rem;
       font-weight: 700;
     }
+  }
+  .swiper {
+    width: 100%;
   }
 }
 

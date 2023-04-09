@@ -1,8 +1,9 @@
 @import "src/styles/colors";
 .contact {
-  height: 100vh;
   display: flex;
   justify-content: center;
+  padding: 8rem 0;
+
   &__messages {
     margin: 3rem 0;
     padding: 3rem 0;
@@ -24,7 +25,7 @@
   form {
     width: 60rem;
     h2 {
-      margin: 8rem 0 2rem 0;
+      margin-bottom: 2rem;
       text-align: center;
     }
   }
