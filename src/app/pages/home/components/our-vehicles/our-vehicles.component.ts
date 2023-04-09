@@ -6,12 +6,13 @@ import SwiperCore, { Pagination, Autoplay, EffectFade, SwiperOptions } from 'swi
 
 SwiperCore.use([Pagination, Autoplay, EffectFade ]);
 let menu:any = [];
-
+let illustrationDOM;
 @Component({
   selector: 'app-our-vehicles',
   templateUrl: './our-vehicles.component.html',
   styleUrls: ['./our-vehicles.component.scss']
 })
+
 export class OurVehiclesComponent {
   @ViewChild('illustrationContainer', { static: true }) illustrationContainer: ElementRef;
   public datas$: Observable<OurVehicles>;
@@ -53,14 +54,46 @@ export class OurVehiclesComponent {
   }
 
   updateIllustration(index: number) {
-    const illustration = menu[index].illustration;
-    const img = new Image();
+    if(menu[index].illustration){
+      const illustration = menu[index].illustration;
+      illustrationDOM = new Image();
+
+      illustrationDOM.src = illustration;
+      illustrationDOM.style.objectFit = 'cover';
+    } else {
+      const mp4 = menu[index].video.mp4;
+      const ogv = menu[index].video.ogv;
+      const webm = menu[index].video.webm;
+      const altVideo = menu[index].video.jpg;
+      illustrationDOM = document.createElement('video');
+
+      const sourceOgv = document.createElement('source');
+      sourceOgv.src = ogv;
+      sourceOgv.type = 'video/ogg';
+      illustrationDOM.appendChild(sourceOgv);
+
+      const sourceMp4 = document.createElement('source');
+      sourceMp4.src = mp4;
+      sourceMp4.type = 'video/mp4';
+      illustrationDOM.appendChild(sourceMp4);
+
+      const sourceWebm = document.createElement('source');
+      sourceWebm.src = webm;
+      sourceWebm.type = 'video/webm';
+      illustrationDOM.appendChild(sourceWebm);
+      illustrationDOM.poster = altVideo;
+      illustrationDOM.autoplay =  true;
+      illustrationDOM.loop = true;
+      illustrationDOM.muted = true;
+      illustrationDOM.controls = false;
+    }
+
     /**TODO: Calculate window width and apply different styles for responsive */
-    img.src = illustration;
-    img.style
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'cover';
+
+    illustrationDOM.style
+    illustrationDOM.style.width = '100%';
+    illustrationDOM.style.height = '100%';
+
 
     // Remove previous illustration
     while (this.illustrationContainer.nativeElement.firstChild) {
@@ -68,6 +101,6 @@ export class OurVehiclesComponent {
     }
 
     // Add new illustration
-    this.illustrationContainer.nativeElement.appendChild(img);
+    this.illustrationContainer.nativeElement.appendChild(illustrationDOM);
   }
 }

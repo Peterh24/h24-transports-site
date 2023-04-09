@@ -135,7 +135,7 @@
                 "list": [
                     {
                         "title": "3m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
+                        "illustration": "https://s.alicdn.com/@sc04/kf/H1e378db116c740e2a96e9ee6d0a62fa12.jpg_280x280.jpg",
                         "description": [
                             {
                                 "label": "Longueur du véhicule",
@@ -161,7 +161,7 @@
                     },
                     {
                         "title": "6/8m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
+                        "illustration": "https://s.alicdn.com/@sc04/kf/H1e378db116c740e2a96e9ee6d0a62fa12.jpg_280x280.jpg",
                         "description": [
                             {
                                 "label": "Longueur du véhicule",
@@ -187,7 +187,12 @@
                     },
                     {
                         "title": "12/14m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
+                        "video": {
+                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.mp4",
+                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.ogv",
+                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.webm",
+                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.jpg"
+                        },
                         "description": [
                             {
                                 "label": "Longueur du véhicule",
@@ -217,7 +222,12 @@
                     },
                     {
                         "title": "20m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
+                        "video": {
+                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.mp4",
+                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.ogv",
+                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.webm",
+                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.jpg"
+                        },
                         "description": [
                             {
                                 "label": "Longueur du véhicule",
