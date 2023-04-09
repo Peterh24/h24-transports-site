@@ -96,20 +96,6 @@
     gap: .7rem;
     justify-content: flex-start;
     align-items: center;
-
-    &:nth-child(2) {
-
-      .key-data__item__val {
-
-        &::after {
-          content:'K';
-          display: inline-block;
-          margin-left: 5px;
-          font-size: 2.2rem;
-        }
-      }
-    }
-
     &__val {
       font-size: 4rem;
       font-family: $alt-font-family;

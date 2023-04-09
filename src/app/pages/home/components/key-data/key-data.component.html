@@ -9,7 +9,7 @@
     <div class="key-data__List__wrap">
       <div class="key-data__List">
         <div class="key-data__item" *ngFor="let key of (datas$ | async).list">
-          <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value"></div>
+          <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value" [appValueUnit]="key.unit"></div>
           <div class="key-data__item__label">{{key.label}} </div>
         </div>
       </div>

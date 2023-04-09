@@ -31,11 +31,13 @@
                     },
                     {
                         "value": "35",
-                        "label": "courses réalisées"
+                        "label": "courses réalisées",
+                        "unit": "k"
                     },
                     {
                         "value": "2",
-                        "label": "temps de trajet moyen"
+                        "label": "temps de trajet moyen",
+                        "unit": "h"
                     }
                 ],
                 "options": {

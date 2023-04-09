@@ -6,14 +6,14 @@ import { timer, Subject, takeUntil } from "rxjs";
 })
 export class AnimatedCounterDirective implements OnInit, OnDestroy {
   @Input('appAnimatedCounter') value: number;
+  @Input('appValueUnit') staticText: string;
+
   @Input() delay: number;
   @Input() speed: number;
 
-  staticText: string;
-
   private destroyed$ = new Subject<void>();
   private startingValue: number;
-
+  private unit: string;
   constructor(
     private el: ElementRef<HTMLElement>,
     private renderer: Renderer2
@@ -24,7 +24,11 @@ export class AnimatedCounterDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
+    if(this.staticText) {
+      this.unit = `<span style="display: inline-block;margin-left: 5px;font-size: 2.2rem;">${this.staticText}</span>`
+    } else {
+      this.unit = '';
+    }
     timer(this.delay || 0).pipe(takeUntil(this.destroyed$)).subscribe({
       complete: () => {
         return this.animate()
@@ -37,7 +41,7 @@ export class AnimatedCounterDirective implements OnInit, OnDestroy {
       const start = () => {
         if(this.startingValue < this.value){
           this.startingValue++;
-          this.renderer.setProperty(this.el.nativeElement, 'textContent', this.startingValue);
+          this.renderer.setProperty(this.el.nativeElement, 'innerHTML', this.startingValue + this.unit);
           setTimeout(start, this.speed)
         }
       };
