@@ -7,57 +7,57 @@
         "cta": "En savoir plus",
         "inPrenav": true,
         "child": [
-          {
-            "id": "eventAudiovisuel",
-            "title": "Transport Audiovisuel",
-            "img": "https://img.freepik.com/photos-gratuite/texture-mur-stuc-bleu-marine-relief-decoratif-abstrait-grunge-fond-colore-rugueux-grand-angle_1258-28311.jpg?w=1380&t=st=1680468968~exp=1680469568~hmac=eb296465d6f4e4f04f33cbff1d51127d876e573f8e2188fc517763855d720a6f"
-          },
-          {
-            "id": "eventMode",
-            "title": "Transport Mode & luxe",
-            "img": "https://images.pexels.com/photos/1509534/pexels-photo-1509534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          },
-          {
-            "id": "eventEvent",
-            "title": "Transport Événementiel",
-            "img": "https://img.freepik.com/free-photo/beautiful-milky-way-night-sky_53876-139825.jpg?w=1800&t=st=1680469041~exp=1680469641~hmac=79aee0ea571f1cc8680c9801aac7da7b9761fc1a737a6b71b160941a2eea38e7"
-          }
+            {
+                "id": "eventAudiovisuel",
+                "title": "Transport Publicité & Cinéma",
+                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/cover-transport_publicity_and_cinema.jpg"
+            },
+            {
+                "id": "eventMode",
+                "title": "Transport Mode & Luxe",
+                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-mode/img/cover-fashion_and_luxury_transport.jpg"
+            },
+            {
+                "id": "eventEvent",
+                "title": "Transport Évènementiel",
+                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/cover-event_transport.jpg"
+            }
         ]
     },
     {
         "id": "express",
-        "title": "Transport Express Dédié",
-        "text": "Transport Express Dédié text TODO",
-        "img": "./assets/img/express-cover-picture.jpg",
+        "title": "Transport urgent exclusif",
+        "text": "<p>Notre équipe est spécialisée dans le transport urgent exclusif. Nous sommes à votre disposition pour répondre à tout type de demandes, qu’elles soient ponctuelles ou récurrentes, spéciales ou standards.</p><p>Notre prestation exclusive vous permet d'optimiser votre temps efficacement. Nous proposons deux catégories de services pour répondre à vos besoins spécifiques : Express exclusif et tournée navette.</p><p>Nous accordons une grande importance au service client et sommes à votre écoute pour vous apporter des solutions et des conseils sur mesure.</p>",
+        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/express/img/express-cover-picture.jpg",
         "cta": "En savoir plus",
         "inPrenav": true,
         "child": []
     },
     {
         "id": "application",
-        "title": "Notre nouvelle application mobile",
-        "text": "Notre nouvelle application mobile text TODO",
-        "img": "./assets/img/application-cover-picture.jpg",
+        "title": "Application mobile et web",
+        "text": "<p>Afin de mieux répondre à vos besoins, nous sommes actuellement en train de concevoir une application web/mobile avec un tableau de bord intuitif pour un suivi précis de vos projets.</p><p>Vous pourrez alors créer une demande de course en tout lieu, et en tout temps, suivre précisément l'état de vos projets et bénéficier d'un suivi en temps réel.</p>",
+        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/exploitation/img/application-cover-picture.jpg",
         "cta": "En savoir plus",
         "inPrenav": true,
         "child": []
     },
     {
-      "id": "aboutUs",
-      "title": "À propos",
-      "text": "Chez H24 Transports, votre satisfaction est notre engagement.",
-      "img": "./assets/img/application-cover-picture.jpg",
-      "cta": "En savoir plus",
-      "inPrenav": false,
-      "child": []
+        "id": "aboutUs",
+        "title": "À propos",
+        "text": "Chez H24 Transports, votre satisfaction est notre engagement.",
+        "img": "",
+        "cta": "En savoir plus",
+        "inPrenav": false,
+        "child": []
     },
     {
-      "id": "delay",
-      "title": "Nos délais d'intervention",
-      "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic.",
-      "img": "./assets/img/application-cover-picture.jpg",
-      "cta": "En savoir plus",
-      "inPrenav": false,
-      "child": []
+        "id": "delay",
+        "title": "Nos délais d'intervention",
+        "text": "Nos délais sont susceptible d'évoluer selon les conditions de trafic.",
+        "img": "",
+        "cta": "En savoir plus",
+        "inPrenav": false,
+        "child": []
     }
 ]

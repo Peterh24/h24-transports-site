@@ -7,7 +7,7 @@
     <swiper [config]="config">
       <ng-template class="clients__slider__slide" swiperSlide *ngFor="let slide of (datas$ | async).list">
         <a [href]="slide.url" target="_blank" *ngIf="slide.img">
-            <img [src]="'/assets/img/clients/logos/'+(datas$ | async).info.imgStyle+'/' + slide.img" [alt]="slide.name" />
+            <img [src]="'https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos-clients/'+(datas$ | async).info.imgStyle+'/' + slide.img" [alt]="slide.name" />
         </a>
       </ng-template>
   </swiper>

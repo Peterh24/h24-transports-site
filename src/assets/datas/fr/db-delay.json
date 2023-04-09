@@ -3,29 +3,29 @@
     "title": "Nos délais d'intervention",
     "intro": "Nos délais sont susceptible d'évoluer selon les conditions de trafic.",
     "content": [
-      {
-        "id": "paris",
-        "country": "Paris",
-        "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-        "time": "1h"
-      },
-      {
-        "id": "idf",
-        "country": "Île-de-France",
-        "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-        "time": "3h"
-      },
-      {
-        "id": "france",
-        "country": "France",
-        "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-        "time": "12h"
-      },
-      {
-        "id": "international",
-        "country": "International",
-        "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
-        "time": "Selon le pays"
-      }
-  ]
+        {
+            "id": "paris",
+            "country": "Paris",
+            "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+            "time": "1h"
+        },
+        {
+            "id": "idf",
+            "country": "Île-de-France",
+            "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+            "time": "3h"
+        },
+        {
+            "id": "france",
+            "country": "France",
+            "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+            "time": "12h"
+        },
+        {
+            "id": "international",
+            "country": "International",
+            "text": "Lorem ipsum dolor sit amet. Sit animi aperiam qui ratione facilis non corrupti tempora quo excepturi galisum ut modi explicabo est repellat vero.",
+            "time": "Selon le pays"
+        }
+    ]
 }

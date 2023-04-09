@@ -3,20 +3,20 @@
     "title": "À propos",
     "intro": "Chez H24 Transports, votre satisfaction est notre engagement.",
     "content": [
-      {
-      "title" : "Un service personnalisé pour répondre à vos besoins spécifiques",
-      "text": "Depuis 2014, H24 Transports propose un service unique et dédié à une clientèle exigeante en quête de prestations de qualité. Nous mettons tout en œuvre pour offrir une expérience client personnalisée, avec un interlocuteur unique pour un accompagnement sur mesure. Nos chauffeurs et manutentionnaires formés utilisent des véhicules utilitaires adaptés à vos besoins pour garantir un transport exclusif, de la prise en charge à la livraison.",
-      "img": "https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive.jpg"
-      },
-      {
-      "title" : "La qualité de service, notre priorité absolue",
-      "text": "Notre priorité est la qualité de service. C'est pourquoi nous nous engageons à mener à bien chaque mission, en toute flexibilité et disponibilité 24h/24 et 7j/7, tout en garantissant une sécurité optimale grâce à nos solutions de géolocalisation et de gardiennage vidéo-surveillé 24h/24.",
-      "img": "https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive.jpg"
-      },
-      {
-      "title" : "Des solutions de transport spécifiques pour des besoins particuliers",
-      "text": "Notre expertise nous a permis de développer deux services de transport spécifiques : la logistique et transport audiovisuel et événementiel, ainsi que le transport urgent exclusif. Et pour toujours mieux répondre à vos besoins, nous sommes en train de développer une application web/mobile pour un suivi précis de vos projets grâce à un tableau de bord intuitif.",
-      "img": "https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive.jpg"
-      }
-  ]
+        {
+            "title": "Un service personnalisé pour répondre à vos besoins spécifiques",
+            "text": "Depuis 2014, H24 Transports propose un service unique et dédié à une clientèle exigeante en quête de prestations de qualité. Nous mettons tout en œuvre pour offrir une expérience client personnalisée, avec un interlocuteur unique pour un accompagnement sur mesure. Nos chauffeurs et manutentionnaires formés utilisent des véhicules utilitaires adaptés à vos besoins pour garantir un transport exclusif, de la prise en charge à la livraison.",
+            "img": "https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive.jpg"
+        },
+        {
+            "title": "La qualité de service, notre priorité absolue",
+            "text": "Notre priorité est la qualité de service. C'est pourquoi nous nous engageons à mener à bien chaque mission, en toute flexibilité et disponibilité 24h/24 et 7j/7, tout en garantissant une sécurité optimale grâce à nos solutions de géolocalisation et de gardiennage vidéo-surveillé 24h/24.",
+            "img": "https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive.jpg"
+        },
+        {
+            "title": "Des solutions de transport spécifiques pour des besoins particuliers",
+            "text": "Notre expertise nous a permis de développer deux services de transport spécifiques : la logistique et transport audiovisuel et événementiel, ainsi que le transport urgent exclusif. Et pour toujours mieux répondre à vos besoins, nous sommes en train de développer une application web/mobile pour un suivi précis de vos projets grâce à un tableau de bord intuitif.",
+            "img": "https://www.referenseo.com/wp-content/uploads/2019/03/image-attractive.jpg"
+        }
+    ]
 }
