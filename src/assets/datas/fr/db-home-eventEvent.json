@@ -50,7 +50,7 @@
             "data": {
                 "list": [
                     {
-                        "img": "./assets/img/securite.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-speed.jpg",
                         "picto": "security",
                         "title": "Rapidité",
                         "text": [
@@ -59,7 +59,7 @@
                         ]
                     },
                     {
-                        "img": "./assets/img/camions-flotte.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-reliability.jpg",
                         "picto": "lock",
                         "title": "Fiabilité",
                         "text": [
@@ -68,7 +68,7 @@
                         ]
                     },
                     {
-                        "img": "./assets/img/optimisation.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-punctuality.jpg",
                         "picto": "timer",
                         "title": "Ponctualité",
                         "text": [
@@ -76,7 +76,7 @@
                         ]
                     },
                     {
-                        "img": "./assets/img/confiance.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_flexibility.jpg",
                         "picto": "timer",
                         "title": "Flexibilité",
                         "text": [
@@ -113,7 +113,7 @@
             "component": "TeasingComponent",
             "data": {
                 "info": {
-                    "img": "./assets/img/h24-transports-picture.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/full_picture-event_transport.jpg",
                     "icon": "local_shipping",
                     "text": [
                         "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
@@ -258,7 +258,7 @@
             "data": {
                 "info": {
                     "title": "Rapidité et fiabilité",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/speed_and_reliability.jpg",
                     "dropdown": [
                         {
                             "title": "L'importance du transport dans l'événementiel",
@@ -295,7 +295,7 @@
                 "info": {
                     "globalTitle": "Sécurité et assurances",
                     "title": "Une prise en charge complète de vos besoins après votre évènement",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
                     "text": [
                         "Vous organisez un événement important et vous avez besoin d'un transporteur de matériel fiable et sécurisé ? Nous mettons tout en œuvre pour garantir la sécurité et la protection de votre matériel, afin que vous puissiez vous concentrer sur votre organisation en toute sérénité."
                     ]
@@ -312,7 +312,7 @@
             "data": {
                 "info": {
                     "title": "Un stockage sécurisé pour votre matériel",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/secure_storage.jpg",
                     "text": [
                         "Nous proposons une solution de gardiennage sécurisé de nos véhicules contenant votre matériel dans nos locaux vidéo-surveillés."
                     ]
@@ -329,7 +329,7 @@
             "data": {
                 "info": {
                     "title": "Des assurances adaptées à votre secteur d'activité",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.jpg",
                     "text": [
                         "De plus, nous avons des assurances adaptées à votre secteur d'activité pour une tranquillité d'esprit totale lors du transport de votre matériel."
                     ]

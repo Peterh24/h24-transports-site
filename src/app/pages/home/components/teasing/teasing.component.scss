@@ -17,14 +17,17 @@
       }
     }
   }
+
   &__without-video-img {
     height: auto;
+
     .teasing__info {
       position: relative;
       align-items: center;
       justify-content: center;
     }
   }
+
   &__background {
     position: absolute;
     top: 0;
@@ -32,6 +35,7 @@
     bottom: 0;
     left: 0;
     z-index: 5;
+
     &::before {
       content: '';
       display: none; //Deactivate for now
@@ -42,16 +46,16 @@
       height: 100vh;
       z-index: 100;
     }
+
     &__video {
       width: 100vw;
       height: 100vh;
     }
+
     iframe, img {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vw;
-      height: 100vh;
       transform: translate(-50%, -50%);
     }
   }
@@ -68,10 +72,12 @@
     gap: 2rem;
     padding: 4rem 0;
     text-align: center;
+
     &__title {
       margin: 0;
       font-size: 2.8rem;
     }
+
     &__text {
       font-size: 1.6rem;
     }
