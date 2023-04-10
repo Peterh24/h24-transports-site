@@ -15,7 +15,7 @@
                     "text": [
                         "Notre équipe est spécialisée dans le transport urgent exclusif. Nous sommes à votre disposition pour répondre à tout type de demandes, qu’elles soient ponctuelles ou récurrentes, spéciales ou standards.",
                         "Notre prestation exclusive vous permet d'optimiser votre temps efficacement. Nous proposons deux catégories de services pour répondre à vos besoins spécifiques : Express exclusif et tournée navette.",
-                        "Nous accordons une grande importance au service client et sommes à votre écoute pour vous apporter des solutions et des conseils sur mesure. "
+                        "Nous accordons une grande importance au service client et sommes à votre écoute pour vous apporter des solutions et des conseils sur mesure."
                     ],
                     "cta": "À propos",
                     "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/express/img/express-cover-picture.jpg",
@@ -30,12 +30,13 @@
                         "label": "clients satisfaits"
                     },
                     {
-                        "value": "379",
-                        "label": "Kilomètres parcourus"
+                        "value": "30",
+                        "label": "d'attente de prise en charge max.",
+                        "unit": "min"
                     },
                     {
                         "value": "79",
-                        "label": "courses réalisées"
+                        "label": "courses réalisées par jour"
                     }
                 ],
                 "options": {
@@ -50,38 +51,37 @@
             "data": {
                 "list": [
                     {
-                        "img": "./assets/img/securite.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-speed.jpg",
                         "picto": "security",
                         "title": "Rapidité",
                         "text": [
-                            "Nos services s’adressent à une clientèle exigeante.",
-                            "H24 Transports propose des solutions de gardiennage sécurisé & vidéo-surveillé à l’intérieur même de nos locaux. Ce service vous est proposé lorsque vos départs et ou retours matériels ne sont pas réalisables dans l’immédiat."
+                            "Nous sommes conscients que les retards peuvent avoir des conséquences importantes sur votre entreprise, c'est pourquoi nous nous efforçons de garantir une livraison rapide et fiable à chaque mission que nous entreprenons."
                         ]
                     },
                     {
-                        "img": "./assets/img/camions-flotte.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-reliability.jpg",
                         "picto": "lock",
                         "title": "Fiabilité",
                         "text": [
                             "Chez H24 Transports, nous mettons tout en œuvre pour garantir une fiabilité absolue à chaque étape de la mission.",
-                            "Nous disposons d'une flotte de véhicules adaptée pour répondre à l’ensemble besoins, et nous employons une équipe de professionnels qualifiés pour assurer le bon déroulement de chaque mission."
+                            "Nous disposons d'une flotte de véhicules adaptée pour répondre à tous vos besoins, et nous employons une équipe de professionnels qualifiés pour assurer le bon déroulement de chaque mission."
                         ]
                     },
                     {
-                        "img": "./assets/img/optimisation.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-punctuality.jpg",
                         "picto": "timer",
                         "title": "Ponctualité",
                         "text": [
-                            "Nous ferons toujours en sorte de livrer votre marchandise en temps et en heure, car nous avons conscience de l’impact que les retards peuvent avoir dans ce secteur d’activité. "
+                            "La livraison de votre marchandise en temps et en heure est notre priorité absolue, car nous comprenons parfaitement l'importance de la ponctualité dans votre secteur d'activité."
                         ]
                     },
                     {
-                        "img": "./assets/img/confiance.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_flexibility.jpg",
                         "picto": "timer",
                         "title": "Flexibilité",
                         "text": [
                             "Nos services sont disponibles 24h/24 et 7j/7.",
-                            "Que vos besoins soient ponctuels, récurrents, urgents ou planifiés depuis longtemps. Nous sommes à votre disposition, si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
+                            "Que vos besoins soient ponctuels, réguliers, urgents ou planifiés depuis longtemps. Nous sommes à votre disposition, si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
                         ]
                     }
                 ],
@@ -98,7 +98,7 @@
                 "info": {
                     "title": "Nos délais d'intervention",
                     "text": [
-                        "Nous nous engageons à fournir des délais d'intervention rapides et précis pour répondre à vos besoins et assurer la réussite de chaque événement. Notre mission consiste à garantir la qualité et la ponctualité des prestations fournies en transportant rapidement et en toute sécurité les équipements nécessaires."
+                        "Nos délais sont susceptibles de changer selon les conditions de trafic."
                     ],
                     "cta": "voir les délais",
                     "url": "/delay"
@@ -113,7 +113,7 @@
             "component": "TeasingComponent",
             "data": {
                 "info": {
-                    "img": "./assets/img/h24-transports-picture.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/express/img/full_picture-express_transport.jpg",
                     "icon": "local_shipping",
                     "text": [
                         "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
@@ -125,132 +125,142 @@
             }
         },
         {
-            "id": "ourVehicles",
-            "component": "OurVehiclesComponent",
-            "title": "Nos véhicules",
-            "data": {
-                "info": {
-                    "title": "Nos véhicules"
-                },
-                "list": [
-                    {
-                        "title": "3m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
-                        "description": [
-                            {
-                                "label": "Longueur du véhicule",
-                                "value": "4,5 mètres"
-                            },
-                            {
-                                "label": "Hauteur du véhicule",
-                                "value": "1,85 mètres"
-                            },
-                            {
-                                "label": "Profondeur du coffre",
-                                "value": "1,7 mètres"
-                            },
-                            {
-                                "label": "Hauteur du coffre",
-                                "value": "1,15 mètres"
-                            },
-                            {
-                                "label": "Charge utile",
-                                "value": "415 kg"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "6/8m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
-                        "description": [
-                            {
-                                "label": "Longueur du véhicule",
-                                "value": "4,9 mètres"
-                            },
-                            {
-                                "label": "Hauteur du véhicule",
-                                "value": "1,9 mètres"
-                            },
-                            {
-                                "label": "Profondeur du coffre",
-                                "value": "2,4 mètres"
-                            },
-                            {
-                                "label": "Hauteur du coffre",
-                                "value": "1,3 mètres"
-                            },
-                            {
-                                "label": "Charge utile",
-                                "value": "820 kg"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "12/14m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
-                        "description": [
-                            {
-                                "label": "Longueur du véhicule",
-                                "value": "6,8 mètres"
-                            },
-                            {
-                                "label": "Hauteur du véhicule",
-                                "value": "2,6 mètres"
-                            },
-                            {
-                                "label": "Hayon",
-                                "value": "inclus"
-                            },
-                            {
-                                "label": "Profondeur du coffre",
-                                "value": "4,0 mètres"
-                            },
-                            {
-                                "label": "Hauteur du coffre",
-                                "value": "1,9 mètres"
-                            },
-                            {
-                                "label": "Charge utile",
-                                "value": "1300 kg"
-                            }
-                        ]
-                    },
-                    {
-                        "title": "20m<sup>3</sup>",
-                        "illustration": "./assets/img/camion-6-8m3.png",
-                        "description": [
-                            {
-                                "label": "Longueur du véhicule",
-                                "value": "6,8 mètres"
-                            },
-                            {
-                                "label": "Hauteur du véhicule",
-                                "value": "3,4 mètres"
-                            },
-                            {
-                                "label": "Hayon",
-                                "value": "inclus"
-                            },
-                            {
-                                "label": "Profondeur du coffre",
-                                "value": "4,2 mètres"
-                            },
-                            {
-                                "label": "Hauteur du coffre",
-                                "value": "2,2 mètres"
-                            },
-                            {
-                                "label": "Charge utile",
-                                "value": "700 kg"
-                            }
-                        ]
-                    }
-                ],
-                "options": {
-                    "darkenBg": false
-                }
-            }
-        },
+          "id": "ourVehicles",
+          "component": "OurVehiclesComponent",
+          "title": "Nos véhicules",
+          "data": {
+              "info": {
+                  "title": "Nos véhicules"
+              },
+              "list": [
+                  {
+                      "title": "3m<sup>3</sup>",
+                      "illustration": "https://s.alicdn.com/@sc04/kf/H1e378db116c740e2a96e9ee6d0a62fa12.jpg_280x280.jpg",
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "4,5 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "1,85 mètres"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "1,7 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "1,15 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "415 kg"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "6/8m<sup>3</sup>",
+                      "illustration": "https://s.alicdn.com/@sc04/kf/H1e378db116c740e2a96e9ee6d0a62fa12.jpg_280x280.jpg",
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "4,9 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "1,9 mètres"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "2,4 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "1,3 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "820 kg"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "12/14m<sup>3</sup>",
+                      "video": {
+                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.mp4",
+                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.ogv",
+                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.webm",
+                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.jpg"
+                      },
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "6,8 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "2,6 mètres"
+                          },
+                          {
+                              "label": "Hayon",
+                              "value": "inclus"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "4,0 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "1,9 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "1300 kg"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "20m<sup>3</sup>",
+                      "video": {
+                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.mp4",
+                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.ogv",
+                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.webm",
+                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.jpg"
+                      },
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "6,8 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "3,4 mètres"
+                          },
+                          {
+                              "label": "Hayon",
+                              "value": "inclus"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "4,2 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "2,2 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "700 kg"
+                          }
+                      ]
+                  }
+              ],
+              "options": {
+                  "darkenBg": false
+              }
+          }
+      },
         {
             "id": "fiability",
             "component": "InfosComponent",
@@ -258,31 +268,31 @@
             "data": {
                 "info": {
                     "title": "Rapidité et efficacité",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/speed_and_reliability.jpg",
                     "dropdown": [
                         {
-                            "title": "Un service de coursier en plein essor",
+                            "title": "L'importance du transport dans l'événementiel",
                             "text": [
-                                "Parce que le temps, c'est de l'argent, le transport urgent exclusif devient de plus en plus populaire. Les entreprises et les particuliers cherchent des moyens rapides et fiables pour faire livrer des colis, des documents et même des produits périssables. Avec un service de coursier exclusif, les clients bénéficient d'une livraison porte-à-porte, rapide et sécurisée, avec une traçabilité en temps réel."
+                                "Le transport de marchandise dans l'événementiel est un élément crucial pour le succès d'un événement. Que ce soit pour le transport de matériel de sonorisation, d'éclairage ou de décorations, il est essentiel que tout arrive à destination en temps et en heure."
                             ],
                             "isVisible": true
                         },
                         {
-                            "title": "Les avantages d'un service de transport urgent exclusif",
+                            "title": "Une expertise spécialisée",
                             "text": [
-                                "TODO"
+                                "Nous connaissons et comprenons parfaitement les enjeux liés à ce secteur d'activité."
                             ]
                         },
                         {
-                            "title": "Comment choisir un service de coursier exclusif",
+                            "title": "Des équipements adaptés",
                             "text": [
-                                "TODO"
+                                "Nous sommes à même de répondre à toutes vos exigences de manière rapide et fiable. Un support vous est partagé pour suivre en live vos marchandises, c’est un gage supplémentaire de fiabilité."
                             ]
                         }
                     ]
                 },
                 "options": {
-                    "imgTo": "left",
+                    "imgTo": "right",
                     "darkenBg": true
                 }
             }
@@ -295,13 +305,13 @@
                 "info": {
                     "globalTitle": "Sécurité et assurances",
                     "title": "La traçabilité en temps réel",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/real-time_traceability.jpg",
                     "text": [
                         "Grâce à des outils de suivi et de géolocalisation, vous pouvez suivre l'avancée de vos envois en temps réel et avoir une visibilité totale sur leur cheminement."
                     ]
                 },
                 "options": {
-                    "imgTo": "right",
+                    "imgTo": "left",
                     "darkenBg": false
                 }
             }
@@ -312,13 +322,13 @@
             "data": {
                 "info": {
                     "title": "La rapidité comme assurance",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-punctuality.jpg",
                     "text": [
                         "La rapidité de livraison est une forme de sécurité en soi, car elle permet de réduire les risques de vol ou de détérioration des envois."
                     ]
                 },
                 "options": {
-                    "imgTo": "left",
+                    "imgTo": "right",
                     "darkenBg": false
                 }
             }
@@ -329,13 +339,13 @@
             "data": {
                 "info": {
                     "title": "Des assurances adaptées à vos envois",
-                    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.jpg",
                     "text": [
                         "Nous proposons des assurances pour couvrir les risques de perte, de vol ou de dommage des envois. Vous pouvez ainsi avoir l'esprit tranquille en cas de problème."
                     ]
                 },
                 "options": {
-                    "imgTo": "right",
+                    "imgTo": "left",
                     "darkenBg": false
                 }
             }

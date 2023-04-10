@@ -1,8 +1,95 @@
 {
     "id": "application",
-    "title": "Application mobile et web",
+    "title": "Exploitation",
     "loader": {
         "img": ""
     },
-    "componentsList": []
+    "componentsList": [
+        {
+            "id": "keydata",
+            "component": "KeyDataComponent",
+            "title": "Exploitation",
+            "data": {
+                "info": {
+                    "title": "Exploitation",
+                    "text": [
+                        "Afin de mieux répondre à vos besoins, nous sommes actuellement en train de concevoir une application web/mobile avec un tableau de bord intuitif pour un suivi précis de vos projets.",
+                        "Vous pourrez alors créer une demande de course en tout lieu, et en tout temps, suivre précisément l'état de vos projets et bénéficier d'un suivi en temps réel."
+                    ],
+                    "cta": "À propos",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/exploitation/img/application-cover-picture-orange.jpg",
+                    "link": {
+                        "label": "être alerté de la sortie",
+                        "url": "#contact"
+                    }
+                },
+                "list": [
+                    {
+                        "value": "1252",
+                        "label": "clients satisfaits"
+                    },
+                    {
+                        "value": "35",
+                        "label": "courses réalisées",
+                        "unit": "K"
+                    },
+                    {
+                        "value": "2",
+                        "label": "de temps de trajet moyen",
+                        "unit": "H"
+                    }
+                ],
+                "options": {
+                    "darkenBg": false
+                }
+            }
+        },
+        {
+            "id": "ourvalues",
+            "component": "OurValuesComponent",
+            "title": "Nos Valeurs",
+            "data": {
+                "list": [
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
+                        "picto": "security",
+                        "title": "Sécurité",
+                        "text": [
+                            "Nos services s’adressent à une clientèle exigeante.",
+                            "H24 Transports propose des solutions de gardiennage sécurisé & vidéo-surveillé à l’intérieur même de nos locaux. Ce service vous est proposé lorsque vos départs et ou retours matériels ne sont pas réalisables dans l’immédiat."
+                        ]
+                    },
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_flexibility.jpg",
+                        "picto": "timer",
+                        "title": "Flexibilité",
+                        "text": [
+                            "Nos services sont disponibles 24h/24 et 7j/7.",
+                            "Que vos besoins soient ponctuels, récurrents, urgents ou planifiés depuis longtemps, nous sommes à votre disposition. Si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
+                        ]
+                    },
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_optimization.jpg",
+                        "picto": "settings",
+                        "title": "Optimisation",
+                        "text": [
+                            "Conscients que les délais sont souvent courts, la logistique est au cœur de nos préoccupations. ",
+                            "En étroite collaboration avec les équipes de production et les loueurs de matériel audiovisuel, nous saurons réaliser des feuilles de route afin de préparer les différentes équipes pour notre passage."
+                        ]
+                    },
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_trust.jpg",
+                        "picto": "thumb_up",
+                        "title": "Confiance",
+                        "text": [
+                            "Déjà reconnues et recommandées par les plus grands loueurs de matériel audiovisuel en Île-de-France, les équipes H24 Transports ont à cœur de respecter les délais et le matériel."
+                        ]
+                    }
+                ],
+                "options": {
+                    "darkenBg": false
+                }
+            }
+        }
+    ]
 }
