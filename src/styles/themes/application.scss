@@ -287,6 +287,19 @@
     }
   }
 
+  /*Block Teasing*/
+  .teasing {
+    &__background {
+      background: $application-dark;
+      &::before {
+        background: linear-gradient(to top, rgba(red($application), green($application), blue($application), 0.75) 50%, rgba(red($application), green($application), blue($application), 0));
+      }
+    }
+    #text {
+      color: $on-application;
+    }
+  }
+
   /*Block Citation*/
   .citation {
     blockquote {
