@@ -35,7 +35,7 @@
     },
     {
         "id": "application",
-        "title": "Application mobile et web",
+        "title": "Exploitation",
         "text": "<p>Afin de mieux répondre à vos besoins, nous sommes actuellement en train de concevoir une application web/mobile avec un tableau de bord intuitif pour un suivi précis de vos projets.</p><p>Vous pourrez alors créer une demande de course en tout lieu, et en tout temps, suivre précisément l'état de vos projets et bénéficier d'un suivi en temps réel.</p>",
         "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/exploitation/img/application-cover-picture-orange.jpg",
         "cta": "En savoir plus",

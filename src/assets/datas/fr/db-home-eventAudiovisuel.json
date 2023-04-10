@@ -13,8 +13,8 @@
                 "info": {
                     "title": "Transport Publicité & Cinéma",
                     "text": [
-                        "Spécialisée dans le transport de matériel audiovisuel depuis près de 10 ans, notre équipe met tout en œuvre pour mener à bien chacun de vos projets, qu'ils soient ponctuels, récurrents, urgents ou planifiés depuis longtemps.  ",
-                        "H24 Transports fait preuve d’agilité, de flexibilité et de rigueur pour s’adapter à vos besoins les plus spécifiques, de l'enlèvement à la livraison. ",
+                        "Spécialisée dans le transport de matériel audiovisuel depuis près de 10 ans, notre équipe met tout en œuvre pour mener à bien chacun de vos projets, qu'ils soient ponctuels, récurrents, urgents ou planifiés depuis longtemps.",
+                        "H24 Transports fait preuve d’agilité, de flexibilité et de rigueur pour s’adapter à vos besoins les plus spécifiques, de l'enlèvement à la livraison.",
                         "Nous considérons également l'assurance, la sécurité et la confidentialité comme des priorités absolues, dans le but d’offrir un service fiable et sécurisé à nos clients."
                     ],
                     "cta": "À propos",
@@ -32,12 +32,12 @@
                     {
                         "value": "35",
                         "label": "courses réalisées",
-                        "unit": "k"
+                        "unit": "K"
                     },
                     {
                         "value": "2",
-                        "label": "temps de trajet moyen",
-                        "unit": "h"
+                        "label": "de temps de trajet moyen",
+                        "unit": "H"
                     }
                 ],
                 "options": {
@@ -117,8 +117,9 @@
                 "info": {
                     "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/full_picture-publicity_and_cinema.jpg",
                     "icon": "local_shipping",
+                    "title": "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses.",
                     "text": [
-                        "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
+                        ""
                     ]
                 },
                 "options": {
@@ -190,10 +191,10 @@
                     {
                         "title": "12/14m<sup>3</sup>",
                         "video": {
-                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.mp4",
-                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.ogv",
-                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.webm",
-                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.jpg"
+                            "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.mp4",
+                            "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.ogv",
+                            "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.webm",
+                            "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.jpg"
                         },
                         "description": [
                             {
@@ -225,10 +226,10 @@
                     {
                         "title": "20m<sup>3</sup>",
                         "video": {
-                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.mp4",
-                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.ogv",
-                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.webm",
-                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.jpg"
+                            "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.mp4",
+                            "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.ogv",
+                            "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.webm",
+                            "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.jpg"
                         },
                         "description": [
                             {
