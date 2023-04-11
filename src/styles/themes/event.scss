@@ -1,4 +1,4 @@
-.theme_eventMode, .theme_eventEvent, .theme_eventAudiovisuel, .theme_aboutUs, .theme_delay {
+.theme_eventMode, .theme_eventEvent, .theme_eventAudiovisuel, .theme_aboutUs, .theme_delay, .theme_legals {
   color: $on-event;
   background: $event;
 
@@ -94,6 +94,16 @@
       path {
         stroke: $on-event;
       }
+    }
+  }
+  /*Footer*/
+  .footer {
+    background: $event;
+    &__top {
+      border-color: $on-event;
+    }
+    a {
+      color: $on-express;
     }
   }
 

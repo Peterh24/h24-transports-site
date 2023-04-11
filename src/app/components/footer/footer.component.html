@@ -1,1 +1,30 @@
-<p>footer works!</p>
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__name">H24 Transports © 2023</div>
+    <div class="footer__social">
+      <a class="social__list__link app-a" href="https://www.facebook.com/"><fa-icon [icon]="faIcons.faFacebookF"></fa-icon></a>
+      <a class="social__list__link app-a" href="https://twitter.com/"><fa-icon [icon]="faIcons.faTwitter"></fa-icon></a>
+      <a class="social__list__link app-a" href="https://www.instagram.com/"><fa-icon [icon]="faIcons.faInstagram"></fa-icon></a>
+    </div>
+    <div class="footer__lang">
+      <a (click)="langChange('fr')"><img src="https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/flags/flag_FR.png" alt="FR" class="footer__lang__flag">Français</a>
+      <a (click)="langChange('en')"><img src="https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/flags/flag_UK.png" alt="UK" class="footer__lang__flag">English</a>
+    </div>
+  </div>
+
+  <div class="footer__menu">
+    <ul class="footer__menu__list">
+      <li *ngFor="let theme of themeList$ | async" class="submenu__item" [class.submenu__item--active]="(currentTheme$ | async).currentTheme == theme.id">
+        <a [routerLink]="!theme.inPrenav ? ('/'+theme.id): null" class="submenu__list__link" (click)="(theme.child.length === 0 && theme.inPrenav) ? switchTheme(theme.id) : null">{{theme.title}}</a>
+        <ul *ngIf="theme.child.length > 0">
+          <li *ngFor="let child of theme.child" [class.submenu__item--active]="(currentTheme$ | async).child == child.id">
+            <a class="footer__menu__list__link"  (click)="switchTheme(child.id)">{{child.title}}</a>
+          </li>
+        </ul>
+      </li>
+      <li class="submenu__item">
+        <a [routerLink]="'/legals'" [innerHtml]="(lang$ | async) == 'fr' ? 'mentions legals' : 'legal terms'"></a>
+      </li>
+    </ul>
+  </div>
+</footer>

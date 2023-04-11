@@ -1,0 +1,31 @@
+.app-page {
+  &__legals {
+    padding-top: 13rem;
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+  .page-content {
+    width: 120rem;
+    margin: 8rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    &__item {
+      margin-bottom: 4rem;
+    }
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 0;
+      &:after {
+        content: "";
+        display: block;
+        width: 3.5rem;
+        height: .2rem;
+        background: #fff;
+        margin: 1.3rem 0 2rem 0;
+      }
+    }
+  }
+}

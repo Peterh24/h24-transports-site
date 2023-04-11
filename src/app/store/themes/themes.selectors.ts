@@ -18,12 +18,13 @@ export const getLoadingState = createSelector(
 export const getThemeNav = createSelector(
   getThemes,
   (state) => {
-      return state.map(elem => {
-          return {'id': elem.id, 'title': elem.title, 'inPrenav': elem.inPrenav, 'child': elem.child}
+    return state
+      .filter(elem => elem.id !== 'legals' && elem.id !== 'delay' && elem.id !== 'aboutUs') // filtrer les thèmes avec l'ID "legals"
+      .map(elem => {
+        return {'id': elem.id, 'title': elem.title, 'inPrenav': elem.inPrenav, 'child': elem.child}
       })
   }
 );
-
 /*Load array of theme data*/
 export const getThemeData = createSelector(
   getThemes,

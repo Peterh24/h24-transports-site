@@ -59,5 +59,14 @@
       "cta": "En savoir plus",
       "inPrenav": false,
       "child": []
-    }
+    },
+    {
+      "id": "legals",
+      "title": "Mentions Légales",
+      "text": "",
+      "img": "",
+      "cta": "En savoir plus",
+      "inPrenav": false,
+      "child": []
+  }
 ]

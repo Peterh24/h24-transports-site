@@ -25,6 +25,15 @@ const routes: Routes = [
       {
         path: 'delay',
         loadChildren: () => import('./pages/delay/delay.module').then(m => m.DelayModule),
+      },
+      {
+        path: 'legals',
+        loadChildren: () => import('./pages/legals/legals.module').then(m => m.LegalsModule),
+      },
+      // Ajouter la route 404 en dernière position
+      {
+        path: '**',
+        loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
       }
     ]
   }

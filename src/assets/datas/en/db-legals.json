@@ -1,0 +1,23 @@
+{
+    "id": "legals",
+    "title": "Mentions Légales",
+    "intro": "",
+    "content": [
+      {
+        "title": "Titre 1 Lorem Ipsum",
+        "text": "Texte 1 Lorem Ipsum"
+      },
+      {
+        "title": "Titre 2 Lorem Ipsum",
+        "text": "Texte 2 Lorem Ipsum"
+      },
+      {
+        "title": "Titre 3 Lorem Ipsum",
+        "text": "Texte 3 Lorem Ipsum"
+      },
+      {
+        "title": "Titre 4 Lorem Ipsum",
+        "text": "Texte 4 Lorem Ipsum"
+      }
+    ]
+}

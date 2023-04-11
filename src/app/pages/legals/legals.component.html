@@ -1,0 +1,15 @@
+<div [class]="'app-page theme_' + (themeName$ | async)">
+  <app-header></app-header>
+  <app-main-menu></app-main-menu>
+  <div class="app-page__legals">
+    <h2 class="app-page__about-us__title">{{data.title}}</h2>
+    <div class="page-content">
+      <div *ngFor="let elem of data.content" class="page-content__item">
+        <h3>{{elem.title}}</h3>
+        <p>{{elem.text}}</p>
+        <p></p>
+      </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+

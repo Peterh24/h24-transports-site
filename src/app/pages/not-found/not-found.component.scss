@@ -1,0 +1,51 @@
+
+/*======================
+    404 page
+=======================*/
+
+
+.page_404{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:40px 0;
+  background:#fff;
+  color: #000;
+  text-align: center;
+}
+
+.four_zero_four_bg{
+  background-image: url(https://crosslog.com/wp-content/uploads/2019/10/Anim_PilotageTransportV2.gif);
+  height: 49rem;
+  width: 50rem;
+  background-position: center;
+  background-size: cover;
+}
+
+
+.four_zero_four_bg h1{
+  font-size:80px;
+}
+
+.four_zero_four_bg h3{
+  font-size:80px;
+}
+
+.link_404{
+  color: #fff;
+  padding: 10px 20px;
+  background: #000;
+  margin: 20px 0;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 2rem ;
+  border: 2px solid #fff;
+  transition: all .2s ease-in-out;
+  &:hover {
+    color:#000;
+    background: #fff;
+    border-color: #000;
+  }
+}

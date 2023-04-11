@@ -9,7 +9,6 @@ import * as fromNavigation from '@app/store/navigation';
 import * as fromThemes from '@app/store/themes';
 import * as fromDictionaries from '@app/store/dictionaries';
 import * as fromLanguage from '@app/store/language';
-import { GlobalService } from '@app/services/global';
 import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -63,7 +62,7 @@ export class MainMenuComponent implements OnInit {
       this.store.dispatch(new fromThemes.AddCurrentTheme(this.lastUrlPart.split('#')[0]));
 
     })
-    if(this.lastUrlPart == "aboutUs" || this.lastUrlPart == "delay"){
+    if(this.lastUrlPart == "aboutUs" || this.lastUrlPart == "delay" || this.lastUrlPart == "legals"){
       this.closeMenu();
     }
   }
@@ -90,7 +89,7 @@ export class MainMenuComponent implements OnInit {
 
     this.store.dispatch(new fromLanguage.LanguageChange(lang));
 
-    if(this.lastUrlPart != "aboutUs" && this.lastUrlPart != "delay"){
+    if(this.lastUrlPart != "aboutUs" && this.lastUrlPart != "delay" && this.lastUrlPart != "legals"){
       this.store.dispatch(new fromThemes.LoaderStart());
       this.store.dispatch(new fromThemes.Read());
     }

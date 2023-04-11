@@ -97,6 +97,17 @@
     }
   }
 
+  /*Footer*/
+  .footer {
+    background: $express;
+    &__top {
+      border-color: $on-express;
+    }
+    a {
+      color: $on-express;
+    }
+  }
+
   /*Logo*/
   .logo {
     svg {

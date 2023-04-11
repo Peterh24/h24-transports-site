@@ -25,6 +25,8 @@ body {
   letter-spacing: $base-letter-spacing;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  background: $event;
+  color:$on-event;
 }
 body {
   font-size: $base-font-size;
