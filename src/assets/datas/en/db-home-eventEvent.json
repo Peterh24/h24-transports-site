@@ -5,475 +5,486 @@
         "img": ""
     },
     "componentsList": [
-      {
-        "id": "keydata",
-        "component": "KeyDataComponent",
-        "title" : "Transport Événementiel",
-        "data": {
-            "info": {
-                "title": "Transport Événementiel",
-                "text": [
-                  "Profitez de notre expertise en matière de transport express dédié au secteur de l'audiovisuel et de l'événementiel pour vos événements à Paris ou en province.",
-                  "Que vous ayez besoin d'un transport ponctuel ou régulier pour un concert, un salon ou tout autre évènement, H24 Transports saura répondre à votre demande avec efficacité et professionnalisme.",
-                  "Spécialisé dans le transport de matériel audiovisuel et événementiel, nous disposons d'une flotte de véhicules adaptée à vos besoins."
-                ],
-                "cta": "À propos",
-                "img" : "./assets/img/event-cover-picture.jpg",
-                "link": {
-                    "label": "DEMANDEZ VOTRE DEVIS",
-                    "url": "#contact"
-                }
-            },
-            "list": [
-                {
-                    "value": "70",
-                    "label": "clients satisfaits"
-                    },
-                    {
-                    "value": "379",
-                    "label": "Kilomètres parcourus"
-                    },
-                    {
-                    "value": "79",
-                    "label": "courses Audiovisuel réalisées"
+        {
+            "id": "keydata",
+            "component": "KeyDataComponent",
+            "title": "Transport Événementiel",
+            "data": {
+                "info": {
+                    "title": "Transport Événementiel",
+                    "text": [
+                        "Profitez de notre expertise en matière de transport express dédié au secteur de l'audiovisuel et de l'événementiel pour vos événements à Paris ou en province.",
+                        "Que vous ayez besoin d'un transport ponctuel ou régulier pour un concert, un salon ou tout autre évènement, H24 Transports saura répondre à votre demande avec efficacité et professionnalisme.",
+                        "Spécialisé dans le transport de matériel audiovisuel et événementiel, nous disposons d'une flotte de véhicules adaptée à vos besoins."
+                    ],
+                    "cta": "À propos",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/cover-event_transport.jpg",
+                    "link": {
+                        "label": "DEMANDEZ VOTRE DEVIS",
+                        "url": "#contact"
                     }
-            ],
-            "options": {
-              "darkenBg": false
+                },
+                "list": [
+                    {
+                        "value": "357",
+                        "label": "clients satisfaits"
+                    },
+                    {
+                        "value": "379",
+                        "label": "courses réalisées"
+                    },
+                    {
+                        "value": "79",
+                        "label": "km parcourus",
+                        "unit": "K"
+                    }
+                ],
+                "options": {
+                    "darkenBg": false
+                }
             }
-        }
         },
         {
-          "id": "ourvalues",
-          "component": "OurValuesComponent",
-          "title" : "Nos Valeurs",
-          "data": {
-              "list": [
-                  {
-                    "img": "./assets/img/securite.jpg",
-                    "picto": "security",
-                    "title": "Rapidité",
-                    "text": [
-                      "Nos services s’adressent à une clientèle exigeante.",
-                      "H24 Transports propose des solutions de gardiennage sécurisé & vidéo-surveillé à l’intérieur même de nos locaux. Ce service vous est proposé lorsque vos départs et ou retours matériels ne sont pas réalisables dans l’immédiat."
-                    ]
-                  },
-                  {
-                    "img": "./assets/img/camions-flotte.jpg",
-                    "picto": "lock",
-                    "title": "Fiabilité",
-                    "text": [
-                      "Chez H24 Transports, nous mettons tout en œuvre pour garantir une fiabilité absolue à chaque étape de la mission.",
-                      "Nous disposons d'une flotte de véhicules adaptée pour répondre à l’ensemble besoins, et nous employons une équipe de professionnels qualifiés pour assurer le bon déroulement de chaque mission."
-                    ]
-                  },
-                  {
-                    "img": "./assets/img/optimisation.jpg",
-                    "picto": "timer",
-                    "title": "Ponctualité",
-                    "text": [
-                      "Nous ferons toujours en sorte de livrer votre marchandise en temps et en heure, car nous avons conscience de l’impact que les retards peuvent avoir dans ce secteur d’activité. "
-                    ]
-                  },
-                  {
-                    "img": "./assets/img/confiance.jpg",
-                    "picto": "timer",
-                    "title": "Flexibilité",
-                    "text": [
-                      "Nos services sont disponibles 24h/24 et 7j/7.",
-                      "Que vos besoins soient ponctuels, récurrents, urgents ou planifiés depuis longtemps. Nous sommes à votre disposition, si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
-                    ]
-                  }
-              ],
-              "options": {
-                "darkenBg": false
-              }
-          }
-          },
-          {
+            "id": "ourvalues",
+            "component": "OurValuesComponent",
+            "title": "Nos Valeurs",
+            "data": {
+                "list": [
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-speed.jpg",
+                        "picto": "security",
+                        "title": "Rapidité",
+                        "text": [
+                            "Nous sommes conscients que les retards peuvent avoir des conséquences importantes sur votre projet, c'est pourquoi nous nous efforçons de garantir une livraison rapide et fiable à chaque mission que nous entreprenons."
+                        ]
+                    },
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-reliability.jpg",
+                        "picto": "lock",
+                        "title": "Fiabilité",
+                        "text": [
+                            "Chez H24 Transports, nous mettons tout en œuvre pour garantir une fiabilité absolue à chaque étape de la mission.",
+                            "Nous disposons d'une flotte de véhicules adaptée pour répondre à l’ensemble besoins, et nous employons une équipe de professionnels qualifiés pour assurer le bon déroulement de chaque mission."
+                        ]
+                    },
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key_word-punctuality.jpg",
+                        "picto": "timer",
+                        "title": "Ponctualité",
+                        "text": [
+                            "La livraison de votre marchandise en temps et en heure est notre priorité absolue, car nous comprenons parfaitement l'importance de la ponctualité dans ce secteur d'activité."
+                        ]
+                    },
+                    {
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_flexibility.jpg",
+                        "picto": "timer",
+                        "title": "Flexibilité",
+                        "text": [
+                            "Nos services sont disponibles 24h/24 et 7j/7.",
+                            "Que vos besoins soient ponctuels, réguliers, urgents ou planifiés depuis longtemps,  nous sommes à votre disposition. Si un imprévu survient lors d’une mission, nos équipes savent rebondir et trouver des solutions adaptées à vos contraintes d’organisation."
+                        ]
+                    }
+                ],
+                "options": {
+                    "darkenBg": false
+                }
+            }
+        },
+        {
             "id": "delay",
             "component": "SimpleTextComponent",
             "title": "Nos délais d'intervention",
             "data": {
-              "info": {
-                "title": "Nos délais d'intervention",
-                "text": [
-                  "Nous nous engageons à fournir des délais d'intervention rapides et précis pour répondre à vos besoins et assurer la réussite de chaque événement. Notre mission consiste à garantir la qualité et la ponctualité des prestations fournies en transportant rapidement et en toute sécurité les équipements nécessaires."
-                ],
-                "cta": "voir les délais",
-                "url": "/delay"
-              },
-              "options": {
-                "darkenBg": false
-              }
+                "info": {
+                    "title": "Nos délais d'intervention",
+                    "text": [
+                        "Nous nous engageons à fournir des délais d'intervention rapides et précis pour répondre à vos besoins et assurer la réussite de chaque événement. Notre mission consiste à garantir la qualité et la ponctualité des prestations fournies en transportant rapidement et en toute sécurité les équipements nécessaires."
+                    ],
+                    "cta": "voir les délais",
+                    "url": "/delay"
+                },
+                "options": {
+                    "darkenBg": false
+                }
             }
-          },
-          {
+        },
+        {
             "id": "teasingFull",
             "component": "TeasingComponent",
             "data": {
                 "info": {
-                    "img": "./assets/img/h24-transports-picture.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/full_picture-event_transport.jpg",
                     "icon": "local_shipping",
+                    "title": "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses.",
                     "text": [
-                      "Des prestations logistiques et de transport sur mesure avec des équipes professionnelles et consciencieuses."
+                        ""
                     ]
                 },
                 "options": {
-                  "darkenBg": false
+                    "darkenBg": false
                 }
             }
-            },
-            {
-              "id": "ourVehicles",
-              "component": "OurVehiclesComponent",
-              "title": "Nos véhicules",
-              "data": {
-                  "info": {
-                      "title": "Nos véhicules"
-                  },
-                  "list": [
-                      {
-                          "title": "3m<sup>3</sup>",
-                          "illustration": "./assets/img/camion-6-8m3.png",
-                          "description": [
-                              {
-                                  "label": "Longueur du véhicule",
-                                  "value": "4,5 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du véhicule",
-                                  "value": "1,85 mètres"
-                              },
-                              {
-                                  "label": "Profondeur du coffre",
-                                  "value": "1,7 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du coffre",
-                                  "value": "1,15 mètres"
-                              },
-                              {
-                                  "label": "Charge utile",
-                                  "value": "415 kg"
-                              }
-                          ]
-                      },
-                      {
-                          "title": "6/8m<sup>3</sup>",
-                          "illustration": "./assets/img/camion-6-8m3.png",
-                          "description": [
-                              {
-                                  "label": "Longueur du véhicule",
-                                  "value": "4,9 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du véhicule",
-                                  "value": "1,9 mètres"
-                              },
-                              {
-                                  "label": "Profondeur du coffre",
-                                  "value": "2,4 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du coffre",
-                                  "value": "1,3 mètres"
-                              },
-                              {
-                                  "label": "Charge utile",
-                                  "value": "820 kg"
-                              }
-                          ]
-                      },
-                      {
-                          "title": "12/14m<sup>3</sup>",
-                          "illustration": "./assets/img/camion-6-8m3.png",
-                          "description": [
-                              {
-                                  "label": "Longueur du véhicule",
-                                  "value": "6,8 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du véhicule",
-                                  "value": "2,6 mètres"
-                              },
-                              {
-                                  "label": "Hayon",
-                                  "value": "inclus"
-                              },
-                              {
-                                  "label": "Profondeur du coffre",
-                                  "value": "4,0 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du coffre",
-                                  "value": "1,9 mètres"
-                              },
-                              {
-                                  "label": "Charge utile",
-                                  "value": "1300 kg"
-                              }
-                          ]
-                      },
-                      {
-                          "title": "20m<sup>3</sup>",
-                          "illustration": "./assets/img/camion-6-8m3.png",
-                          "description": [
-                              {
-                                  "label": "Longueur du véhicule",
-                                  "value": "6,8 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du véhicule",
-                                  "value": "3,4 mètres"
-                              },
-                              {
-                                  "label": "Hayon",
-                                  "value": "inclus"
-                              },
-                              {
-                                  "label": "Profondeur du coffre",
-                                  "value": "4,2 mètres"
-                              },
-                              {
-                                  "label": "Hauteur du coffre",
-                                  "value": "2,2 mètres"
-                              },
-                              {
-                                  "label": "Charge utile",
-                                  "value": "700 kg"
-                              }
-                          ]
-                      }
-                  ],
-                  "options": {
-                    "darkenBg": false
-                  }
-              }
+        },
+        {
+          "id": "ourVehicles",
+          "component": "OurVehiclesComponent",
+          "title": "Nos véhicules",
+          "data": {
+              "info": {
+                  "title": "Nos véhicules"
               },
-              {
-                "id": "fiability",
-                "component": "InfosComponent",
-                "title": "Rapidité et fiabilité",
-                "data": {
-                    "info": {
-                        "title": "Rapidité et fiabilité",
-                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
-                        "dropdown": [
+              "list": [
+                  {
+                      "title": "3m<sup>3</sup>",
+                      "illustration": "https://s.alicdn.com/@sc04/kf/H1e378db116c740e2a96e9ee6d0a62fa12.jpg_280x280.jpg",
+                      "description": [
                           {
+                              "label": "Longueur du véhicule",
+                              "value": "4,5 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "1,85 mètres"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "1,7 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "1,15 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "415 kg"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "6/8m<sup>3</sup>",
+                      "illustration": "https://s.alicdn.com/@sc04/kf/H1e378db116c740e2a96e9ee6d0a62fa12.jpg_280x280.jpg",
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "4,9 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "1,9 mètres"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "2,4 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "1,3 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "820 kg"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "12/14m<sup>3</sup>",
+                      "video": {
+                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.mp4",
+                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.ogv",
+                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.webm",
+                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/12m3-14m3.jpg"
+                      },
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "6,8 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "2,6 mètres"
+                          },
+                          {
+                              "label": "Hayon",
+                              "value": "inclus"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "4,0 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "1,9 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "1300 kg"
+                          }
+                      ]
+                  },
+                  {
+                      "title": "20m<sup>3</sup>",
+                      "video": {
+                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.mp4",
+                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.ogv",
+                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.webm",
+                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/20m3.jpg"
+                      },
+                      "description": [
+                          {
+                              "label": "Longueur du véhicule",
+                              "value": "6,8 mètres"
+                          },
+                          {
+                              "label": "Hauteur du véhicule",
+                              "value": "3,4 mètres"
+                          },
+                          {
+                              "label": "Hayon",
+                              "value": "inclus"
+                          },
+                          {
+                              "label": "Profondeur du coffre",
+                              "value": "4,2 mètres"
+                          },
+                          {
+                              "label": "Hauteur du coffre",
+                              "value": "2,2 mètres"
+                          },
+                          {
+                              "label": "Charge utile",
+                              "value": "700 kg"
+                          }
+                      ]
+                  }
+              ],
+              "options": {
+                  "darkenBg": false
+              }
+          }
+      },
+        {
+            "id": "fiability",
+            "component": "InfosComponent",
+            "title": "Rapidité et fiabilité",
+            "data": {
+                "info": {
+                    "title": "Rapidité et fiabilité",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/speed_and_reliability.jpg",
+                    "dropdown": [
+                        {
                             "title": "L'importance du transport dans l'événementiel",
                             "text": [
-                              "Le transport de marchandise dans l'événementiel est un élément crucial pour le succès d'un événement. Que ce soit pour le transport de matériel de sonorisation, d'éclairage ou de décorations, il est essentiel que tout arrive à destination en temps et en heure."
+                                "Le transport de marchandise dans l'événementiel est un élément crucial pour le succès d'un événement. Que ce soit pour le transport de matériel de sonorisation, d'éclairage ou de décorations, il est essentiel que tout arrive à destination en temps et en heure."
                             ],
                             "isVisible": true
-                          },
-                          {
+                        },
+                        {
                             "title": "Une expertise spécialisée",
                             "text": [
-                              "Nous connaissons et comprenons parfaitement les enjeux liés à ce secteur d'activité."
+                                "Nous connaissons et comprenons parfaitement les enjeux liés à ce secteur d'activité."
                             ]
-                          },
-                          {
+                        },
+                        {
                             "title": "Des équipements adaptés",
                             "text": [
-                              "Nous sommes à même de répondre à toutes vos exigences de manière rapide et fiable. Un support vous est partagé pour suivre en live vos marchandises, c’est un gage supplémentaire de fiabilité."
+                                "Nous sommes à même de répondre à toutes vos exigences de manière rapide et fiable. Un support vous est partagé pour suivre en live vos marchandises, c’est un gage supplémentaire de fiabilité."
                             ]
-                          }
-                        ]
-                    },
-                    "options": {
-                      "imgTo": "left",
-                      "darkenBg": true
-                    }
+                        }
+                    ]
+                },
+                "options": {
+                    "imgTo": "left",
+                    "darkenBg": true
                 }
-              },
-              {
-                "id": "priseEnCharge",
-                "component": "InfosComponent",
-                "title": "Sécurité et assurances",
-                "data": {
-                    "info": {
-                        "globalTitle": "Sécurité et assurances",
-                        "title": "Une prise en charge complète de vos besoins après votre évènement",
-                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
-                        "text": [
-                          "Vous organisez un événement important et vous avez besoin d'un transporteur de matériel fiable et sécurisé ? Nous mettons tout en œuvre pour garantir la sécurité et la protection de votre matériel, afin que vous puissiez vous concentrer sur votre organisation en toute sérénité."
-                        ]
-                    },
-                    "options": {
-                      "imgTo": "right",
-                      "darkenBg": false
-                    }
+            }
+        },
+        {
+            "id": "priseEnCharge",
+            "component": "InfosComponent",
+            "title": "Sécurité et assurances",
+            "data": {
+                "info": {
+                    "globalTitle": "Sécurité et assurances",
+                    "title": "Une prise en charge complète de vos besoins après votre évènement",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
+                    "text": [
+                        "Vous organisez un événement important et vous avez besoin d'un transporteur de matériel fiable et sécurisé ? Nous mettons tout en œuvre pour garantir la sécurité et la protection de votre matériel, afin que vous puissiez vous concentrer sur votre organisation en toute sérénité."
+                    ]
+                },
+                "options": {
+                    "imgTo": "right",
+                    "darkenBg": false
                 }
-              },
-              {
-                "id": "stockage",
-                "component": "InfosComponent",
-                "data": {
-                    "info": {
-                        "title": "Un stockage sécurisé pour votre matériel",
-                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
-                        "text": [
-                          "Nous proposons une solution de gardiennage sécurisé de nos véhicules contenant votre matériel dans nos locaux vidéo-surveillés."
-                        ]
-                    },
-                    "options": {
-                      "imgTo": "left",
-                      "darkenBg": false
-                    }
+            }
+        },
+        {
+            "id": "stockage",
+            "component": "InfosComponent",
+            "data": {
+                "info": {
+                    "title": "Un stockage sécurisé pour votre matériel",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/secure_storage.jpg",
+                    "text": [
+                        "Nous proposons une solution de gardiennage sécurisé de nos véhicules contenant votre matériel dans nos locaux vidéo-surveillés."
+                    ]
+                },
+                "options": {
+                    "imgTo": "left",
+                    "darkenBg": false
                 }
-              },
-              {
-                "id": "assurance",
-                "component": "InfosComponent",
-                "data": {
-                    "info": {
-                        "title": "Des assurances adaptées à votre secteur d'activité",
-                        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vag%C3%B3m_Mahou_1_005.jpg/1280px-Vag%C3%B3m_Mahou_1_005.jpg",
-                        "text": [
-                          "De plus, nous avons des assurances adaptées à votre secteur d'activité pour une tranquillité d'esprit totale lors du transport de votre matériel."
-                        ]
-                    },
-                    "options": {
-                      "imgTo": "right",
-                      "darkenBg": false
-                    }
+            }
+        },
+        {
+            "id": "assurance",
+            "component": "InfosComponent",
+            "data": {
+                "info": {
+                    "title": "Des assurances adaptées à votre secteur d'activité",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.jpg",
+                    "text": [
+                        "De plus, nous avons des assurances adaptées à votre secteur d'activité pour une tranquillité d'esprit totale lors du transport de votre matériel."
+                    ]
+                },
+                "options": {
+                    "imgTo": "right",
+                    "darkenBg": false
                 }
-              },
-              {
-                "id": "news",
-                "component":"NewsComponent",
-                "title": "Actualités",
-                "data": {
-                  "info": {
+            }
+        },
+        {
+            "id": "news",
+            "component": "NewsComponent",
+            "title": "Actualités",
+            "data": {
+                "info": {
                     "title": "Actualités"
-                  },
-                    "list": [
+                },
+                "list": [
+                    {
+                        "title": "Shooting avec Emilie Couput chargé de production chez Sézane",
+                        "text": [
+                            "Cette prestation à été réalisée à Milan (Italie), la prod a donc souhaitée garder nos chauffeurs en presta #ManAndVan sur ce projet.",
+                            "Un choix judicieux lorsque vos projets ne durent que 1, 2 ou 3 jours. Gardez nos chauffeurs qui enfilent une casquette de régisseur 'junior' sur votre set tout en impactant le moins possible votre empreinte #carbone en évitant des A-R à PARIS.",
+                            "Nous tenons à remercier la marque Sézane pour la confiance accordée depuis plus d'un an."
+                        ],
+                        "img": "https://media.licdn.com/dms/image/C4E22AQE8mcCl6masGw/feedshare-shrink_800/0/1679059379313?e=1683763200&v=beta&t=1C8fCpsdMjD0P3Mh5VF4MWu9Xp99ia9I8HUHE4bXXy8",
+                        "date": "01/02/2023"
+                    },
+                    {
+                        "title": "Tournage pour Nike",
+                        "text": [
+                            "Depuis maintenant quelques années nous travaillons sur des #tournages pour Nike, toujours via des productions photos ou vidéos. Aujourd'hui nous avons l'honneur de pouvoir dire que nous travaillons en direct avec !",
+                            "Un grand MERCI Mary Deville pour cette nouvelle collaboration"
+                        ],
+                        "img": "https://media.licdn.com/dms/image/C4E22AQESBpIh1pXbHg/feedshare-shrink_800/0/1678206579301?e=1683763200&v=beta&t=5q3_fsAzhK9hdAlbAByYquYr5Vq_xE8Vh4vEkJf6rBM",
+                        "date": "01/11/2021"
+                    },
+                    {
+                        "title": "Balenciaga",
+                        "text": [
+                            "Retour Matériel Balenciaga chez son loueur Vantage Film.",
+                            "Merci à @titreprovisoire pour la confiance. a bientôt sur un nouvel évènement."
+                        ],
+                        "img": "https://media.licdn.com/dms/image/C4E22AQEUMYz8Ae9YWA/feedshare-shrink_800/0/1678092871229?e=1683763200&v=beta&t=_jLI13cnv4lg9NrCVxRYwrv3lXKPko-kLfA74t5hK00",
+                        "date": "01/07/2022"
+                    },
+                    {
+                        "title": "Show de DIOR",
+                        "text": [
+                            "Merci à la production Tender Night plus particulièrement à Leyla Sassi pour la confiance accordée depuis 2018.",
+                            "Un plaisir de vous accompagner à chaque show de DIOR, qu'il soit Paris - Londres - Athènes."
+                        ],
+                        "img": "https://media.licdn.com/dms/image/C4E22AQGz0KoC2o-g5A/feedshare-shrink_800/0/1678093650541?e=1683763200&v=beta&t=BaVMrCtEr9DkFYEFxn3p5mhuPBj-YRJqxM-wlayY3fc",
+                        "date": "01/01/2023"
+                    }
+                ],
+                "options": {
+                    "darkenBg": true
+                }
+            }
+        },
+        {
+            "id": "contact",
+            "component": "ContactComponent",
+            "title": "Contactez-nous",
+            "data": {
+                "info": {
+                    "title": "Contactez-nous",
+                    "btn": "Envoyer"
+                },
+                "list": [
+                    [
                         {
-                            "title": "Shooting avec Emilie Couput chargé de production chez Sézane",
-                            "text": [
-                              "Cette prestation à été réalisée à Milan (Italie), la prod a donc souhaitée garder nos chauffeurs en presta #ManAndVan sur ce projet.",
-                              "Un choix judicieux lorsque vos projets ne durent que 1, 2 ou 3 jours. Gardez nos chauffeurs qui enfilent une casquette de régisseur 'junior' sur votre set tout en impactant le moins possible votre empreinte #carbone en évitant des A-R à PARIS.",
-                              "Nous tenons à remercier la marque Sézane pour la confiance accordée depuis plus d'un an."
-                            ],
-                            "img": "https://media.licdn.com/dms/image/C4E22AQE8mcCl6masGw/feedshare-shrink_800/0/1679059379313?e=1683763200&v=beta&t=1C8fCpsdMjD0P3Mh5VF4MWu9Xp99ia9I8HUHE4bXXy8",
-                            "date": "01/02/2023"
+                            "name": "nom",
+                            "label": "Nom",
+                            "type": "text",
+                            "value:": "",
+                            "validators": {
+                                "required": true
+                            }
                         },
                         {
-                            "title": "Tournage pour Nike",
-                            "text": [
-                              "Depuis maintenant quelques années nous travaillons sur des #tournages pour Nike, toujours via des productions photos ou vidéos. Aujourd'hui nous avons l'honneur de pouvoir dire que nous travaillons en direct avec !",
-                              "Un grand MERCI Mary Deville pour cette nouvelle collaboration"
-                            ],
-                            "img": "https://media.licdn.com/dms/image/C4E22AQESBpIh1pXbHg/feedshare-shrink_800/0/1678206579301?e=1683763200&v=beta&t=5q3_fsAzhK9hdAlbAByYquYr5Vq_xE8Vh4vEkJf6rBM",
-                            "date": "01/11/2021"
-                        },
-                        {
-                            "title": "Balenciaga",
-                            "text": [
-                              "Retour Matériel Balenciaga chez son loueur Vantage Film.",
-                              "Merci à @titreprovisoire pour la confiance. a bientôt sur un nouvel évènement."
-                            ],
-                            "img": "https://media.licdn.com/dms/image/C4E22AQEUMYz8Ae9YWA/feedshare-shrink_800/0/1678092871229?e=1683763200&v=beta&t=_jLI13cnv4lg9NrCVxRYwrv3lXKPko-kLfA74t5hK00",
-                            "date": "01/07/2022"
-                        },
-                        {
-                            "title": "Show de DIOR",
-                            "text": [
-                              "Merci à la production Tender Night plus particulièrement à Leyla Sassi pour la confiance accordée depuis 2018.",
-                              "Un plaisir de vous accompagner à chaque show de DIOR, qu'il soit Paris - Londres - Athènes."
-                            ],
-                            "img": "https://media.licdn.com/dms/image/C4E22AQGz0KoC2o-g5A/feedshare-shrink_800/0/1678093650541?e=1683763200&v=beta&t=BaVMrCtEr9DkFYEFxn3p5mhuPBj-YRJqxM-wlayY3fc",
-                            "date": "01/01/2023"
+                            "name": "prenom",
+                            "label": "Prénom",
+                            "type": "text",
+                            "value:": "",
+                            "validators": {
+                                "required": true
+                            }
                         }
                     ],
-                    "options": {
-                      "darkenBg": true
-                    }
-                }
-                },
-                {
-                  "id": "contact",
-                  "component": "ContactComponent",
-                  "title" : "Contactez-nous",
-                  "data": {
-                      "info": {
-                        "title": "Contactez-nous",
-                        "btn" : "Envoyer"
-                      },
-                      "list": [
-                          [
-                            {
-                                "name": "nom",
-                                "label": "Nom",
-                                "type": "text",
-                                "value:": "",
-                                "validators": {
-                                  "required": true
-                                }
-                            },
-                            {
-                              "name": "prenom",
-                              "label": "Prénom",
-                              "type": "text",
-                              "value:": "",
-                              "validators": {
+                    [
+                        {
+                            "name": "societe",
+                            "label": "Société",
+                            "type": "text",
+                            "value:": "",
+                            "validators": {
                                 "required": true
-                              }
-                          }
-                          ],
-                          [
-                            {
-                                "name": "societe",
-                                "label": "Société",
-                                "type": "text",
-                                "value:": "",
-                                "validators": {
-                                  "required": true
-                                }
                             }
-                          ],
-                          [
-                            {
-                                "name": "email",
-                                "label": "Email",
-                                "type": "text",
-                                "value:": "",
-                                "validators": {
-                                  "required": true,
-                                  "pattern": "email"
-                                }
+                        }
+                    ],
+                    [
+                        {
+                            "name": "email",
+                            "label": "Email",
+                            "type": "text",
+                            "value:": "",
+                            "validators": {
+                                "required": true,
+                                "pattern": "email"
                             }
-                          ],
-                          [
-                            {
-                                "name": "tel",
-                                "label": "Téléphone",
-                                "type": "text",
-                                "value:": "",
-                                "validators": {
-                                  "required": true,
-                                  "pattern": "phone"
-                                }
+                        }
+                    ],
+                    [
+                        {
+                            "name": "tel",
+                            "label": "Téléphone",
+                            "type": "text",
+                            "value:": "",
+                            "validators": {
+                                "required": true,
+                                "pattern": "phone"
                             }
-                          ],
-                          [
-                            {
-                                "name": "message",
-                                "label": "Votre message",
-                                "type": "textarea",
-                                "value:": "",
-                                "validators": {
-                                  "required": true,
-                                  "minLength": 12
-                                }
+                        }
+                    ],
+                    [
+                        {
+                            "name": "message",
+                            "label": "Votre message",
+                            "type": "textarea",
+                            "value:": "",
+                            "validators": {
+                                "required": true,
+                                "minLength": 12
                             }
-                          ]
-                      ],
-                      "options": {
-                        "darkenBg": false
-                      }
-                  }
+                        }
+                    ]
+                ],
+                "options": {
+                    "darkenBg": false
                 }
-  ]
+            }
+        }
+    ]
 }

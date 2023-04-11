@@ -6,6 +6,7 @@
         "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/img/event-cover-picture.jpg",
         "cta": "En savoir plus",
         "inPrenav": true,
+        "footerDarken": true,
         "child": [
             {
                 "id": "eventAudiovisuel",
@@ -31,6 +32,7 @@
         "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/express/img/express-cover-picture.jpg",
         "cta": "En savoir plus",
         "inPrenav": true,
+        "footerDarken": true,
         "child": []
     },
     {
@@ -40,6 +42,7 @@
         "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/exploitation/img/application-cover-picture-orange.jpg",
         "cta": "En savoir plus",
         "inPrenav": true,
+        "footerDarken": true,
         "child": []
     },
     {
@@ -49,6 +52,7 @@
         "img": "",
         "cta": "En savoir plus",
         "inPrenav": false,
+        "footerDarken": true,
         "child": []
     },
     {
@@ -58,6 +62,7 @@
         "img": "",
         "cta": "En savoir plus",
         "inPrenav": false,
+        "footerDarken": true,
         "child": []
     },
     {
@@ -67,6 +72,7 @@
       "img": "",
       "cta": "En savoir plus",
       "inPrenav": false,
+      "footerDarken": true,
       "child": []
   }
 ]

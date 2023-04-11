@@ -92,7 +92,6 @@ export class ContactComponent implements OnInit  {
   }
 
   onSubmit(): void {
-    console.log('Submit !:', this.form.value)
     const apiUrl = 'https://127.0.0.1:8000/fr/api/send-email';
     this.http.post(apiUrl, this.form.value)
     .subscribe({

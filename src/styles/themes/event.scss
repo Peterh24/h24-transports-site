@@ -14,9 +14,10 @@
   .our-vehicles,
   .simple-text,
   .teasing,
-  .timelimit {
+  .timelimit,
+  .footer {
     &__darken {
-      background: $event-dark;
+      background: $event-dark !important;
     }
   }
 

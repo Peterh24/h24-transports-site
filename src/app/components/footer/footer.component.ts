@@ -26,6 +26,7 @@ export class FooterComponent implements OnInit {
     faTwitter: faTwitter,
   }
   data: any = [];
+  currentYear: number;
   constructor(
     private store: Store<fromRoot.State>,
     private router: Router,
@@ -47,6 +48,9 @@ export class FooterComponent implements OnInit {
     if(this.lastUrlPart == "aboutUs" || this.lastUrlPart == "delay" || this.lastUrlPart == "legals"){
       this.closeMenu();
     }
+
+    //current years
+    this.currentYear = new Date().getFullYear();
   }
 
   switchTheme(theme: string) {

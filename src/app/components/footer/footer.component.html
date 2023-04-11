@@ -1,6 +1,6 @@
-<footer class="footer">
+<footer class="footer" [class.footer__darken]="(currentTheme$ | async).footerDarken">
   <div class="footer__top">
-    <div class="footer__name">H24 Transports © 2023</div>
+    <div class="footer__name">H24 Transports © {{currentYear}}</div>
     <div class="footer__social">
       <a class="social__list__link app-a" href="https://www.facebook.com/"><fa-icon [icon]="faIcons.faFacebookF"></fa-icon></a>
       <a class="social__list__link app-a" href="https://twitter.com/"><fa-icon [icon]="faIcons.faTwitter"></fa-icon></a>
@@ -23,7 +23,7 @@
         </ul>
       </li>
       <li class="submenu__item">
-        <a [routerLink]="'/legals'" [innerHtml]="(lang$ | async) == 'fr' ? 'mentions legals' : 'legal terms'"></a>
+        <a [routerLink]="'/legals'" [innerHtml]="(lang$ | async) == 'fr' ? 'mentions legales' : 'legal terms'"></a>
       </li>
     </ul>
   </div>

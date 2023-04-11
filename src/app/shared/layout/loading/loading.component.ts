@@ -47,7 +47,6 @@ export class LoadingComponent implements OnInit, OnDestroy {
         } else {
           route = '/home/' + theme.currentTheme + '/' + theme.child
         }
-        console.log('route: ', route);
         window.setTimeout(()=>{
           this.router.navigate([route]).then(() => {
             window.setTimeout(()=>{

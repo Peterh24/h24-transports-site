@@ -65,9 +65,6 @@ export class DelayComponent  implements OnInit, OnDestroy{
             },
             on: {
               slideChange: (event) => {
-                console.log(' menu: ',  menu);
-                console.log('coucou les loulou: ', menu[event.previousIndex]?.id);
-                console.log('coucou les loulou: ', menu[event.activeIndex]?.id);
                 const currentSlide = this.mapRef.nativeElement;
                 this.renderer.removeClass(currentSlide, 'timelimit__swipper__wrap-' + menu[event.previousIndex]?.id);
                 this.renderer.addClass(currentSlide, 'timelimit__swipper__wrap-' + menu[event.activeIndex]?.id);

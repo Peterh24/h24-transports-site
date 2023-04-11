@@ -6,6 +6,7 @@ export interface Themes {
   cta: CTA;
   Loading: boolean;
   inPrenav: boolean;
+  footerDarken: boolean;
   child?: Array<any>;
 }
 
