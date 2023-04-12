@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "h24Transports": {
-      "projectType": "application",
+      "projectType": "exploitation",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"

@@ -25,7 +25,7 @@ import { LoadingModule } from './shared/layout/loading/loading.module';
 
 const StoreDevTools: any = !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [];
 
-export function initApplicationFactory(store: Store<fromRoot.State>) {
+export function initExploitationFactory(store: Store<fromRoot.State>) {
   const defaultLanguage = navigator.language.split('-')[0];
     return () => new Promise(resolve => {
         store.dispatch(new fromThemes.Read);
@@ -60,7 +60,7 @@ export function initApplicationFactory(store: Store<fromRoot.State>) {
     {
         provide: APP_INITIALIZER,
         multi: true,
-        useFactory: initApplicationFactory,
+        useFactory: initExploitationFactory,
         deps: [[new Inject(Store)]]
     },
     ThemesService,
