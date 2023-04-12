@@ -7,6 +7,7 @@ import * as fromDictionaries from '@app/store/dictionaries';
 import * as fromThemes from '@app/store/themes';
 import { GlobalService } from '@app/services/global';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Meta } from '@angular/platform-browser';
 
 
 
@@ -27,7 +28,6 @@ export class HomeComponent implements OnInit {
   constructor(
     public globalService: GlobalService,
     private store: Store<fromRoot.State>,
-    private activatedRoute: ActivatedRoute,
     private router: Router
   ){}
 
@@ -38,9 +38,10 @@ export class HomeComponent implements OnInit {
     this.themeName$ = this.store.pipe(select(fromThemes.getThemeName));
 
     this.currentTheme$.pipe(take(1)).subscribe(currentTheme => {
+      console.log('currentTheme: ', currentTheme);
       if(currentTheme !== null) {
         if(currentTheme.child !== null){
-          this.currentTheme = currentTheme.child;
+          this.currentTheme = currentTheme.child.id;
         } else {
           this.currentTheme = currentTheme.currentTheme;
         }
@@ -63,7 +64,6 @@ export class HomeComponent implements OnInit {
           } else {
             this.router.navigateByUrl('/');
           }
-
       }
     })
   }

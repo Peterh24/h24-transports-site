@@ -31,7 +31,7 @@ export const getThemeData = createSelector(
   (state) => {
     return state.map(elem => {
       if (elem.inPrenav) {
-        return {'id': elem.id, 'title': elem.title, 'text': elem.text, 'img': elem.img, 'cta': elem.cta, 'inPrenav': elem.inPrenav, 'child': elem.child, 'footerDarken': elem.footerDarken };
+        return {'id': elem.id, 'title': elem.title, 'text': elem.text, 'img': elem.img, 'cta': elem.cta, 'inPrenav': elem.inPrenav, 'child': elem.child, 'footerDarken': elem.footerDarken, "meta":{description:elem.meta} };
       } else {
         return null; // Ignore elements that don't meet the condition
       }
@@ -67,15 +67,15 @@ export const getCurrentTheme = createSelector(
 
       // Si le nom de thème donné correspond à une entité, alors c'est le thème courant
       if (entity.id === currentTheme) {
-        return { currentTheme: currentTheme, child: null, footerDarken: entity.footerDarken };
+        return { currentTheme: currentTheme, child: null, footerDarken: entity.footerDarken, meta: {description:entity.meta.description, keywords:entity.meta.keywords}};
       }
 
       // Si le nom de thème donné correspond à un enfant, alors on retourne l'objet correspondant
       for (let j = 0; j < entity.child.length; j++) {
         const childEntity = entity.child[j];
         if (childEntity.id === currentTheme) {
-          child = childEntity.id;
-          return { currentTheme: entity.id, child: child, footerDarken: entity.footerDarken};
+          child = childEntity;
+          return { currentTheme: entity.id, child: child, footerDarken: entity.footerDarken, meta: {description:entity.meta.description, keywords:entity.meta.keywords}};
         }
       }
     }
@@ -89,13 +89,13 @@ export const getCurrentThemeData = createSelector(
   getThemeData,
   getCurrentTheme,
   (theme, item) => {
-    const foundTheme = theme.find(elem => elem.id == (item.child || item.currentTheme));
+    const foundTheme = theme.find(elem => elem.id == ((item.child && item.child.id) || item.currentTheme));
     if (foundTheme) {
       return foundTheme;
     } else {
       // Si le thème n'est pas trouvé, chercher parmi les sous-thèmes
       for (const t of theme) {
-        const foundChild = t.child.find(elem => elem.id == (item.child || item.currentTheme));
+        const foundChild = t.child.find(elem => elem.id == ((item.child && item.child.id) || item.currentTheme));
         if (foundChild) {
           return foundChild;
         }

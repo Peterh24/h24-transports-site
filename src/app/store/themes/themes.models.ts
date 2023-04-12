@@ -7,9 +7,14 @@ export interface Themes {
   Loading: boolean;
   inPrenav: boolean;
   footerDarken: boolean;
+  meta: Meta;
   child?: Array<any>;
 }
 
 export interface CTA {
   label: string;
+}
+export interface Meta {
+  description: string;
+  keywords: string;
 }

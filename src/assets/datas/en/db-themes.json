@@ -7,21 +7,37 @@
         "cta": "En savoir plus",
         "inPrenav": true,
         "footerDarken": true,
+        "meta": {
+          "description": "Description Application",
+          "keywords": ""
+        },
         "child": [
             {
                 "id": "eventAudiovisuel",
                 "title": "Transport Publicité & Cinéma",
-                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/cover-transport_publicity_and_cinema.jpg"
+                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/cover-transport_publicity_and_cinema.jpg",
+                "meta": {
+                  "description": "Description Application",
+                  "keywords": ""
+                }
             },
             {
                 "id": "eventMode",
                 "title": "Transport Mode & Luxe",
-                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-mode/img/cover-fashion_and_luxury_transport.jpg"
+                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-mode/img/cover-fashion_and_luxury_transport.jpg",
+                "meta": {
+                  "description": "Description Application",
+                  "keywords": ""
+                }
             },
             {
                 "id": "eventEvent",
                 "title": "Transport Évènementiel",
-                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/cover-event_transport.jpg"
+                "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/cover-event_transport.jpg",
+                "meta": {
+                  "description": "Description Application",
+                  "keywords": ""
+                }
             }
         ]
     },
@@ -33,6 +49,10 @@
         "cta": "En savoir plus",
         "inPrenav": true,
         "footerDarken": true,
+        "meta": {
+          "description": "Description Application",
+          "keywords": ""
+        },
         "child": []
     },
     {
@@ -43,6 +63,10 @@
         "cta": "En savoir plus",
         "inPrenav": true,
         "footerDarken": true,
+        "meta": {
+          "description": "Description Application",
+          "keywords": ""
+        },
         "child": []
     },
     {
@@ -53,6 +77,10 @@
         "cta": "En savoir plus",
         "inPrenav": false,
         "footerDarken": true,
+        "meta": {
+          "description": "Description Application",
+          "keywords": ""
+        },
         "child": []
     },
     {
@@ -63,6 +91,10 @@
         "cta": "En savoir plus",
         "inPrenav": false,
         "footerDarken": true,
+        "meta": {
+          "description": "Description Application",
+          "keywords": ""
+        },
         "child": []
     },
     {
@@ -73,6 +105,10 @@
       "cta": "En savoir plus",
       "inPrenav": false,
       "footerDarken": true,
+      "meta": {
+        "description": "Description Application",
+        "keywords": ""
+      },
       "child": []
   }
 ]

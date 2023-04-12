@@ -37,15 +37,15 @@ export class LoadingComponent implements OnInit, OnDestroy {
     this.globalService.flag = !this.globalService.flag;
 
 
-
     this.currentTheme$.pipe(take(1)).subscribe(
       theme => {
-        this.localCurrentTheme = (theme.child || theme.currentTheme);
+        this.localCurrentTheme = ((theme.child && theme.child.id) || theme.currentTheme);
         let route: string;
+
         if(!theme.child){
           route = '/home/' + theme.currentTheme;
         } else {
-          route = '/home/' + theme.currentTheme + '/' + theme.child
+          route = '/home/' + theme.currentTheme + '/' + theme.child.id
         }
         window.setTimeout(()=>{
           this.router.navigate([route]).then(() => {

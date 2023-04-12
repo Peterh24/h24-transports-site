@@ -9,6 +9,7 @@ import * as fromActions from './dictionaries.actions';
 import * as fromThemes from '@app/store/themes';
 import * as fromLanguage from '@app/store/language';
 import { Router } from '@angular/router';
+import { Meta } from '@angular/platform-browser';
 
 
 
@@ -18,6 +19,7 @@ export class DictionariesEffects {
     private actions: Actions,
     private router: Router,
     private dictionariesService: DictionariesService,
+    private metaService: Meta,
     private store: Store<fromRoot.State>,
   ) {}
 
@@ -31,8 +33,14 @@ export class DictionariesEffects {
       if (!currentTheme) {
         return [];
       } else {
-        return this.dictionariesService.getDictionaries((currentTheme.child || currentTheme.currentTheme), currentlang).pipe(
+        return this.dictionariesService.getDictionaries(((currentTheme.child && currentTheme.child.id) || currentTheme.currentTheme), currentlang).pipe(
           map(data => {
+            console.log('currentTheme.child: ', currentTheme.child);
+            let description = currentTheme.child ? currentTheme.child.meta.description : currentTheme.meta.description;
+            let keywords = currentTheme.child ? currentTheme.child.meta.description: currentTheme.meta.keywords;
+            this.metaService.updateTag({ name: 'description', content: description });
+            this.metaService.updateTag({ name: 'keywords', content: keywords });
+
             return new fromActions.ReadSuccess([data]);
           }),
           catchError(err => of(new fromActions.ReadError(err)))
