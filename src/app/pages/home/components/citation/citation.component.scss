@@ -22,21 +22,49 @@
       font-weight: normal;
       text-align: center;
       position: absolute;
-      top: 0;
-      bottom: 0;
-      font-size: 20rem;
+      font-size: 15rem;
+      line-height: 1;
       width: 15rem;
       height: 15rem;
     }
 
     &::before {
+      top: 0;
       left: 0;
-      transform: rotate(180deg) translateX(75%);
+      transform: rotate(180deg) translate(80%, 55%);
     }
     &::after {
+      bottom: 0;
       right: 0;
-      transform: translateX(75%) translateY(-50%);
+      transform: translate(80%, 0%);
     }
   }
 }
 
+@media screen and (max-width: 102.4rem) {
+}
+
+@media screen and (max-width: 47.9rem) {
+  .citation {
+    padding: 2rem;
+
+    blockquote {
+      max-width: calc(100% - 10rem);
+
+      &::before,
+      &::after {
+        width: 10rem;
+        height: 10rem;
+        font-size: 10rem;
+      }
+
+      &::before {
+        transform: rotate(180deg) translate(75%, 20%);
+      }
+
+      &::after {
+        transform: translate(75%, 20%);
+      }
+    }
+  }
+}

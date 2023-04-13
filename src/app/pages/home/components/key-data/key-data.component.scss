@@ -118,20 +118,32 @@
 @media screen and (max-width: 47.9rem) {
   .key-data {
     &__content {
+      width: calc(100% - 4rem);
       gap: 4rem;
       margin-bottom: 4rem;
       flex-direction: column;
+      margin: 0 auto;
+      padding-top: 11rem;
+      padding-bottom: 2rem;
+
+      &__text {
+        max-width: unset;
+      }
     }
 
     &__List,
     &__cta {
-      width: 90%;
       margin: 0 auto;
     }
 
     &__List {
       justify-content: space-around;
       gap: 4rem;
+
+      &__wrap {
+        flex-direction: column;
+        gap: 2rem;
+      }
     }
 
     &__cta {
@@ -141,6 +153,10 @@
 
     &__item {
       text-align: center;
+
+      &__val {
+        font-size: 3.5rem;
+      }
     }
   }
 }

@@ -93,14 +93,16 @@
 
 @media screen and (max-width: 47.9rem) {
   .news {
-    margin: 4rem 0;
+    padding: 2rem 0;
 
     h2 {
-      padding: 0 0 3rem 0;
+      padding: 0 0 2rem 0;
+      margin-bottom: 0;
     }
 
     &__slider {
-      width: 90%;
+      width: calc(100vw - 4rem);
+      align-items: center;
 
       &__content {
         flex-flow: column wrap;
@@ -109,6 +111,7 @@
 
       &__controls {
         justify-content: center;
+        align-self: flex-end;
       }
     }
 

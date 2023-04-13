@@ -36,8 +36,12 @@
   }
 }
 
-@media screen and (max-width: 64rem) {
-}
-
-@media screen and (max-width: 32rem) {
+@media screen and (max-width: 47.9rem) {
+  .clients {
+    h2,
+    &__text {
+      width: calc(100% - 4rem);
+      margin: 0 auto 2rem;
+    }
+  }
 }

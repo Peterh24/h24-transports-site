@@ -5,3 +5,10 @@
     margin-top: 3rem;
   }
 }
+
+@media screen and (max-width: 47.9rem) {
+  .simple-text {
+    width: calc(100% - 4rem);
+    margin: 0 auto;
+  }
+}
