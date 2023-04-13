@@ -1,5 +1,6 @@
 .footer {
   padding-top: 4rem;
+
   &__top {
     width: 100%;
     display: flex;
@@ -12,25 +13,31 @@
 
   &__menu {
     padding-top: 2rem;
+    width: 100%;
+
     &__list {
       list-style: none;
       display: flex;
       align-items: flex-start;
+      justify-content: space-between;
       width: 100%;
       flex-wrap: wrap;
       font-weight: 500;
-      gap: 4rem;
+
       a {
         cursor: pointer;
         text-decoration: none;
         line-height: 2rem;
       }
+
       ul {
         list-style: none;
         margin-top: 2rem;
+
         li {
           margin-bottom: 2rem;
         }
+
         a {
           font-weight: 400;
         }
@@ -41,24 +48,32 @@
   &__social {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
     font-size: 1.8rem;
   }
+
   &__lang {
     display: flex;
     align-items: center;
     gap: 2rem;
+
     a {
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 1.2rem;
     }
+
     &__flag {
       width: 2.4rem;
       height: 2.4rem;
     }
   }
-}
 
+  .submenu {
+    &__item {
+      width: calc(100% / 4);
+    }
+  }
+}
 

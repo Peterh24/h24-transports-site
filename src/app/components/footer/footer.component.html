@@ -23,7 +23,7 @@
         </ul>
       </li>
       <li class="submenu__item">
-        <a [routerLink]="'/legals'" [innerHtml]="(lang$ | async) == 'fr' ? 'mentions legales' : 'legal terms'"></a>
+        <a [routerLink]="'/legals'" class="submenu__list__link" [innerHtml]="(lang$ | async) == 'fr' ? 'Mentions légales' : 'Legal terms'"></a>
       </li>
     </ul>
   </div>
