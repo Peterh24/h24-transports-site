@@ -13,14 +13,6 @@
     p {
       margin-bottom: 0;
     }
-    &--error {
-      background: $error;
-      color:$on-error;
-    }
-    &--success {
-      background: $success;
-      color:$on-success;
-    }
   }
   form {
     width: 60rem;
@@ -37,6 +29,7 @@
 
     app-form-field {
       flex: 1;
+
       .mat-mdc-form-field {
         display: block;
       }
@@ -46,10 +39,16 @@
       display: flex;
       justify-content: space-between;
       gap: 2rem;
+
       div {
         flex: 1;
       }
     }
+  }
+
+  app-button {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
