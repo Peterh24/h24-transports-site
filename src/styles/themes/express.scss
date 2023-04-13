@@ -137,7 +137,7 @@
   /*Footer*/
   .footer {
     &__top {
-      border-color: $on-express;
+      border-color: rgba(red($on-express), green($on-express), blue($on-express), .5);
     }
     a {
       color: $on-express;

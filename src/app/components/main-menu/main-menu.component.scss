@@ -1513,16 +1513,77 @@ $after-delay: 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 5224ms, 5144ms, 4914m
 }
 
 @media screen and (max-width: 47.9rem) {
-  .app-main-nav {
+  .main-nav {
     width: 100vw;
+    height: 100vh;
+    left: 0;
+    bottom: 0;
+
+    .tds-modal-backdrop {
+      display: none;
+    }
 
     .submenu {
+      gap: 2rem;
       padding: 0 2rem;
 
       ul,
       .contact,
       .social__list {
         width: 100%;
+      }
+
+      &__list {
+        gap: 2rem;
+      }
+
+      &__item {
+        position: relative;
+
+        a {
+          line-height: 1.2;
+        }
+
+        &::before {
+          height: 2rem;
+        }
+      }
+
+      .anchor {
+        &__list {
+          margin: 0;
+        }
+      }
+
+    }
+
+    .footer {
+      gap: 2rem;
+      margin-top: .5rem;
+      padding: 0;
+
+      .social_language {
+        align-items: flex-start;
+
+        .social__list {
+          gap: 2rem;
+        }
+
+        .language {
+          gap: 1rem;
+        }
+      }
+
+      .contact {
+        gap: 1rem;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        margin-top: 0;
+
+        &__info {
+          gap: 1rem;
+          flex-basis: calc(50% - .5rem);
+        }
       }
     }
   }

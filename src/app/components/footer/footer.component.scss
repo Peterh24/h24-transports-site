@@ -77,3 +77,38 @@
   }
 }
 
+@media screen and (max-width: 102.4rem) {
+}
+
+@media screen and (max-width: 47.9rem) {
+  .footer {
+    padding: 2rem;
+
+    &__top,
+    &__menu__list {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    &__menu {
+      &__list {
+        ul {
+          display: flex;
+          margin-top: 1rem;
+          gap: 1rem;
+          flex-direction: column;
+
+          li {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .submenu {
+      &__item {
+        width: 100%;
+      }
+    }
+  }
+}
