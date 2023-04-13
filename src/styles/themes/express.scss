@@ -81,9 +81,6 @@
   .app-page {
     background: $express;
     color: $on-express;
-    &__footer {
-      background: $express;
-    }
   }
 
   /*Header*/
@@ -98,9 +95,47 @@
     }
   }
 
+  /*Block Contact*/
+  .contact {
+    .mat-mdc-form-field {
+      &:not(.mdc-text-field--disabled) {
+        .mdc-text-field__input {
+          color: $on-express;
+        }
+      }
+    }
+
+    .mdc-text-field--filled {
+      &:not(.mdc-text-field--disabled) {
+        .mdc-line-ripple {
+          &::before {
+            border-bottom-color: $express-input;
+          }
+        }
+      }
+
+      .mdc-line-ripple {
+        &::after {
+          border-bottom-color: $on-express;
+        }
+      }
+    }
+
+    .mdc-text-field {
+      &:not(.mdc-text-field--disabled) {
+        .mdc-floating-label {
+          color: $express-input;
+
+          &--float-above {
+            color: $express-input;
+          }
+        }
+      }
+    }
+  }
+
   /*Footer*/
   .footer {
-    background: $express;
     &__top {
       border-color: $on-express;
     }
@@ -200,7 +235,7 @@
     }
 
     &::after {
-      background: linear-gradient(0deg, rgba(red($express), green($express), blue($express), 0.75) 0%, rgba(red($express), green($express), blue($express), 0.75) 60%, rgba(red($express), green($express), blue($express), 0) 100%);
+      background: linear-gradient(0deg, rgba(red($express), green($express), blue($express), 1) 0%, rgba(red($express), green($express), blue($express), 0.75) 60%, rgba(red($express), green($express), blue($express), 0) 100%);
     }
   }
 
@@ -234,12 +269,20 @@
     &__item {
       &__title {
         .icon {
-          &:after {
-            background: $express;
+          background: rgba(red($on-express), green($on-express), blue($on-express), .1);
+
+          &::after {
+            color: $express;
+          }
+
+          &:hover {
+            .icon {
+              background: rgba(red($on-express), green($on-express), blue($on-express), .25);
+            }
           }
         }
-        &:after {
-          background: #fff;
+        &::after {
+          background: $on-express;
         }
       }
     }
@@ -250,11 +293,31 @@
     .customPagination {
       .swiper-pagination-bullet {
         background-color: $on-express;
-        &:after {
+
+        &::after {
           background-color: $express;
         }
-        &:before {
+
+        &::before {
           background-color: $on-express;
+        }
+      }
+    }
+
+    &__slider {
+      &__controls {
+        .swiper-button {
+          color: $on-express;
+        }
+      }
+    }
+
+    &__darken {
+      .customPagination {
+        .swiper-pagination-bullet {
+          &::after {
+            background-color: $express-dark;
+          }
         }
       }
     }
@@ -288,17 +351,6 @@
     }
   }
 
-  /*Block News*/
-  .news {
-    &__slider {
-      &__controls {
-        .swiper-button {
-          color: $on-express;
-        }
-      }
-    }
-  }
-
   /*Block Teasing*/
   .teasing {
     &__background {
@@ -324,23 +376,10 @@
 
   /*Block Infos*/
   .infos {
+    &__text {
       &__title {
         &::after {
           background: $on-express;
-        }
-      }
-    }
-    .dropdown {
-      &__item {
-        &__title {
-          .icon {
-            background: rgba(red($on-express), green($on-express), blue($on-express), .1);
-
-          &:hover {
-            .icon {
-              background: rgba(red($on-express), green($on-express), blue($on-express), .25);
-            }
-          }
         }
       }
     }

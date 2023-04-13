@@ -81,9 +81,6 @@
   .app-page {
     background: $event;
     color: $on-event;
-    &__footer {
-      background: $event;
-    }
   }
 
   /*Header*/
@@ -97,9 +94,49 @@
       }
     }
   }
+
+  /*Block Contact*/
+  .contact {
+    .mat-mdc-form-field {
+      &:not(.mdc-text-field--disabled) {
+        .mdc-text-field__input {
+          color: $on-event;
+        }
+      }
+    }
+
+    .mdc-text-field--filled {
+      &:not(.mdc-text-field--disabled) {
+        .mdc-line-ripple {
+          &::before {
+            border-bottom-color: $event-input;
+          }
+        }
+      }
+
+      .mdc-line-ripple {
+        &::after {
+          border-bottom-color: $on-event;
+        }
+      }
+    }
+
+    .mdc-text-field {
+      &:not(.mdc-text-field--disabled) {
+        .mdc-floating-label {
+          color: $express-input;
+
+          &--float-above {
+            color: $event-input;
+          }
+        }
+      }
+    }
+  }
+
+
   /*Footer*/
   .footer {
-    background: $event;
     &__top {
       border-color: $on-event;
     }
@@ -199,7 +236,7 @@
     }
 
     &::after {
-      background: linear-gradient(0deg, rgba(red($event), green($event), blue($event), 0.75) 0%, rgba(red($event), green($event), blue($event), 0.75) 60%, rgba(red($event), green($event), blue($event), 0) 100%);
+      background: linear-gradient(0deg, rgba(red($event), green($event), blue($event), 1) 0%, rgba(red($event), green($event), blue($event), 0.75) 60%, rgba(red($event), green($event), blue($event), 0) 100%);
     }
   }
 
@@ -233,12 +270,20 @@
     &__item {
       &__title {
         .icon {
-          &:after {
-            background: $event;
+          background: rgba(red($on-event), green($on-event), blue($on-event), .1);
+
+          &::after {
+            color: $event;
+          }
+
+          &:hover {
+            .icon {
+              background: rgba(red($on-event), green($on-event), blue($on-event), .25);
+            }
           }
         }
-        &:after {
-          background: #fff;
+        &::after {
+          background: $on-event;
         }
       }
     }
@@ -249,11 +294,31 @@
     .customPagination {
       .swiper-pagination-bullet {
         background-color: $on-event;
-        &:after {
+
+        &::after {
           background-color: $event;
         }
-        &:before {
+
+        &::before {
           background-color: $on-event;
+        }
+      }
+    }
+
+    &__slider {
+      &__controls {
+        .swiper-button {
+          color: $on-event;
+        }
+      }
+    }
+
+    &__darken {
+      .customPagination {
+        .swiper-pagination-bullet {
+          &::after {
+            background-color: $event-dark;
+          }
         }
       }
     }
@@ -287,17 +352,6 @@
     }
   }
 
-  /*Block News*/
-  .news {
-    &__slider {
-      &__controls {
-        .swiper-button {
-          color: $on-event;
-        }
-      }
-    }
-  }
-
   /*Block Teasing*/
   .teasing {
     &__background {
@@ -323,24 +377,10 @@
 
   /*Block Infos*/
   .infos {
+    &__text {
       &__title {
         &::after {
           background: $on-event;
-        }
-      }
-    }
-
-    .dropdown {
-      &__item {
-        &__title {
-          .icon {
-            background: rgba(red($on-event), green($on-event), blue($on-event), .1);
-
-          &:hover {
-            .icon {
-              background: rgba(red($on-event), green($on-event), blue($on-event), .25);
-            }
-          }
         }
       }
     }

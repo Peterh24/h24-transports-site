@@ -2,36 +2,19 @@
 .contact {
   .mat-mdc-form-field {
     display: block;
-    &:not(.mdc-text-field--disabled) {
-      .mdc-text-field__input {
-        color: #fff;
-      }
-    }
   }
+
   .mdc-text-field--filled {
     &:not(.mdc-text-field--disabled) {
       background: transparent;
-      .mdc-line-ripple {
-        &::before {
-          border-bottom-color: #bcbcbb;
-        }
-      }
-    }
-    .mdc-line-ripple {
-      &::after {
-        border-bottom-color: #fff;
-      }
+      padding: 0;
     }
   }
 
   .mdc-text-field{
     &:not(.mdc-text-field--disabled) {
       .mdc-floating-label {
-        color: #fff;
         font-size: 1.4rem;
-        &--float-above {
-          color: #bcbcbb;
-        }
       }
     }
   }
