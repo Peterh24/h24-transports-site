@@ -107,10 +107,16 @@
 
 @media screen and (max-width: 102.4rem) {
   .key-data {
-    &__List,
-    &__cta {
-      width: 90%;
+    &__content {
+      width: calc(100% - 8rem);
+      gap: 4rem;
       margin: 0 auto;
+      padding-top: 11rem;
+      padding-bottom: 4rem;
+
+      &__text {
+        max-width: 50%;
+      }
     }
   }
 }
@@ -120,9 +126,8 @@
     &__content {
       width: calc(100% - 4rem);
       gap: 4rem;
-      margin-bottom: 4rem;
       flex-direction: column;
-      margin: 0 auto;
+      margin: 0 auto 4rem;
       padding-top: 11rem;
       padding-bottom: 2rem;
 

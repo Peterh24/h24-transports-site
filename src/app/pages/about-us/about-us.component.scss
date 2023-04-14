@@ -70,8 +70,14 @@
 }
 
 @media screen and (max-width: 102.4rem) {
+  .app-page {
+    &__about-us {
+      .page-content {
+        width: calc(100% - 8rem);
+      }
+    }
+  }
 }
-
 
 @media screen and (max-width: 47.9rem) {
   .app-page {

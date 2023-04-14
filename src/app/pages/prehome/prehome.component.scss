@@ -266,6 +266,7 @@ $overlayOpacity: .8;
       font-family: $alt-font-family;
       font-size: 1.8rem;
       font-weight: 700;
+      text-align: center;
       text-shadow: 0px 1px 2px $event;
       cursor: pointer;
       background-size: cover;
@@ -343,6 +344,15 @@ $overlayOpacity: .8;
 
 
 @media screen and (max-width: 102.4rem) {
+  .theme-slider {
+    &__child {
+      gap: 2rem;
+
+      &__item {
+        font-size: 1.6rem;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 47.9rem) {

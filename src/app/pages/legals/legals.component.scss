@@ -1,30 +1,57 @@
 .app-page {
   &__legals {
     padding-top: 13rem;
+
     h2 {
       text-align: center;
       margin-bottom: 2rem;
     }
   }
   .page-content {
-    width: 120rem;
-    margin: 8rem auto 0 auto;
     display: flex;
     flex-direction: column;
+    min-height: 70vh;
+    width: 120rem;
+    margin: 8rem auto 4rem auto;
+
     &__item {
       margin-bottom: 4rem;
     }
+
     h3 {
       font-size: 1.8rem;
       font-weight: 500;
       margin-bottom: 0;
-      &:after {
+
+      &::after {
         content: "";
         display: block;
         width: 3.5rem;
         height: .2rem;
-        background: #fff;
+        background: #FFF;
         margin: 1.3rem 0 2rem 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 102.4rem) {
+  .app-page {
+    &__legals {
+      .page-content {
+        width: calc(100% - 8rem);
+        margin: 8rem auto 4rem auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 47.9rem) {
+  .app-page {
+    &__legals {
+      .page-content {
+        width: calc(100% - 4rem);
+        margin: 4rem auto 2rem auto;
       }
     }
   }

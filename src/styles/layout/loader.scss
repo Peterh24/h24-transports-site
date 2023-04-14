@@ -3,7 +3,7 @@
 /*
 * Default Theme - event
 */
-.loader-open{
+.loader-open {
   overflow: hidden;
 }
 .app-loader {
@@ -14,9 +14,11 @@
   top: 0;
   left:0;
   z-index: 1000;
+
   br {
     display: none;
   }
+
   &__backdrop {
     block-size: 120vh;
     inline-size: 120vw;
@@ -43,12 +45,34 @@
     width: 100%;
     height: 100%;
     z-index: 1200;
+
     p {
       font-size: 4.5rem;
       font-weight: 800;
       height: 3rem;
+      line-height: 1;
       text-transform: uppercase;
       font-family: $alt-font-family;
+    }
+  }
+}
+
+@media screen and (max-width: 102.4rem) {
+  .app-loader {
+    &__content {
+      p {
+        font-size: 3.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 47.9rem) {
+  .app-loader {
+    &__content {
+      p {
+        font-size: 2.4rem;
+      }
     }
   }
 }

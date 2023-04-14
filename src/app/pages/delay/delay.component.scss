@@ -1,9 +1,10 @@
 .timelimit {
   text-align: center;
   min-height: 100vh;
+
   &__info {
     &__wrap {
-      padding: 6rem 0 4rem 0;
+      padding: 17rem 0 4rem 0;
 
       p {
         font-size: 1.4rem;
@@ -22,6 +23,7 @@
 
 .map {
   margin-top: 4rem;
+
   &__wrapper {
     display: flex;
     align-items: center;
@@ -45,6 +47,7 @@
     }
     &__text {
       flex: 1;
+
       h3 {
         font-size: 2.4rem;
         margin-bottom: 2.8rem;
@@ -97,11 +100,19 @@
 
 @media screen and (max-width: 102.4rem) {
   .timelimit {
+    width: calc(100% - 8rem);
+    padding-bottom: 4rem;
+
     &__info,
     &__swipper {
       &__wrap {
-        width: 90%;
+        width: calc(100% - 8rem);
         margin: 0 auto;
+      }
+    }
+    &__info {
+      &__wrap {
+        padding: 12rem 0 4rem 0;
       }
     }
   }
@@ -111,11 +122,12 @@
   .timelimit {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 
     &__info,
     &__swipper {
       &__wrap {
-        width: 90%;
+        width: calc(100% - 4rem);
         margin: 0 auto;
       }
     }

@@ -90,7 +90,7 @@
     align-items: center;
     gap: 4rem;
     width: 120rem;
-    margin: 3.8rem auto 0 auto;
+    margin: 4rem auto 6rem;
 
     .swiper-pagination-bullet {
       opacity: 0.5;
@@ -100,9 +100,10 @@
       gap: 1rem;
       position: relative;
       background: none;
-      padding: 2rem;
+      padding: 2rem 0 0;
+      text-align: left;
 
-      &:before {
+      &::before {
         content: '';
         display: block;
         position: absolute;
@@ -116,7 +117,7 @@
       &-active {
         opacity: 1;
 
-        &:before {
+        &::before {
           content: '';
           min-height: 4px;
         }
@@ -181,6 +182,7 @@
 }
 
 @media screen and (max-width: 102.4rem) {
+
 }
 
 @media screen and (max-width: 47.9rem) {
@@ -192,13 +194,14 @@
       &-wrapper {
         flex: 1;
       }
-
     }
+
     .map__interaction {
       display: flex;
       justify-content: flex-start;
       flex-flow: column wrap;
       align-items: flex-start;
+      margin: 2rem auto 4rem;
 
       .swiper-pagination-bullet {
         padding: 1rem 0;
