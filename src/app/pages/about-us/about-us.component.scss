@@ -14,24 +14,30 @@
       margin: 8rem auto 0 auto;
       display: flex;
       flex-direction: column;
+
       &__item {
         display: flex;
         flex-direction: row;
         min-height: 36.6rem;
-        &__info, &__img {
+
+        &__info,
+        &__img {
           width: 50%;
         }
+
         &__info {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
           padding: 2rem 4rem;
+
           h3 {
             font-size: 1.8rem;
             font-weight: 500;
             margin-bottom: 0;
-            &:after {
+
+            &::after {
               content: "";
               display: block;
               width: 3.5rem;
@@ -51,6 +57,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            width: 100%;
+            height: 100%;
           }
         }
         &:nth-child(2n+1) {
@@ -90,8 +98,6 @@
               position: unset;
               object-fit: cover;
               transform: translate(0, 0);
-              height: 100%;
-              width: 100%;
             }
           }
 
