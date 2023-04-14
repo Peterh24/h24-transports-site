@@ -1,6 +1,6 @@
 {
     "id": "event",
-    "title": "Transport événementiel",
+    "title": "Transport événementiel - English",
     "loader": {
         "img": ""
     },
@@ -8,7 +8,7 @@
         {
             "id": "keydata",
             "component": "KeyDataComponent",
-            "title": "Transport Événementiel",
+            "title": "Transport Événementiel - English",
             "data": {
                 "info": {
                     "title": "Transport Événementiel",

@@ -1,6 +1,6 @@
 {
     "id": "mode",
-    "title": "Transport Mode & luxe",
+    "title": "Transport Mode & luxe - English",
     "loader": {
         "img": ""
     },
@@ -8,7 +8,7 @@
         {
             "id": "keydata",
             "component": "KeyDataComponent",
-            "title": "Transport Mode & Luxe",
+            "title": "Transport Mode & Luxe - English",
             "data": {
                 "info": {
                     "title": "Transport Mode & Luxe",

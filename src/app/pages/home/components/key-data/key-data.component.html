@@ -1,9 +1,20 @@
 <div class="key-data" [class.key-data__darken]="(datas$ | async).options.darkenBg" [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}" [id]="id">
   <div class="key-data__content">
-    <div class="key-data__content__text" *ngIf="(datas$ | async).info.text">
-      <h2>{{(datas$ | async).info.title}}</h2>
-      <p *ngFor="let text of (datas$ | async).info.text">{{text}}</p>
-      <a class="app-button" routerLink="/aboutUs">{{(datas$ | async).info.cta}}</a>
+
+    <div class="key-data__content__text-logos">
+      <div class="key-data__content__text" *ngIf="(datas$ | async).info.text">
+        <h2>{{(datas$ | async).info.title}}</h2>
+        <p *ngFor="let text of (datas$ | async).info.text">{{text}}</p>
+        <a class="app-button" routerLink="/aboutUs">{{(datas$ | async).info.cta}}</a>
+      </div>
+
+      <div class="key-data__content__logos">
+        <div class="key-data__content__logo" *ngIf="(datas$ | async).logos">
+          <a [href]="logo.url" target="_blank" *ngFor="let logo of (datas$ | async).logos">
+            <img [src]="logo.img" [alt]="logo.name" />
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="key-data__List__wrap">

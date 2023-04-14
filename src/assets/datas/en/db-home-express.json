@@ -1,6 +1,6 @@
 {
     "id": "express",
-    "title": "Transport urgent exclusif",
+    "title": "Transport urgent exclusif - English",
     "loader": {
         "img": ""
     },
@@ -8,7 +8,7 @@
         {
             "id": "keydata",
             "component": "KeyDataComponent",
-            "title": "Transport urgent exclusif",
+            "title": "Transport urgent exclusif - English",
             "data": {
                 "info": {
                     "title": "Transport urgent exclusif",

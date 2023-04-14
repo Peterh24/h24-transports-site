@@ -40,6 +40,28 @@
                         "unit": "H"
                     }
                 ],
+                "logos": [
+                  {
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/netflix.png",
+                    "url": "https://www.netflix.com/",
+                    "name": "Netflix"
+                  },
+                  {
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/apple-tv.png",
+                    "url": "https://tv.apple.com/fr",
+                    "name": "Apple TV"
+                  },
+                  {
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/littlegrandstudio.png",
+                    "url": "http://www.littlegrandstudio.com/Site/fr/",
+                    "name": "Little Grand Studio"
+                  },
+                  {
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/vantage.png",
+                    "url": "https://www.vantagefilm.com",
+                    "name": "Vantage"
+                  }
+                ],
                 "options": {
                     "darkenBg": false
                 }

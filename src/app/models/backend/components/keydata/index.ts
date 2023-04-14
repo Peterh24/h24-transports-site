@@ -9,6 +9,7 @@ export class KeyData {
       url: string;
     }
   };
+  logos?: Array<Logos>;
   list: Array<{
     value: number;
     unit?: string;
@@ -23,4 +24,10 @@ export class KeyData {
     this.list = list;
     this.options = { darkenBg: false, ...options };
   }
+}
+
+export interface Logos {
+  img: string;
+  url: string;
+  name: string;
 }
