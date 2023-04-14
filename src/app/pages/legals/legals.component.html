@@ -2,12 +2,13 @@
   <app-header></app-header>
   <app-main-menu></app-main-menu>
   <div class="app-page__legals">
-    <h2 class="app-page__about-us__title">{{data.title}}</h2>
+    <h2 class="app-page__legals__title">{{data.title}}</h2>
+    <p class="app-page__legals__intro">{{data.intro}}</p>
+
     <div class="page-content">
       <div *ngFor="let elem of data.content" class="page-content__item">
         <h3>{{elem.title}}</h3>
-        <!-- TODO: génerer plusieurs paragraphes si tableau -->
-        <p>{{elem.text}}</p>
+        <p *ngFor="let text of elem.text">{{text}}</p>
       </div>
   </div>
   <app-footer></app-footer>
