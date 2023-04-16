@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
     this.themeName$ = this.store.pipe(select(fromThemes.getThemeName));
 
     this.currentTheme$.pipe(take(1)).subscribe(currentTheme => {
-      console.log('currentTheme: ', currentTheme);
       if(currentTheme !== null) {
         if(currentTheme.child !== null){
           this.currentTheme = currentTheme.child.id;

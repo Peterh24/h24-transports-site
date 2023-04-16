@@ -35,9 +35,8 @@ export class DictionariesEffects {
       } else {
         return this.dictionariesService.getDictionaries(((currentTheme.child && currentTheme.child.id) || currentTheme.currentTheme), currentlang).pipe(
           map(data => {
-            console.log('currentTheme.child: ', currentTheme.child);
             let description = currentTheme.child ? currentTheme.child.meta.description : currentTheme.meta.description;
-            let keywords = currentTheme.child ? currentTheme.child.meta.description: currentTheme.meta.keywords;
+            let keywords = currentTheme.child ? currentTheme.child.meta.keywords: currentTheme.meta.keywords;
             this.metaService.updateTag({ name: 'description', content: description });
             this.metaService.updateTag({ name: 'keywords', content: keywords });
 
