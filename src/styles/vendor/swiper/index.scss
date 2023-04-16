@@ -182,7 +182,11 @@
 }
 
 @media screen and (max-width: 102.4rem) {
-
+  .timelimit {
+    .map__interaction {
+      width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 47.9rem) {

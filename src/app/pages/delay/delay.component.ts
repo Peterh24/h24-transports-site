@@ -39,6 +39,9 @@ export class DelayComponent  implements OnInit, OnDestroy{
         this.http.get("assets/datas/"+ lang +"/db-delay.json").pipe(take(1)).subscribe((data:any) => {
           this.flag = true;
           const menu = data.content;
+
+          console.log("menu: " + menu);
+
           this.locationList = data.content;
           this.locationChoice('france');
           this.data = data;
