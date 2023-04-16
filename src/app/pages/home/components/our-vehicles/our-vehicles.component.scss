@@ -83,12 +83,13 @@
 
 @media screen and (max-width: 47.9rem) {
   .our-vehicles {
+    padding-top: 8rem;
     height: auto;
 
     .vehicle__illustration {
+      position: initial;
       height: 55%;
       width: 100vw;
-
       video,
       img {
         object-fit: contain;
@@ -98,17 +99,23 @@
     &__wrap {
       width: 90%;
       margin: 0 auto;
+      padding-top: 2rem;
       justify-content: center;
+      position: initial;
     }
 
     .vehicle {
       display: flex;
       flex-flow: column nowrap;
       flex: 1;
+      position: initial;
 
       h2 {
         text-align: center;
-        margin-bottom: 2rem;
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        width: 100%;
       }
     }
   }
