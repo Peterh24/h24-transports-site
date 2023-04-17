@@ -10,7 +10,8 @@
     "start:dev": "ng serve --c=dev",
     "build:dev": "ng build --c=dev",
     "start:prod": "ng serve --c=prod",
-    "build:prod": "ng build --c=prod"
+    "build:prod": "ng build --c=prod",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,7 @@
     "@angular/cli": "~15.0.1",
     "@angular/compiler-cli": "^15.0.0",
     "@types/jasmine": "~4.3.0",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -48,5 +50,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.8.2"
+  },
+  "engines": {
+    "node": "v18.14.2",
+    "npm": "9.5.0"
   }
 }
