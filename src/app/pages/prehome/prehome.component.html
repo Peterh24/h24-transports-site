@@ -21,7 +21,7 @@
           <div class="theme-slider__child__item" *ngFor="let child of data.child"
                [style.background-image]="'url(' + child.img + ')'"
                (click)="goToTheme(child.id)"
-               (mouseenter)="changePicture(child.id)"
+               (mouseover)="changePicture(child.id)"
                (mouseleave)="currentchild = ''">
             {{child.title}}
           </div>

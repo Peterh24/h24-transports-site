@@ -1,5 +1,5 @@
 <div class="our-values" [id]="id" [class.our-values__darken]="(datas$ | async).options.darkenBg">
-  <div class="value" *ngFor="let value of (datas$ | async).list;" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+  <div class="value" *ngFor="let value of (datas$ | async).list;" (mouseover)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
     <div class="value__content">
       <div class="value__content__title">
         <mat-icon>{{value.picto}}</mat-icon>
