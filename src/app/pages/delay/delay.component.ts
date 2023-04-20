@@ -2,11 +2,14 @@ import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '
 import { HttpClient } from '@angular/common/http';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Autoplay, EffectFade, SwiperOptions } from 'swiper';
 
+// install Swiper modules
+SwiperCore.use([Pagination, Autoplay, EffectFade ]);
 import * as fromRoot from '@app/store/';
 import * as fromThemes from '@app/store/themes';
 import * as fromLanguage from '@app/store/language';
-import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-delay',
