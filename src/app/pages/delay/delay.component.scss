@@ -71,34 +71,36 @@
   &-international {
     .map__wrapper__img {
       img {
-        transform: translate(-96px, 267px) scale(3) !important;
+        transform: translate(-96px, 267px) scale(3);
       }
     }
   }
   &-france {
     .map__wrapper__img {
       img {
-        transform: translate(398px, 1156px) scale(26) !important;
+        transform: translate(398px, 1156px) scale(26);
       }
     }
   }
   &-idf {
     .map__wrapper__img {
       img {
-        transform: translate(2248px, 6836px) scale(160) !important;
+        transform: translate(2248px, 6836px) scale(160);
       }
     }
   }
   &-paris {
     .map__wrapper__img {
       img {
-        transform: translate(5268px, 15716px) scale(371) !important;
+        transform: translate(5268px, 15716px) scale(371);
       }
     }
   }
 }
 
-@media screen and (max-width: 102.4rem) {
+/*RESPONSIVE*/
+/*Desktops low res*/
+@media only screen and (min-width: 76.7rem) and (max-width: 120rem) {
   .timelimit {
     width: calc(100% - 8rem);
     padding-bottom: 4rem;
@@ -119,17 +121,62 @@
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Tablets landscape*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {}
+
+/*Tablets portrait*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
+  .timelimit {
+    width: calc(100% - 8rem) !important;
+  }
+
+  /*Map positions*/
+  .timelimit__swipper__wrap {
+    &-international {
+      .map__wrapper__img {
+        img {
+          transform: translate(-41%, 2rem) scale(1) !important;
+        }
+      }
+    }
+
+    &-france {
+      .map__wrapper__img {
+        img {
+          transform: translate(21rem, 100rem) scale(14) !important;
+        }
+      }
+    }
+
+    &-idf {
+      .map__wrapper__img {
+        img {
+          transform: translate(185rem, 600rem) scale(76) !important;
+        }
+      }
+    }
+    &-paris {
+      .map__wrapper__img {
+        img {
+          transform: translate(363rem, 1121rem) scale(141) !important;
+        }
+      }
+    }
+  }
+}
+
+/*Mobiles portrait*/
+@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
   .timelimit {
     display: flex;
     flex-direction: column;
-    margin: 0 auto 2rem;
+    margin: 0 auto;
+    width: calc(100% - 4rem);
 
     &__info,
     &__swipper {
       &__wrap {
-        width: calc(100% - 4rem);
-        margin: 0 auto;
+        width: 100%;
       }
     }
     &__swipper {
@@ -139,6 +186,7 @@
       }
     }
     &__info__wrap {
+      padding: 11rem 0 2rem 0;
       order: 1;
     }
     &__swipper__wrap {
@@ -179,7 +227,7 @@
     &-international {
       .map__wrapper__img {
         img {
-          transform: translate(-35.6rem, 0) scale(1) !important;
+          transform: translate(-41%, 2rem) scale(1);
         }
       }
     }
@@ -187,21 +235,22 @@
     &-france {
       .map__wrapper__img {
         img {
-          transform: translate(-3rem, 60.5rem) scale(10) !important
+          transform: translate(7rem, 62rem) scale(13);
         }
       }
     }
+
     &-idf {
       .map__wrapper__img {
         img {
-          transform: translate(107rem, 397rem) scale(61) !important;
+          transform: translate(132rem, 442rem) scale(86);
         }
       }
     }
     &-paris {
       .map__wrapper__img {
         img {
-          transform: translate(280rem, 923rem) scale(140) !important;
+          transform: translate(227rem, 719rem) scale(139);
         }
       }
     }

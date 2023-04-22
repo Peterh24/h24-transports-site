@@ -181,7 +181,9 @@
   }
 }
 
-@media screen and (max-width: 102.4rem) {
+/*RESPONSIVE*/
+/*Desktops low res*/
+@media only screen and (min-width: 76.7rem) and (max-width: 120rem) {
   .timelimit {
     .map__interaction {
       width: 100%;
@@ -189,7 +191,8 @@
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Mobiles portrait*/
+@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
   .timelimit {
     .swiper {
       width: 100%;

@@ -1,14 +1,27 @@
 .simple-text {
   text-align: center;
   padding: 8rem 0;
+
   &__cta {
     margin-top: 3rem;
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*RESPONSIVE*/
+/*Tablets*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
+  .simple-text {
+    width: calc(100% - 8rem);
+    margin: 0 auto;
+    padding: 8rem 0;
+  }
+}
+
+/*Mobiles*/
+@media only screen and (max-device-width: 48rem) {
   .simple-text {
     width: calc(100% - 4rem);
     margin: 0 auto;
+    padding: 4rem 0;
   }
 }

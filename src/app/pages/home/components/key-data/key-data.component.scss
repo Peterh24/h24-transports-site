@@ -126,6 +126,7 @@
   &__cta {
     display: flex;
     align-items: center;
+    text-align: center;
   }
 
   &__item {
@@ -134,6 +135,8 @@
     gap: .7rem;
     justify-content: flex-start;
     align-items: center;
+    text-align: center;
+
     &__val {
       font-size: 4rem;
       font-family: $alt-font-family;
@@ -143,7 +146,9 @@
   }
 }
 
-@media screen and (max-width: 102.4rem) {
+/*RESPONSIVE*/
+/*Desktops low res*/
+@media only screen and (min-width: 76.7rem) and (max-width: 120rem) {
   .key-data {
     &__content {
       width: calc(100% - 8rem);
@@ -151,28 +156,45 @@
       margin: 0 auto;
       padding: 11rem 0 4rem;
 
-      &__text {
-        max-width: 50%;
+      &__logos {
+        display: flex;
       }
     }
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Tablets landscape*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {
   .key-data {
     &__content {
-      width: calc(100% - 4rem);
-      gap: 2rem;
+      width: calc(100% - 8rem) !important;
+      gap: 4rem !important;
+      padding: 13rem 0 4rem !important;
+
+      &__text {
+        flex-basis: calc(50% - 8rem);
+      }
+    }
+  }
+}
+
+/*Tablets portrait*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
+  .key-data {
+    &__content {
+      width: calc(100% - 8rem) !important;
+      gap: 4rem !important;
+      padding: 13rem 0 4rem !important;
       flex-direction: column;
-      padding: 13rem 0 2rem;
 
       &__text-logos {
         flex-direction: column;
+        justify-content: space-evenly;
         gap: 1rem;
       }
 
       &__text {
-        max-width: 100%;
+        flex-basis: auto;
 
         p {
           margin-bottom: 1rem;
@@ -180,14 +202,15 @@
       }
 
       &__logos {
-        max-width: 100%;
+        flex-basis: auto;
+        max-width: 40% !important;
       }
 
       &__logo {
         gap: 2rem;
 
         a {
-          flex-basis: calc(25% - 2rem);
+          flex-basis: calc(50% - 2rem) !important;
           height: 100%;
         }
       }
@@ -199,8 +222,8 @@
     }
 
     &__List {
-      justify-content: space-around;
-      gap: 2rem;
+      justify-content: space-evenly !important;
+      gap: 4rem !important;
 
       &__wrap {
         flex-direction: column;
@@ -222,3 +245,128 @@
     }
   }
 }
+
+/*Mobiles landscape*/
+@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+  .key-data {
+    &__content {
+      width: calc(100% - 4rem);
+      gap: 1rem;
+      padding-top: 13rem;
+      margin-bottom: 1rem;
+
+      &__text-logos {
+        flex-direction: row;
+      }
+
+      &__text {
+        flex-basis: auto;
+        margin-bottom: 0.5rem;
+
+        h2 {
+          font-size: 1.8rem;
+          line-height: 1;
+          margin-bottom: 0;
+
+          &::after {
+            margin: 1rem 0 2rem;
+          }
+        }
+        p {
+          font-size: 1.3rem;
+          line-height: 1.25;
+          margin-bottom: 0.5rem;
+        }
+        a {
+          margin-top: 0.5rem;
+        }
+      }
+
+      &__logos {
+        display: none;
+      }
+    }
+
+    &__item {
+      &__val {
+        font-size: 3.2rem;
+      }
+    }
+  }
+}
+
+/*Mobiles portrait*/
+@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
+  .key-data {
+    &__content {
+      width: calc(100% - 4rem);
+      gap: 2rem;
+      flex-direction: column;
+      padding: 13rem 0 0;
+      margin-bottom: 2rem;
+
+      &__text-logos {
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 1rem;
+        flex: 1;
+      }
+
+      &__text {
+        flex-basis: auto;
+        max-width: none;
+        p {
+          margin-bottom: 1rem;
+        }
+
+        a {
+          margin-top: 1rem;
+        }
+      }
+
+      &__logos {
+        display: flex;
+        align-items: center;
+        flex-basis: auto;
+        max-width: none;
+      }
+
+      &__logo {
+        gap: 2rem;
+        align-items: center;
+
+        a {
+          flex-basis: calc(25% - 2rem);
+          height: 100%;
+        }
+      }
+    }
+
+    &__List,
+    &__cta {
+      margin: 0 auto;
+    }
+
+    &__List {
+      justify-content: space-around;
+      gap: 1rem;
+
+      &__wrap {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    &__cta {
+      display: inline-flex;
+      justify-content: center;
+    }
+
+    &__item {
+      &__val {
+        font-size: 3.5rem;
+      }
+    }
+  }
+}
+

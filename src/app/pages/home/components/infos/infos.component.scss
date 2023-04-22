@@ -138,27 +138,83 @@
   }
 }
 
-@media screen and (max-width: 102.4rem) {
+/*RESPONSIVE*/
+/*Tablets landscape*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {
   .infos {
+    &__title {
+      margin: 4rem 0 2rem !important;
+    }
+
+    &__text {
+      width: calc(50% - 8rem);
+      margin: 0 4rem !important;
+      flex: unset;
+
+      &__title {
+        margin: 2rem 0 !important;
+      }
+
+      &__wrapper {
+        padding: 2rem 0 !important;
+      }
+
+      &__text {
+        p {
+          &:last-child {
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+
+    &__img {
+      width: 50%;
+    }
+
+    &__reverse {
+      .infos__wrapper {
+        flex-direction: row !important;
+      }
+    }
+
     &__wrapper {
+      flex-direction: row-reverse !important;
+      justify-content: flex-start;
+      gap: 0;
       width: 100%;
     }
-    &__text,
-    &__img {
-      flex-basis: 50%;
+  }
+}
+
+/*Tablets portrait*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
+  .infos {
+    &__title {
+      margin: 4rem 0 2rem !important;
     }
 
     &__text {
       &__wrapper {
-        padding: 0 4rem;
+        padding: 4rem 2rem !important;
       }
     }
-
   }
-
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Mobiles landscape*/
+@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+  .infos {
+    &__text {
+      &__title {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+/*Mobiles*/
+@media only screen and (max-device-width: 48rem) {
   .infos {
     &__title {
       margin: 2rem 0 1rem 0;
@@ -208,7 +264,7 @@
 
     &__wrapper {
       width: 100%;
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
   }
 

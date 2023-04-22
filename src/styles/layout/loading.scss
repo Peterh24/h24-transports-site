@@ -45,3 +45,16 @@
 		transform: rotate(720deg);
 	}
 }
+
+/*RESPONSIVE*/
+/*Mobiles landscape*/
+@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+  .app-loading {
+    &__loader {
+      width: 15rem;
+      height: 15rem;
+
+      background-size: 10rem !important;
+    }
+  }
+}

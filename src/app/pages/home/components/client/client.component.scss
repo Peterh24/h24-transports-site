@@ -28,6 +28,8 @@
   }
 }
 
+/*RESPONSIVE*/
+/*Desktops low res*/
 @media screen and (max-width: 102.4rem) {
   .clients {
     &__slider {
@@ -36,8 +38,24 @@
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Tablets portrait*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
   .clients {
+    padding: 8rem 0 !important;
+
+    h2,
+    &__text {
+      width: calc(100% - 8rem) !important;
+      margin: 0 auto 4rem !important;
+    }
+  }
+}
+
+/*Mobiles*/
+@media only screen and (max-device-width: 48rem) {
+  .clients {
+    padding: 4rem 0;
+
     h2,
     &__text {
       width: calc(100% - 4rem);

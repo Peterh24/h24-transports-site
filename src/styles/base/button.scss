@@ -12,3 +12,9 @@
   letter-spacing: $base-letter-spacing;
   cursor: pointer;
 }
+
+@media screen and (max-width: 57.6rem) and (orientation: landscape) {
+  .app-button {
+    padding: .75rem 1.5rem;
+  }
+}

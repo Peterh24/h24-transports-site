@@ -49,7 +49,7 @@
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+@media only screen and (max-device-width: 48rem) {
   .app-page {
     &__legals {
       .page-content {

@@ -77,7 +77,33 @@
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*RESPONSIVE*/
+/*Tablets portrait*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
+  .footer {
+    padding: 4rem !important;
+
+    &__top,
+    &__menu__list {
+      flex-direction: row !important;
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+/*Mobiles landscape*/
+@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+  .footer {
+    padding: 2rem;
+
+    &__top {
+      flex-direction: row;
+    }
+  }
+}
+
+/*Mobiles portrait*/
+@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
   .footer {
     padding: 2rem;
 

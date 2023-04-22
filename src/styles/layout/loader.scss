@@ -57,7 +57,9 @@
   }
 }
 
-@media screen and (max-width: 102.4rem) {
+/*RESPONSIVE*/
+/*Desktops low res*/
+@media only screen and (min-width: 76.7rem) and (max-width: 120rem) {
   .app-loader {
     &__content {
       p {
@@ -67,7 +69,8 @@
   }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Mobiles*/
+@media only screen and (max-device-width: 48rem) {
   .app-loader {
     &__content {
       p {

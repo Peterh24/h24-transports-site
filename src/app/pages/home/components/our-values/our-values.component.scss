@@ -38,7 +38,7 @@
 
       h2 {
         font-size: 4.2rem;
-        font-size: 500;
+        font-weight: 500;
         margin-bottom: 0;
       }
     }
@@ -81,10 +81,40 @@
   }
 }
 
-@media screen and (max-width: 102.4rem) {
+/*RESPONSIVE*/
+/*Tablets portrait*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
+  .value {
+    flex-basis: 50% !important;
+    min-height: 50vh;
+  }
 }
 
-@media screen and (max-width: 47.9rem) {
+/*Mobiles landscape*/
+@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+  .value {
+    flex-basis: 50%;
+    min-height: 100vh;
+
+    &__content {
+      &__title {
+        gap: 2rem;
+        padding: 2rem;
+
+        h2 {
+          font-size: 2.4rem;
+        }
+      }
+
+      &__text {
+        padding: 0 2rem 2rem;
+      }
+    }
+  }
+}
+
+/*Mobiles portrait*/
+@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
   .value {
     flex-basis: 100%;
     min-height: 50vh;
