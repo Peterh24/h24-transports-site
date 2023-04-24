@@ -74,7 +74,7 @@
 
 /*RESPONSIVE*/
 /*Desktops low res*/
-@media screen and (max-width: 120rem) {
+@media only screen and (min-width: 76.7rem) and (max-width: 102.4rem) {
   .our-vehicles {
     height: auto;
 
