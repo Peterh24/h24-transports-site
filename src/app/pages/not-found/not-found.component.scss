@@ -1,51 +1,145 @@
+@import "./styles/colors";
+@import "./styles/fonts";
 
 /*======================
     404 page
 =======================*/
 
-
-.page_404{
+.page_404 {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding:40px 0;
-  background:#fff;
-  color: #000;
+  flex-direction: column;
+  padding: 0;
+  background: $exploitation-dark;
+  color: $event;
   text-align: center;
+  font-family: $base-font-family;
+
+  &__wrapper {
+    width: 120rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  app-logo {
+    top: 4rem;
+  }
+
+  .four_zero_four_bg {
+    background-image: url(https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/not-found/Anim_PilotageTransportV2.gif);
+    height: 35vh;
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  h1 {
+    font-family: $alt-font-family;
+    letter-spacing: $base-letter-spacing;
+    font-weight: 600;
+    font-size: 4.2rem;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-family: $base-font-family;
+    letter-spacing: $base-letter-spacing;
+    font-weight: 500;
+    font-size: 3.2rem;
+    margin-bottom: 0;
+  }
+
+  .link_404 {
+    color: $exploitation-dark;
+    padding: 1rem 2rem;
+    background: $event;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 2rem;
+    border: 2px solid $exploitation-dark;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: $event;
+      background: $exploitation-dark;
+      border-color: $event;
+    }
+  }
 }
 
-.four_zero_four_bg{
-  background-image: url(https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/not-found/Anim_PilotageTransportV2.gif);
-  height: 49rem;
-  width: 50rem;
-  background-position: center;
-  background-size: cover;
+/*RESPONSIVE*/
+/*Tablets landscape*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {
+  .page_404 {
+    justify-content: flex-start;
+
+    &__wrapper {
+      width: calc(100% - 8rem);
+      margin-top: 16rem;
+    }
+  }
 }
 
+/*Mobiles landscape*/
+@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+  .page_404 {
+    padding: 0;
+    justify-content: flex-start;
 
-.four_zero_four_bg h1{
-  font-size:80px;
+    app-logo {
+      top: 2rem;
+    }
+
+    &__wrapper {
+      width: calc(100% - 4rem);
+      margin-top: 12rem;
+      gap: 2rem;
+      position: relative;
+    }
+
+    .four_zero_four_bg {
+      width: calc(50vw - 2rem);
+      height: calc(100vh - 6rem);
+      position: absolute;
+      top: -6rem;
+      left: 0;
+      background-position: center;
+    }
+
+    h1, h3, p, .link_404 {
+      width: calc(50vw - 2rem);
+      align-self: flex-end;
+    }
+  }
 }
 
-.four_zero_four_bg h3{
-  font-size:80px;
-}
+/*Mobiles portrait*/
+@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
+  .page_404 {
+    padding: 0;
+    justify-content: flex-start;
 
-.link_404{
-  color: #fff;
-  padding: 10px 20px;
-  background: #000;
-  margin: 20px 0;
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 2rem ;
-  border: 2px solid #fff;
-  transition: all .2s ease-in-out;
-  &:hover {
-    color:#000;
-    background: #fff;
-    border-color: #000;
+    app-logo {
+      top: 2rem;
+    }
+
+    &__wrapper {
+      width: calc(100% - 4rem);
+      gap: 2rem;
+      margin-top: 12rem;
+    }
+
+    .four_zero_four_bg {
+      height: 40vh;
+      width: 100%;
+    }
   }
 }
