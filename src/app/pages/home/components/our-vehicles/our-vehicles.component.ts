@@ -67,11 +67,6 @@ export class OurVehiclesComponent {
       const altVideo = menu[index].video.jpg;
       illustrationDOM = document.createElement('video');
 
-      const sourceOgv = document.createElement('source');
-      sourceOgv.src = ogv;
-      sourceOgv.type = 'video/ogg';
-      illustrationDOM.appendChild(sourceOgv);
-
       const sourceMp4 = document.createElement('source');
       sourceMp4.src = mp4;
       sourceMp4.type = 'video/mp4';
@@ -81,6 +76,12 @@ export class OurVehiclesComponent {
       sourceWebm.src = webm;
       sourceWebm.type = 'video/webm';
       illustrationDOM.appendChild(sourceWebm);
+
+      const sourceOgv = document.createElement('source');
+      sourceOgv.src = ogv;
+      sourceOgv.type = 'video/ogg';
+      illustrationDOM.appendChild(sourceOgv);
+
       illustrationDOM.poster = altVideo;
       illustrationDOM.autoplay =  true;
       illustrationDOM.loop = true;
