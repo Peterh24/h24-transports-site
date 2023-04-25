@@ -88,16 +88,20 @@
 @media only screen and (min-width: 76.7rem) and (max-width: 102.4rem) {
   .news {
     &__slider {
-      width: calc(100% - 8rem);
+      width: calc(100% - 8rem) !important;
     }
   }
 }
 
-/*Tablets landscape*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {
+/*Tablets*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
   .news {
     &__slider {
-      width: calc(100% - 8rem);
+      width: calc(100% - 8rem) !important;
+
+      &__slide {
+        width: 100% !important;
+      }
     }
   }
 }
@@ -124,6 +128,10 @@
       &__controls {
         justify-content: center;
         align-self: flex-end;
+      }
+
+      &__slide {
+        width: 100% !important;
       }
     }
 

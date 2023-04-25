@@ -182,7 +182,6 @@
       flex-direction: row-reverse !important;
       justify-content: flex-start;
       gap: 0;
-      width: 100%;
     }
   }
 }
@@ -198,6 +197,15 @@
       &__wrapper {
         padding: 4rem 2rem !important;
       }
+    }
+  }
+}
+
+/*Tablets*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
+  .infos {
+    &__wrapper {
+      width: 100% !important;
     }
   }
 }

@@ -1549,6 +1549,42 @@ $after-delay: 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 5224ms, 5144ms, 4914m
   }
 }
 
+/*Tablets*/
+@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
+  .main-nav {
+    width: 75vw !important;
+    left: unset !important;
+    right: 0 !important;
+
+    .submenu {
+      gap: 2rem !important;
+
+      .anchor__list {
+        &::after {
+          margin-top: 1rem;
+        }
+      }
+
+      &__list {
+        &::after {
+          margin-top: 0;
+        }
+      }
+    }
+    .footer {
+      .contact {
+        flex-flow: row wrap;
+        align-items: flex-start;
+        margin-top: 0;
+
+        &__info {
+          width: calc(50% - 2rem);
+        }
+      }
+    }
+  }
+}
+
 /*Mobiles*/
 @media only screen and (max-device-width: 48rem) {
   .main-nav {
