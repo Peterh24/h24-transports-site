@@ -41,27 +41,37 @@
                     }
                 ],
                 "logos": [
-                  {
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/netflix.png",
-                    "url": "https://www.netflix.com/",
-                    "name": "Netflix"
-                  },
-                  {
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/apple-tv.png",
-                    "url": "https://tv.apple.com/fr",
-                    "name": "Apple TV"
-                  },
-                  {
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/littlegrandstudio.png",
-                    "url": "http://www.littlegrandstudio.com/Site/fr/",
-                    "name": "Little Grand Studio"
-                  },
-                  {
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/vantage.png",
-                    "url": "https://www.vantagefilm.com",
-                    "name": "Vantage"
-                  }
-                ],
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/logos/vantage.png",
+                      "url": "https://www.vantagefilm.com",
+                      "name": "Vantage"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/matphoto.png",
+                      "url": "https://matphoto.fr/",
+                      "name": "MatPhoto"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/cininter.png",
+                      "url": "https://www.cininter.fr/",
+                      "name": "Cinninter"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/tsf.png",
+                      "url": "https://www.tsf.fr/",
+                      "name": "Tsf"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/accled.png",
+                      "url": "https://www.accled.fr/",
+                      "name": "Acc&led"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/nextshot.png",
+                      "url": "https://www.nextshot.com/",
+                      "name": "Nextshot"
+                    }
+                  ],
                 "options": {
                     "darkenBg": false
                 }
