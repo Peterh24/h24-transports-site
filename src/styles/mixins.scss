@@ -14,3 +14,12 @@
   right: $right;
   bottom: $bottom;
 }
+
+
+@mixin retina-styles {
+  $event: #242221;
+  $event-dark: #242221;
+
+  $express: #09264c;
+  $express-dark: #0e203c;
+}
