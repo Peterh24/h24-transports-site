@@ -27,11 +27,6 @@ body {
   -webkit-font-smoothing: antialiased;
   background: $event;
   color:$on-event;
-  @media
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-    @include retina-styles;
-  }
 }
 body {
   font-size: $base-font-size;
