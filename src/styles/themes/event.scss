@@ -326,11 +326,6 @@
 
   /*Block Vehicles*/
   .our-vehicles {
-    @media
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-    @include retina-styles;
-  }
     button {
       border-color: $on-event;
       color: $on-event;
