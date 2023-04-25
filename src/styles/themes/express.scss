@@ -1,6 +1,6 @@
-.theme_expressMode, .theme_expressexpress, .theme_expressAudiovisuel, .theme_aboutUs, .theme_delay, .theme_legals {
-  color: $on-express;
+.theme_express {
   background: $express;
+  color: $on-express;
 
   /*Darken*/
   .citation,
@@ -17,7 +17,7 @@
   .timelimit,
   .footer {
     &__darken {
-      background: $express-dark !important;
+      background: $express-dark;
     }
   }
 
@@ -133,7 +133,6 @@
       }
     }
   }
-
 
   /*Footer*/
   .footer {
@@ -388,9 +387,9 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .theme_expressMode, .theme_expressexpress, .theme_expressAudiovisuel, .theme_aboutUs, .theme_delay, .theme_legals {
-    color: $on-express;
+  .theme_express {
     background: $express-retina;
+    color: $on-express;
 
     /*Darken*/
     .citation,
@@ -407,7 +406,7 @@
     .timelimit,
     .footer {
       &__darken {
-        background: $express-dark-retina !important;
+        background: $express-dark-retina;
       }
     }
 
@@ -523,7 +522,6 @@
         }
       }
     }
-
 
     /*Footer*/
     .footer {
