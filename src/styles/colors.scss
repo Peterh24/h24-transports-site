@@ -1,10 +1,14 @@
 $event: #201f1e;
+$event-retina: #242322;
 $event-dark: #1c1b1a;
+$event-dark-retina: #1E1D1C;
 $on-event: #FFFFFF;
 $event-input: rgba(red($on-event), green($on-event), blue($on-event), .65);
 
 $express: #09264c;
+$express-retina: #132B56;
 $express-dark: #0e203c;
+$express-dark-retina: #122343;
 $on-express: #FFFFFF;
 $express-input: rgba(red($on-express), green($on-express), blue($on-express), .65);
 
