@@ -7,6 +7,7 @@ import SwiperCore, { Pagination, Autoplay, EffectFade, SwiperOptions } from 'swi
 SwiperCore.use([Pagination, Autoplay, EffectFade ]);
 let menu:any = [];
 let illustrationDOM;
+
 @Component({
   selector: 'app-our-vehicles',
   templateUrl: './our-vehicles.component.html',
@@ -35,7 +36,8 @@ export class OurVehiclesComponent {
         </button>
         `
       },
-    },on: {
+    },
+    on: {
       slideChange: (event) => {
         this.updateIllustration(event.activeIndex);
       }
@@ -83,18 +85,16 @@ export class OurVehiclesComponent {
       illustrationDOM.appendChild(sourceOgv);
 
       illustrationDOM.poster = altVideo;
-      illustrationDOM.autoplay =  true;
+      illustrationDOM.autoplay = true;
       illustrationDOM.loop = true;
       illustrationDOM.muted = true;
       illustrationDOM.controls = false;
+      illustrationDOM.playbackRate = .8;
     }
 
     /**TODO: Calculate window width and apply different styles for responsive */
-
-    illustrationDOM.style
     illustrationDOM.style.width = '100%';
     illustrationDOM.style.height = '100%';
-
 
     // Remove previous illustration
     while (this.illustrationContainer.nativeElement.firstChild) {
