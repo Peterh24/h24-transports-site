@@ -25,7 +25,7 @@
       <li *ngFor="let theme of themeList$ | async" class="submenu__item" [class.submenu__item--active]="(currentTheme$ | async).currentTheme == theme.id" >
         <a [routerLink]="!theme.inPrenav ? ('/'+theme.id): null" class="submenu__list__link" (click)="(theme.child.length === 0 && theme.inPrenav) ? switchTheme(theme.id) : null">{{theme.title}}</a>
         <ul *ngIf="theme.child.length > 0">
-          <li *ngFor="let child of theme.child" [class.submenu__item--active]="(currentTheme$ | async).child == child.id">
+          <li *ngFor="let child of theme.child" [class.submenu__item--active]="(currentTheme$ | async).child.id == child.id">
             <a class="submenu__list__link"  (click)="switchTheme(child.id)">{{child.title}}</a>
           </li>
         </ul>
