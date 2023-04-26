@@ -88,6 +88,27 @@
     &::after {
       background: linear-gradient(180deg, rgba(red($event), green($event), blue($event), .75) 0%, rgba(red($event), green($event), blue($event), 0) 90%);
     }
+    &__tools {
+      &__phone {
+        border-color: $on-event;
+        &:hover {
+          background: $on-event;
+          & > .phone-text {
+            background: $on-event;
+          }
+          & > .phone-btn {
+            background: $on-event;
+            color: $event-dark;
+          }
+        }
+        .phone-btn {
+          color: $on-event;
+        }
+        input {
+          color: $event-dark;
+        }
+      }
+    }
     &__burger {
       path {
         stroke: $on-event;
@@ -478,6 +499,7 @@
       &::after {
         background: linear-gradient(180deg, rgba(red($event-retina), green($event-retina), blue($event-retina), .75) 0%, rgba(red($event-retina), green($event-retina), blue($event-retina), 0) 90%);
       }
+
       &__burger {
         path {
           stroke: $on-event;

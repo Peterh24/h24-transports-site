@@ -88,6 +88,27 @@
     &::after {
       background: linear-gradient(180deg, rgba(red($express), green($express), blue($express), .75) 0%, rgba(red($express), green($express), blue($express), 0) 90%);
     }
+    &__tools {
+      &__phone {
+        border-color: $on-express;
+        &:hover {
+          background: $on-express;
+          & > .phone-text {
+            background: $on-express;
+          }
+          & > .phone-btn {
+            background: $on-express;
+            color: $express-dark;
+          }
+        }
+        .phone-btn {
+          color: $on-express;
+        }
+        input {
+          color: $express-dark;
+        }
+      }
+    }
     &__burger {
       path {
         stroke: $on-express;
