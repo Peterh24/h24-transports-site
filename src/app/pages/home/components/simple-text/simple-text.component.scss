@@ -1,7 +1,9 @@
 .simple-text {
   text-align: center;
   padding: 8rem 0;
-
+  &__textwrap {
+    padding: 0 4rem;
+  }
   &__cta {
     margin-top: 3rem;
   }
