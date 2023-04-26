@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 
 import * as fromRoot from '@app/store/';
 import * as fromThemes from '@app/store/themes';
+import { ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-key-data',
@@ -18,6 +20,8 @@ export class KeyDataComponent implements OnInit {
   constructor(
     private globalService: GlobalService,
     private store: Store<fromRoot.State>,
+    private viewportScroller: ViewportScroller,
+    private router: Router,
   ) {}
   loadingState$: Observable<boolean>;
   ngOnInit(): void {
@@ -26,6 +30,7 @@ export class KeyDataComponent implements OnInit {
   }
 
   goToAnchor(anchor:any): void {
-    console.log('Go to ', anchor)
+    this.viewportScroller.scrollToAnchor(anchor);
+    this.router.navigate([], { fragment: anchor });
   }
 }

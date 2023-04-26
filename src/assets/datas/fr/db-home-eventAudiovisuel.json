@@ -21,7 +21,7 @@
                     "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/cover-transport_publicity_and_cinema.jpg",
                     "link": {
                         "label": "DEMANDEZ VOTRE DEVIS",
-                        "url": "#contact"
+                        "url": "contact"
                     }
                 },
                 "list": [
