@@ -40,6 +40,38 @@
                         "unit": "K"
                     }
                 ],
+                "logos": [
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/balenciaga.png",
+                      "url": "https://www.balenciaga.com/fr-fr",
+                      "name": "Balenciaga"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/sezane.png",
+                      "url": "https://www.sezane.com/fr",
+                      "name": "Sézane"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/celine.png",
+                      "url": "https://www.celine.com/fr-fr/home",
+                      "name": "Cinninter"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/dior.png",
+                      "url": "https://www.dior.com/fr_fr",
+                      "name": "Tsf"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/yves-saint-laurent.png",
+                      "url": "https://www.yslbeauty.fr",
+                      "name": "Acc&led"
+                    },
+                    {
+                      "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/logos-clients/white/louis-vuitton.png",
+                      "url": "https://fr.louisvuitton.com",
+                      "name": "Nextshot"
+                    }
+                  ],
                 "options": {
                     "darkenBg": false
                 }

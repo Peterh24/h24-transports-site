@@ -14,10 +14,10 @@
         "child": [
             {
                 "id": "eventAudiovisuel",
-                "title": "Transport Publicité & Cinéma",
+                "title": "Transport Pub & Cinéma",
                 "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-audiovisuel/img/cover-transport_publicity_and_cinema.jpg",
                 "meta": {
-                  "description": "Description Publicité et cinéma",
+                  "description": "Transport de matériel de caméra, lumière, et de machinerie lors de vos tournages de film ou de publicité.",
                   "keywords": ""
                 }
             },
@@ -26,7 +26,7 @@
                 "title": "Transport Mode & Luxe",
                 "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-mode/img/cover-fashion_and_luxury_transport.jpg",
                 "meta": {
-                  "description": "Description Mode & luxe",
+                  "description": "Transport de matériel photo et vidéo ainsi que de vos collections de produits. Nous vous accompagnons à chacune de vos campagnes (défilé Fashion Week, shooting photo).",
                   "keywords": ""
                 }
             },
@@ -35,7 +35,7 @@
                 "title": "Transport Évènementiel",
                 "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-event/img/cover-event_transport.jpg",
                 "meta": {
-                  "description": "Description transport evenementiel",
+                  "description": "Transport de matériel de lumière, caméra, son, lors de vos concerts, festivals et salons.",
                   "keywords": ""
                 }
             }
@@ -50,7 +50,7 @@
         "inPrenav": true,
         "footerDarken": true,
         "meta": {
-          "description": "Description Express",
+          "description": "Service spécialisé et dédié, en express ou en tournée. Suivi et pilotage de vos transports via notre application mobile.",
           "keywords": ""
         },
         "child": []
@@ -64,7 +64,7 @@
         "inPrenav": true,
         "footerDarken": true,
         "meta": {
-          "description": "Description Exploitation",
+          "description": "Créez vous-même vos missions de transport, suivi et traçabilité en temps réel via notre application mobile de transport.",
           "keywords": ""
         },
         "child": []
@@ -78,7 +78,7 @@
         "inPrenav": false,
         "footerDarken": true,
         "meta": {
-          "description": "Description About Us",
+          "description": "Créé en 2014, H24 Transports propose des services de transport dédiés et spécialisés. Découvrez maintenant notre application de transport.",
           "keywords": ""
         },
         "child": []
@@ -92,7 +92,7 @@
         "inPrenav": false,
         "footerDarken": true,
         "meta": {
-          "description": "Description Delay",
+          "description": "Flexibilité et disponibilité 7j/7 H24, réactivité H-1 à Paris, H-3 en Île-de-France, H-12 dans toute la France.",
           "keywords": ""
         },
         "child": []
@@ -106,7 +106,7 @@
       "inPrenav": false,
       "footerDarken": true,
       "meta": {
-        "description": "Description Legals",
+        "description": "Mentions légales de la société H24 Transports",
         "keywords": ""
       },
       "child": []
