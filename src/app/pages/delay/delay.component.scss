@@ -235,7 +235,7 @@
     &-france {
       .map__wrapper__img {
         img {
-          transform: translate(7rem, 62rem) scale(13);
+          transform: translate(0, 65rem) scale(11);
         }
       }
     }
@@ -243,15 +243,20 @@
     &-idf {
       .map__wrapper__img {
         img {
-          transform: translate(132rem, 442rem) scale(86);
+          transform: translate(78rem, 312rem) scale(48);
         }
       }
     }
     &-paris {
       .map__wrapper__img {
         img {
-          transform: translate(227rem, 719rem) scale(139);
+          transform: translate(127rem, 457rem) scale(70);
         }
+      }
+    }
+    &-international, &-france, &-idf, &-paris {
+      .map__wrapper__img {
+        display: none;
       }
     }
   }
