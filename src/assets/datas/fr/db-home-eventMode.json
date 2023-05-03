@@ -20,6 +20,7 @@
                     "cta": "À propos",
                     "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/event/event-mode/img/cover-fashion_and_luxury_transport.jpg",
                     "link": {
+                        "type": "Anchor",
                         "label": "DEMANDEZ VOTRE DEVIS",
                         "url": "contact"
                     }
