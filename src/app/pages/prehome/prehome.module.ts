@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PrehomeRoutingModule } from './prehome-routing.module';
 import { PrehomeComponent } from './prehome.component';
 import { LoadingModule, LogoModule } from '@app/shared';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LoadingModule, LogoModule } from '@app/shared';
     CommonModule,
     PrehomeRoutingModule,
     LoadingModule,
-    LogoModule
+    LogoModule,
+    MatIconModule
   ]
 })
 export class PrehomeModule { }
