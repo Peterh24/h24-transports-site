@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="key-data__cta" *ngIf="(datas$ | async).info.link.url as url">
-        <a class="app-button" (click)="goToAnchor(url)">{{(datas$ | async).info.link.label}}</a>
+        <a class="app-button" (click)="goTo(url)">{{(datas$ | async).info.link.label}}</a>
       </div>
     </div>
   </div>

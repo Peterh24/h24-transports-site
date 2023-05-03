@@ -4,7 +4,8 @@ export class KeyData {
     text: Array<string>;
     cta: string;
     img: string;
-    link: {
+    link?: {
+      type?: 'Anchor' | 'Link';
       label: string;
       url: string;
     }
@@ -31,3 +32,4 @@ export interface Logos {
   url: string;
   name: string;
 }
+

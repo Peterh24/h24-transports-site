@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KeyData } from '@app/models/backend/components/keydata';
 import { GlobalService } from '@app/services/global';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 import * as fromRoot from '@app/store/';
 import * as fromThemes from '@app/store/themes';
@@ -29,8 +29,17 @@ export class KeyDataComponent implements OnInit {
     this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
   }
 
-  goToAnchor(anchor:any): void {
-    this.viewportScroller.scrollToAnchor(anchor);
-    this.router.navigate([], { fragment: anchor });
+  goTo(link:any): void {
+    this.datas$.pipe(take(1)).subscribe(data => {
+      console.log('type: ', data.info.link.type);
+      if(data.info.link.type === 'Anchor'){
+        this.viewportScroller.scrollToAnchor(link);
+        this.router.navigate([], { fragment: link });
+      } else {
+        document.location.href = link;
+      }
+    })
+
+
   }
 }
