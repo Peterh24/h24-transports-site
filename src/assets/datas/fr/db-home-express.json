@@ -27,18 +27,20 @@
                 },
                 "list": [
                     {
-                        "value": "70",
-                        "label": "clients satisfaits"
+                        "value": "657",
+                        "label": "clients récurents"
+                    },  
+                    {
+                        "value": "12",
+                        "label": "clients satisfaits",
+                        "unit": "K"
                     },
                     {
-                        "value": "30",
-                        "label": "d'attente de prise en charge max.",
-                        "unit": "min"
-                    },
-                    {
-                        "value": "79",
-                        "label": "courses réalisées par jour"
+                        "value": "35",
+                        "label": "courses réalisées",
+                        "unit": "K"
                     }
+                  
                 ],
                 "options": {
                     "darkenBg": false

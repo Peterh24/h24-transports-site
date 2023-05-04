@@ -27,19 +27,20 @@
                 },
                 "list": [
                     {
-                        "value": "856",
-                        "label": "clients satisfaits"
+                        "value": "657",
+                        "label": "clients récurents"
+                    },  
+                    {
+                        "value": "12",
+                        "label": "clients satisfaits",
+                        "unit": "K"
                     },
                     {
-                        "value": "18",
+                        "value": "35",
                         "label": "courses réalisées",
                         "unit": "K"
-                    },
-                    {
-                        "value": "504",
-                        "label": "km parcourus",
-                        "unit": "K"
                     }
+                  
                 ],
                 "logos": [
                     {
