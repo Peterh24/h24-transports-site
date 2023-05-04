@@ -88,8 +88,10 @@ export class OurVehiclesComponent {
       illustrationDOM.autoplay = true;
       illustrationDOM.loop = true;
       illustrationDOM.muted = true;
+      illustrationDOM.defaultMuted = true;
       illustrationDOM.controls = false;
       illustrationDOM.playbackRate = .8;
+      illustrationDOM.playsInline = true;
     }
 
     /**TODO: Calculate window width and apply different styles for responsive */
