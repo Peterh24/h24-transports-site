@@ -169,139 +169,139 @@
                     "title": "Nos véhicules"
                 },
                 "list": [
-                  {
-                      "title": "3m<sup>3</sup>",
-                      "video": {
-                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.mp4",
-                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.ogv",
-                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.webm",
-                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.jpg"
-                      },
-                      "description": [
-                          {
-                              "label": "Longueur du véhicule",
-                              "value": "4,5 mètres"
-                          },
-                          {
-                              "label": "Hauteur du véhicule",
-                              "value": "1,85 mètres"
-                          },
-                          {
-                              "label": "Profondeur du coffre",
-                              "value": "1,7 mètres"
-                          },
-                          {
-                              "label": "Hauteur du coffre",
-                              "value": "1,15 mètres"
-                          },
-                          {
-                              "label": "Charge utile",
-                              "value": "415 kg"
-                          }
-                      ]
-                  },
-                  {
-                      "title": "6/8m<sup>3</sup>",
-                      "video": {
-                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.mp4",
-                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.ogv",
-                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.webm",
-                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.jpg"
-                      },
-                      "description": [
-                          {
-                              "label": "Longueur du véhicule",
-                              "value": "4,9 mètres"
-                          },
-                          {
-                              "label": "Hauteur du véhicule",
-                              "value": "1,9 mètres"
-                          },
-                          {
-                              "label": "Profondeur du coffre",
-                              "value": "2,4 mètres"
-                          },
-                          {
-                              "label": "Hauteur du coffre",
-                              "value": "1,3 mètres"
-                          },
-                          {
-                              "label": "Charge utile",
-                              "value": "820 kg"
-                          }
-                      ]
-                  },
-                  {
-                      "title": "12/14m<sup>3</sup>",
-                      "video": {
-                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.mp4",
-                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.ogv",
-                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.webm",
-                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.jpg"
-                      },
-                      "description": [
-                          {
-                              "label": "Longueur du véhicule",
-                              "value": "6,8 mètres"
-                          },
-                          {
-                              "label": "Hauteur du véhicule",
-                              "value": "2,6 mètres"
-                          },
-                          {
-                              "label": "Hayon",
-                              "value": "inclus"
-                          },
-                          {
-                              "label": "Profondeur du coffre",
-                              "value": "4,0 mètres"
-                          },
-                          {
-                              "label": "Hauteur du coffre",
-                              "value": "1,9 mètres"
-                          },
-                          {
-                              "label": "Charge utile",
-                              "value": "1300 kg"
-                          }
-                      ]
-                  },
-                  {
-                      "title": "20m<sup>3</sup>",
-                      "video": {
-                          "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.mp4",
-                          "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.ogv",
-                          "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.webm",
-                          "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.jpg"
-                      },
-                      "description": [
-                          {
-                              "label": "Longueur du véhicule",
-                              "value": "6,8 mètres"
-                          },
-                          {
-                              "label": "Hauteur du véhicule",
-                              "value": "3,4 mètres"
-                          },
-                          {
-                              "label": "Hayon",
-                              "value": "inclus"
-                          },
-                          {
-                              "label": "Profondeur du coffre",
-                              "value": "4,2 mètres"
-                          },
-                          {
-                              "label": "Hauteur du coffre",
-                              "value": "2,2 mètres"
-                          },
-                          {
-                              "label": "Charge utile",
-                              "value": "700 kg"
-                          }
-                      ]
-                  }
-              ],
+                    {
+                        "title": "20m<sup>3</sup>",
+                        "video": {
+                            "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.mp4",
+                            "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.ogv",
+                            "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.webm",
+                            "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/20m3/audiovisuel/audiovisuel-20m3-normal.jpg"
+                        },
+                        "description": [
+                            {
+                                "label": "Longueur du véhicule",
+                                "value": "6,8 mètres"
+                            },
+                            {
+                                "label": "Hauteur du véhicule",
+                                "value": "3,4 mètres"
+                            },
+                            {
+                                "label": "Hayon",
+                                "value": "inclus"
+                            },
+                            {
+                                "label": "Profondeur du coffre",
+                                "value": "4,2 mètres"
+                            },
+                            {
+                                "label": "Hauteur du coffre",
+                                "value": "2,2 mètres"
+                            },
+                            {
+                                "label": "Charge utile",
+                                "value": "700 kg"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "12/14m<sup>3</sup>",
+                        "video": {
+                            "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.mp4",
+                            "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.ogv",
+                            "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.webm",
+                            "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/12m3-14m3/audiovisuel/audiovisuel-14m3-normal.jpg"
+                        },
+                        "description": [
+                            {
+                                "label": "Longueur du véhicule",
+                                "value": "6,8 mètres"
+                            },
+                            {
+                                "label": "Hauteur du véhicule",
+                                "value": "2,6 mètres"
+                            },
+                            {
+                                "label": "Hayon",
+                                "value": "inclus"
+                            },
+                            {
+                                "label": "Profondeur du coffre",
+                                "value": "4,0 mètres"
+                            },
+                            {
+                                "label": "Hauteur du coffre",
+                                "value": "1,9 mètres"
+                            },
+                            {
+                                "label": "Charge utile",
+                                "value": "1300 kg"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "6/8m<sup>3</sup>",
+                        "video": {
+                            "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.mp4",
+                            "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.ogv",
+                            "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.webm",
+                            "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/6m3-8m3/audiovisuel/audiovisuel-6m3-normal.jpg"
+                        },
+                        "description": [
+                            {
+                                "label": "Longueur du véhicule",
+                                "value": "4,9 mètres"
+                            },
+                            {
+                                "label": "Hauteur du véhicule",
+                                "value": "1,9 mètres"
+                            },
+                            {
+                                "label": "Profondeur du coffre",
+                                "value": "2,4 mètres"
+                            },
+                            {
+                                "label": "Hauteur du coffre",
+                                "value": "1,3 mètres"
+                            },
+                            {
+                                "label": "Charge utile",
+                                "value": "820 kg"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "3m<sup>3</sup>",
+                        "video": {
+                            "mp4": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.mp4",
+                            "ogv": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.ogv",
+                            "webm": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.webm",
+                            "jpg": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/3m3/audiovisuel/audiovisuel-3m3-normal.jpg"
+                        },
+                        "description": [
+                            {
+                                "label": "Longueur du véhicule",
+                                "value": "4,5 mètres"
+                            },
+                            {
+                                "label": "Hauteur du véhicule",
+                                "value": "1,85 mètres"
+                            },
+                            {
+                                "label": "Profondeur du coffre",
+                                "value": "1,7 mètres"
+                            },
+                            {
+                                "label": "Hauteur du coffre",
+                                "value": "1,15 mètres"
+                            },
+                            {
+                                "label": "Charge utile",
+                                "value": "415 kg"
+                            }
+                        ]
+                    }
+                ],
                 "options": {
                     "darkenBg": false
                 }
