@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://h24transports.com/sitemap.xml

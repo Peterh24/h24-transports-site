@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /em_testimonial
+Disallow: /a-propos-de-h24transports/
+Disallow: /index.php/cgv/
+Disallow: /em_testimonial/martha-alex/
+Disallow: /archives
+Disallow: /archives/em_testimonial
+Sitemap: https://h24transports.com/sitemap.xml
