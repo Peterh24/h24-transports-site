@@ -92,7 +92,7 @@ export class ContactComponent implements OnInit  {
   }
 
   onSubmit(): void {
-    const apiUrl = 'https://127.0.0.1:8000/fr/api/send-email';
+    const apiUrl = 'http://h24api.herokuapp.com/fr/api/send-email';
     this.http.post(apiUrl, this.form.value)
     .subscribe({
       next: (response) => {
