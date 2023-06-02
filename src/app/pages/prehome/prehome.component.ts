@@ -39,4 +39,10 @@ export class PrehomeComponent implements OnInit {
     changePicture(id: string) {
       this.currentchild = id;
     }
+
+    phoneNumber: string = '01-80-27-54-66';
+
+    openPhoneApp(): void {
+      window.location.href = 'tel:' + this.phoneNumber;
+    }
 }
