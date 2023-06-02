@@ -40,7 +40,7 @@ export class PrehomeComponent implements OnInit {
       this.currentchild = id;
     }
 
-    phoneNumber: string = '01-80-27-54-66';
+    phoneNumber: string = '01-80-27-54-60';
 
     openPhoneApp(): void {
       window.location.href = 'tel:' + this.phoneNumber;
