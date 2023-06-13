@@ -4,7 +4,7 @@
     <div class="contact__messages" *ngIf="message.validation !== '' || message.error !== '' " [ngClass]="{'contact__messages--success': message.validation !== '', 'contact__messages--error': message.error !== ''}">
       <p>{{message.validation || message.error}}</p>
     </div>
-    <div class="contact__fields__wrap">
+    <div *ngIf="!estEnvoyer" class="contact__fields__wrap">
       <div class="contact__fields" *ngFor="let row of (datas$ | async).list" [class.field--inline]="row.length > 1">
         <div *ngFor="let field of row">
           <app-form-field [control]="form.controls[field.name]" [patternError]="field.validators.pattern ? regexErrors[field.name] : null">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <app-button type="submit">Envoyer</app-button>
+    <app-button *ngIf="!estEnvoyer" type="submit">Envoyer</app-button>
   </form>
 </div>
 

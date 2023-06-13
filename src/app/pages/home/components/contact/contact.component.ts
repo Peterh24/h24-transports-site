@@ -20,6 +20,7 @@ export class ContactComponent implements OnInit  {
     validation: '',
     error: ''
   }
+  public estEnvoyer = false;
   constructor(
     private fb: FormBuilder,
     private globalService: GlobalService,
@@ -96,10 +97,11 @@ export class ContactComponent implements OnInit  {
     this.http.post(apiUrl, this.form.value)
     .subscribe({
       next: (response) => {
-        this.message.validation = 'Ok! Message send';
+        this.message.validation = 'Succès ! Votre message a bien été envoyé à notre équipe!';
+        this.estEnvoyer = true;
       },
       error: (error) => {
-        this.message.error = 'Failed ! Your message was not send please try again later';
+        this.message.error = "Échec ! Votre message n'a pas été envoyé. Veuillez réessayer ultérieurement.";
       }
     });
 
