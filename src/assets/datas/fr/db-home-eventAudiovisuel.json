@@ -86,7 +86,7 @@
             "data": {
                 "list": [
                     {
-                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.webp",
                         "picto": "security",
                         "title": "Sécurité",
                         "text": [
@@ -380,7 +380,7 @@
             "data": {
                 "info": {
                     "title": "Solutions logistiques adaptées",
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/adapted_logistics_solutions.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/adapted_logistics_solutions.webp",
                     "dropdown": [
                         {
                             "title": "Votre partenaire logistique de transport",
@@ -461,7 +461,7 @@
                 "info": {
                     "globalTitle": "Sécurité et assurances",
                     "title": "Une prise en charge complète",
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.webp",
                     "text": [
                         "Nous proposons une solution complète de transport et de sécurité pour garantir la protection de votre matériel, afin que vous puissiez vous concentrer sur votre projet en toute sérénité."
                     ]
@@ -495,7 +495,7 @@
             "data": {
                 "info": {
                     "title": "Des assurances adaptées",
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.webp",
                     "text": [
                         "Nous avons mis en place des assurances spéciales avec des plafonds adaptés à votre secteur d'activité, pour une tranquillité d'esprit totale lors du transport de votre marchandise."
                     ]

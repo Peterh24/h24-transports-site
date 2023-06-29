@@ -86,7 +86,7 @@
             "data": {
                 "list": [
                     {
-                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
+                        "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.webp",
                         "picto": "security",
                         "title": "Sécurité",
                         "text": [
@@ -465,7 +465,7 @@
                 "info": {
                     "globalTitle": "Sécurité et assurances",
                     "title": "Votre marchandise transportée en toute sérénité",
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/key-word_security.webp",
                     "text": [
                         "Nous sommes conscients de la valeur de votre marchandise et nous mettons tout en œuvre pour garantir sa sécurité et sa protection."
                     ]
@@ -499,7 +499,7 @@
             "data": {
                 "info": {
                     "title": "Des assurances adaptées",
-                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.jpg",
+                    "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/appropriate_insurance.webp",
                     "text": [
                         "Si vous avez besoin d'une assurance ponctuelle Ad Valorem pour le transport de matériel très sensible, nous pouvons également vous proposer une solution adaptée."
                     ]
