@@ -136,7 +136,7 @@
               "list": [
                   {
                       "title": "3m<sup>3</sup>",
-                      "illustration": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/h24-camion-face-full-width.png",
+                      "illustration": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/h24-camion-face-full-width.webp",
                       "description": [
                           {
                               "label": "Longueur du véhicule",
@@ -162,7 +162,7 @@
                   },
                   {
                       "title": "6/8m<sup>3</sup>",
-                      "illustration": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/h24-camion-face-full-width.png",
+                      "illustration": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/h24-camion-face-full-width.webp",
                       "description": [
                           {
                               "label": "Longueur du véhicule",
