@@ -42,9 +42,8 @@ echo "DOCKER_H24APP_IMAGE=\"$DOCKER_REGISTRY/$DOCKER_REPO:$REPO_NAME-$ENV-$COMMI
 cd $APP_PATH
 # Définir un nom de projet basé sur l'environnement pour différencier les containers
 PROJECT_NAME="h24app-${ENV}"
-docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE down
-docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE pull
-docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE up -d
+docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE pull $CONTAINER_NAME
+docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE up -d --pull always
 
 # Attendre quelques secondes que les conteneurs soient pleinement opérationnels
 echo "Attente de 10 secondes pour que les conteneurs démarrent complètement..."
