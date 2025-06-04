@@ -3,7 +3,6 @@ services:
     container_name: h24app_web
     image: ${DOCKER_H24APP_IMAGE}
     platform: linux/amd64
-    pull_policy: always
     restart: always
     environment:
       - NODE_ENV=production
