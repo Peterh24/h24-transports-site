@@ -1,0 +1,214 @@
+name: Reusable Docker Deploy
+
+# Workflow réutilisable pour le déploiement d'applications Docker
+# Ce workflow peut être appelé depuis d'autres workflows avec des paramètres personnalisés
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Environnement de déploiement (dev, staging, prod)'
+        required: true
+        type: string
+      docker_context:
+        description: 'Contexte Docker pour le build (répertoire)'
+        required: false
+        type: string
+        default: '.'
+      dockerfile_path:
+        description: 'Chemin vers le Dockerfile'
+        required: false
+        type: string
+        default: 'docker/images/nginx/Dockerfile'
+      docker_build_args:
+        description: 'Arguments de build Docker (format key=value,key2=value2)'
+        required: false
+        type: string
+        default: ''
+      deploy_script_path:
+        description: 'Chemin vers le script de déploiement'
+        required: false
+        type: string
+        default: '.github/scripts/deploy.sh'
+      env_files_remote_path:
+        description: "Chemin distant vers les fichiers d'environnement"
+        required: false
+        type: string
+        default: '/home/ubuntu/workspace/h24app-envs'
+      node_version:
+        description: 'Version de Node.js à utiliser'
+        required: false
+        type: string
+        default: '18'
+      prepare_command:
+        description: 'Commande à exécuter avant le build (npm install, etc.)'
+        required: false
+        type: string
+        default: ''
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_PASSWORD:
+        required: true
+      DOCKER_REGISTRY:
+        required: true
+      DOCKER_REPO:
+        required: true
+      SSH_HOST:
+        required: true
+      SSH_USERNAME:
+        required: true
+      SSH_PASSWORD:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    outputs:
+      image_tag: ${{ steps.vars.outputs.image_tag }}
+      commit_hash: ${{ steps.vars.outputs.commit_hash }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        if: inputs.prepare_command != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: 'npm'
+
+      - name: Run preparation command
+        if: inputs.prepare_command != ''
+        run: ${{ inputs.prepare_command }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Extract metadata
+        id: vars
+        run: |
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          IMAGE_TAG="${{ github.event.repository.name }}-${{ inputs.environment }}-${COMMIT_HASH}"
+          echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
+          echo "commit_hash=${COMMIT_HASH}" >> $GITHUB_OUTPUT
+          echo "image_tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+
+      - name: Transfer deploy script
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: ${{ inputs.deploy_script_path }}
+          target: "/tmp"
+          strip_components: 2
+          use_insecure_cipher: true
+
+      - name: Download and merge environment files
+        run: |
+          mkdir -p ./env-files
+          export SSHPASS="${{ secrets.SSH_PASSWORD }}"
+
+          # Installer sshpass
+          sudo apt-get update && sudo apt-get install -y sshpass
+
+          # Télécharger les fichiers d'environnement
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password \
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env ./env-files/.env || echo "Fichier .env global non trouvé"
+
+          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password \
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env.${{ inputs.environment }} ./env-files/.env.${{ inputs.environment }} || echo "Fichier .env.${{ inputs.environment }} non trouvé"
+
+          # Fusionner les fichiers
+          if [ -f ./env-files/.env ]; then
+            cp ./env-files/.env ./.env
+            echo "" >> ./.env
+          else
+            touch ./.env
+          fi
+
+          if [ -f ./env-files/.env.${{ inputs.environment }} ]; then
+            echo "# Variables spécifiques à l'environnement ${{ inputs.environment }}" >> ./.env
+            cat ./env-files/.env.${{ inputs.environment }} >> ./.env
+          fi
+
+          echo "APP_ENV=${{ inputs.environment }}" >> ./.env
+
+          echo "Fichier d'environnement fusionné ($(wc -c < .env) octets)"
+
+      - name: Parse Docker build args
+        id: build_args
+        run: |
+          BUILD_ARGS_STRING=""
+          if [ -n "${{ inputs.docker_build_args }}" ]; then
+            # Convertir les arguments de build au format attendu par l'action
+            IFS=',' read -ra ARGS <<< "${{ inputs.docker_build_args }}"
+            for arg in "${ARGS[@]}"; do
+              BUILD_ARGS_STRING="${BUILD_ARGS_STRING}${arg}"$'\n'
+            done
+          fi
+          # Ajouter APP_ENV par défaut
+          BUILD_ARGS_STRING="${BUILD_ARGS_STRING}APP_ENV=${{ inputs.environment }}"
+          echo "build_args<<EOF" >> $GITHUB_OUTPUT
+          echo "$BUILD_ARGS_STRING" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ inputs.docker_context }}
+          file: ${{ inputs.dockerfile_path }}
+          build-args: ${{ steps.build_args.outputs.build_args }}
+          push: true
+          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ inputs.environment }}
+          cache-to: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ inputs.environment }},mode=max
+
+      - name: Prepare deployment files
+        run: |
+          mkdir -p deploy-files
+          if [ -d docker ]; then
+            cp -r docker deploy-files/
+          fi
+          cp .env deploy-files/.env
+          echo "Files prepared for deployment:"
+          find deploy-files -type f | head -20
+
+      - name: Transfer deployment files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: "deploy-files"
+          target: "/tmp"
+          use_insecure_cipher: true
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script_stop: true
+          script: |
+            chmod +x /tmp/deploy.sh
+            /tmp/deploy.sh "${{ inputs.environment }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}" "${{ github.event.repository.name }}"
+          use_insecure_cipher: true
+
+      - name: Deployment summary
+        run: |
+          echo "🚀 Déploiement terminé avec succès!"
+          echo "📦 Image: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:${{ env.IMAGE_TAG }}"
+          echo "🌍 Environnement: ${{ inputs.environment }}"
+          echo "📝 Commit: ${{ env.COMMIT_HASH }}"

@@ -1,0 +1,71 @@
+# Exemple d'utilisation du workflow réutilisable pour un autre projet
+# Ce fichier montre comment d'autres projets peuvent utiliser votre workflow réutilisable
+
+name: Deploy Other Project
+
+on:
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environnement'
+        required: true
+        type: choice
+        options: [dev, staging, prod]
+
+jobs:
+  # Exemple pour un projet Node.js/Express
+  deploy-nodejs:
+    uses: your-org/h24-transports-app/.github/workflows/reusable-deploy.yml@main
+    with:
+      environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
+      dockerfile_path: 'Dockerfile'  # Dockerfile à la racine
+      prepare_command: 'npm ci && npm run build && npm run test'
+      node_version: '20'
+      docker_build_args: 'NODE_ENV=production,PORT=3000'
+      env_files_remote_path: '/home/ubuntu/workspace/other-project-envs'
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+      DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+
+  # Exemple pour un projet Python/Django
+  deploy-python:
+    uses: your-org/h24-transports-app/.github/workflows/reusable-deploy.yml@main
+    with:
+      environment: 'prod'
+      dockerfile_path: 'docker/Dockerfile'
+      prepare_command: 'pip install -r requirements.txt && python manage.py collectstatic --noinput'
+      docker_build_args: 'DJANGO_ENV=production'
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+      DOCKER_REPO: ${{ secrets.DOCKER_REPO_PYTHON }}
+      SSH_HOST: ${{ secrets.SSH_HOST_PYTHON }}
+      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+
+  # Exemple avec déploiement multi-environnement
+  deploy-matrix:
+    strategy:
+      matrix:
+        environment: [dev, staging, prod]
+    uses: your-org/h24-transports-app/.github/workflows/reusable-deploy.yml@main
+    with:
+      environment: ${{ matrix.environment }}
+      dockerfile_path: 'docker/Dockerfile'
+      docker_build_args: 'BUILD_ENV=${{ matrix.environment }}'
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
+      DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
+      SSH_HOST: ${{ matrix.environment == 'prod' && secrets.SSH_HOST_PROD || secrets.SSH_HOST_DEV }}
+      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
