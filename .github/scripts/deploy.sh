@@ -6,6 +6,7 @@ ENV="$1"
 COMMIT_HASH="$2"
 DOCKER_REGISTRY="$3"
 DOCKER_REPO="$4"
+REPO_NAME="$5"
 
 # Définir les variables selon l'environnement
 DOCKER_COMPOSE_FILE="docker-compose.${ENV}.yml"
@@ -35,7 +36,7 @@ cp -a /tmp/deploy-files/. $APP_PATH
 
 # Générer le fichier docker/.env avec l'image Docker mise à jour uniquement
 # Les variables d'environnement Docker ne contiennent que l'image à utiliser
-echo "DOCKER_H24APP_IMAGE=\"$DOCKER_REGISTRY/$DOCKER_REPO:$ENV-$COMMIT_HASH\"" > $APP_PATH/docker/.env
+echo "DOCKER_H24APP_IMAGE=\"$DOCKER_REGISTRY/$DOCKER_REPO:$REPO_NAME-$ENV-$COMMIT_HASH\"" > $APP_PATH/docker/.env
 
 # Déployer avec docker-compose
 cd $APP_PATH

@@ -127,7 +127,7 @@ jobs:
           build-args: |
             APP_ENV=${{ env.ENVIRONMENT }}
           push: true
-          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:${{ env.ENVIRONMENT }}-${{ env.COMMIT_HASH }}
+          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:${{ github.event.repository.name }}-${{ env.ENVIRONMENT }}-${{ env.COMMIT_HASH }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ env.ENVIRONMENT }}
           cache-to: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ env.ENVIRONMENT }},mode=max
 
@@ -157,6 +157,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script_stop: true
-          script: chmod +x /tmp/deploy.sh && /tmp/deploy.sh "${{ env.ENVIRONMENT }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}"
+          script: chmod +x /tmp/deploy.sh && /tmp/deploy.sh "${{ env.ENVIRONMENT }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}" "${{ github.event.repository.name }}"
           use_insecure_cipher: true
           proxy_host: ""
