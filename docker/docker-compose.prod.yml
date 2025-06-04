@@ -1,0 +1,26 @@
+services:
+  h24app_web:
+    container_name: h24app_web
+    image: ${DOCKER_H24APP_IMAGE}
+    platform: linux/amd64
+    pull_policy: always
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    env_file:
+      - ../.env
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.h24app_web.rule=Host(`prod.app.h24transports.com`)"
+      - "traefik.http.routers.h24app_web.entrypoints=https"
+      - "traefik.http.routers.h24app_web.tls.certresolver=h24prod"
+      - "traefik.http.services.h24app_web.loadbalancer.server.port=8080"
+    networks:
+      - h24app_traefik
+
+networks:
+  h24app_traefik:
+    name: h24app_traefik
+    external: true
