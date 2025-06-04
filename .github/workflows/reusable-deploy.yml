@@ -6,15 +6,6 @@ name: Reusable Docker Deploy
 on:
   workflow_call:
     inputs:
-      environment:
-        description: 'Environnement de déploiement (dev, staging, prod)'
-        required: true
-        type: string
-      docker_context:
-        description: 'Contexte Docker pour le build (répertoire)'
-        required: false
-        type: string
-        default: '.'
       dockerfile_path:
         description: 'Chemin vers le Dockerfile'
         required: false
@@ -25,11 +16,6 @@ on:
         required: false
         type: string
         default: ''
-      deploy_script_path:
-        description: 'Chemin vers le script de déploiement'
-        required: false
-        type: string
-        default: '.github/scripts/deploy.sh'
       env_files_remote_path:
         description: "Chemin distant vers les fichiers d'environnement"
         required: false
@@ -39,7 +25,7 @@ on:
         description: 'Version de Node.js à utiliser'
         required: false
         type: string
-        default: '18'
+        default: '20'
       prepare_command:
         description: 'Commande à exécuter avant le build (npm install, etc.)'
         required: false
@@ -65,9 +51,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    # Définir l'environnement selon la branche
+    env:
+      ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
+
     outputs:
       image_tag: ${{ steps.vars.outputs.image_tag }}
       commit_hash: ${{ steps.vars.outputs.commit_hash }}
+      environment: ${{ env.ENVIRONMENT }}
 
     steps:
       - name: Checkout code
@@ -97,7 +88,7 @@ jobs:
         id: vars
         run: |
           COMMIT_HASH=$(git rev-parse --short HEAD)
-          IMAGE_TAG="${{ github.event.repository.name }}-${{ inputs.environment }}-${COMMIT_HASH}"
+          IMAGE_TAG="${{ github.event.repository.name }}-${{ env.ENVIRONMENT }}-${COMMIT_HASH}"
           echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
           echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
           echo "commit_hash=${COMMIT_HASH}" >> $GITHUB_OUTPUT
@@ -109,7 +100,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          source: ${{ inputs.deploy_script_path }}
+          source: ".github/scripts/deploy.sh"
           target: "/tmp"
           strip_components: 2
           use_insecure_cipher: true
@@ -127,7 +118,7 @@ jobs:
             ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env ./env-files/.env || echo "Fichier .env global non trouvé"
 
           sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password \
-            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env.${{ inputs.environment }} ./env-files/.env.${{ inputs.environment }} || echo "Fichier .env.${{ inputs.environment }} non trouvé"
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env.${{ env.ENVIRONMENT }} ./env-files/.env.${{ env.ENVIRONMENT }} || echo "Fichier .env.${{ env.ENVIRONMENT }} non trouvé"
 
           # Fusionner les fichiers
           if [ -f ./env-files/.env ]; then
@@ -137,12 +128,12 @@ jobs:
             touch ./.env
           fi
 
-          if [ -f ./env-files/.env.${{ inputs.environment }} ]; then
-            echo "# Variables spécifiques à l'environnement ${{ inputs.environment }}" >> ./.env
-            cat ./env-files/.env.${{ inputs.environment }} >> ./.env
+          if [ -f ./env-files/.env.${{ env.ENVIRONMENT }} ]; then
+            echo "# Variables spécifiques à l'environnement ${{ env.ENVIRONMENT }}" >> ./.env
+            cat ./env-files/.env.${{ env.ENVIRONMENT }} >> ./.env
           fi
 
-          echo "APP_ENV=${{ inputs.environment }}" >> ./.env
+          echo "APP_ENV=${{ env.ENVIRONMENT }}" >> ./.env
 
           echo "Fichier d'environnement fusionné ($(wc -c < .env) octets)"
 
@@ -158,7 +149,7 @@ jobs:
             done
           fi
           # Ajouter APP_ENV par défaut
-          BUILD_ARGS_STRING="${BUILD_ARGS_STRING}APP_ENV=${{ inputs.environment }}"
+          BUILD_ARGS_STRING="${BUILD_ARGS_STRING}APP_ENV=${{ env.ENVIRONMENT }}"
           echo "build_args<<EOF" >> $GITHUB_OUTPUT
           echo "$BUILD_ARGS_STRING" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -166,13 +157,13 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ${{ inputs.docker_context }}
+          context: .
           file: ${{ inputs.dockerfile_path }}
           build-args: ${{ steps.build_args.outputs.build_args }}
           push: true
           tags: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
-          cache-from: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ inputs.environment }}
-          cache-to: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ inputs.environment }},mode=max
+          cache-from: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ env.ENVIRONMENT }}
+          cache-to: type=registry,ref=${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:buildcache-${{ env.ENVIRONMENT }},mode=max
 
       - name: Prepare deployment files
         run: |
@@ -203,12 +194,12 @@ jobs:
           script_stop: true
           script: |
             chmod +x /tmp/deploy.sh
-            /tmp/deploy.sh "${{ inputs.environment }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}" "${{ github.event.repository.name }}"
+            /tmp/deploy.sh "${{ env.ENVIRONMENT }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}" "${{ github.event.repository.name }}"
           use_insecure_cipher: true
 
       - name: Deployment summary
         run: |
           echo "🚀 Déploiement terminé avec succès!"
           echo "📦 Image: ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPO }}:${{ env.IMAGE_TAG }}"
-          echo "🌍 Environnement: ${{ inputs.environment }}"
+          echo "🌍 Environnement: ${{ env.ENVIRONMENT }}"
           echo "📝 Commit: ${{ env.COMMIT_HASH }}"

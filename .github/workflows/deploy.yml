@@ -10,33 +10,12 @@ on:
       - develop  # Development
 
 jobs:
-  # Job pour déploiement automatique basé sur les branches
-  deploy-auto:
-    if: github.event_name == 'push'
+  # Job unique pour tous les déploiements (automatique et manuel)
+  deploy:
     uses: ./.github/workflows/reusable-deploy.yml
     with:
-      environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
       dockerfile_path: 'docker/images/nginx/Dockerfile'
       prepare_command: 'npm ci && npm run build'
-      node_version: '18'
-    secrets:
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-      DOCKER_REGISTRY: ${{ secrets.DOCKER_REGISTRY }}
-      DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
-      SSH_HOST: ${{ secrets.SSH_HOST }}
-      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-      SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-
-  # Job pour déploiement manuel
-  deploy-manual:
-    if: github.event_name == 'workflow_dispatch'
-    uses: ./.github/workflows/reusable-deploy.yml
-    with:
-      environment: ${{ github.event.inputs.environment }}
-      dockerfile_path: 'docker/images/nginx/Dockerfile'
-      prepare_command: 'npm ci && npm run build'
-      node_version: '18'
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -48,14 +27,16 @@ jobs:
 
   # Job optionnel pour les notifications
   notify:
-    needs: [deploy-auto, deploy-manual]
-    if: always() && (needs.deploy-auto.result != 'skipped' || needs.deploy-manual.result != 'skipped')
+    needs: [deploy]
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Deployment notification
         run: |
-          if [[ "${{ needs.deploy-auto.result }}" == "success" || "${{ needs.deploy-manual.result }}" == "success" ]]; then
+          if [[ "${{ needs.deploy.result }}" == "success" ]]; then
             echo "✅ Déploiement réussi!"
+            echo "🌍 Environnement: ${{ needs.deploy.outputs.environment }}"
+            echo "📦 Image: ${{ needs.deploy.outputs.image_tag }}"
           else
             echo "❌ Échec du déploiement"
             exit 1
