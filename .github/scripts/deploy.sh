@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script pour configurer et déployer l'application H24 Transports app sur le serveur
+# Script pour configurer et déployer l'application h24 Transports app sur le serveur
 
 # Récupérer les variables d'environnement
 ENV="$1"
@@ -11,8 +11,8 @@ REPO_NAME="$5"
 # Définir les variables selon l'environnement
 DOCKER_COMPOSE_FILE="docker-compose.${ENV}.yml"
 ENV_FILE=".env.${ENV}"
-CONTAINER_NAME=$([ "$ENV" == "prod" ] && echo "h24app_web" || echo "h24app_dev_web")
-APP_PATH=$([ "$ENV" == "prod" ] && echo "/home/ubuntu/workspace/h24-transports-app" || echo "/home/ubuntu/workspace/h24-transports-app-dev")
+CONTAINER_NAME=$([ "$ENV" == "prod" ] && echo "h24_appserver" || echo "h24_dev_appserver")
+APP_PATH=$([ "$ENV" == "prod" ] && echo "/home/ubuntu/workspace/h24-transports-site" || echo "/home/ubuntu/workspace/h24-transports-site-dev")
 
 echo "Déploiement en environnement: $ENV avec le fichier $DOCKER_COMPOSE_FILE dans $APP_PATH"
 
@@ -20,7 +20,7 @@ echo "Déploiement en environnement: $ENV avec le fichier $DOCKER_COMPOSE_FILE d
 if docker ps -q -f name=$CONTAINER_NAME | grep -q .; then
 echo "Arrêt du conteneur existant: $CONTAINER_NAME"
 cd $APP_PATH 2>/dev/null || true
-PROJECT_NAME="h24app-${ENV}"
+PROJECT_NAME="h24-${ENV}"
 docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE down 2>/dev/null || true
 fi
 
@@ -41,7 +41,7 @@ echo "DOCKER_H24APP_IMAGE=\"$DOCKER_REGISTRY/$DOCKER_REPO:$REPO_NAME-$ENV-$COMMI
 # Déployer avec docker-compose
 cd $APP_PATH
 # Définir un nom de projet basé sur l'environnement pour différencier les containers
-PROJECT_NAME="h24app-${ENV}"
+PROJECT_NAME="h24-${ENV}"
 docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE pull $CONTAINER_NAME
 docker compose -p $PROJECT_NAME -f docker/$DOCKER_COMPOSE_FILE up -d
 

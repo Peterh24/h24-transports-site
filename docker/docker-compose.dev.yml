@@ -1,6 +1,6 @@
 services:
-  h24app_dev_web:
-    container_name: h24app_dev_web
+  h24_dev_appserver:
+    container_name: h24_dev_appserver
     image: ${DOCKER_H24APP_IMAGE}
     platform: linux/amd64
     restart: always
@@ -12,15 +12,15 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.h24app_dev_web.rule=Host(`develop.h24transports.com`)"
-      - "traefik.http.routers.h24app_dev_web.entrypoints=https"
-      - "traefik.http.routers.h24app_dev_web.tls.certresolver=h24dev"
-      - "traefik.http.routers.h24app_dev_web.middlewares=dev-no-crawl@file"
-      - "traefik.http.services.h24app_dev_web.loadbalancer.server.port=8080"
+      - "traefik.http.routers.h24_dev_appserver.rule=Host(`develop.h24transports.com`)"
+      - "traefik.http.routers.h24_dev_appserver.entrypoints=https"
+      - "traefik.http.routers.h24_dev_appserver.tls.certresolver=h24dev"
+      - "traefik.http.routers.h24_dev_appserver.middlewares=dev-no-crawl@file"
+      - "traefik.http.services.h24_dev_appserver.loadbalancer.server.port=8080"
     networks:
-      - h24app_dev_traefik
+      - h24_dev_traefik
 
 networks:
-  h24app_dev_traefik:
-    name: h24app_dev_traefik
+  h24_dev_traefik:
+    name: h24_dev_traefik
     external: true

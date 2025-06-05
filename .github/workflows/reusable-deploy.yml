@@ -17,7 +17,7 @@ on:
         description: "Chemin distant vers les fichiers d'environnement"
         required: false
         type: string
-        default: '/home/ubuntu/workspace/h24app-envs'
+        default: '/home/ubuntu/workspace/h24-envs'
       node_version:
         description: 'Version de Node.js à utiliser'
         required: false
