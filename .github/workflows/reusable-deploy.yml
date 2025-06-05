@@ -1,8 +1,5 @@
 name: Reusable Docker Deploy
 
-# Workflow réutilisable pour le déploiement d'applications Docker
-# Ce workflow peut être appelé depuis d'autres workflows avec des paramètres personnalisés
-
 on:
   workflow_call:
     inputs:
@@ -37,7 +34,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    # Définir l'environnement selon la branche
     env:
       ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
 

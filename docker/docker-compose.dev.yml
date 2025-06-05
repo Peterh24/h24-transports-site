@@ -12,7 +12,7 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.h24app_dev_web.rule=Host(`develop-app.h24transports.com`)"
+      - "traefik.http.routers.h24app_dev_web.rule=Host(`develop.h24transports.com`)"
       - "traefik.http.routers.h24app_dev_web.entrypoints=https"
       - "traefik.http.routers.h24app_dev_web.tls.certresolver=h24dev"
       - "traefik.http.routers.h24app_dev_web.middlewares=dev-no-crawl@file"
