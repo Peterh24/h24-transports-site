@@ -31,21 +31,7 @@ on:
         required: false
         type: string
         default: ''
-    secrets:
-      DOCKERHUB_USERNAME:
-        required: true
-      DOCKERHUB_PASSWORD:
-        required: true
-      DOCKER_REGISTRY:
-        required: true
-      DOCKER_REPO:
-        required: true
-      SSH_HOST:
-        required: true
-      SSH_USERNAME:
-        required: true
-      SSH_PASSWORD:
-        required: true
+
 
 jobs:
   deploy:
