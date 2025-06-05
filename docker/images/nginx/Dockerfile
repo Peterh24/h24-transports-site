@@ -22,11 +22,11 @@ RUN if [ "$APP_ENV" = "dev" ] ; then npm run build:dev ; else npm run build:prod
 # Étape de production
 FROM node:20-alpine AS production
 
-# Récupère l'argument BUILD_ENV de l'étape précédente
-ARG BUILD_ENV=prod
+# Récupère l'argument APP_ENV de l'étape précédente
+ARG APP_ENV=prod
 
 # Ajoute des labels pour identifier l'environnement
-LABEL build.environment=$BUILD_ENV
+LABEL build.environment=$APP_ENV
 
 # Définit le répertoire de travail
 WORKDIR /app
