@@ -58,7 +58,7 @@
     {
         "id": "exploitation",
         "title": "Application mobile",
-        "text": "<p>Afin de mieux répondre à vos besoins, nous sommes actuellement en train de concevoir une exploitation web/mobile avec un tableau de bord intuitif pour un suivi précis de vos projets.</p><p>Vous pourrez alors créer une demande de course en tout lieu, et en tout temps, suivre précisément l'état de vos projets et bénéficier d'un suivi en temps réel.</p>",
+        "text": "<p>Enfin, une application mobile pensée pour les transporteurs de matériel audiovisuel et les équipes événementielles : intuitive, sécurisée et conçue pour gérer toutes vos demandes de bout en bout — de la création à la facturation.</p>",
         "img": "https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/exploitation/img/exploitation-cover-picture-orange.jpg",
         "cta": "En savoir plus",
         "inPrenav": true,

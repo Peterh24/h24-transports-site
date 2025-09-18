@@ -12,11 +12,21 @@ $express-dark-retina: #122343;
 $on-express: #FFFFFF;
 $express-input: rgba(red($on-express), green($on-express), blue($on-express), .65);
 
+$exploitation: #201f1e;
+$exploitation-retina: #242322;
+$exploitation-dark: #1c1b1a;
+$exploitation-dark-retina: #1E1D1C;
+$on-exploitation: #FFFFFF;
+$on-exploitation-alt: #F59239;
+$exploitation-input: rgba(red($on-exploitation), green($on-exploitation), blue($on-exploitation), .65);
+
+/*
 $exploitation: #FFFFFF;
 $exploitation-dark: #F3F3F3;
 $on-exploitation: #201f1e;
 $on-exploitation-alt: #F59239;
 $exploitation-input: rgba(red($on-exploitation), green($on-exploitation), blue($on-exploitation), .65);
+*/
 
 $error: #f44336;
 $on-error: #FFFFFF;
