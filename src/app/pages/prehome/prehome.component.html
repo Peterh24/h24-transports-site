@@ -1,15 +1,33 @@
-<div class="prehome">
+<div class="prehome" (click)="clickContainer ($event)">
   <div class="prehome__header">
     <app-logo></app-logo>
 
 
     <div class="prehome__header__phone">
-      <input class = "phone-text" type="text" readonly value="01 80 27 54 60">
+      <input class="phone-text" type="text" readonly value="01 80 27 54 60" (click)="phone ()">
       <div class="phone-btn">
         <mat-icon>call</mat-icon>
       </div>
     </div>
   </div>
+
+  <div class="prehome__title">
+    <div class="title">H24 Transports <br> enfin dans votre poche !</div>
+    <div class="subtitle">Commander vos transports en quelques cliques grâce à notre application.</div>
+  </div>
+
+  <div class="prehome__video">
+    <video muted loop playsinline preload="auto" #video>
+      <source src="https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/videos/autres/pub.mp4" type="video/mp4" />
+    </video>
+
+    <div *ngIf="showOverlay" class="overlay start-video" (click)="startVideo()">▶️ Taper pour démarrer la vidéo</div>
+    <div *ngIf="showUnmuteButton" (click)="unmuteVideo()" class="unmute-button"><mat-icon>volume_mute</mat-icon></div>
+    <div *ngIf="!showOverlay" class="overlay"><div class="order" (click)="order()">Je commande</div></div>
+    <div class="mockup"><img src="assets/img/screen-video1.png" /></div>
+  </div>
+
+  <div class="prehome_precision">Transports de précision</div>
 
   <div class="theme-slider flexbox-slider-4">
     <div *ngFor="let data of datas$ |async" class="theme-slider__slide">
