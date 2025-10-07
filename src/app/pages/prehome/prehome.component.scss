@@ -197,7 +197,7 @@ $desktopToolbarWidth: 600px;
     .unmute-button {
       position: absolute;      /* Positionné par rapport au container */
       right: 10px;
-      z-index: 10;
+      z-index: 3000;
     }
   }
 }
