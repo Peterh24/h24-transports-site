@@ -176,6 +176,7 @@ $desktopToolbarWidth: 600px;
       align-items: center;
       font-size: 2rem;
       cursor: pointer;
+      z-index: 2000;
     }
 
     .overlay.start-video {
