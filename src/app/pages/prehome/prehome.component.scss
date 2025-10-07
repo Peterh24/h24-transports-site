@@ -836,7 +836,8 @@ $desktopToolbarWidth: 600px;
       & {
         position: absolute;
         left: 0;
-        bottom: -150px;
+        bottom: 0px;
+        max-height: min(30%, 250px);
         width: 100%;
         text-align: center;
       }
@@ -923,7 +924,8 @@ $desktopToolbarWidth: 600px;
         text-align: center;
         background-color: transparent;
         position: absolute;
-        bottom: -50px;
+        bottom: 0px;
+        max-height: 35%;
       }
 
       img {
