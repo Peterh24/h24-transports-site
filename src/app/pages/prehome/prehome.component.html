@@ -23,8 +23,12 @@
 
     <div *ngIf="showOverlay" class="overlay start-video" (click)="startVideo()">▶️ Taper pour démarrer la vidéo</div>
     <div *ngIf="showUnmuteButton" (click)="unmuteVideo()" class="unmute-button"><mat-icon>volume_mute</mat-icon></div>
-    <div *ngIf="!showOverlay" class="overlay"><div class="order" (click)="order()">Je commande</div></div>
-    <div class="mockup"><img src="assets/img/screen-video1.png" /></div>
+    <div class="mockup">
+      <div>
+        <div class="order" (click)="order()">Je commande</div>
+      </div>
+      <img src="assets/img/screen-video1.png" />
+    </div>
   </div>
 
   <div class="prehome_precision">Transports de précision</div>

@@ -176,18 +176,27 @@ $desktopToolbarWidth: 600px;
       align-items: center;
       font-size: 2rem;
       cursor: pointer;
-      z-index: 2000;
+      z-index: 10;
     }
 
     .overlay.start-video {
       background: rgba(0,0,0,0.5);
     }
 
+    .mockup > div {
+      position: absolute;
+      transform: translateY(-50%);
+      text-align: center;
+      width: 100%;
+    }
+
     .order {
+      display: inline;
       background: black;
       padding: 1rem 2rem;
       border-radius: 20px;
       font-size: 1.5rem;
+      cursor: pointer;
     }
 
     .hidden {
@@ -197,7 +206,7 @@ $desktopToolbarWidth: 600px;
     .unmute-button {
       position: absolute;      /* Positionné par rapport au container */
       right: 10px;
-      z-index: 3000;
+      z-index: 100;
     }
   }
 }
@@ -791,7 +800,7 @@ $desktopToolbarWidth: 600px;
       left: 0;
       width: calc(100% - $desktopToolbarWidth);
       height: auto;
-      z-index: 1000;
+      z-index: 10;
       text-align: center;
       padding-top: 150px;
     }
