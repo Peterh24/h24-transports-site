@@ -4,8 +4,8 @@
     <p *ngFor="let text of (datas$ | async).info.text">
       {{text}}
     </p>
-    <div class="simple-text__cta" *ngIf="(datas$ | async).info.cta">
-      <a class="app-button" [routerLink]="(datas$ | async).info.url">{{(datas$ | async).info.cta}}</a>
+    <div class="simple-text__cta" *ngIf="(datas$ | async).info as info">
+      <a class="app-button" (click)="goTo(info.url)">{{info.cta}}</a>
     </div>
   </div>
 </div>
