@@ -46,6 +46,23 @@
     }
   }
 
+  &__livechat {
+    & {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    & a {
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   app-button {
     display: flex;
     justify-content: flex-end;

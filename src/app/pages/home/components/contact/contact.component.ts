@@ -5,6 +5,7 @@ import { Contact, JsonFormControls } from '@app/models/backend/components/contac
 import { GlobalService } from '@app/services/global';
 import { Observable, take } from 'rxjs';
 import { regex, regexErrors } from '@app/shared/utils/regex';
+import { environment } from '../../../../../environments/environment';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -21,6 +22,8 @@ export class ContactComponent implements OnInit  {
     error: ''
   }
   public estEnvoyer = false;
+  public appUrl = environment.appUrl;
+
   constructor(
     private fb: FormBuilder,
     private globalService: GlobalService,

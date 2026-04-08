@@ -1,3 +1,4 @@
 export const environment =  {
-  production: false
+  production: false,
+  appUrl: "https://develop-dashboard.h24transports.com/",
 }

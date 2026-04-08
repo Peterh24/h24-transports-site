@@ -5,6 +5,7 @@ import * as fromRoot from '@app/store/';
 import * as fromThemes from '@app/store/themes';
 import { Observable } from 'rxjs';
 import { GlobalService } from '@app/services/global';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-prehome',
@@ -19,6 +20,7 @@ export class PrehomeComponent implements OnInit, AfterViewInit {
   currentchild: string;
   showOverlay = false;      // Affiche l'overlay si autoplay bloqué
   showUnmuteButton = false; // Bouton pour activer le son
+  appUrl = environment.appUrl;
 
   @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
 
