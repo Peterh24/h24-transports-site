@@ -1,104 +1,80 @@
 @import "src/styles/colors";
 @import "src/styles/fonts";
-/*
-* Default Theme - event
-*/
+
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
-  width: 100%;
   justify-content: space-between;
-  background: transparent;
-  height: 15rem;
+  height: 12rem;
   padding: 0 4rem;
-  position: fixed;
-  z-index: 100;
   pointer-events: none;
 
+  // scrim haut pour la lisibilité du logo/outils sur images claires
+  // (le dégradé de couleur est fourni par le thème : .header::after)
   &::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 25rem;
+    height: 22rem;
     z-index: 0;
     pointer-events: none;
     opacity: 1;
-    transition: opacity .3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
   }
 
   app-logo {
     pointer-events: initial;
     opacity: 1;
-    transition: opacity .3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
   }
 
-
   &__tools {
-    background: none;
-    position: relative;
     position: fixed;
-    right: 10rem;
+    top: 0;
+    right: 4rem;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
     z-index: 10000;
     pointer-events: initial;
-    display: flex;
-    justify-content: flex-end;
+  }
+
+  &__phone {
+    display: inline-flex;
     align-items: center;
-    &__phone {
-      background: transparent;
-      height: 3rem;
-      border-radius: 3rem;
-      padding: 1rem;
-      box-sizing: content-box;
-      display: flex;
-      align-items: center;
-      border-width: .2rem;
-      border-style: solid;
-      &:hover {
-        & > .phone-text {
-          width: 13rem;
-          padding: 0 .6rem;
-        }
-      }
-      .phone-btn {
-        float: right;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      input {
-        border: none;
-        background: none;
-        outline: none;
-        float: left;
-        padding: 0;
-        font-size: 1.4rem;
-        font-weight: normal;
-        font-family: $alt-font-family;
-        font-weight: 600;
-        transition: 0.4s;
-        line-height: 4rem;
-        width: 0;
-      }
+    gap: 0.5rem;
+    height: 3.4rem;
+    padding: 0 1.2rem;
+    border-radius: 999px;
+    border: 0.15rem solid rgba(255, 255, 255, 0.6);
+    color: $on-event;
+    text-decoration: none;
+    font-family: $alt-font-family;
+    font-weight: 600;
+    transition: background 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    &__num {
+      white-space: nowrap;
     }
   }
 
   &__burger {
     background: none;
-    position: relative;
     border: none;
+    padding: 0;
     cursor: pointer;
-    position: fixed;
-    right: 4rem;
-    z-index: 10000;
     pointer-events: initial;
 
     svg {
@@ -106,9 +82,6 @@
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       transition: transform 400ms;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
       user-select: none;
     }
 
@@ -117,6 +90,7 @@
       transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
       stroke-width: 5.5;
       stroke-linecap: round;
+
       &:nth-child(1) {
         stroke-dasharray: 40 139;
       }
@@ -128,6 +102,7 @@
     &--open {
       svg {
         transform: rotate(45deg);
+
         path {
           &:nth-child(1) {
             stroke-dashoffset: -98px;
@@ -140,7 +115,8 @@
     }
   }
 
-  &__nav--open {
+  // menu ouvert : on efface logo + scrim pour laisser place au panneau
+  &--open {
     &::after,
     app-logo {
       opacity: 0;
@@ -148,26 +124,22 @@
   }
 }
 
-/*RESPONSIVE*/
-/*Tablets*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
+/* RESPONSIVE */
+@media only screen and (max-width: 48rem) {
   .header {
-    padding: 0 4rem !important;
+    height: 10rem;
+    padding: 0 2rem;
 
-    &__burger {
-      right: 4rem !important;
+    &__tools {
+      height: 10rem;
+      right: 2rem;
+      gap: 1rem;
     }
   }
 }
 
-/*Mobiles*/
-@media only screen and (max-device-width: 48rem) {
-  .header {
-    padding: 0 2rem;
-    height: 11rem;
-
-    &__burger {
-      right: 2rem;
-    }
+@media only screen and (max-width: 26rem) {
+  .header__phone__num {
+    display: none;
   }
 }

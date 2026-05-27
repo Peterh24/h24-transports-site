@@ -1,28 +1,36 @@
+@import "src/styles/colors";
+@import "src/styles/fonts";
+
 .footer {
-  padding: 4rem;
+  padding: 5rem 4rem 4rem;
 
   &__top {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 2rem;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  &__name {
+    font-family: $alt-font-family;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   &__menu {
-    padding-top: 2rem;
+    padding-top: 3rem;
     width: 100%;
 
     &__list {
       list-style: none;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      width: 100%;
-      flex-wrap: wrap;
-      font-weight: 500;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      gap: 2.5rem 2rem;
 
       a {
         cursor: pointer;
@@ -30,19 +38,38 @@
         line-height: 2rem;
       }
 
+      // titres d'univers
+      .submenu__list__link {
+        display: inline-block;
+        margin-bottom: 1.2rem;
+        font-family: $alt-font-family;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
       ul {
         list-style: none;
-        margin-top: 2rem;
+        margin-top: 0;
 
         li {
-          margin-bottom: 2rem;
+          margin-bottom: 0.6rem;
         }
 
         a {
           font-weight: 400;
+          opacity: 0.75;
+          padding: 0.3rem 0;
+          transition: opacity 0.2s ease, color 0.2s ease;
         }
       }
     }
+  }
+
+  // item actif → accent orange
+  .submenu__item--active > .submenu__list__link,
+  .submenu__item--active > a {
+    color: $accent;
   }
 
   &__social {
@@ -69,69 +96,34 @@
       height: 2.4rem;
     }
   }
+}
 
-  .submenu {
-    &__item {
-      width: calc(100% / 4);
-    }
+@media (hover: hover) and (pointer: fine) {
+  .footer__menu__list ul a:hover {
+    opacity: 1;
+    color: $accent;
   }
 }
 
-/*RESPONSIVE*/
-/*Tablets portrait*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
+/* RESPONSIVE */
+@media only screen and (max-width: 48rem) {
   .footer {
-    padding: 4rem !important;
-
-    &__top,
-    &__menu__list {
-      flex-direction: row !important;
-      flex-wrap: nowrap;
-    }
-  }
-}
-
-/*Mobiles landscape*/
-@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
-  .footer {
-    padding: 2rem;
+    padding: 3rem 2rem;
 
     &__top {
-      flex-direction: row;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    &__menu__list {
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
 
-/*Mobiles portrait*/
-@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
-  .footer {
-    padding: 2rem;
-
-    &__top,
-    &__menu__list {
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    &__menu {
-      &__list {
-        ul {
-          display: flex;
-          margin-top: 1rem;
-          gap: 1rem;
-          flex-direction: column;
-
-          li {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-
-    .submenu {
-      &__item {
-        width: 100%;
-      }
-    }
+@media only screen and (max-width: 30rem) {
+  .footer__menu__list {
+    grid-template-columns: 1fr;
   }
 }

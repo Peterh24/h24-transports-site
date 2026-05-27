@@ -13,6 +13,9 @@ import * as fromNavigation from '@app/store/navigation';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  readonly phoneNumber = '+33180275460';
+  readonly phoneDisplay = '01 80 27 54 60';
+
   menuState$: Observable<boolean>;
   constructor(
     private store: Store<fromRoot.State>,
