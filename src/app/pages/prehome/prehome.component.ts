@@ -4,7 +4,6 @@ import { select, Store } from '@ngrx/store';
 import * as fromRoot from '@app/store/';
 import * as fromThemes from '@app/store/themes';
 import { Observable } from 'rxjs';
-import { GlobalService } from '@app/services/global';
 
 @Component({
   selector: 'app-prehome',
@@ -12,29 +11,31 @@ import { GlobalService } from '@app/services/global';
   styleUrls: ['./prehome.component.scss']
 })
 export class PrehomeComponent implements OnInit, AfterViewInit {
-  menu$: Observable<any>;
+  readonly phoneNumber = '+33180275460';
+  readonly phoneDisplay = '01 80 27 54 60';
+  readonly orderUrl = 'https://dashboard.h24transports.com/';
+
+  /** Accroches courtes par univers (clé = id du thème). */
+  readonly pitches: Record<string, string> = {
+    event: 'Audiovisuel, mode & événementiel : du matériel sensible livré avec expertise.',
+    express: 'Transport urgent exclusif, ponctuel ou récurrent, partout en France.',
+    exploitation: 'Créez, suivez et facturez vos missions en temps réel depuis l’application.',
+  };
+
   datas$: Observable<any>;
-  currentTheme$: Observable<any>;
-  loadingState$: Observable<boolean>;
-  currentchild: string;
-  showOverlay = false;      // Affiche l'overlay si autoplay bloqué
-  showUnmuteButton = false; // Bouton pour activer le son
+  showOverlay = false;      // overlay affiché si l'autoplay est totalement bloqué
+  showUnmuteButton = false; // bouton pour réactiver le son
 
   @ViewChild('video') video!: ElementRef<HTMLVideoElement>;
+  @ViewChild('servicesSection') servicesSection!: ElementRef<HTMLElement>;
 
-  constructor(
-      private store: Store<fromRoot.State>,
-      private globalService: GlobalService,
-  ){}
+  constructor(private store: Store<fromRoot.State>) {}
 
-  ngOnInit() {
-      this.menu$ = this.store.pipe(select(fromThemes.getThemeNav));
-      this.datas$ = this.store.pipe(select(fromThemes.getThemeData));
-      this.currentTheme$ = this.store.pipe(select(fromThemes.getCurrentTheme));
-      this.loadingState$ = this.store.pipe(select(fromThemes.getLoadingState));
+  ngOnInit(): void {
+    this.datas$ = this.store.pipe(select(fromThemes.getThemeData));
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     const video = this.video.nativeElement;
     video.muted = true;
     this.showUnmuteButton = true;
@@ -42,87 +43,52 @@ export class PrehomeComponent implements OnInit, AfterViewInit {
     setTimeout(() => this.tryPlayVideo(), 500);
   }
 
-  goToTheme(theme:string):void {
-    //Add current Theme on store
+  /** Navigue vers l'univers choisi (la transition est gérée par le loader global). */
+  goToTheme(theme: string): void {
     this.store.dispatch(new fromThemes.AddCurrentTheme(theme));
-
     this.store.dispatch(new fromThemes.LoaderStart());
   }
 
-  changePicture(id: string) {
-    this.currentchild = id;
+  scrollToServices(): void {
+    this.servicesSection?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  clickContainer (event: any) {
-    const phoneButton = document.getElementsByClassName("prehome__header__phone")?.[0];
-
-    if (phoneButton && this.eventIsInside(event, phoneButton)) {
-      event.preventDefault();
-      event.stopPropagation();
-      this.phone();
-      return;
-    }
-  }
-
-  eventIsInside (event: any, div: any) {
-    const rect = div.getBoundingClientRect();
-    const x = event.clientX;
-    const y = event.clientY;
-
-    return (
-      x >= rect.left &&
-      x <= rect.right &&
-      y >= rect.top &&
-      y <= rect.bottom
-    );
-  }
-
-  phone () {
-    window.open('tel:+33180275460', '_blank');
-  }
-
-  order () {
-    document.location.href = "https://dashboard.h24transports.com/";
-  }
-
-  private tryPlayVideo() {
-    const video = this.video.nativeElement;
-
-    video.muted = false;
-    video.play()
-      .then(() => {
-        console.log('Autoplay réussi avec son');
-        this.showOverlay = false;
-        this.showUnmuteButton = video.muted; // Affiche bouton son si muted
-      })
-      .catch(err => {
-        video.muted = true;
-        video.play()
-          .then(() => {
-            console.log('Autoplay réussi sans son');
-            this.showOverlay = false;
-            this.showUnmuteButton = video.muted; // Affiche bouton son si muted
-          })
-          .catch(err => {
-            console.warn('Autoplay bloqué :', err);
-            this.showOverlay = true;      // Affiche overlay pour fallback interactif
-          });
-      });
-  }
-
-  startVideo() {
+  startVideo(): void {
     const video = this.video.nativeElement;
     video.muted = true;
-    video.play().catch(err => console.warn(err));
+    video.play().catch(() => {});
     this.showOverlay = false;
     this.showUnmuteButton = video.muted;
   }
 
-  unmuteVideo() {
-    console.log ('Unmute video');
+  unmuteVideo(): void {
     const video = this.video.nativeElement;
     video.muted = false;
-    video.play().catch(err => console.warn(err));
+    video.play().catch(() => {});
     this.showUnmuteButton = false;
+  }
+
+  /**
+   * Lecture automatique en 3 paliers : avec son, puis muet (toléré par les
+   * navigateurs), puis overlay manuel si tout est bloqué.
+   */
+  private async tryPlayVideo(): Promise<void> {
+    const video = this.video.nativeElement;
+
+    video.muted = false;
+    try {
+      await video.play();
+    } catch {
+      video.muted = true;
+      try {
+        await video.play();
+      } catch {
+        this.showOverlay = true;
+        return;
+      }
+    }
+
+    this.showOverlay = false;
+    this.showUnmuteButton = video.muted; // bouton son visible seulement si la lecture est muette
   }
 }

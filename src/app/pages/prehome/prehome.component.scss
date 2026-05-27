@@ -2,958 +2,464 @@
 @import "./styles/mixins";
 @import "./styles/fonts";
 
-/*Configuration*/
-$themeNb: 3;
-$contentDuration: 0.3s;
-$sliderHoverSize: 100%;
-$sliderHoverHeight: 80%;
-$textBlockSize: 50%;
-$overlayOpacity: 0.8;
-$desktopToolbarWidth: 600px;
+$accent: $on-exploitation-alt; // #F59239
+$radius: 16px;
+$ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
 .prehome {
   background: $event;
   color: $on-event;
-  height: 100vh;
+  overflow-x: clip;
+}
 
-  &__header {
-    width: 100%;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4rem;
-    z-index: 5;
-    //pointer-events: none;
+/* ---------------- Boutons ---------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.1rem 2.2rem;
+  border-radius: 999px;
+  border: 0.15rem solid transparent;
+  font-family: $alt-font-family;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: $base-letter-spacing;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s $ease, background 0.2s ease, color 0.2s ease;
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 25rem;
-      z-index: 0;
-      pointer-events: none;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.75) 0%,
-        rgba(0, 0, 0, 0) 100%
-      );
-    }
+  &--primary {
+    background: $accent;
+    color: #1a1a1a;
 
-    app-logo {
-      position: relative;
-    }
-    &__phone {
-      background: transparent;
-      height: 3rem;
-      border-radius: 3rem;
-      padding: 1rem;
-      box-sizing: content-box;
-      display: flex;
-      align-items: center;
-      border-width: .2rem;
-      border-style: solid;
-      position: relative;
-      z-index: 100;
-      &:hover {
-        & > .phone-text {
-          width: 13rem;
-          padding: 0 .6rem;
-        }
-      }
-      .phone-btn {
-        float: right;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      input {
-        border: none;
-        background: none;
-        outline: none;
-        float: left;
-        padding: 0;
-        font-size: 1.4rem;
-        font-weight: normal;
-        font-family: $alt-font-family;
-        font-weight: 600;
-        transition: 0.4s;
-        line-height: 4rem;
-        width: 0;
-        color: #fff!important;
-      }
+    &:hover {
+      transform: translateY(-2px);
+      background: lighten($accent, 6%);
     }
   }
 
-  &__nav {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6rem;
-    text-align: center;
-  }
-  &__links {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6rem;
-    text-align: center;
-    overflow: hidden;
+  &--ghost {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.7);
+    color: $on-event;
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 0;
-      background: transparent;
-      pointer-events: initial;
-      overflow: hidden;
-    }
-  }
-
-  .app-a {
-    pointer-events: initial;
-    z-index: 5;
-
-    &::after {
-      content: "";
-      display: block;
-      background: $on-event;
-      width: 0;
-      height: 2px;
-      margin: 2rem auto;
-      opacity: 0;
-      transition: all 0.25s ease-in-out;
-    }
-
-    &:hover,
-    &:focus {
-      &::after {
-        width: 100%;
-        opacity: 1;
-      }
-    }
-  }
-
-  &__video {
-    & {
-      position: relative;
-      /*
-      width: 100%;
-      max-width: 640px;
-      */
-    }
-
-    /*
-    video {
-      width: 100%;
-      height: auto;
-    }
-    */
-
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-    .overlay.start-video {
-      background: rgba(0,0,0,0.5);
-    }
-
-    .mockup > div {
-      position: absolute;
-      transform: translateY(-50%);
-      text-align: center;
-      width: 100%;
-    }
-
-    .order {
-      display: inline;
-      background: black;
-      padding: 1rem 2rem;
-      border-radius: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .unmute-button {
-      position: absolute;      /* Positionné par rapport au container */
-      right: 10px;
-      z-index: 100;
+    &:hover {
+      background: rgba(255, 255, 255, 0.16);
     }
   }
 }
 
-.theme-slider {
+/* ---------------- Hero ---------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
 
-  &__slide {
-    @include transition-mix($duration: $contentDuration);
-    width: calc(100% / $themeNb);
+  &__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     height: 100%;
-    position: relative;
-    overflow: hidden;
-    visibility: visible;
+    object-fit: cover;
+    z-index: -2;
+  }
 
-    // overlay
-    &::after {
-      @include position-absolute($top: 0, $left: 0);
-      content: "";
-      display: block;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      mix-blend-mode: color;
-      opacity: 0.8;
-      z-index: 2;
-      transition: all 0.25s ease-in-out;
-    }
-    // gradient text
-    &::before {
-      @include position-absolute($bottom: 0, $left: 0);
-      content: "";
-      display: block;
-      width: 100%;
-      height: 90vh;
-      opacity: 0;
-      z-index: 3;
-      background: linear-gradient(
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(120% 80% at 50% 15%, rgba(0, 0, 0, 0.15), transparent 60%),
+      linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.7) 40%,
-        rgba(0, 0, 0, 0.75) 100%
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.25) 40%,
+        rgba(0, 0, 0, 0.85) 100%
       );
-      transition: opacity 0.25s ease-in-out;
-    }
   }
 
-  &__title {
-    @include position-absolute($top: 50%, $left: 50%);
-    transform: translate(-50%, -50%);
-    font-family: $alt-font-family;
-    font-weight: 600;
-    font-size: 2.2rem;
-    line-height: 1.2;
-    text-transform: uppercase;
-    text-shadow: 0px 1px 2px $event;
-    z-index: 5;
-    transition: all 0.2s ease-in-out;
-    width: calc(100% - 8rem);
-    text-align: center;
-    margin-bottom: 0;
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem;
 
-    &::after {
-      content: "";
-      display: block;
-      background: $on-event;
-      width: 7.5rem;
-      height: 2px;
-      margin: 2rem auto 0;
-      box-shadow: 0px 1px 2px $event;
-    }
-  }
-
-  &__img {
-    @include position-absolute($top: 50%, $left: 50%);
-    width: auto;
-    height: 100%;
-    max-width: 100vw;
-    max-height: 100vh;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    transition: all 0.25s ease-in-out;
-  }
-
-  &__subimg {
-    @include position-absolute($top: 50%, $left: 50%);
-    width: auto;
-    height: 100%;
-    max-width: 100vw;
-    max-height: 100vh;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    position: relative;
-
-    img {
-      opacity: 0;
-      @include position-absolute($top: 50%, $left: 50%);
-      position: absolute;
-      width: auto;
-      height: 100%;
-      max-width: 100vw;
-      max-height: 100vh;
-      transform: translate(-50%, -50%);
-      transition: all 0.5s ease-in-out;
-
-      &.active {
-        opacity: 1;
-      }
+    // le logo est `position: fixed` globalement : on le ramène dans le flux de la barre
+    app-logo {
+      position: relative;
+      z-index: 3;
     }
   }
 
   &__content {
-    @include position-absolute($bottom: 0, $left: 0);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    border-radius: 5px;
-    color: $on-event;
-    z-index: 4;
-    visibility: hidden;
-    opacity: 0;
-    padding-bottom: 4rem;
-    overflow: auto;
-
-    &__title {
-      font-family: $alt-font-family;
-      font-weight: 600;
-      font-size: 2.2rem;
-      line-height: 1.2;
-      text-transform: uppercase;
-      max-width: 40rem;
-
-      &::after {
-        content: "";
-        display: block;
-        background: $on-event;
-        width: 7.5rem;
-        height: 2px;
-        margin: 1rem 0 1rem 0;
-      }
-    }
-
-    &__text {
-      font-family: $base-font-family;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 1.3rem;
-      line-height: 1.4;
-    }
-
-    &__cta {
-      margin-top: 3rem;
-
-      .app-button {
-        font-weight: 700;
-        color: $on-event;
-        border-color: $on-event;
-        letter-spacing: $base-letter-spacing;
-        padding: 1rem 3rem;
-        @include transition-mix();
-
-        &:hover {
-          background: $on-event;
-          color: $event;
-        }
-      }
-    }
-
-    &__wrapper {
-      width: 50%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-
-  &__child {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    padding: 0 1.5rem 7rem;
+    max-width: 62rem;
+  }
+
+  &__eyebrow {
+    margin: 0 0 1rem;
+    font-family: $alt-font-family;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $accent;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $alt-font-family;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 8vw, 4.6rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  &__subtitle {
+    margin: 1.2rem 0 2.2rem;
+    max-width: 36rem;
+    font-family: $base-font-family;
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    width: calc(100% - 8rem);
-    min-height: 15%;
+  }
 
-    &__item {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      height: 100%;
-      width: 100%;
-      border-radius: 6px;
-      border: 0;
-      padding-bottom: 2rem;
-      text-transform: uppercase;
-      font-family: $alt-font-family;
-      font-size: 1.8rem;
-      font-weight: 700;
-      text-align: center;
-      text-shadow: 0px 1px 2px $event;
-      cursor: pointer;
-      background-size: cover;
-      background-position: center center;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-      filter: brightness(50%);
-      transition: all 0.25s ease-in-out;
+  &__scroll {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    background: none;
+    border: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: $alt-font-family;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: hero-bob 2s infinite;
 
-      &:hover {
-        /*
-        border: 2px solid $on-event;
-        height: 150%;
-        width: 150%;
-        */
-        font-size: 2rem;
-        filter: brightness(100%);
-      }
+    mat-icon {
+      font-size: 1.6rem;
+      width: 1.6rem;
+      height: 1.6rem;
     }
   }
+
+  &__sound {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  &__playoverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: $alt-font-family;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    mat-icon {
+      font-size: 4rem;
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 0.12rem solid rgba(255, 255, 255, 0.6);
+  color: $on-event;
+  text-decoration: none;
+  font-family: $alt-font-family;
+  font-weight: 600;
+  transition: background 0.2s ease;
 
   &:hover {
-    .theme-slider {
-      &__slide {
-        &:not(:hover) {
-          z-index: 0;
+    background: rgba(255, 255, 255, 0.12);
+  }
 
-          &::after {
-            @include transition-mix;
-            opacity: 1;
-          }
-
-          .theme-slider__title,
-          .theme-slider__img {
-            opacity: 0.5;
-          }
-        }
-        &:hover {
-          z-index: 3;
-          flex-shrink: 0;
-          width: $sliderHoverSize;
-          box-shadow: 0px 0px 150px rgba(0, 0, 0, 0.5);
-
-          &::after {
-            opacity: 0.25;
-          }
-          &::before {
-            opacity: 1;
-          }
-
-          .theme-slider__title {
-            opacity: 0;
-          }
-
-          .theme-slider__content {
-            @include transition-mix($delay: 0.2s);
-            transform: scale(1);
-            opacity: 1;
-            visibility: visible;
-          }
-        }
-      }
-    }
+  &__num {
+    white-space: nowrap;
   }
 }
 
-/*Color Logo*/
-::ng-deep {
-  app-logo {
-    svg {
-      fill: $on-event;
-    }
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
   }
-  .theme-slider {
-    &__content {
-      &__text {
-        ul {
-          margin-bottom: 1.2rem;
-          padding-left: 2rem;
-        }
-      }
-    }
+  50% {
+    transform: translateX(-50%) translateY(6px);
   }
 }
 
-/*RESPONSIVE*/
-/*Destop low rez*/
-@media only screen and (min-width: 76.7rem) and (max-width: 102.4rem) {
-  .theme-slider {
-    &__child {
-      gap: 2rem;
+/* ---------------- Services ---------------- */
+.services {
+  padding: 5rem 1.5rem 6rem;
 
-      &__item {
-        font-size: 1.6rem;
-      }
-    }
+  &__head {
+    max-width: 42rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0 0 0.8rem;
+    font-family: $alt-font-family;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    text-transform: uppercase;
+  }
+
+  &__lead {
+    margin: 0;
+    font-family: $base-font-family;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: 1fr;
+    max-width: 72rem;
+    margin: 0 auto;
   }
 }
 
-/*Tablets landscape*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {
-  .theme-slider {
-    &__title {
-      width: calc(100% - 8rem);
+.card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 22rem;
+  padding: 0;
+  border: 0;
+  border-radius: $radius;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: left;
+  color: $on-event;
+  background: $event-retina;
+  transition: transform 0.3s $ease, box-shadow 0.3s ease;
 
-      &::after {
-        margin: 2rem auto 0;
-      }
-    }
-
-    &__content {
-      &__wrapper {
-        width: calc(100% - 8rem);
-        margin-top: 1rem;
-      }
-    }
-  }
-}
-
-// Tablet portrait
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
-  .prehome {
-    &__header {
-      padding: 2rem;
-    }
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.5s $ease;
   }
 
-  .theme-slider {
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+  }
+
+  &__body {
+    flex: 1;
+    display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    padding: 1.6rem;
+  }
 
-    &__title {
-      font-size: 1.8rem;
-      width: calc(100% - 8rem);
+  &__title {
+    font-family: $alt-font-family;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
 
-      &::after {
-        margin: 2rem auto 0;
-      }
+  &__text {
+    font-family: $base-font-family;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.4rem;
+    font-family: $alt-font-family;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $accent;
+
+    mat-icon {
+      font-size: 1.15rem;
+      width: 1.15rem;
+      height: 1.15rem;
+      transition: transform 0.2s ease;
     }
+  }
 
-    &__slide {
-      width: 100vw;
-      height: calc(100% / $themeNb);
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
 
-      &::before {
-        width: 100%;
-        height: 100%;
-      }
-
-      &:first-child {
-        .theme-slider__content {
-          padding-top: 11rem;
-        }
-      }
-    }
-
-    &__content {
-      top: 0;
-      right: 0;
-      width: 100vw;
-      height: 100%;
-      padding-bottom: 2rem;
-
-      &__wrapper {
-        width: 90%;
-      }
-
-      &__title {
-        font-size: 1.8rem;
-
-        &::after {
-          margin: 1rem 0 2rem;
-        }
-      }
-    }
-
-    &__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &__child {
-      min-height: 25%;
-      width: 90%;
-      flex-direction: column;
-      gap: 2rem;
-
-      &__item {
-        font-size: 1.6rem;
-        padding: 0;
-        align-items: center;
-      }
-    }
+  &__chip {
+    padding: 0.5rem 0.9rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    color: $on-event;
+    font-family: $alt-font-family;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 
     &:hover {
-      .theme-slider {
-        &__slide {
-          &:hover {
-            width: 100%;
-            height: $sliderHoverHeight;
-          }
-        }
-      }
+      background: $accent;
+      border-color: $accent;
+      color: #1a1a1a;
+      transform: translateY(-2px);
+    }
+    &:focus-visible {
+      outline: 0.2rem solid $accent;
+      outline-offset: 2px;
     }
   }
 }
 
-// Mobile landscape
-@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
-  .prehome {
-    &__header {
-      padding: 2rem;
-    }
+/* Seules les cartes cliquables (univers direct) réagissent au survol */
+button.card {
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
   }
-
-  .theme-slider {
-    &__title {
-      font-size: 1.8rem;
-      width: calc(100% - 4rem);
-
-      &::after {
-        margin: 1rem auto 0;
-      }
-    }
-
-    &__content {
-      padding-bottom: 2rem;
-
-      &__wrapper {
-        width: calc(100% - 4rem);
-        margin-top: 10rem;
-      }
-
-      &__title {
-        max-width: 100%;
-        font-size: 1.8rem;
-        margin-bottom: 0;
-
-        &::after {
-          margin: 1rem 0 2rem 0;
-        }
-      }
-
-      &__text {
-        line-height: 1.2;
-      }
-
-      &__cta {
-        margin-top: 2rem;
-      }
-    }
-
-    &__child {
-      width: calc(100% - 4rem);
-      min-height: 10%;
-
-      &__item {
-        align-items: center;
-        padding-bottom: 0;
-        font-size: 1.4rem;
-      }
-    }
-
-    &__img {
-      width: 100%;
-      object-fit: cover;
-    }
-
-    &:hover {
-      .theme-slider {
-        &__slide {
-          &:hover {
-            width: 85%;
-          }
-          &:not(:hover) {
-            .theme-slider__title {
-              opacity: 0;
-            }
-          }
-        }
-      }
-    }
+  &:hover .card__img {
+    transform: scale(1.06);
+  }
+  &:hover .card__cta mat-icon {
+    transform: translateX(4px);
+  }
+  &:focus-visible {
+    outline: 0.2rem solid $accent;
+    outline-offset: 3px;
   }
 }
 
-/*Mobiles portrait*/
-@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
-  .prehome {
-    &__header {
-      padding: 2rem;
-    }
+/* ---------------- Logo (couleur) ---------------- */
+::ng-deep app-logo svg {
+  fill: $on-event;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (min-width: 30rem) {
+  .hero__bar {
+    padding: 2rem;
   }
-
-  .theme-slider {
-    flex-direction: column;
-
-    &__title {
-      font-size: 1.8rem;
-      width: calc(100% - 4rem);
-
-      &::after {
-        margin: 1rem auto 0;
-      }
-    }
-
-    &__slide {
-      width: 100vw;
-      height: calc(100% / $themeNb);
-
-      &::before {
-        width: 100%;
-        height: 100%;
-      }
-
-      &:first-child {
-        .theme-slider__content {
-          padding-top: 11rem;
-        }
-      }
-    }
-
-    &__content {
-      top: 0;
-      right: 0;
-      width: 100vw;
-      height: 100%;
-      padding-bottom: 2rem;
-
-      &__wrapper {
-        width: 90%;
-      }
-
-      &__title {
-        font-size: 1.8rem;
-
-        &::after {
-          margin: 1rem 0 2rem;
-        }
-      }
-    }
-
-    &__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &__child {
-      min-height: 25%;
-      width: 90%;
-      flex-direction: column;
-      gap: 2rem;
-
-      &__item {
-        font-size: 1.6rem;
-        padding: 0;
-        align-items: center;
-      }
-    }
-
-    &:hover {
-      .theme-slider {
-        &__slide {
-          &:hover {
-            width: 100%;
-            height: $sliderHoverHeight;
-          }
-
-          &:not(:hover) {
-            .theme-slider__title {
-              opacity: 0;
-            }
-          }
-        }
-      }
-    }
+  .hero__content {
+    padding: 0 2rem 7rem;
   }
 }
 
-@media only screen and (min-width: 48rem) and (orientation: landscape) {
-  .prehome__title {
-    & {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: calc(100% - $desktopToolbarWidth);
-      height: auto;
-      z-index: 10;
-      text-align: center;
-      padding-top: 150px;
-    }
-
-    .title {
-      font-size: 2rem;
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      padding-top: 10px;
-    }
+@media (min-width: 48rem) {
+  .hero__bar {
+    padding: 2.5rem 3rem;
   }
+  .hero__content {
+    padding: 0 3rem 8rem;
+  }
+  .services {
+    padding: 6rem 3rem 7rem;
+  }
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card {
+    min-height: 30rem;
+  }
+}
 
-  .prehome_precision {
+@media (max-width: 26rem) {
+  .phone__num {
     display: none;
   }
-
-  .prehome {
-    & {
-      display: flex;
-      justify-content: end;
-    }
-
-    &__header {
-      pointer-events: none;
-    }
-  }
-
-  .prehome__video {
-    & {
-      width: calc(100% - $desktopToolbarWidth);
-      overflow: hidden;
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .mockup {
-      & {
-        position: absolute;
-        left: 0;
-        bottom: 0px;
-        max-height: min(30%, 250px);
-        width: 100%;
-        text-align: center;
-      }
-
-      img {
-        max-width: 80%;
-      }
-    }
-
-    .unmute-button {
-      bottom: 10px !important;
-    }
-  }
-
-  .theme-slider {
-    & {
-      flex-direction: column;
-      width: $desktopToolbarWidth;
-    }
-
-    &__content {
-      &__wrapper {
-        width: 80%;
-      }
-    }
-
-    &__child {
-      flex-direction: row;
-    }
-
-    &__img {
-      width: 100%;
-      object-fit: cover;
-    }
-
-    &__slide {
-      & {
-        width: $desktopToolbarWidth;
-        height: 80%;
-      }
-    }
-  }
 }
 
-@media only screen and (max-width: 48rem), only screen and (orientation: portrait) {
-  .prehome__title {
-    & {
-      padding-top: 100px;
-      text-align: center;
-    }
-
-    .title {
-      font-size: 2rem;
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      margin: 20px 40px;
-    }
-  }
-
-  .prehome_precision {
-    font-size: 2rem;
-    text-align: center;
-    padding: 20px 0;
-    background-color: black;
-  }
-
-  .prehome__video {
-    & {
-      width: 100%;
-      height: 300px;
-      overflow: hidden;
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .mockup {
-      & {
-        text-align: center;
-        background-color: transparent;
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        max-height: 35%;
-      }
-
-      img {
-        max-width: min(400px, 80%);
-      }
-    }
-
-    .unmute-button {
-      top: 10px !important;
-    }
-  }
-
-  .theme-slider {
-    & {
-      /*
-      height: calc(100% - 300px);
-      */
-    }
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll {
+    animation: none;
   }
 }
