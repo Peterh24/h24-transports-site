@@ -3,113 +3,111 @@
 
 .our-values {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.value {
+.ov-panel {
   position: relative;
-  flex-basis: 100%; // mobile : 1 colonne
-  min-height: 50vh;
-  overflow: hidden;
+  min-height: 80vh;
   display: flex;
   align-items: flex-end;
-  text-align: center;
-  cursor: pointer;
+  overflow: hidden;
 
-  &__background {
+  &__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
     background-size: cover;
     background-position: center;
-    transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+    transition: transform 0.6s ease;
+  }
+
+  &__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
   }
 
   &__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
     display: flex;
-    flex-direction: column;
+    align-items: flex-end;
+    gap: 2.5rem;
+  }
+
+  &__index {
+    font-family: $alt-font-family;
+    font-weight: 800;
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.8;
+    color: $accent;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__title {
+    display: flex;
     align-items: center;
-    justify-content: flex-end;
+    gap: 1.5rem;
 
-    // titre toujours visible (fond fourni par le thème)
-    &__title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      width: 100%;
-      padding: 4rem 2rem;
-
-      mat-icon {
-        font-size: 4rem;
-        width: 4rem;
-        height: 4rem;
-      }
-
-      h2 {
-        margin: 0;
-        font-size: clamp(2.4rem, 5vw, 3.6rem);
-        font-weight: 500;
-      }
+    mat-icon {
+      flex: none;
+      color: $accent;
+      font-size: 3rem;
+      width: 3rem;
+      height: 3rem;
     }
 
-    // texte replié par défaut, révélé à l'ouverture (tap) ou au survol (souris)
-    &__text {
-      width: 100%;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      padding: 0 2rem;
-      transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
-
-      p {
-        margin: 0 0 1rem;
-        font-size: 1.5rem;
-        line-height: 1.5;
-      }
+    h2 {
+      margin: 0;
+      font-family: $alt-font-family;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1.05;
     }
   }
 
-  &:focus-visible {
-    outline: 0.2rem solid $on-exploitation-alt;
-    outline-offset: -0.4rem;
+  &__text {
+    margin-top: 1.5rem;
+    max-width: 55rem;
+
+    p {
+      margin: 0 0 0.8rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.9);
+    }
   }
 }
 
-// état ouvert (tap)
-.value--open {
-  .value__background {
-    opacity: 0.35;
+@media (hover: hover) and (pointer: fine) {
+  .ov-panel:hover .ov-panel__bg {
     transform: scale(1.05);
   }
-  .value__content__text {
-    max-height: 40rem;
-    opacity: 1;
-    padding: 0 2rem 3rem;
-  }
 }
 
-// survol souris uniquement
-@media (hover: hover) and (pointer: fine) {
-  .value:hover {
-    .value__background {
-      opacity: 0.35;
-      transform: scale(1.05);
-    }
-    .value__content__text {
-      max-height: 40rem;
-      opacity: 1;
-      padding: 0 2rem 3rem;
-    }
-  }
-}
+@media (max-width: 48rem) {
+  .ov-panel {
+    min-height: 70vh;
 
-/* 2 colonnes dès la tablette */
-@media (min-width: 48rem) {
-  .value {
-    flex-basis: 50%;
+    &__content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
   }
 }

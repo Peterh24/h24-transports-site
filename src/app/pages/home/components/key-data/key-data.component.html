@@ -1,32 +1,33 @@
-<div class="key-data" [class.key-data__darken]="(datas$ | async).options.darkenBg" [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}" [id]="id">
-  <div class="key-data__content">
+<section class="key-data" [class.key-data__darken]="(datas$ | async).options.darkenBg"
+  [ngStyle]="{'background-image': 'url(' + (datas$ | async).info.img + ')'}" [id]="id">
+  <span class="key-data__scrim"></span>
 
-    <div class="key-data__content__text-logos">
-      <div class="key-data__content__text" *ngIf="(datas$ | async).info.text">
-        <h2>{{(datas$ | async).info.title}}</h2>
-        <p *ngFor="let text of (datas$ | async).info.text">{{text}}</p>
-        <a class="app-button" routerLink="/aboutUs">{{(datas$ | async).info.cta}}</a>
+  <div class="key-data__inner">
+    <div class="key-data__head" *ngIf="(datas$ | async).info.text">
+      <p class="key-data__eyebrow">H24 Transports</p>
+      <h2 class="key-data__title">{{ (datas$ | async).info.title }}</h2>
+      <div class="key-data__lead">
+        <p *ngFor="let text of (datas$ | async).info.text">{{ text }}</p>
       </div>
-
-      <div class="key-data__content__logos">
-        <div class="key-data__content__logo" *ngIf="(datas$ | async).logos">
-          <a [href]="logo.url" target="_blank" *ngFor="let logo of (datas$ | async).logos">
-            <img [src]="logo.img" [alt]="logo.name" />
-          </a>
-        </div>
+      <div class="key-data__actions">
+        <a class="app-button app-button--primary" *ngIf="(datas$ | async).info.link.url as url"
+          (click)="goTo(url)">{{ (datas$ | async).info.link.label }}</a>
+        <a class="app-button app-button--ghost" routerLink="/aboutUs">{{ (datas$ | async).info.cta }}</a>
       </div>
     </div>
 
-    <div class="key-data__List__wrap">
-      <div class="key-data__List">
-        <div class="key-data__item" *ngFor="let key of (datas$ | async).list">
-          <div *ngIf="!(loadingState$ | async)" class="key-data__item__val" [appAnimatedCounter]="key.value" [appValueUnit]="key.unit"></div>
-          <div class="key-data__item__label">{{key.label}} </div>
-        </div>
-      </div>
-      <div class="key-data__cta" *ngIf="(datas$ | async).info.link.url as url">
-        <a class="app-button" (click)="goTo(url)">{{(datas$ | async).info.link.label}}</a>
+    <div class="key-data__stats">
+      <div class="key-data__stat" *ngFor="let key of (datas$ | async).list">
+        <div *ngIf="!(loadingState$ | async)" class="key-data__stat__val"
+          [appAnimatedCounter]="key.value" [appValueUnit]="key.unit"></div>
+        <div class="key-data__stat__label">{{ key.label }}</div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="key-data__logos" *ngIf="(datas$ | async).logos">
+    <a [href]="logo.url" target="_blank" rel="noopener" *ngFor="let logo of (datas$ | async).logos">
+      <img [src]="logo.img" [alt]="logo.name" loading="lazy" decoding="async" />
+    </a>
+  </div>
+</section>

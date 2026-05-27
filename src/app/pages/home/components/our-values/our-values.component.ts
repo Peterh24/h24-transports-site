@@ -12,16 +12,9 @@ export class OurValuesComponent implements OnInit {
   public datas$: Observable<OurValues>;
   public id: string;
 
-  /** Tuile ouverte au tap (fallback tactile du :hover desktop). */
-  openIndex: number | null = null;
-
   constructor(private globalService: GlobalService) {}
 
   ngOnInit(): void {
     this.datas$ = this.globalService.getDataComponent(this.id);
-  }
-
-  toggle(i: number): void {
-    this.openIndex = this.openIndex === i ? null : i;
   }
 }

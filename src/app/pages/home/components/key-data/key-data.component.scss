@@ -1,3 +1,4 @@
+@import "./styles/colors";
 @import "./styles/fonts";
 
 .key-data {
@@ -8,176 +9,140 @@
   background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 14rem 2rem 4rem;
 
-  // scrim (le dégradé de couleur est fourni par le thème : .key-data::after)
-  &::after {
-    content: "";
+  &__scrim {
     position: absolute;
     inset: 0;
     z-index: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
   }
 
-  &__content {
+  &__inner {
     position: relative;
     z-index: 1;
+    flex: 1;
     width: 100%;
     max-width: 120rem;
-    min-height: 100%;
-    padding: 12rem 2rem 4rem;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 3rem;
+    justify-content: center;
+    gap: 4rem;
+  }
 
-    &__text-logos {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2.5rem;
-    }
+  &__eyebrow {
+    margin: 0 0 1.5rem;
+    font-family: $alt-font-family;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $accent;
+  }
 
-    &__text {
-      h2 {
-        margin: 0;
-        font-family: $alt-font-family;
-        font-size: clamp(1.8rem, 5vw, 2.4rem);
-        line-height: 1.15;
-        font-weight: 600;
-        text-transform: uppercase;
+  &__title {
+    margin: 0;
+    max-width: 18ch;
+    font-family: $alt-font-family;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    line-height: 1.02;
+    text-transform: uppercase;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+  }
 
-        // la couleur du trait vient du thème
-        &::after {
-          content: "";
-          display: block;
-          height: 0.2rem;
-          width: 7.5rem;
-          margin: 1.5rem 0 2rem;
-        }
-      }
+  &__lead {
+    margin: 2rem 0 0;
+    max-width: 50rem;
 
-      p {
-        margin: 0 0 1.2rem;
-        line-height: 1.5;
-        max-width: 52rem;
-      }
-
-      a {
-        align-self: flex-start;
-        margin-top: 1rem;
-
-        &:hover {
-          text-shadow: none;
-        }
-      }
-    }
-
-    &__logos {
-      width: 100%;
-    }
-
-    &__logo {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2.5rem;
-
-      a {
-        height: 4rem;
-      }
-
-      img {
-        height: 100%;
-        width: auto;
-        max-width: 14rem;
-        object-fit: contain;
-        opacity: 0.7;
-        transition: opacity 0.25s ease-in-out;
-      }
+    p {
+      margin: 0 0 1rem;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
     }
   }
 
-  &__List {
+  &__actions {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem 4rem;
-
-    &__wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-      width: 100%;
-    }
+    gap: 1rem;
+    margin-top: 2.5rem;
   }
 
-  &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    text-align: center;
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 2rem 5rem;
+  }
 
+  &__stat {
     &__val {
       font-family: $alt-font-family;
-      font-size: clamp(3rem, 8vw, 4rem);
       font-weight: 800;
+      font-size: clamp(3.5rem, 9vw, 7rem);
       line-height: 1;
+      color: $accent;
     }
 
     &__label {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
       opacity: 0.85;
     }
   }
 
-  &__cta {
+  &__logos {
+    position: relative;
+    z-index: 1;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    max-width: 120rem;
+    margin: 3rem auto 0;
+
+    img {
+      height: 3.5rem;
+      width: auto;
+      max-width: 13rem;
+      object-fit: contain;
+      opacity: 0.55;
+      transition: opacity 0.25s ease-in-out;
+    }
   }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .key-data__content__logo img:hover {
+  .key-data__logos img:hover {
     opacity: 1;
   }
 }
 
-/* Desktop : texte + logos côte à côte, stats sur une ligne */
-@media (min-width: 62rem) {
-  .key-data__content {
-    padding: 12rem 4rem 5rem;
-    gap: 4rem;
+@media (max-width: 48rem) {
+  .key-data {
+    padding: 11rem 1.5rem 3rem;
 
-    &__text-logos {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4rem;
+    &__stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 1rem;
     }
 
-    &__text {
-      flex: 1;
+    &__stat__val {
+      font-size: clamp(2.6rem, 11vw, 4rem);
     }
 
-    &__logos {
-      width: auto;
-      max-width: 32rem;
+    &__stat__label {
+      font-size: 0.85rem;
     }
-  }
-
-  .key-data__List__wrap {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5rem;
-  }
-
-  .key-data__List {
-    justify-content: flex-start;
-    gap: 5rem;
   }
 }
