@@ -1,0 +1,70 @@
+// =====================================================================
+//  Design system H24 — composants partagés
+//  Importé APRÈS les thèmes : les sélecteurs ci-dessous (double classe,
+//  spécificité 0-2-0) gagnent sur l'outline `.theme_x .app-button` grâce
+//  à l'ordre source. Pas de !important nécessaire.
+// =====================================================================
+
+// Bouton principal : orange plein, dominant (CTA "Je commande", etc.)
+.app-button.app-button--primary {
+  background: $accent;
+  border-color: $accent;
+  color: $ink;
+
+  &:hover,
+  &:focus {
+    background: lighten($accent, 6%);
+    border-color: lighten($accent, 6%);
+    color: $ink;
+  }
+}
+
+// Bouton secondaire : contour clair sur fond sombre
+.app-button.app-button--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: $on-event;
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.16);
+    color: $on-event;
+  }
+}
+
+// Carte réutilisable (image de fond + dégradé + contenu en bas) — réutilisée
+// par les composants /home en Phase 2. Mobile-first, sans dépendance au :hover.
+%h24-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: $radius;
+  isolation: isolate;
+  color: $on-event;
+  background: $event-retina;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.5s $ease;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+  }
+}

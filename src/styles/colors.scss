@@ -40,3 +40,9 @@ $on-waiting: #FFFFFF;
 $social-fb: #1877f2;
 $social-tw: #1d98f0;
 $social-ig: #d62f83;
+
+/* --- Tokens design system (identité unifiée sombre + orange) --- */
+$accent: $on-exploitation-alt;          // #F59239 — accent orange de marque
+$ink: #1a1a1a;                          // texte foncé sur fond orange
+$radius: 16px;                          // rayon des cartes
+$ease: cubic-bezier(0.22, 0.61, 0.36, 1);
