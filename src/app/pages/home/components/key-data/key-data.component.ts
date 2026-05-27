@@ -31,7 +31,6 @@ export class KeyDataComponent implements OnInit {
 
   goTo(link:any): void {
     this.datas$.pipe(take(1)).subscribe(data => {
-      console.log('type: ', data.info.link.type);
       if(data.info.link.type === 'Anchor'){
         this.viewportScroller.scrollToAnchor(link);
         this.router.navigate([], { fragment: link });
