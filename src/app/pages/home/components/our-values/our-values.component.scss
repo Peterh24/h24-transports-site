@@ -1,137 +1,115 @@
+@import "./styles/colors";
+@import "./styles/fonts";
+
 .our-values {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .value {
   position: relative;
-  flex-basis: 50%;
-  height: 50vh;
+  flex-basis: 100%; // mobile : 1 colonne
+  min-height: 50vh;
   overflow: hidden;
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
   text-align: center;
-  overflow: hidden;
-  transition: all .3s ease-in-out;
-
-  &__content {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 1;
-    transition: transform .3s ease-in-out;
-
-    &__title {
-      display: flex;
-      gap: 4rem;
-      padding: 4rem;
-      flex-flow: column wrap;
-      align-items: center;
-      justify-content: flex-end;
-      width: 100%;
-
-      h2 {
-        font-size: 4.2rem;
-        font-weight: 500;
-        margin-bottom: 0;
-      }
-    }
-
-    &__text {
-      display: flex;
-      gap: 2rem;
-      padding: 0 4rem 4rem;
-      flex-flow: column wrap;
-      align-items: center;
-      justify-content: flex-end;
-      width: 100%;
-      font-weight: normal;
-      font-size: 1.6rem;
-
-      p {
-        margin: 0;
-      }
-    }
-  }
+  cursor: pointer;
 
   &__background {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
+    z-index: 0;
     background-size: cover;
     background-position: center;
-    transition: opacity .25s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
   }
 
-  &:hover {
-    .value__content {
-      transform: translateY(0);
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    // titre toujours visible (fond fourni par le thème)
+    &__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+      padding: 4rem 2rem;
+
+      mat-icon {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        font-weight: 500;
+      }
     }
+
+    // texte replié par défaut, révélé à l'ouverture (tap) ou au survol (souris)
+    &__text {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 2rem;
+      transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+
+      p {
+        margin: 0 0 1rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: 0.2rem solid $on-exploitation-alt;
+    outline-offset: -0.4rem;
+  }
+}
+
+// état ouvert (tap)
+.value--open {
+  .value__background {
+    opacity: 0.35;
+    transform: scale(1.05);
+  }
+  .value__content__text {
+    max-height: 40rem;
+    opacity: 1;
+    padding: 0 2rem 3rem;
+  }
+}
+
+// survol souris uniquement
+@media (hover: hover) and (pointer: fine) {
+  .value:hover {
     .value__background {
-      opacity: .5;
+      opacity: 0.35;
+      transform: scale(1.05);
+    }
+    .value__content__text {
+      max-height: 40rem;
+      opacity: 1;
+      padding: 0 2rem 3rem;
     }
   }
 }
 
-/*RESPONSIVE*/
-/*Tablets portrait*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: portrait) {
-  .value {
-    flex-basis: 50% !important;
-    min-height: 50vh;
-  }
-}
-
-/*Mobiles landscape*/
-@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
+/* 2 colonnes dès la tablette */
+@media (min-width: 48rem) {
   .value {
     flex-basis: 50%;
-    min-height: 100vh;
-
-    &__content {
-      &__title {
-        gap: 2rem;
-        padding: 2rem;
-
-        h2 {
-          font-size: 2.4rem;
-        }
-      }
-
-      &__text {
-        padding: 0 2rem 2rem;
-      }
-    }
-  }
-}
-
-/*Mobiles portrait*/
-@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
-  .value {
-    flex-basis: 100%;
-    min-height: 50vh;
-
-    &__content {
-      &__title {
-        gap: 2rem;
-        padding: 2rem;
-
-        h2 {
-          font-size: 2.4rem;
-        }
-      }
-
-      &__text {
-        padding: 0 2rem 2rem;
-      }
-    }
   }
 }
