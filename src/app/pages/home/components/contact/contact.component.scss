@@ -1,23 +1,29 @@
 @import "src/styles/colors";
+
 .contact {
   display: flex;
   justify-content: center;
-  padding: 8rem 0;
+  padding: 4rem 2rem;
 
   &__messages {
-    margin: 3rem 0;
-    padding: 3rem 0;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 8px;
     text-align: center;
     font-size: 1.4rem;
     font-weight: 500;
+
     p {
-      margin-bottom: 0;
+      margin: 0;
     }
   }
+
   form {
-    width: 60rem;
+    width: 100%;
+    max-width: 60rem;
+
     h2 {
-      margin-bottom: 2rem;
+      margin: 0 0 2rem;
       text-align: center;
     }
   }
@@ -25,7 +31,6 @@
   &__fields__wrap {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 
     app-form-field {
       flex: 1;
@@ -37,8 +42,8 @@
 
     .field--inline {
       display: flex;
-      justify-content: space-between;
-      gap: 2rem;
+      flex-direction: column; // mobile : empilé
+      gap: 0;
 
       div {
         flex: 1;
@@ -49,51 +54,17 @@
   app-button {
     display: flex;
     justify-content: flex-end;
+    margin-top: 1rem;
   }
 }
 
-/*RESPONSIVE*/
-/*Tablets*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
+@media (min-width: 48rem) {
   .contact {
-    padding: 4rem 0 !important;
+    padding: 8rem 2rem;
 
-    form {
-      width: calc(100% - 8rem) !important;
-
-      h2 {
-        margin-top: 0 !important;
-      }
-    }
-  }
-}
-
-/*Mobiles*/
-@media only screen and (max-device-width: 48rem) {
-  .contact {
-    padding: 4rem 0;
-
-    form {
-      width: calc(100% - 4rem);
-      margin: 0 auto;
-
-      h2 {
-        margin: 0 0 2rem 0;
-      }
-    }
-
-
-    &__fields {
-      width: 100%;
-
-      &__wrap {
-        width: 100%;
-
-        .field--inline {
-          flex-flow: column wrap;
-          gap: 0;
-        }
-      }
+    .field--inline {
+      flex-direction: row;
+      gap: 2rem;
     }
   }
 }
