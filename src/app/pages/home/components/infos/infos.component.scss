@@ -1,14 +1,19 @@
+@import "./styles/colors";
+@import "./styles/fonts";
+
 .infos {
   &__title {
-    margin: 4rem 0 2rem;
+    margin: 6rem 0 3rem;
     text-align: center;
-    font-size: clamp(1.8rem, 5vw, 2.4rem);
-    font-weight: 500;
+    font-family: $alt-font-family;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 5vw, 3rem);
   }
 
   &__wrapper {
     display: flex;
-    flex-direction: column-reverse; // mobile : image en haut, texte dessous
+    flex-direction: column-reverse; // mobile : image en haut
     max-width: 120rem;
     margin: 0 auto;
   }
@@ -25,14 +30,18 @@
 
     &__title {
       width: 100%;
-      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-family: $alt-font-family;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
 
-      // trait (couleur fournie par le thème)
       &::after {
         content: "";
         display: block;
         height: 0.2rem;
         width: 3.5rem;
+        background: $accent;
         margin-top: 1.3rem;
       }
 
@@ -43,12 +52,13 @@
 
     &__text p {
       margin: 0 0 1rem;
-      line-height: 1.6;
+      line-height: 1.65;
+      font-size: clamp(1rem, 2.3vw, 1.2rem);
     }
   }
 
   &__img {
-    min-height: 32vh;
+    min-height: 38vh;
     overflow: hidden;
 
     img {
@@ -93,7 +103,6 @@
         }
       }
 
-      // trait sous le titre d'item (couleur via thème)
       &::after {
         content: "";
         display: block;
@@ -112,7 +121,7 @@
 
     &--show {
       .dropdown__item__title .icon::after {
-        content: "\e15b"; // "−"
+        content: "\e15b";
       }
       .dropdown__item__content {
         max-height: 50rem;
@@ -127,7 +136,7 @@
   }
 }
 
-/* Desktop : texte + image côte à côte */
+/* Desktop : split image / texte plein écran */
 @media (min-width: 62rem) {
   .infos__title {
     margin: 8rem 0 4rem;
@@ -136,6 +145,7 @@
   .infos__wrapper {
     flex-direction: row;
     align-items: stretch;
+    min-height: 85vh;
   }
 
   .infos__text {
@@ -143,19 +153,19 @@
     margin: 4rem 0;
 
     &__wrapper {
-      padding: 0 4rem 0 0;
+      padding: 0 5rem 0 0;
     }
   }
 
   .infos__img {
     flex: 1;
-    min-height: 40rem;
+    min-height: auto;
   }
 
   .infos__reverse .infos__wrapper {
     flex-direction: row-reverse;
   }
   .infos__reverse .infos__text__wrapper {
-    padding: 0 0 0 4rem;
+    padding: 0 0 0 5rem;
   }
 }

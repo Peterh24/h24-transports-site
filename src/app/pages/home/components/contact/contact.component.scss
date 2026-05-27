@@ -1,9 +1,12 @@
 @import "src/styles/colors";
+@import "src/styles/fonts";
 
 .contact {
   display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  min-height: 80vh;
+  padding: 6rem 2rem;
 
   &__messages {
     margin: 2rem 0;
@@ -23,8 +26,12 @@
     max-width: 60rem;
 
     h2 {
-      margin: 0 0 2rem;
+      margin: 0 0 3rem;
       text-align: center;
+      font-family: $alt-font-family;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: clamp(2rem, 5vw, 3rem);
     }
   }
 
@@ -42,7 +49,7 @@
 
     .field--inline {
       display: flex;
-      flex-direction: column; // mobile : empilé
+      flex-direction: column;
       gap: 0;
 
       div {
@@ -54,7 +61,7 @@
   app-button {
     display: flex;
     justify-content: flex-end;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 }
 
