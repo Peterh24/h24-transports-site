@@ -1,97 +1,46 @@
-<nav class="app-main-nav main-nav" [class.app-main-nav--open]="menuState$ | async">
-  <div class="bg-animation">
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-  </div>
-  <div class="main-nav__header">
+<nav class="app-main-nav main-nav" [class.app-main-nav--open]="menuState$ | async" aria-label="Menu principal">
+  <div class="main-nav__top">
     <app-logo></app-logo>
   </div>
 
   <div class="submenu">
     <ul class="submenu__list">
-      <li *ngFor="let theme of themeList$ | async" class="submenu__item" [class.submenu__item--active]="(currentTheme$ | async).currentTheme == theme.id" >
-        <a [routerLink]="!theme.inPrenav ? ('/'+theme.id): null" class="submenu__list__link" (click)="(theme.child.length === 0 && theme.inPrenav) ? switchTheme(theme.id) : null">{{theme.title}}</a>
+      <li *ngFor="let theme of themeList$ | async" class="submenu__item"
+        [class.submenu__item--active]="(currentTheme$ | async)?.currentTheme == theme.id">
+        <a [routerLink]="!theme.inPrenav ? ('/' + theme.id) : null" class="submenu__list__link"
+          (click)="(theme.child.length === 0 && theme.inPrenav) ? switchTheme(theme.id) : null">{{ theme.title }}</a>
         <ul *ngIf="theme.child.length > 0">
-          <li *ngFor="let child of theme.child" [class.submenu__item--active]="(currentTheme$ | async).child?.id == child.id">
-            <a class="submenu__list__link"  (click)="switchTheme(child.id)">{{child.title}}</a>
+          <li *ngFor="let child of theme.child"
+            [class.submenu__item--active]="(currentTheme$ | async)?.child?.id == child.id">
+            <a class="submenu__list__link" (click)="switchTheme(child.id)">{{ child.title }}</a>
           </li>
         </ul>
       </li>
     </ul>
 
-
     <ul class="anchor__list" *ngIf="(componentList$ | async).length > 0">
       <li *ngFor="let component of data">
-        <a class="app-a anchor__list__link" (click)="goToAnchor(component.id)">{{component.title}}</a>
+        <a class="app-a anchor__list__link" (click)="goToAnchor(component.id)">{{ component.title }}</a>
       </li>
     </ul>
 
-    <div class="footer">
-      <div class="social_language">
-       <!-- <div class="social__list">
-          <a class="social__list__link app-a" href="https://www.facebook.com/people/H24-Transports/100065457520860/"><fa-icon [icon]="faIcons.faLinkedin"></fa-icon></a>
-          <a class="social__list__link app-a" href="https://twitter.com/h24rani?lang=fr"><fa-icon [icon]="faIcons.faTwitter"></fa-icon></a>
-          <a class="social__list__link app-a" href="https://www.instagram.com/rani_h24/"><fa-icon [icon]="faIcons.faInstagram"></fa-icon></a>
-        </div> -->
-
-        <!-- <div class="language">
-          <a (click)="langChange('fr')"><img src="https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/flags/flag_FR.png" alt="FR" class="language__flag">Français</a>
-          <a (click)="langChange('en')"><img src="https://h24-public-website.s3.eu-west-3.amazonaws.com/assets/global/img/flags/flag_UK.png" alt="UK" class="language__flag">English</a>
-        </div> -->
-      </div>
-
-      <div class="contact">
-        <div class="contact__info">
-          <div class="contact__icon"><mat-icon fontIcon="pin_drop"></mat-icon></div>
-          <div class="contact__text">
-            <p>
-              4 Boulevard de Beaubourg
-            </p>
-            <p>
-              77183 CROISSY BEAUBOURG
-            </p>
-          </div>
-        </div>
-
-        <div class="contact__info">
-          <div class="contact__icon"><mat-icon fontIcon="phone"></mat-icon></div>
-          <div class="contact__text">
-            <p>
-              +33(0)1 80 27 54 60
-            </p>
-          </div>
-        </div>
-
-        <div class="contact__info">
-          <div class="contact__icon"><mat-icon fontIcon="mail_outline"></mat-icon></div>
-          <div class="contact__text">
-            <p>
-              contact@h24transports.com
-            </p>
-          </div>
-        </div>
-      </div>
-
+    <div class="main-nav__contact">
+      <a class="main-nav__contact__row"
+        href="https://maps.google.com/?q=4 Boulevard de Beaubourg 77183 Croissy Beaubourg"
+        target="_blank" rel="noopener">
+        <mat-icon aria-hidden="true">pin_drop</mat-icon>
+        <span>4 Boulevard de Beaubourg<br>77183 Croissy Beaubourg</span>
+      </a>
+      <a class="main-nav__contact__row" href="tel:+33180275460">
+        <mat-icon aria-hidden="true">phone</mat-icon>
+        <span>+33 (0)1 80 27 54 60</span>
+      </a>
+      <a class="main-nav__contact__row" href="mailto:contact@h24transports.com">
+        <mat-icon aria-hidden="true">mail_outline</mat-icon>
+        <span>contact&#64;h24transports.com</span>
+      </a>
     </div>
-
   </div>
-
-
-
-
 </nav>
 
-<div class="tds-modal-backdrop" [class.tds-modal-backdrop--open]="menuState$ | async" (click)="closeMenu()"></div>
+<div class="main-nav__backdrop" [class.main-nav__backdrop--open]="menuState$ | async" (click)="closeMenu()"></div>
