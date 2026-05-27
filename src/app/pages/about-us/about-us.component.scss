@@ -1,87 +1,76 @@
+@import "./styles/colors";
+
 .app-page {
   &__about-us {
     padding-top: 13rem;
+
+    &__title,
     h2 {
       text-align: center;
-      margin-bottom: 2rem;
+      margin: 0 0 2rem;
+      font-size: clamp(2rem, 5vw, 2.6rem);
     }
+
     &__intro {
+      max-width: 70rem;
+      margin: 0 auto;
+      padding: 0 2rem;
       text-align: center;
+      line-height: 1.6;
     }
 
     .page-content {
-      width: 120rem;
-      margin: 8rem auto 0 auto;
+      max-width: 120rem;
+      margin: 5rem auto 0;
       display: flex;
       flex-direction: column;
+      gap: 3rem;
 
       &__item {
         display: flex;
-        flex-direction: row;
-        min-height: 36.6rem;
-
-        &__info,
-        &__img {
-          width: 50%;
-        }
+        flex-direction: column; // mobile : empilé
 
         &__info {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-          padding: 2rem 4rem;
+          padding: 2rem;
 
           h3 {
+            margin: 0;
             font-size: 1.8rem;
             font-weight: 500;
-            margin-bottom: 0;
 
             &::after {
               content: "";
               display: block;
               width: 3.5rem;
-              height: .2rem;
-              background: #fff;
-              margin: 1.3rem 0 4rem 0;
+              height: 0.2rem;
+              background: $accent;
+              margin: 1.3rem 0 2rem;
             }
           }
+
+          p {
+            line-height: 1.6;
+          }
         }
+
         &__img {
           position: relative;
           overflow: hidden;
+          min-height: 32vh;
+          border-radius: 12px;
 
           img {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            object-fit: cover;
             width: 100%;
             height: 100%;
-          }
-        }
-        &:nth-child(2n+1) {
-          flex-direction: row-reverse;
-        }
-      }
-    }
-  }
-}
-
-/*RESPONSIVE*/
-/*Desktops low res*/
-@media only screen and (min-width: 76.7rem) and (max-width: 102.4rem) {
-  .app-page {
-    &__about-us {
-      .page-content {
-        width: 100%;
-
-        &__item {
-          &:last-child {
-            .page-content__item__img {
-              margin-bottom: 0;
-            }
+            object-fit: cover;
           }
         }
       }
@@ -89,67 +78,30 @@
   }
 }
 
-/*Tablets*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) {
-  .app-page {
-    &__about-us {
-      .page-content {
-        width: 100%;
+/* Desktop : alternance image / texte */
+@media (min-width: 62rem) {
+  .app-page__about-us .page-content {
+    gap: 0;
 
-        &__item {
-          &:last-child {
-            .page-content__item__img {
-              margin-bottom: 0;
-            }
-          }
-        }
+    &__item {
+      flex-direction: row;
+      min-height: 36rem;
+
+      .page-content__item__info,
+      .page-content__item__img {
+        width: 50%;
       }
-    }
-  }
-}
 
-/*Mobiles*/
-@media only screen and (max-device-width: 48rem) {
-  .app-page {
-    &__about-us {
-      .page-content {
-        width: 100%;
-        margin: 0 auto;
+      &__info {
+        padding: 2rem 4rem;
+      }
 
-        &__item {
-          height: auto;
-          flex-direction: column;
+      &__img {
+        border-radius: 0;
+      }
 
-          &:nth-child(2n+1) {
-            flex-direction: column;
-          }
-
-          &__img {
-            position: unset;
-            width: 100%;
-            margin-bottom: 2rem;
-
-            img {
-              position: unset;
-              object-fit: cover;
-              transform: translate(0, 0);
-            }
-          }
-
-          &__info {
-            width: calc(100% - 4rem);
-            margin: 0 auto;
-            padding: 0;
-
-            p { margin-bottom: 2rem; }
-          }
-
-          &:last-child {
-            .page-content__item__img {
-              margin-bottom: 0;
-            }
-          }
-        }
+      &:nth-child(2n + 1) {
+        flex-direction: row-reverse;
       }
     }
   }

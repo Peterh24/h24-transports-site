@@ -6,30 +6,30 @@
 =======================*/
 
 .page_404 {
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0;
-  background: $exploitation-dark;
-  color: $event;
+  padding: 2rem;
+  background: $event; // fond sombre
+  color: $on-event; // texte clair (corrige l'ancien sombre-sur-sombre)
   text-align: center;
   font-family: $base-font-family;
 
   &__wrapper {
-    width: 120rem;
+    width: 100%;
+    max-width: 60rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    gap: 4rem;
+    gap: 2.5rem;
   }
 
   app-logo {
-    top: 4rem;
+    position: relative; // neutralise le position:fixed global
   }
 
   .four_zero_four_bg {
@@ -42,104 +42,47 @@
   }
 
   h1 {
+    margin: 0;
     font-family: $alt-font-family;
     letter-spacing: $base-letter-spacing;
     font-weight: 600;
-    font-size: 4.2rem;
-    margin-bottom: 0;
+    font-size: clamp(3rem, 10vw, 4.2rem);
   }
 
   h3 {
-    font-family: $base-font-family;
-    letter-spacing: $base-letter-spacing;
+    margin: 0;
     font-weight: 500;
-    font-size: 3.2rem;
-    margin-bottom: 0;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
   }
 
   .link_404 {
-    color: $exploitation-dark;
-    padding: 1rem 2rem;
-    background: $event;
     display: inline-block;
+    padding: 1.1rem 2.2rem;
+    border-radius: 999px;
+    background: $accent;
+    color: $ink;
+    border: 0.15rem solid $accent;
     text-decoration: none;
-    border-radius: 2rem;
-    border: 2px solid $exploitation-dark;
-    transition: all 0.2s ease-in-out;
+    font-family: $alt-font-family;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: $base-letter-spacing;
+    transition: transform 0.2s ease, background 0.2s ease;
 
     &:hover {
-      color: $event;
-      background: $exploitation-dark;
-      border-color: $event;
+      transform: translateY(-2px);
+      background: lighten($accent, 6%);
     }
   }
 }
 
-/*RESPONSIVE*/
-/*Tablets landscape*/
-@media only screen and (min-width: 48rem) and (max-width: 76.7rem) and (orientation: landscape) {
+@media (max-width: 30rem) {
   .page_404 {
-    justify-content: flex-start;
-
-    &__wrapper {
-      width: calc(100% - 8rem);
-      margin-top: 16rem;
-    }
+    padding: 1.5rem;
   }
 }
 
-/*Mobiles landscape*/
-@media only screen and (max-device-width: 48rem) and (orientation: landscape) {
-  .page_404 {
-    padding: 0;
-    justify-content: flex-start;
-
-    app-logo {
-      top: 2rem;
-    }
-
-    &__wrapper {
-      width: calc(100% - 4rem);
-      margin-top: 12rem;
-      gap: 2rem;
-      position: relative;
-    }
-
-    .four_zero_four_bg {
-      width: calc(50vw - 2rem);
-      height: calc(100vh - 6rem);
-      position: absolute;
-      top: -6rem;
-      left: 0;
-      background-position: center;
-    }
-
-    h1, h3, p, .link_404 {
-      width: calc(50vw - 2rem);
-      align-self: flex-end;
-    }
-  }
-}
-
-/*Mobiles portrait*/
-@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
-  .page_404 {
-    padding: 0;
-    justify-content: flex-start;
-
-    app-logo {
-      top: 2rem;
-    }
-
-    &__wrapper {
-      width: calc(100% - 4rem);
-      gap: 2rem;
-      margin-top: 12rem;
-    }
-
-    .four_zero_four_bg {
-      height: 40vh;
-      width: 100%;
-    }
-  }
+// logo en blanc (la 404 n'a pas de wrapper de thème)
+::ng-deep .page_404 app-logo svg {
+  fill: $on-event;
 }

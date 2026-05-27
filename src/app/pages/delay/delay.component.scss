@@ -167,7 +167,7 @@
 }
 
 /*Mobiles portrait*/
-@media only screen and (max-device-width: 48rem) and (orientation: portrait) {
+@media only screen and (max-width: 48rem) and (orientation: portrait) {
   .timelimit {
     display: flex;
     flex-direction: column;
