@@ -1,0 +1,27 @@
+# Contexte de build Docker.
+#
+# Ce fichier doit vivre à la RACINE du dépôt : Docker lit le `.dockerignore`
+# du répertoire de contexte, et le workflow build avec `context: .`. Le
+# `docker/.dockerignore` hérité du site Angular n'était donc jamais appliqué.
+
+node_modules
+.next
+.git
+.github
+.vscode
+.idea
+
+# Masters vidéo — déjà hors du dépôt, mais on évite aussi de les envoyer
+# au démon Docker si quelqu'un build en local.
+.media-source
+
+npm-debug.log*
+*.tsbuildinfo
+.DS_Store
+
+# ⚠️ Ne PAS ignorer `.env` : le workflow le génère à la racine avant le build
+# (fusion des fichiers d'environnement récupérés sur le serveur), et Next en a
+# besoin AU MOMENT DU BUILD pour inliner les variables `NEXT_PUBLIC_*` —
+# notamment `NEXT_PUBLIC_SITE_URL`, qui détermine les URLs canoniques, le
+# sitemap et les données structurées. L'ignorer ferait silencieusement
+# retomber le site sur l'URL par défaut.
