@@ -94,16 +94,25 @@ jobs:
       - name: Download and merge environment files
         run: |
           mkdir -p ./env-files
-          export SSHPASS="${{ secrets.SSH_PASSWORD }}"
+          # OpenSSH fournit lui-meme le mot de passe via SSH_ASKPASS (>= 8.4).
+          # Aucun paquet a installer : le 2026-08-19, deux deploiements sont
+          # restes bloques plus de 15 min sur le "apt-get update" qui servait
+          # uniquement a installer sshpass, le miroir Ubuntu du runner etant
+          # injoignable.
+          echo '#!/bin/sh' > "$RUNNER_TEMP/askpass.sh"
+          echo 'echo "$SSH_PW"' >> "$RUNNER_TEMP/askpass.sh"
+          chmod +x "$RUNNER_TEMP/askpass.sh"
+          export SSH_PW="${{ secrets.SSH_PASSWORD }}"
+          export SSH_ASKPASS="$RUNNER_TEMP/askpass.sh"
+          export SSH_ASKPASS_REQUIRE=force
+          export DISPLAY=:0
 
-          # Installer sshpass
-          sudo apt-get update && sudo apt-get install -y sshpass
 
           # Télécharger les fichiers d'environnement
-          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password \
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password -o ConnectTimeout=30 \
             ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env ./env-files/.env || echo "Fichier .env global non trouvé"
 
-          sshpass -e scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password \
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PreferredAuthentications=password -o ConnectTimeout=30 \
             ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ inputs.env_files_remote_path }}/.env.${{ env.ENVIRONMENT }} ./env-files/.env.${{ env.ENVIRONMENT }} || echo "Fichier .env.${{ env.ENVIRONMENT }} non trouvé"
 
           # Fusionner les fichiers
