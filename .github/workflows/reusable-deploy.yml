@@ -85,6 +85,10 @@ jobs:
           source: ".github/scripts/deploy.sh"
           target: "/tmp"
           strip_components: 2
+          # Sans overwrite, scp-action conserve le /tmp/deploy.sh deja present.
+          # Ce chemin est partage par tous les depots : un depot se retrouvait
+          # a deployer avec le script d'un autre. Pas de rm ici, la cible est /tmp.
+          overwrite: true
           use_insecure_cipher: true
 
       - name: Download and merge environment files
@@ -163,6 +167,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           source: "deploy-files"
           target: "/tmp"
+          overwrite: true
           use_insecure_cipher: true
 
       - name: Deploy to server
