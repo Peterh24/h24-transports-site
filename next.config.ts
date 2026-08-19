@@ -179,6 +179,12 @@ const nextConfig: NextConfig = {
       // Fourre-tout WordPress : toute autre URL en /index.php/... vers l'accueil.
       { source: "/index.php/:path*", destination: "/", statusCode: 301 },
 
+      // Anciens chemins de sitemap WordPress/Yoast : Google peut continuer a les
+      // interroger longtemps apres la migration. Sans ca, il collecte des 404
+      // sur un sitemap qu'il croit toujours declare.
+      { source: "/sitemap_index.xml", destination: "/sitemap.xml", statusCode: 301 },
+      { source: "/wp-sitemap.xml", destination: "/sitemap.xml", statusCode: 301 },
+
       /* ---------- 3. Site statique 2018 ---------- */
       { source: "/index.html", destination: "/", statusCode: 301 },
     ];
