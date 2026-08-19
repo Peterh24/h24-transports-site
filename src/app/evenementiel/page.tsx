@@ -123,7 +123,7 @@ export default function EventPage() {
         values={[
           {
             title: "Rapidité",
-            text: "Nous garantissons une livraison rapide et fiable à chaque mission, conscients que le moindre retard peut compromettre votre projet.",
+            text: "Nous mettons tout en œuvre pour une livraison rapide et fiable à chaque mission, conscients que le moindre retard peut compromettre votre projet.",
           },
           {
             title: "Fiabilité",

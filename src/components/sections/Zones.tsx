@@ -32,8 +32,8 @@ export function Zones() {
               <span className="accent">Quand vous voulez.</span>
             </h2>
             <p className="lead" style={{ marginTop: 24 }}>
-              De Paris intramuros au reste de la France, nous garantissons des
-              délais d'intervention adaptés à l'urgence de votre demande.
+              De Paris intramuros au reste de la France, nous adaptons nos
+              délais d'intervention à l'urgence de votre demande.
             </p>
             <div className="zones-list" style={{ marginTop: 40 }}>
               {zones.map((z, i) => (

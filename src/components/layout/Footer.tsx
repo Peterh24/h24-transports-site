@@ -104,6 +104,9 @@ export function Footer() {
               <li>
                 <Link href="/mentions-legales">Mentions légales</Link>
               </li>
+              <li>
+                <Link href="/cgv">CGV</Link>
+              </li>
             </ul>
           </div>
 

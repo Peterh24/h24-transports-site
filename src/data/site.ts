@@ -121,7 +121,7 @@ export const SITE = {
   founded: 2014,
   /** Siège social — repris des mentions légales (article 1). */
   address: {
-    street: "4-6 boulevard de Beaubourg",
+    street: "4 boulevard de Beaubourg",
     postalCode: "77183",
     city: "Croissy-Beaubourg",
     region: "Île-de-France",
