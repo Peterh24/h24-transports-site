@@ -2450,6 +2450,45 @@ section {
   line-height: 1;
 }
 
+/* ===== CGV ===== */
+.cgv-sub {
+  font-family: var(--font-expressway), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 32px 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.cgv-sub .mono {
+  font-size: 13px;
+}
+.cgv-list {
+  margin: 16px 0 0;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+.cgv-list li {
+  margin-bottom: 10px;
+}
+.cgv-list li::marker {
+  color: var(--accent);
+}
+.cgv-defs {
+  margin: 16px 0 0;
+  line-height: 1.7;
+}
+.cgv-defs > div {
+  margin-bottom: 18px;
+}
+.cgv-defs dt {
+  font-weight: 600;
+  color: var(--fg);
+}
+.cgv-defs dd {
+  margin: 4px 0 0;
+}
+
 /* ===== CONTACT ===== */
 .contact-grid {
   display: grid;

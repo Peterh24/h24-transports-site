@@ -33,9 +33,38 @@ import type { NextConfig } from "next";
 /** Univers événementiel : l'ancien site éclatait la thématique en trois URLs. */
 const EVENT_THEMES = ["eventAudiovisuel", "eventMode", "eventEvent"];
 
+/**
+ * URL canonique du site, resolue AU BUILD.
+ *
+ * Pourquoi ici et pas seulement dans `src/data/site.ts` : le champ `env` de
+ * Next inline la valeur dans le bundle serveur ET client, donc une seule
+ * verite partout. Et surtout, ca evite de dependre d'une variable a poser a
+ * la main sur le serveur — oubli qui avait fait declarer a la preprod des
+ * canonicals pointant vers la production.
+ *
+ * Ordre de priorite :
+ *   1. `NEXT_PUBLIC_SITE_URL` si elle est explicitement definie ;
+ *   2. sinon, deduite de `APP_ENV`, que le workflow de deploiement ecrit
+ *      systematiquement dans le `.env` avant le build (`prod` ou `dev`) ;
+ *   3. sinon, la production — le cas d'un build local sans configuration.
+ *
+ * `NEXT_PUBLIC_SITE_URL` reste donc la porte de sortie si un domaine change.
+ */
+const SITE_URLS: Record<string, string> = {
+  prod: "https://h24transports.com",
+  dev: "https://develop.h24transports.com",
+};
+
+const RESOLVED_SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  SITE_URLS[process.env.APP_ENV ?? ""] ||
+  SITE_URLS.prod;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Inline la valeur resolue ci-dessus dans les bundles serveur et client.
+  env: { NEXT_PUBLIC_SITE_URL: RESOLVED_SITE_URL },
   /**
    * Sortie autonome : Next produit dans `.next/standalone` un serveur Node
    * avec uniquement les dépendances réellement utilisées, et son propre
@@ -149,6 +178,12 @@ const nextConfig: NextConfig = {
 
       // Fourre-tout WordPress : toute autre URL en /index.php/... vers l'accueil.
       { source: "/index.php/:path*", destination: "/", statusCode: 301 },
+
+      // Anciens chemins de sitemap WordPress/Yoast : Google peut continuer a les
+      // interroger longtemps apres la migration. Sans ca, il collecte des 404
+      // sur un sitemap qu'il croit toujours declare.
+      { source: "/sitemap_index.xml", destination: "/sitemap.xml", statusCode: 301 },
+      { source: "/wp-sitemap.xml", destination: "/sitemap.xml", statusCode: 301 },
 
       /* ---------- 3. Site statique 2018 ---------- */
       { source: "/index.html", destination: "/", statusCode: 301 },

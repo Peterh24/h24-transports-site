@@ -108,12 +108,11 @@ export const PAGES: PageEntry[] = [
   {
     path: "/cgv",
     label: "CGV",
-    summary: "Conditions générales de vente et de transport.",
-    updated: "2026-08-15",
-    // TODO(legal) : passer à `true` une fois le texte des CGV fourni.
-    // Tant que la page est un gabarit vide, l'indexer serait contre-productif.
-    indexable: false,
-    priority: 0.1,
+    summary:
+      "Conditions générales de vente et de transport : obligations du donneur d'ordre, emballage, livraison et réserves, délais, prix et paiement, responsabilité, assurances et annulation.",
+    updated: "2026-08-19",
+    indexable: true,
+    priority: 0.3,
     changeFrequency: "yearly",
   },
 ];

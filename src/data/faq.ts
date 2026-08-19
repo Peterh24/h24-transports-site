@@ -43,7 +43,7 @@ export const FAQ_HOME: FaqItem[] = [
   {
     question: "Dans quelles zones H24 Transports intervient-il ?",
     answer:
-      "H24 Transports intervient à Paris, dans toute l'Île-de-France et en France entière. La société est domiciliée 4-6 boulevard de Beaubourg, 77183 Croissy-Beaubourg, en Seine-et-Marne, à proximité immédiate de l'est parisien.",
+      "H24 Transports intervient à Paris, dans toute l'Île-de-France et en France entière. La société est domiciliée 4 boulevard de Beaubourg, 77183 Croissy-Beaubourg, en Seine-et-Marne, à proximité immédiate de l'est parisien.",
   },
   {
     question: "Comment demander un devis à H24 Transports ?",
@@ -171,7 +171,7 @@ export const FAQ_CONTACT: FaqItem[] = [
   {
     question: "Où se trouve H24 Transports ?",
     answer:
-      "H24 Transports est domiciliée 4-6 boulevard de Beaubourg, 77183 Croissy-Beaubourg, en Seine-et-Marne, et intervient à Paris, en Île-de-France et en France entière.",
+      "H24 Transports est domiciliée 4 boulevard de Beaubourg, 77183 Croissy-Beaubourg, en Seine-et-Marne, et intervient à Paris, en Île-de-France et en France entière.",
   },
 ];
 
