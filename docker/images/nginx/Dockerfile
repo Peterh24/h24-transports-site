@@ -1,56 +1,57 @@
-# Utilise l'image officielle Node.js comme base
-FROM node:20-alpine AS build
+# Image de production du site vitrine H24 Transports (Next.js 15).
+#
+# Le chemin `docker/images/nginx/` est conservé tel quel : c'est celui que
+# référence `.github/workflows/deploy.yml` (`dockerfile_path`). Le nom « nginx »
+# est un héritage — l'image précédente servait déjà du Node, pas du nginx.
+# Le renommer imposerait de modifier le workflow sans rien apporter.
+#
+# Contrat avec le reste de la chaîne, à ne pas casser :
+# - `docker/docker-compose.prod.yml` impose `PORT=8080` et Traefik route vers
+#   ce port (`loadbalancer.server.port=8080`).
+# - Le workflow génère un `.env` à la racine AVANT le build : Next le lit pour
+#   inliner les variables `NEXT_PUBLIC_*` (dont `NEXT_PUBLIC_SITE_URL`).
+# - `output: "standalone"` doit rester activé dans `next.config.ts`.
 
-# Argument pour définir l'environnement de build (dev ou prod)
-ARG APP_ENV=prod
-
-# Définit le répertoire de travail
+# ---------- 1. Dépendances ----------
+FROM node:20-alpine AS deps
 WORKDIR /app
-
-# Copie les fichiers package.json et package-lock.json
-COPY package*.json ./
-
-# Installe les dépendances (toutes les dépendances pour le build)
+COPY package.json package-lock.json ./
+# `npm ci` installe aussi les dépendances optionnelles, dont `sharp`
+# (binaires musl), requis par next/image pour l'optimisation en production.
 RUN npm ci && npm cache clean --force
 
-# Copie le code source
-COPY . .
-
-# Build l'application selon l'environnement
-RUN if [ "$APP_ENV" = "dev" ] ; then npm run build:dev ; else npm run build:prod ; fi
-
-# Étape de production
-FROM node:20-alpine AS production
-
-# Récupère l'argument APP_ENV de l'étape précédente
+# ---------- 2. Build ----------
+FROM node:20-alpine AS build
 ARG APP_ENV=prod
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
 
-# Ajoute des labels pour identifier l'environnement
+# ---------- 3. Production ----------
+FROM node:20-alpine AS production
+ARG APP_ENV=prod
 LABEL build.environment=$APP_ENV
-
-# Définit le répertoire de travail
 WORKDIR /app
 
-# Copie seulement les fichiers nécessaires pour la production
-COPY package*.json ./
-COPY server.js ./
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+# Aligné sur docker-compose.prod.yml ; HOSTNAME=0.0.0.0 est indispensable pour
+# que le serveur écoute en dehors du conteneur.
+ENV PORT=8080
+ENV HOSTNAME=0.0.0.0
 
-# Installe seulement les dépendances de production
-RUN npm ci --only=production && npm cache clean --force
+RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
 
-# Copie les fichiers buildés depuis l'étape de build
-COPY --from=build /app/dist ./dist
+# La sortie standalone embarque son propre `server.js` et le sous-ensemble de
+# node_modules réellement utilisé. `static/` et `public/` ne sont pas inclus
+# par Next dans le bundle : ils doivent être copiés explicitement.
+COPY --from=build --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=build --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=build --chown=nextjs:nodejs /app/public ./public
 
-# Expose le port 8080
+USER nextjs
 EXPOSE 8080
 
-# Crée un utilisateur non-root pour la sécurité
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-
-# Change le propriétaire des fichiers
-RUN chown -R nextjs:nodejs /app
-USER nextjs
-
-# Commande pour démarrer l'application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

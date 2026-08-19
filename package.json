@@ -1,60 +1,30 @@
 {
   "name": "h24-transports",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "node server.js",
-    "build": "npm run build:prod",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "start:dev": "ng serve --c=dev",
-    "build:dev": "ng build --c=dev",
-    "start:prod": "ng serve --c=prod",
-    "build:prod": "ng build --c=prod",
-    "heroku-postbuild": "ng build"
-  },
+  "version": "1.0.0",
   "private": true,
+  "description": "H24 Transports — Le transport qui ne dort jamais. Site vitrine (Next.js 15 / React 19 / TypeScript / Tailwind v4).",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
-    "@angular/animations": "^15.2.7",
-    "@angular/cdk": "^15.2.7",
-    "@angular/common": "^15.2.7",
-    "@angular/compiler": "^15.2.7",
-    "@angular/core": "^15.2.7",
-    "@angular/forms": "^15.2.7",
-    "@angular/localize": "~15.2.7",
-    "@angular/material": "^15.2.7",
-    "@angular/platform-browser": "^15.2.7",
-    "@angular/platform-browser-dynamic": "^15.2.7",
-    "@angular/router": "^15.2.7",
-    "@fortawesome/angular-fontawesome": "^0.12.0",
-    "@fortawesome/free-brands-svg-icons": "^6.2.1",
-    "@ngrx/effects": "^15.4.0",
-    "@ngrx/entity": "^15.4.0",
-    "@ngrx/store": "^15.4.0",
-    "@ngrx/store-devtools": "^15.4.0",
-    "express": "^4.18.2",
-    "path": "^0.12.7",
-    "rxjs": "~7.5.0",
-    "swiper": "^8.4.6",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
+    "next": "^15.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^15.2.6",
-    "@angular/cli": "^20.3.2",
-    "@angular/compiler-cli": "^15.2.7",
-    "@types/jasmine": "~4.3.0",
-    "enhanced-resolve": "^3.3.0",
-    "jasmine-core": "~4.5.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.8.2"
-  },
-  "engines": {
-    "node": "v18.14.2",
-    "npm": "9.5.0"
+    "@eslint/eslintrc": "^3.2.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "eslint": "^9.21.0",
+    "eslint-config-next": "^15.3.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.8.0"
   }
 }
