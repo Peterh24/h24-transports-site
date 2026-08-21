@@ -3,10 +3,16 @@
 import { useState } from "react";
 import { SITE } from "@/data/site";
 
+/**
+ * Choix proposés au visiteur. `other` est volontairement le dernier : une
+ * demande qui ne rentre dans aucun univers ne doit pas être forcée dans le
+ * mauvais, sinon elle arrive au dispatch mal étiquetée.
+ */
 const SERVICES = [
   { v: "event", l: "Événementiel" },
   { v: "express", l: "Express" },
   { v: "app", l: "Application" },
+  { v: "other", l: "Autres" },
 ];
 
 /** Libellés lisibles des univers — le champ brut ne parlerait pas au dispatch. */
@@ -15,6 +21,7 @@ const SERVICE_LABELS: Record<string, string> = {
   express: "Transport urgent exclusif",
   app: "Application",
   colis: "Colis, plis & palettes",
+  other: "Autre demande",
 };
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
