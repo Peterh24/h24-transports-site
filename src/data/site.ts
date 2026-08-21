@@ -141,6 +141,24 @@ export const SITE = {
     // App client H24 — toute commande/devis passe par là (stratégie : forcer l'usage de l'app).
     login: "https://dashboard.h24transports.com/auth",
   },
+  /**
+   * Endpoint de réception des demandes de contact.
+   *
+   * C'est celui qu'utilisait déjà le site Angular, appelé **depuis le
+   * navigateur du visiteur** — et c'est volontairement ce fonctionnement qui
+   * est conservé : la même requête partie du conteneur serveur n'aboutit pas
+   * (constaté en prod le 2026-08-21, échec immédiat avant même que l'API ne
+   * soit atteinte). L'API autorise le CORS pour les origines du site
+   * (`h24transports.com`, `www`, `develop`, `localhost`), donc l'appel navigateur
+   * passe. Ne pas rebasculer côté serveur sans avoir d'abord réparé la sortie
+   * réseau du conteneur.
+   *
+   * `NEXT_PUBLIC_` est indispensable : la valeur doit être inlinée dans le
+   * bundle client. Ne renseigner la variable que si le back déménage.
+   */
+  contactApi:
+    process.env.NEXT_PUBLIC_CONTACT_API_URL ||
+    "https://api.h24transports.com/api/send-email",
 } as const;
 
 /**
