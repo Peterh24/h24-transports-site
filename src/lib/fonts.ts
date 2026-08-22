@@ -1,9 +1,11 @@
 import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
 /**
- * Expressway — police de marque H24 (4 graisses), auto-hébergée via next/font/local.
- * Exposée en CSS sous `var(--font-expressway)`.
+ * Expressway — police de marque H24, réservée aux TITRES et aux grands chiffres
+ * (`var(--font-display)` en CSS). Elle n'est plus utilisée pour le texte
+ * courant, la navigation ni les boutons : en petit corps ses lettres étroites
+ * et fermées rendaient les paragraphes illisibles.
  */
 export const expressway = localFont({
   src: [
@@ -26,4 +28,16 @@ export const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "600"],
   variable: "--font-mono",
   display: "swap",
+});
+
+/**
+ * Inter — tout sauf les titres : texte courant, navigation, boutons, libellés,
+ * formulaires (`var(--font-ui)` et `var(--font-body)` en CSS).
+ * Exposée en CSS sous `var(--font-inter)`.
+ */
+export const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 });

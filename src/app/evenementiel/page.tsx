@@ -114,8 +114,7 @@ export default function EventPage() {
         title="Le matériel arrive."
         accent="L'événement peut commencer."
         lead="Caméra, lumière, machinerie, décor — pour Pub & Cinéma, Mode & Luxe, Concert & Salon. Une expertise née sur le terrain, en 2014."
-        image="/images/evenementiel/event-shoot.webp"
-        imagePosition="22% center"
+        image="/images/evenementiel/event-tailgate.webp"
         glow={false}
         photoTone="bright"
       />

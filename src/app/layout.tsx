@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { expressway, jetbrainsMono } from "@/lib/fonts";
+import { expressway, inter, jetbrainsMono } from "@/lib/fonts";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -78,7 +78,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${expressway.variable} ${jetbrainsMono.variable}`}
+      className={`${expressway.variable} ${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body>

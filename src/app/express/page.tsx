@@ -42,12 +42,19 @@ export default function ExpressPage() {
     <>
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
+      {/* Photo d'en-tête prise à l'heure bleue, déjà très sombre : le tone
+          "dark" l'effaçait sous le scrim, d'où "bright" + halo désactivé
+          (le phare du véhicule fait déjà la source lumineuse). */}
       <PageHeader
         num="02"
         eyebrow="Univers · Urgent exclusif"
         title="Du Point A au Point B."
         accent="Sans escale."
         lead="Un véhicule entièrement dédié à votre course. Pour les courses ponctuelles, récurrentes, spéciales ou standards. Service client à votre écoute pour des solutions sur mesure."
+        image="/images/express/van-motion.webp"
+        imagePosition="50% 78%"
+        glow={false}
+        photoTone="bright"
       />
       <section className="categories">
         <div className="container">

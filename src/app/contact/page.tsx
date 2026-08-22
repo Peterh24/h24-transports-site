@@ -45,6 +45,10 @@ export default function ContactPage() {
         title="Une mission ?"
         accent="Parlons-en."
         lead="Dispatch H24, basé à Paris. Réponse sous 30 minutes ouvrées. Pour les urgences, appelez directement le 24/7."
+        image="/images/contact/dispatch-desk.webp"
+        imagePosition="50% 70%"
+        glow={false}
+        photoTone="bright"
       />
       <section className="contact">
         <div className="container">

@@ -142,6 +142,10 @@ export default function ColisPage() {
         title="Du pli à la palette."
         accent="Livré dans les temps."
         lead="Messagerie et coursier dédié, en express ou planifié. Du document urgent à la palette volumineuse, on enlève vite, on trace en temps réel et on livre dans les délais — Paris, Île-de-France et France entière."
+        image="/images/colis/truck-boxes.webp"
+        imagePosition="50% 25%"
+        glow={false}
+        photoTone="bright"
       />
 
       {/* tapis roulant animé */}
