@@ -682,9 +682,11 @@ section {
   position: fixed;
   inset: var(--nav-h) 0 0;
   z-index: 79;
-  background: rgba(10, 9, 8, 0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* Opaque, et non 97 % + flou d'arriere-plan : le minifieur CSS ne conserve que
+     la variante `-webkit-backdrop-filter`, que Chrome n'applique plus. Le flou
+     etant absent, les 3 % de transparence laissaient lire le titre du hero a
+     travers le menu. */
+  background: var(--bg-0);
   display: flex;
   flex-direction: column;
   padding: 40px var(--gutter);
