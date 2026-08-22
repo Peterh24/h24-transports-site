@@ -17,5 +17,5 @@ régénérée, refaire le flou — il n'est pas dans le fichier d'origine
 (`event.jpg` / `contact.jpg` du poste de travail).
 
 Les photos d'en-tête sont recadrées en 3:2 puis redimensionnées en 1920×1280,
-sauf `express/van-motion.webp` (1440×960) et `colis/truck-boxes.webp`
+sauf `express/van-motion.webp` (1536×1024) et `colis/truck-boxes.webp`
 (1448×965), livrées à la résolution de leur source — pas d'agrandissement.
