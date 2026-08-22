@@ -688,6 +688,11 @@ section {
   display: flex;
   flex-direction: column;
   padding: 40px var(--gutter);
+  /* Le contenu depasse la hauteur disponible des l'iPhone SE : sans defilement,
+     ce sont les deux boutons du bas qui devenaient inatteignables. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   gap: 8px;
   transform: translateY(-8px);
   opacity: 0;
@@ -699,7 +704,11 @@ section {
   transform: none;
   pointer-events: auto;
 }
-.nav-mobile a {
+/* `:not(.btn)` est indispensable : `.nav-mobile a` (specificite 0,1,1) battait
+   `.btn` et `.btn-primary` (0,1,0), et les deux boutons du bas heritaient de la
+   mise en forme des liens de menu — libelle de 28 px en creme translucide sur
+   fond orange, colle aux bords, sans interlettrage. */
+.nav-mobile a:not(.btn) {
   font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 28px;
   font-weight: 900;
@@ -709,8 +718,8 @@ section {
   padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
-.nav-mobile a.active,
-.nav-mobile a:hover {
+.nav-mobile a:not(.btn).active,
+.nav-mobile a:not(.btn):hover {
   color: var(--accent);
 }
 .nav-mobile-cta {
@@ -718,6 +727,12 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+/* Pleine largeur et contenu centre : en colonne, `.btn` etant en inline-flex
+   sans justification, le libelle restait cale a gauche. */
+.nav-mobile-cta .btn {
+  justify-content: center;
+  padding: 20px 24px;
 }
 .nav-mobile-group {
   display: flex;
@@ -731,7 +746,10 @@ section {
   color: var(--accent);
   padding: 14px 0 4px;
 }
-.nav-mobile-group a {
+/* Meme `:not(.btn)` que la regle generale : sans lui, `.nav-mobile a:not(.btn)`
+   (specificite 0,2,1) l'emporterait sur `.nav-mobile-group a` (0,1,1) et les
+   sous-entrees perdraient leur retrait et leur taille reduite. */
+.nav-mobile-group a:not(.btn) {
   padding-left: 18px;
   font-size: 22px;
 }
