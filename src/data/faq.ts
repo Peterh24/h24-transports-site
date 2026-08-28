@@ -85,6 +85,38 @@ export const FAQ_EVENEMENTIEL: FaqItem[] = [
   },
 ];
 
+export const FAQ_MODE: FaqItem[] = [
+  {
+    question: "Qui transporte des vêtements sur cintre à Paris ?",
+    answer:
+      "H24 Transports transporte des vêtements sur cintre à Paris et en Île-de-France, dans des véhicules équipés de barres de penderie. Les pièces voyagent suspendues, sans être pliées ni tassées, entre showrooms, studios, ateliers et lieux de défilé.",
+  },
+  {
+    question: "H24 Transports transporte-t-il des portants montés ?",
+    answer:
+      "Oui. H24 Transports embarque les portants montés tels quels, sans démontage ni transfert des pièces, grâce à des véhicules équipés penderie. C'est la solution utilisée pour les collections de showroom et les vestiaires de défilé, à Paris comme en Île-de-France.",
+  },
+  {
+    question: "Qui assure le transport des collections pendant la Fashion Week à Paris ?",
+    answer:
+      "H24 Transports intervient pendant la Fashion Week parisienne pour le transport des collections, des portants et du matériel de défilé. La société opère 24 heures sur 24, ce qui couvre les montages de nuit et les rotations entre showrooms, backstages et lieux de présentation.",
+  },
+  {
+    question: "Quand a lieu la Fashion Week à Paris ?",
+    answer:
+      "La Fashion Week parisienne se tient deux fois par an : en février-mars pour les collections automne-hiver, et en septembre-octobre pour le printemps-été. Ce sont les deux pics d'activité du transport de collections à Paris, périodes sur lesquelles H24 Transports intervient.",
+  },
+  {
+    question: "En combien de temps une collection peut-elle être enlevée à Paris ?",
+    answer: `H24 Transports annonce des délais d'intervention de ${DELAIS}. Un véhicule est dédié à une seule course, sans groupage ni passage par un centre de tri, ce qui permet un enlèvement de showroom à showroom sans rupture de charge.`,
+  },
+  {
+    question: "H24 Transports livre-t-il les showrooms et les studios photo ?",
+    answer:
+      "Oui. H24 Transports assure les livraisons et enlèvements entre showrooms, studios photo, ateliers et salons professionnels, à Paris, en Île-de-France et partout en France. Chaque course est suivie par géolocalisation en temps réel.",
+  },
+];
+
 export const FAQ_EXPRESS: FaqItem[] = [
   {
     question: "Qu'est-ce qu'un transport urgent exclusif ?",

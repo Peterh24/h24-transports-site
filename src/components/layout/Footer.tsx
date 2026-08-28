@@ -79,6 +79,9 @@ export function Footer() {
                 <Link href="/evenementiel">Événementiel</Link>
               </li>
               <li>
+                <Link href="/mode">Mode &amp; luxe</Link>
+              </li>
+              <li>
                 <Link href="/express">Express exclusif</Link>
               </li>
               <li>

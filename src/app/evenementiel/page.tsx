@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Cta } from "@/components/sections/Cta";
 import { Faq } from "@/components/sections/Faq";
@@ -155,6 +156,12 @@ export default function EventPage() {
               Stockage sécurisé, géolocalisation, assurances dédiées et équipes
               formées — vos marchandises entre de bonnes mains, du départ à la
               livraison.
+              <p style={{ marginTop: 18 }}>
+                <Link href="/mode" className="btn btn-ghost">
+                  Transport mode &amp; vêtements sur cintre{" "}
+                  <span className="arrow" />
+                </Link>
+              </p>
             </div>
           </div>
           <div className="engagements-grid reveal-stagger">

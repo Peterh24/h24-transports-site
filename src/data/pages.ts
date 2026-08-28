@@ -46,6 +46,16 @@ export const PAGES: PageEntry[] = [
     changeFrequency: "monthly",
   },
   {
+    path: "/mode",
+    label: "Mode & luxe",
+    summary:
+      "Transport de vêtements sur cintre, de portants montés et de collections à Paris, en Île-de-France et partout en France : showroom, défilé, Fashion Week, shooting et salon professionnel. Véhicules équipés penderie, 24h/24.",
+    updated: "2026-08-28",
+    indexable: true,
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/express",
     label: "Express",
     summary:

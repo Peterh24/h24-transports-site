@@ -186,6 +186,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Services",
     children: [
       { href: "/evenementiel", label: "Événementiel" },
+      { href: "/mode", label: "Mode & luxe" },
       { href: "/express", label: "Express" },
       { href: "/colis", label: "Colis" },
     ],
