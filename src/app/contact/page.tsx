@@ -40,7 +40,6 @@ export default function ContactPage() {
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
       <PageHeader
-        num="24/7"
         tag="/ contact / dispatch h24"
         eyebrow="Contactez-nous"
         title="Une mission ?"

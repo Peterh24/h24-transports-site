@@ -47,7 +47,6 @@ export default function ExpressPage() {
           "dark" l'effaçait sous le scrim, d'où "bright" + halo désactivé
           (le phare du véhicule fait déjà la source lumineuse). */}
       <PageHeader
-        num="02"
         eyebrow="Univers · Coursier & urgent exclusif"
         title="Du Point A au Point B."
         accent="Sans escale."

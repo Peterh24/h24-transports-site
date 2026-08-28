@@ -2,12 +2,11 @@ import Image from "next/image";
 import { HeroGlow } from "@/components/ui/HeroGlow";
 
 type CommonProps = {
-  num: string;
   eyebrow: string;
   title: string;
   accent: string;
   lead: string;
-  /** Étiquette mono en haut. Par défaut "/ univers / {num}" (pages univers). */
+  /** Étiquette mono en haut. Par défaut "/ univers" (pages univers). */
   tag?: string;
   /** Affiche le halo orange (défaut true). */
   glow?: boolean;
@@ -48,7 +47,6 @@ type Props = WithPhoto | WithoutPhoto;
 /** En-tête générique des pages univers / à-propos / contact. */
 export function PageHeader(props: Props) {
   const {
-    num,
     eyebrow,
     title,
     accent,
@@ -109,9 +107,11 @@ export function PageHeader(props: Props) {
           </>
         )}
       </div>
-      <div className="container page-header-inner">
+      <div
+        className={`container page-header-inner${media ? "" : " is-solo"}`}
+      >
         <div className="page-header-side">
-          <span className="mono dim">{tag ?? `/ univers / ${num}`}</span>
+          <span className="mono dim">{tag ?? "/ univers"}</span>
           <span className="eyebrow" style={{ marginTop: 24 }}>
             {eyebrow}
           </span>
@@ -124,14 +124,12 @@ export function PageHeader(props: Props) {
             {lead}
           </p>
         </div>
-        {media ? (
+        {media && (
           <div
             className="page-header-media"
             style={{ backgroundImage: `url(${media})` }}
             aria-hidden="true"
           />
-        ) : (
-          <div className="page-header-num">{num}</div>
         )}
       </div>
     </section>

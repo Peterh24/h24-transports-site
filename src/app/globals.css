@@ -1803,13 +1803,10 @@ section {
   display: flex;
   flex-direction: column;
 }
-.page-header-num {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 900;
-  font-size: clamp(140px, 22vw, 360px);
-  line-height: 0.85;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--line-strong);
+/* En-tête sans visuel : une seule colonne, sinon la colonne `auto` vide de
+   la grille laisse un gap de 40px sans contenu à droite du texte. */
+.page-header-inner.is-solo {
+  grid-template-columns: 1fr;
 }
 /* halo orange atténué (en-tête avec visuel) */
 .page-header.glow-soft .hero-glow {
@@ -1854,10 +1851,6 @@ section {
 @media (max-width: 900px) {
   .page-header-inner {
     grid-template-columns: 1fr;
-  }
-  .page-header-num {
-    font-size: 30vw;
-    align-self: flex-end;
   }
   .page-header-media {
     width: min(100%, 540px);
@@ -1928,10 +1921,6 @@ section {
       transparent 58%,
       var(--bg-0) 100%
     );
-}
-.page-header.has-photo .page-header-num {
-  position: relative;
-  z-index: 3;
 }
 /* variante "claire" (photo de jour, ex. tournage) : moins assombrie, texte ombré */
 .page-header.photo-bright .page-header-photo {

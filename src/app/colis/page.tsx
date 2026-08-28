@@ -138,7 +138,6 @@ export default function ColisPage() {
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
       <PageHeader
-        num="03"
         eyebrow="Univers · Colis, pli & palette"
         title="Du pli à la palette."
         accent="Livré dans les temps."

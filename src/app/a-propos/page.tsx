@@ -64,7 +64,6 @@ export default function AboutPage() {
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
       <PageHeader
-        num="H24"
         tag="/ société / depuis 2014"
         eyebrow="À propos"
         title="Depuis 2014."

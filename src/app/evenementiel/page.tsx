@@ -111,7 +111,6 @@ export default function EventPage() {
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
       <PageHeader
-        num="01"
         eyebrow="Univers · Audiovisuel & Événementiel"
         title="Le matériel arrive."
         accent="L'événement peut commencer."

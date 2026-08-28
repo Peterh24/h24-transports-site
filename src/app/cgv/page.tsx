@@ -81,7 +81,6 @@ export default function CgvPage() {
     <>
       <JsonLd data={jsonLd} />
       <PageHeader
-        num="§"
         tag="/ légal / cgv"
         eyebrow="Conditions générales"
         title="Conditions générales"

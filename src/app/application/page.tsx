@@ -98,7 +98,6 @@ export default function AppPage() {
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
       <PageHeader
-        num="04"
         eyebrow="Univers · Application mobile"
         title="Pilotez vos transports."
         accent="Du brief à la facture."

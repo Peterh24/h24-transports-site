@@ -55,7 +55,6 @@ export default function MentionsLegalesPage() {
   return (
     <>
       <PageHeader
-        num="§"
         tag="/ légal / mentions"
         eyebrow="Informations légales"
         title="Mentions"
