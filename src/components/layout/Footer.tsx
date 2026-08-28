@@ -82,6 +82,9 @@ export function Footer() {
                 <Link href="/express">Express exclusif</Link>
               </li>
               <li>
+                <Link href="/colis">Colis &amp; palette</Link>
+              </li>
+              <li>
                 <Link href="/application">Application mobile</Link>
               </li>
             </ul>

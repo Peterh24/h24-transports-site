@@ -24,11 +24,12 @@ export const metadata: Metadata = {
 
 /**
  * L'accueil porte le catalogue de services : c'est la page que les moteurs
- * génératifs rattachent à la question « qui fait X à Paris ». Les témoignages
- * sont balisés en `Review` sans `aggregateRating` — ce sont des verbatims
- * authentiques mais non notés, et inventer une note serait un faux avis.
- * À noter : Google n'affiche pas d'étoiles pour les avis auto-publiés, la
- * valeur est ici l'ancrage des réponses génératives.
+ * génératifs rattachent à la question « qui fait X à Paris ». Les avis sont
+ * balisés en `Review` avec leur note et leur date réelles, reprises de la
+ * fiche Google — sans `aggregateRating`, que Google ignore quand une
+ * entreprise le publie à propos d'elle-même (cf. `src/lib/schema.ts`).
+ * Google n'affichera donc pas d'étoiles dans les résultats ; la valeur est
+ * ici l'ancrage des réponses génératives.
  */
 const jsonLd = graph(
   webPage({
@@ -67,7 +68,8 @@ const jsonLd = graph(
     review({
       body: testimonial.body,
       authorName: testimonial.name,
-      authorRole: testimonial.role,
+      rating: testimonial.rating,
+      datePublished: testimonial.datePublished,
     }),
   ),
 );

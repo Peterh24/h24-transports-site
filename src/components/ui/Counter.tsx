@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 type Props = {
   value: number | string;
@@ -9,26 +9,53 @@ type Props = {
   duration?: number;
 };
 
-/** Compteur animé déclenché à l'entrée dans le viewport (easing cubic out). */
+/**
+ * `useLayoutEffect` dans le navigateur, `useEffect` au rendu serveur.
+ *
+ * React avertit quand `useLayoutEffect` est appelé côté serveur (il n'y fait
+ * rien). Or c'est précisément l'effet de mise en page qu'il nous faut ici : il
+ * est vidé **avant que le navigateur ne peigne**, donc la remise à zéro du
+ * compteur n'est jamais visible. Avec un `useEffect` ordinaire, le visiteur
+ * verrait brièvement 657, puis 0, puis le comptage — un clignotement au-dessus
+ * de la ligne de flottaison.
+ */
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+/**
+ * Compteur animé déclenché à l'entrée dans le viewport (easing cubic out).
+ *
+ * Le HTML rendu par le serveur porte la **valeur finale**, pas zéro : c'est ce
+ * que lisent les robots qui n'exécutent pas JavaScript, et notamment les agents
+ * de réponse générative que `robots.ts` autorise explicitement à citer le site
+ * (`ChatGPT-User`, `PerplexityBot`, `Claude-SearchBot`…). Avant cette version,
+ * l'état initial était `0` : les chiffres de preuve du site — 657 clients
+ * récurrents, 12K clients satisfaits, 35K courses réalisées — apparaissaient
+ * littéralement à « 0 » dans la source servie.
+ *
+ * Le navigateur, lui, repart de zéro et anime : l'effet visuel est inchangé.
+ * C'est le même principe que la FAQ rendue en `<details>` natif — le contenu
+ * doit exister dans le HTML servi, l'enrichissement vient après.
+ */
 export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: Props) {
-  const [n, setN] = useState(0);
+  const target = parseFloat(String(value));
+
+  /** `null` ⇒ pas encore pris en main par le navigateur : on affiche `target`. */
+  const [n, setN] = useState<number | null>(null);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
+
+  // Bascule à zéro avant le premier paint — sauf si l'animation est refusée,
+  // auquel cas la valeur finale reste affichée telle quelle.
+  useIsomorphicLayoutEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    setN(0);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    const reduce =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-
-    const target = parseFloat(String(value));
-
-    if (reduce) {
-      setN(target);
-      return;
-    }
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -51,13 +78,13 @@ export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: Pr
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [value, duration]);
+  }, [target, duration]);
 
   const display = useMemo(() => {
-    const v = Number(value);
-    if (Number.isInteger(v)) return Math.round(n).toLocaleString("fr-FR");
-    return n.toFixed(1);
-  }, [n, value]);
+    const current = n ?? target;
+    if (Number.isInteger(target)) return Math.round(current).toLocaleString("fr-FR");
+    return current.toFixed(1);
+  }, [n, target]);
 
   return (
     <span ref={ref} className="tnum">

@@ -1890,14 +1890,22 @@ section {
     justify-content: center;
   }
 }
+/* Conteneur de la photo d'en-tête. Il ne porte plus l'image lui-même : celle-ci
+   est rendue par next/image (`fill`) à l'intérieur, pour bénéficier du srcset
+   responsive, de l'AVIF/WebP négocié et du préchargement prioritaire. Le
+   conteneur garde le calage et le filtre colorimétrique, qui s'applique à
+   l'image enfant. */
 .page-header-photo {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: 72% center;
-  background-repeat: no-repeat;
   filter: brightness(0.62) contrast(1.02) saturate(0.95);
   z-index: 0;
+}
+/* `fill` positionne l'image en absolu mais laisse `object-fit` à sa valeur par
+   défaut (`fill`, donc déformée) : le cadrage doit être déclaré ici. Le
+   `object-position` est posé en style inline par le composant, page par page. */
+.page-header-photo img {
+  object-fit: cover;
 }
 /* dégradés : sombre à gauche (lisibilité du texte) + pénombre haut/bas */
 .page-header-photo-scrim {
@@ -2900,6 +2908,10 @@ section {
   color: rgba(255, 255, 255, 0.78);
   margin: 0;
   text-wrap: pretty;
+  /* Les avis sont reproduits mot pour mot, sauts de ligne compris : plusieurs
+     auteurs écrivent en lignes courtes. `pre-line` les rend sans transformer
+     le texte (les espaces multiples restent normalisés). */
+  white-space: pre-line;
 }
 .t-stars {
   display: flex;
@@ -2982,6 +2994,29 @@ section {
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
+}
+/* Lien vers la fiche Google : c'est lui qui rend les avis vérifiables.
+   Discret par choix — il sert de preuve, pas d'appel à l'action. */
+.t-source {
+  margin-top: 24px;
+  text-align: center;
+}
+.t-source-link {
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  transition: color 0.2s ease;
+}
+.t-source-link:hover,
+.t-source-link:focus-visible {
+  color: var(--accent);
 }
 @media (max-width: 980px) {
   .testimonials {

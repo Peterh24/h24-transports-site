@@ -7,16 +7,17 @@ import { Cta } from "@/components/sections/Cta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_EXPRESS } from "@/data/faq";
 import { getPage } from "@/data/pages";
+import { pageMetadata } from "@/lib/metadata";
 import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/express");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: PAGE.path,
   title: "Transport urgent exclusif",
   description:
     "Un véhicule entièrement dédié à votre course. Pour les courses ponctuelles, récurrentes, spéciales ou standards. Service client à votre écoute pour des solutions sur mesure.",
-  alternates: { canonical: "/express" },
-};
+});
 
 const jsonLd = graph(
   webPage({
@@ -52,6 +53,7 @@ export default function ExpressPage() {
         accent="Sans escale."
         lead="Un véhicule entièrement dédié à votre course. Pour les courses ponctuelles, récurrentes, spéciales ou standards. Service client à votre écoute pour des solutions sur mesure."
         image="/images/express/van-motion.webp"
+        imageAlt="Fourgon H24 Transports en course dans une rue de ville, à la tombée du jour"
         imagePosition="50% 78%"
         glow={false}
         photoTone="bright"

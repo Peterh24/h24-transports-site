@@ -1,6 +1,7 @@
+import Image from "next/image";
 import { HeroGlow } from "@/components/ui/HeroGlow";
 
-type Props = {
+type CommonProps = {
   num: string;
   eyebrow: string;
   title: string;
@@ -8,14 +9,8 @@ type Props = {
   lead: string;
   /** Étiquette mono en haut. Par défaut "/ univers / {num}" (pages univers). */
   tag?: string;
-  /** Photo de fond optionnelle (assombrie, halo orange par-dessus). */
-  image?: string;
-  /** Cadrage de la photo de fond (CSS background-position). Défaut "72% center". */
-  imagePosition?: string;
-  /** Affiche le halo orange sur la photo (défaut true). */
+  /** Affiche le halo orange (défaut true). */
   glow?: boolean;
-  /** Tonalité de la photo : "dark" (nuit, défaut) ou "bright" (jour, moins assombri). */
-  photoTone?: "dark" | "bright";
   /** Image (ex. rendu véhicule sur fond sombre) affichée à la place du grand numéro. */
   media?: string;
   /** Affiche la grille de carreaux en fond (défaut true ; sans effet si `image`). */
@@ -24,35 +19,86 @@ type Props = {
   softGlow?: boolean;
 };
 
+/**
+ * Deux formes mutuellement exclusives : en-tête **avec** photo de fond, ou
+ * sans. L'union rend `imageAlt` obligatoire dès qu'`image` est fourni — une
+ * page ne peut donc plus ajouter un visuel d'en-tête en oubliant son texte
+ * alternatif, ce qui était le cas des cinq pages à photo jusqu'ici.
+ */
+type WithPhoto = CommonProps & {
+  /** Photo de fond (assombrie, halo orange par-dessus). */
+  image: string;
+  /** Description de la photo. Obligatoire : ce sont des images de contenu. */
+  imageAlt: string;
+  /** Cadrage de la photo (CSS object-position). Défaut "72% center". */
+  imagePosition?: string;
+  /** Tonalité : "dark" (nuit, défaut) ou "bright" (jour, moins assombri). */
+  photoTone?: "dark" | "bright";
+};
+
+type WithoutPhoto = CommonProps & {
+  image?: never;
+  imageAlt?: never;
+  imagePosition?: never;
+  photoTone?: never;
+};
+
+type Props = WithPhoto | WithoutPhoto;
+
 /** En-tête générique des pages univers / à-propos / contact. */
-export function PageHeader({
-  num,
-  eyebrow,
-  title,
-  accent,
-  lead,
-  tag,
-  image,
-  imagePosition,
-  glow = true,
-  photoTone = "dark",
-  media,
-  grid = true,
-  softGlow = false,
-}: Props) {
+export function PageHeader(props: Props) {
+  const {
+    num,
+    eyebrow,
+    title,
+    accent,
+    lead,
+    tag,
+    glow = true,
+    media,
+    grid = true,
+    softGlow = false,
+  } = props;
+
+  /**
+   * Le test sur `props.image` discrimine l'union : dans cette branche,
+   * TypeScript sait que `imageAlt` est présent.
+   */
+  const photo = props.image
+    ? {
+        src: props.image,
+        alt: props.imageAlt,
+        position: props.imagePosition ?? "72% center",
+        tone: props.photoTone ?? "dark",
+      }
+    : null;
+
   return (
     <section
-      className={`page-header${image ? ` has-photo photo-${photoTone}` : ""}${
+      className={`page-header${photo ? ` has-photo photo-${photo.tone}` : ""}${
         softGlow ? " glow-soft" : ""
       }`}
     >
       <div className="hero-bg">
-        {image ? (
+        {photo ? (
           <>
-            <div
-              className="page-header-photo"
-              style={{ backgroundImage: `url(${image})`, backgroundPosition: imagePosition }}
-            />
+            <div className="page-header-photo">
+              {/*
+                `priority` : sur ces pages, la photo d'en-tête est l'élément le
+                plus grand au-dessus de la ligne de flottaison, donc le candidat
+                LCP. Sans lui, next/image la charge en `lazy` et retarde
+                justement la mesure qui compte.
+                `sizes="100vw"` : elle occupe toute la largeur du viewport.
+              */}
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                priority
+                sizes="100vw"
+                style={{ objectPosition: photo.position }}
+              />
+            </div>
             <div className="page-header-photo-scrim" />
             {glow && <div className="page-header-glow" />}
           </>

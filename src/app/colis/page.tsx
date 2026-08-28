@@ -7,16 +7,17 @@ import { Cta } from "@/components/sections/Cta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_COLIS } from "@/data/faq";
 import { getPage } from "@/data/pages";
+import { pageMetadata } from "@/lib/metadata";
 import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/colis");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: PAGE.path,
   title: "Transport de colis, plis & palettes",
   description:
     "Du pli urgent à la palette : messagerie et coursier dédié, en express ou planifié. Enlèvement rapide, suivi en temps réel et livraison dans les temps — Paris, Île-de-France et France entière.",
-  alternates: { canonical: "/colis" },
-};
+});
 
 const jsonLd = graph(
   webPage({
@@ -143,6 +144,7 @@ export default function ColisPage() {
         accent="Livré dans les temps."
         lead="Messagerie et coursier dédié, en express ou planifié. Du document urgent à la palette volumineuse, on enlève vite, on trace en temps réel et on livre dans les délais — Paris, Île-de-France et France entière."
         image="/images/colis/truck-boxes.webp"
+        imageAlt="Camion H24 Transports hayon déployé, chargé de cartons sur palettes"
         imagePosition="50% 25%"
         glow={false}
         photoTone="bright"

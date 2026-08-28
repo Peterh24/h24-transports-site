@@ -7,16 +7,17 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/data/site";
 import { FAQ_CONTACT } from "@/data/faq";
 import { getPage } from "@/data/pages";
+import { pageMetadata } from "@/lib/metadata";
 import { ORG_ID, breadcrumb, faqPage, graph, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/contact");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: PAGE.path,
   title: "Contact & devis",
   description:
     "Dispatch H24, basé à Paris. Réponse sous 30 minutes ouvrées. Pour les urgences, appelez directement le 24/7.",
-  alternates: { canonical: "/contact" },
-};
+});
 
 const jsonLd = graph(
   {
@@ -46,6 +47,7 @@ export default function ContactPage() {
         accent="Parlons-en."
         lead="Dispatch H24, basé à Paris. Réponse sous 30 minutes ouvrées. Pour les urgences, appelez directement le 24/7."
         image="/images/contact/dispatch-desk.webp"
+        imageAlt="Opérateur du dispatch H24 Transports au téléphone à son poste"
         imagePosition="50% 70%"
         glow={false}
         photoTone="bright"

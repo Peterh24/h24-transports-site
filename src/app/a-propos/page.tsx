@@ -7,16 +7,17 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_A_PROPOS } from "@/data/faq";
 import { getPage } from "@/data/pages";
+import { pageMetadata } from "@/lib/metadata";
 import { ORG_ID, breadcrumb, faqPage, graph, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/a-propos");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: PAGE.path,
   title: "À propos",
   description:
     "Depuis 2014, H24 Transports propose un service unique et dédié à une clientèle exigeante : logistique audiovisuelle et événementielle, transport urgent exclusif, disponibilité 24h/24 et 7j/7.",
-  alternates: { canonical: "/a-propos" },
-};
+});
 
 /**
  * `mainEntity` pointe vers l'organisation : c'est la page qui *parle de*
@@ -69,6 +70,7 @@ export default function AboutPage() {
         accent="Sur la route, sans relâche."
         lead="Chez H24 Transports, votre satisfaction est notre engagement. Un service unique et dédié à une clientèle exigeante en quête de prestations de qualité."
         image="/images/apropos/truck-night.webp"
+        imageAlt="Camion H24 Transports de nuit devant des immeubles parisiens"
       />
       <section className="about-stats">
         <div className="container">

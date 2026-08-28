@@ -8,16 +8,17 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/data/site";
 import { FAQ_APPLICATION } from "@/data/faq";
 import { getPage } from "@/data/pages";
+import { pageMetadata } from "@/lib/metadata";
 import { ORG_REF, breadcrumb, faqPage, graph, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/application");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: PAGE.path,
   title: "Application mobile de pilotage",
   description:
     "Pilotez vos transports de bout en bout : carnet d'adresses, création de courses, suivi temps réel, facturation intégrée. L'app H24 Transports pour transporteurs audiovisuels et équipes événementielles.",
-  alternates: { canonical: "/application" },
-};
+});
 
 /**
  * Typée `WebApplication` et non `MobileApplication` : l'accès documenté est le

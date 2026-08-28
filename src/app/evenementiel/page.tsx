@@ -9,16 +9,17 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_EVENEMENTIEL } from "@/data/faq";
 import { getPage } from "@/data/pages";
+import { pageMetadata } from "@/lib/metadata";
 import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/evenementiel");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: PAGE.path,
   title: "Transport audiovisuel & événementiel",
   description:
     "Transport et logistique pour l'audiovisuel et l'événementiel : caméra, lumière, machinerie et décor livrés à l'heure, partout en Île-de-France et au national.",
-  alternates: { canonical: "/evenementiel" },
-};
+});
 
 const jsonLd = graph(
   webPage({
@@ -115,6 +116,7 @@ export default function EventPage() {
         accent="L'événement peut commencer."
         lead="Caméra, lumière, machinerie, décor — pour Pub & Cinéma, Mode & Luxe, Concert & Salon. Une expertise née sur le terrain, en 2014."
         image="/images/evenementiel/event-tailgate.webp"
+        imageAlt="Camion H24 Transports hayon déployé sur un tournage, chargé de matériel de machinerie et de lumière"
         glow={false}
         photoTone="bright"
       />

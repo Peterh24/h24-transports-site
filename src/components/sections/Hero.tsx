@@ -69,10 +69,14 @@ export function Hero() {
             Le transport<br />
             <span className="hero-title-accent">qui ne dort jamais</span>
           </h1>
+          {/* « Paris et Île-de-France » porté par le chapô plutôt que par le
+              H1 : la signature de marque reste intacte, et la page gagne les
+              mots-clés locaux qu'elle n'avait que dans une étiquette mono.
+              Formulation alignée sur le résumé de l'accueil dans `PAGES`. */}
           <p className="lead hero-lead">
-            Audiovisuel, événementiel, urgent exclusif. Une équipe, une flotte,
-            et un service personnalisé — disponibles 24h&nbsp;/&nbsp;24 et
-            7j&nbsp;/&nbsp;7 depuis 2014.
+            Audiovisuel, événementiel, urgent exclusif à Paris et en
+            Île-de-France. Une équipe, une flotte, et un service personnalisé —
+            disponibles 24h&nbsp;/&nbsp;24 et 7j&nbsp;/&nbsp;7 depuis 2014.
           </p>
           <div className="hero-actions">
             <a

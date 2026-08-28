@@ -283,23 +283,39 @@ export function faqPage(path: string, items: FaqItem[]): JsonLd {
 }
 
 /**
- * Avis clients. Volontairement SANS `aggregateRating` : les témoignages du
- * site sont des verbatims authentiques mais non notés, et inventer une note
- * moyenne serait un faux avis au sens des règles Google.
+ * Un avis client. Les données proviennent d'avis réellement publiés sur la
+ * fiche Google Business Profile (cf. `src/data/testimonials.ts`) — auteur,
+ * note et texte sont ceux de l'auteur, jamais reformulés.
+ *
+ * Toujours SANS `aggregateRating`, mais pour une autre raison qu'avant :
+ * Google ignore — et décourage — une note agrégée qu'une entreprise publie
+ * sur son propre site à propos d'elle-même (« self-serving reviews »). La
+ * note globale 5,0/5 est donc affichée visuellement, avec un lien vers la
+ * fiche où elle est vérifiable, mais pas déclarée en données structurées.
+ *
+ * Historique : jusqu'au 2026-08-28, ce bloc balisait douze témoignages
+ * **inventés** en `Review`, ce que le commentaire d'origine décrivait à tort
+ * comme « des verbatims authentiques ».
  */
 export function review(opts: {
   body: string;
   authorName: string;
-  authorRole?: string;
+  /** Note laissée par l'auteur, sur 5. */
+  rating: number;
+  /** Date ISO de publication (`YYYY-MM` accepté : Google n'expose que le mois). */
+  datePublished: string;
 }): JsonLd {
   return {
     "@type": "Review",
     reviewBody: opts.body,
-    author: {
-      "@type": "Person",
-      name: opts.authorName,
-      ...(opts.authorRole ? { jobTitle: opts.authorRole } : {}),
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: opts.rating,
+      bestRating: 5,
+      worstRating: 1,
     },
+    datePublished: opts.datePublished,
+    author: { "@type": "Person", name: opts.authorName },
     itemReviewed: ORG_REF,
   };
 }

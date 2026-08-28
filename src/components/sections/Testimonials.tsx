@@ -1,25 +1,37 @@
 /* ============================================================
    3D Testimonials Marquee — adapté du shadcn marquee
    4 colonnes verticales avec sens alternés, perspective 3D
+
+   Le contenu est constitué d'avis Google réels (cf. src/data/testimonials.ts).
+   Chaque carte porte donc le nom de l'auteur, la date et la mention de la
+   source : c'est ce qui rend l'avis confrontable à la fiche publique, et
+   c'est exactement ce qui manquait aux témoignages inventés d'avant.
    ============================================================ */
 
-import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
+import { GOOGLE_BUSINESS_PROFILE } from "@/data/site";
+import { GOOGLE_REVIEWS, TESTIMONIALS, type Testimonial } from "@/data/testimonials";
 
-function TestimonialCard({ name, role, company, body, initials, tag }: Testimonial) {
+function TestimonialCard({ name, date, body, initials, rating }: Testimonial) {
   return (
     <div className="t-card">
       <div className="t-card-head">
         <div className="t-avatar">{initials}</div>
         <div className="t-meta">
           <div className="t-name">{name}</div>
-          <div className="t-role">{role} · {company}</div>
+          <div className="t-role">{date}</div>
         </div>
-        <div className="t-tag">{tag}</div>
+        <div className="t-tag">Google</div>
       </div>
       <blockquote className="t-quote">&quot;{body}&quot;</blockquote>
-      <div className="t-stars">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <span key={i} className="t-star">★</span>
+      <div
+        className="t-stars"
+        role="img"
+        aria-label={`${rating} étoiles sur 5`}
+      >
+        {Array.from({ length: rating }, (_, i) => (
+          <span key={i} className="t-star" aria-hidden="true">
+            ★
+          </span>
         ))}
       </div>
     </div>
@@ -60,15 +72,16 @@ export function Testimonials() {
       <div className="container">
         <div className="t-head reveal">
           <div>
-            <span className="eyebrow">Témoignages clients</span>
+            <span className="eyebrow">Avis clients</span>
             <h2 className="display-l" style={{ marginTop: 16 }}>
               Ils dorment mieux<br />
               <span className="accent">depuis qu&apos;ils nous appellent.</span>
             </h2>
           </div>
           <p className="lead t-lead">
-            Régisseurs, producteurs, DOP, tour managers — la nuit, ils nous appellent.
-            Le matin, leurs équipes ont leur matériel.
+            Régisseurs, producteurs, loueurs de matériel, studios — voici ce
+            qu&apos;ils écrivent sur notre fiche Google. Chaque avis y est
+            consultable et vérifiable.
           </p>
         </div>
       </div>
@@ -88,17 +101,34 @@ export function Testimonials() {
 
       <div className="container t-foot reveal">
         <div className="t-foot-stat">
-          <span className="t-foot-v">4.9<span className="t-foot-vs">/5</span></span>
-          <span className="t-foot-l">Note moyenne · 657 clients</span>
+          <span className="t-foot-v">
+            {GOOGLE_REVIEWS.rating}
+            <span className="t-foot-vs">/5</span>
+          </span>
+          <span className="t-foot-l">Note moyenne sur Google</span>
         </div>
         <div className="t-foot-stat">
-          <span className="t-foot-v">98<span className="t-foot-vs">%</span></span>
-          <span className="t-foot-l">Taux de recommandation</span>
+          <span className="t-foot-v tnum">{GOOGLE_REVIEWS.count}</span>
+          <span className="t-foot-l">Avis publiés sur Google</span>
         </div>
         <div className="t-foot-stat">
-          <span className="t-foot-v">12<span className="t-foot-vs"> ans</span></span>
+          <span className="t-foot-v">
+            12<span className="t-foot-vs"> ans</span>
+          </span>
           <span className="t-foot-l">D&apos;expertise terrain</span>
         </div>
+      </div>
+
+      <div className="container t-source reveal">
+        <a
+          href={GOOGLE_BUSINESS_PROFILE}
+          className="t-source-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lire les {GOOGLE_REVIEWS.count} avis sur Google
+          <span className="arrow" />
+        </a>
       </div>
     </section>
   );

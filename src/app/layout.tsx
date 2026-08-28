@@ -16,15 +16,11 @@ export const metadata: Metadata = {
   description: SITE.description,
   applicationName: SITE.name,
   authors: [{ name: SITE.name }],
-  keywords: [
-    "transport audiovisuel",
-    "transport événementiel",
-    "course urgente Paris",
-    "transport exclusif",
-    "logistique cinéma",
-    "transport 24/7",
-    "Île-de-France",
-  ],
+  /**
+   * Pas de `keywords` : Google ne l'exploite plus depuis 2009 et l'a confirmé
+   * publiquement. Les mots-clés qui comptent sont ceux du contenu visible, des
+   * titres et du `knowsAbout` de l'organisation (cf. `src/lib/schema.ts`).
+   */
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
