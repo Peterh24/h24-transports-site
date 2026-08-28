@@ -7,6 +7,12 @@ type Props = {
   suffix?: string;
   prefix?: string;
   duration?: number;
+  /**
+   * Séparateur de milliers. `false` pour une **année** : `toLocaleString`
+   * affichait « 2 014 » sur /a-propos, la mise en forme des nombres étant
+   * appliquée telle quelle à une date.
+   */
+  grouping?: boolean;
 };
 
 /**
@@ -37,7 +43,13 @@ const useIsomorphicLayoutEffect =
  * C'est le même principe que la FAQ rendue en `<details>` natif — le contenu
  * doit exister dans le HTML servi, l'enrichissement vient après.
  */
-export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: Props) {
+export function Counter({
+  value,
+  suffix = "",
+  prefix = "",
+  duration = 1800,
+  grouping = true,
+}: Props) {
   const target = parseFloat(String(value));
 
   /** `null` ⇒ pas encore pris en main par le navigateur : on affiche `target`. */
@@ -82,9 +94,10 @@ export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: Pr
 
   const display = useMemo(() => {
     const current = n ?? target;
-    if (Number.isInteger(target)) return Math.round(current).toLocaleString("fr-FR");
-    return current.toFixed(1);
-  }, [n, target]);
+    if (!Number.isInteger(target)) return current.toFixed(1);
+    const rounded = Math.round(current);
+    return grouping ? rounded.toLocaleString("fr-FR") : String(rounded);
+  }, [n, target, grouping]);
 
   return (
     <span ref={ref} className="tnum">

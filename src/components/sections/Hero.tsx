@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Counter } from "@/components/ui/Counter";
+import { ACTIVITY, anneesExperience } from "@/data/activity";
 import { SITE } from "@/data/site";
 
 const POSTER = "/images/hero/hero-poster.jpg";
@@ -91,27 +92,31 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Chiffres issus de Dashdoc, relevés le 2026-08-28 (cf.
+            src/data/activity.ts). Le libellé « depuis 2023 » n'est pas
+            décoratif : Dashdoc ne couvre pas 2014-2022, retirer la mention
+            transformerait un total de période en total depuis la création. */}
         <div className="hero-bottom">
           <div className="hero-stat">
             <div className="mono dim">// 01</div>
             <div className="display-s">
-              <Counter value={657} />
+              <Counter value={ACTIVITY.clients} />
             </div>
-            <div className="mono dim">Clients récurrents</div>
+            <div className="mono dim">Clients accompagnés</div>
           </div>
           <div className="hero-stat">
             <div className="mono dim">// 02</div>
             <div className="display-s">
-              <Counter value={12} suffix="K" />
+              <Counter value={ACTIVITY.courses} />
             </div>
-            <div className="mono dim">Clients satisfaits</div>
+            <div className="mono dim">Courses depuis {ACTIVITY.coursesDepuis}</div>
           </div>
           <div className="hero-stat">
             <div className="mono dim">// 03</div>
             <div className="display-s">
-              <Counter value={35} suffix="K" />
+              <Counter value={anneesExperience()} />
             </div>
-            <div className="mono dim">Courses réalisées</div>
+            <div className="mono dim">Ans d&apos;expertise</div>
           </div>
           <div className="hero-stat hero-stat-cta">
             <div className="mono dim">// status</div>

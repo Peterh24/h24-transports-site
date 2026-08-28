@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Counter } from "@/components/ui/Counter";
+import { ACTIVITY } from "@/data/activity";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Faq } from "@/components/sections/Faq";
 import { Cta } from "@/components/sections/Cta";
@@ -77,21 +78,23 @@ export default function AboutPage() {
           <div className="stats-line reveal-stagger">
             <div className="stat-block">
               <div className="display-xl tnum">
-                <Counter value="2014" />
+                {/* `grouping={false}` : une année ne prend pas de séparateur
+                    de milliers — sans lui, 2014 s'affichait « 2 014 ». */}
+                <Counter value={ACTIVITY.fondation} grouping={false} />
               </div>
               <div className="mono dim">Année de création</div>
             </div>
             <div className="stat-block">
               <div className="display-xl tnum">
-                <Counter value="657" />
+                <Counter value={ACTIVITY.clients} />
               </div>
-              <div className="mono dim">Clients récurrents</div>
+              <div className="mono dim">Clients accompagnés</div>
             </div>
             <div className="stat-block">
               <div className="display-xl tnum">
-                <Counter value="35" suffix="K" />
+                <Counter value={ACTIVITY.courses} />
               </div>
-              <div className="mono dim">Courses réalisées</div>
+              <div className="mono dim">Courses depuis {ACTIVITY.coursesDepuis}</div>
             </div>
             <div className="stat-block">
               <div className="display-xl accent">24/7</div>
