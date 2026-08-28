@@ -39,8 +39,8 @@ export const PAGES: PageEntry[] = [
     path: "/evenementiel",
     label: "Événementiel",
     summary:
-      "Transport et logistique pour l'audiovisuel et l'événementiel : caméra, lumière, machinerie et décor, pour la publicité, le cinéma, la mode, le luxe, les concerts et les salons.",
-    updated: "2026-08-15",
+      "Transport et logistique pour l'audiovisuel et l'événementiel à Paris, en Île-de-France et partout en France : caméra, lumière, machinerie et décor, pour la publicité, le cinéma, la mode, le luxe, les concerts et les salons.",
+    updated: "2026-08-28",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
@@ -49,8 +49,8 @@ export const PAGES: PageEntry[] = [
     path: "/express",
     label: "Express",
     summary:
-      "Transport urgent exclusif : un véhicule entièrement dédié à une seule course, sans groupage ni passage par un centre de tri. Intervention en 1 h dans Paris.",
-    updated: "2026-08-15",
+      "Coursier express et transport urgent exclusif à Paris : un véhicule entièrement dédié à une seule course, sans groupage ni passage par un centre de tri. Intervention en 1 h dans Paris, 3 h en Île-de-France, 12 h en France entière.",
+    updated: "2026-08-28",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",

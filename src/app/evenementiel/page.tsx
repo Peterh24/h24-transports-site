@@ -16,15 +16,15 @@ const PAGE = getPage("/evenementiel");
 
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Transport audiovisuel & événementiel",
+  title: "Transport événementiel & audiovisuel à Paris",
   description:
-    "Transport et logistique pour l'audiovisuel et l'événementiel : caméra, lumière, machinerie et décor livrés à l'heure, partout en Île-de-France et au national.",
+    "Transport audiovisuel et événementiel à Paris : caméra, lumière, machinerie et décor livrés à l'heure, en Île-de-France et partout en France.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Transport audiovisuel & événementiel",
+    name: "Transport événementiel & audiovisuel à Paris",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
@@ -114,7 +114,7 @@ export default function EventPage() {
         eyebrow="Univers · Audiovisuel & Événementiel"
         title="Le matériel arrive."
         accent="L'événement peut commencer."
-        lead="Caméra, lumière, machinerie, décor — pour Pub & Cinéma, Mode & Luxe, Concert & Salon. Une expertise née sur le terrain, en 2014."
+        lead="Caméra, lumière, machinerie, décor — pour Pub & Cinéma, Mode & Luxe, Concert & Salon. Une expertise née sur le terrain à Paris, en 2014."
         image="/images/evenementiel/event-tailgate.webp"
         imageAlt="Camion H24 Transports hayon déployé sur un tournage, chargé de matériel de machinerie et de lumière"
         glow={false}

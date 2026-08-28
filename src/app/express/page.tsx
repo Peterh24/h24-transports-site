@@ -14,15 +14,15 @@ const PAGE = getPage("/express");
 
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Transport urgent exclusif",
+  title: "Coursier express & transport urgent à Paris",
   description:
-    "Un véhicule entièrement dédié à votre course. Pour les courses ponctuelles, récurrentes, spéciales ou standards. Service client à votre écoute pour des solutions sur mesure.",
+    "Coursier express et transport urgent à Paris : un véhicule dédié à votre seule course, sans groupage. Enlèvement en 1 h dans Paris, partout en France en 12 h.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Transport urgent exclusif",
+    name: "Coursier express & transport urgent à Paris",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
@@ -30,7 +30,7 @@ const jsonLd = graph(
   service({
     path: PAGE.path,
     name: "Transport urgent exclusif",
-    serviceType: "Course urgente en véhicule dédié",
+    serviceType: "Coursier express et course urgente en véhicule dédié",
     description:
       "Un véhicule entièrement dédié à une seule course, du point d'enlèvement au point de livraison, sans escale, sans groupage ni passage par un centre de tri, avec suivi en temps réel.",
     offers: ["Course ponctuelle", "Course récurrente", "Course spéciale", "Course standard"],
@@ -48,10 +48,10 @@ export default function ExpressPage() {
           (le phare du véhicule fait déjà la source lumineuse). */}
       <PageHeader
         num="02"
-        eyebrow="Univers · Urgent exclusif"
+        eyebrow="Univers · Coursier & urgent exclusif"
         title="Du Point A au Point B."
         accent="Sans escale."
-        lead="Un véhicule entièrement dédié à votre course. Pour les courses ponctuelles, récurrentes, spéciales ou standards. Service client à votre écoute pour des solutions sur mesure."
+        lead="Coursier express à Paris et en Île-de-France : un véhicule entièrement dédié à votre course, sans groupage ni centre de tri. Courses ponctuelles, récurrentes ou spéciales, 24h/24."
         image="/images/express/van-motion.webp"
         imageAlt="Fourgon H24 Transports en course dans une rue de ville, à la tombée du jour"
         imagePosition="50% 78%"
