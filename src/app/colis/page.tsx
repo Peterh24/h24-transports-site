@@ -14,15 +14,15 @@ const PAGE = getPage("/colis");
 
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Transport de colis, plis & palettes",
+  title: "Transport de colis et palettes à Paris",
   description:
-    "Du pli urgent à la palette : messagerie et coursier dédié, en express ou planifié. Enlèvement rapide, suivi en temps réel et livraison dans les temps — Paris, Île-de-France et France entière.",
+    "Du pli urgent à la palette : messagerie et coursier dédié, en express ou planifié, avec suivi en temps réel — Paris, Île-de-France et France entière.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Transport de colis, plis & palettes",
+    name: "Transport de colis et palettes à Paris",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),

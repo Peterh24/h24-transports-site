@@ -60,7 +60,7 @@ export const PAGES: PageEntry[] = [
     label: "Colis",
     summary:
       "Livraison de plis, colis et palettes en course dédiée ou planifiée, à Paris, en Île-de-France et en France entière, avec suivi en temps réel.",
-    updated: "2026-08-15",
+    updated: "2026-08-28",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
