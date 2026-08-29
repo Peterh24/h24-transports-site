@@ -52,6 +52,47 @@ function ecrire(v: Consent) {
   }
 }
 
+/**
+ * Applique reellement le choix, au-dela du montage du composant.
+ *
+ * Demonter le `<Script>` ne suffit pas : une fois gtag.js charge, il reste en
+ * memoire et continue d'emettre sur les navigations client. Un visiteur qui
+ * accepte puis se ravise resterait donc suivi jusqu'au rechargement de la
+ * page — le retrait de consentement ne retirerait rien.
+ *
+ * On utilise le drapeau d'exclusion officiel de Google, qui coupe la collecte
+ * meme sur une instance deja initialisee, et on efface les cookies deja poses.
+ */
+function appliquer(v: Consent) {
+  try {
+    (window as unknown as Record<string, boolean>)[`ga-disable-${ANALYTICS.ga4}`] =
+      v === "denied";
+    if (v === "denied") effacerCookiesGa();
+  } catch {
+    /* Rien de critique : au pire le drapeau n'est pas pose sur cette page. */
+  }
+}
+
+/**
+ * Efface les cookies `_ga*` deja deposes.
+ *
+ * Le domaine sur lequel ils ont ete ecrits n'est pas connu de facon fiable
+ * (gtag utilise le domaine racine), d'ou les plusieurs tentatives : sans le
+ * bon `domain`, la suppression echoue silencieusement.
+ */
+function effacerCookiesGa() {
+  const hote = window.location.hostname;
+  const racine = hote.split(".").slice(-2).join(".");
+  const domaines = ["", `; domain=${hote}`, `; domain=.${hote}`, `; domain=.${racine}`];
+  for (const brut of document.cookie.split(";")) {
+    const nom = brut.split("=")[0].trim();
+    if (!nom.startsWith("_ga")) continue;
+    for (const d of domaines) {
+      document.cookie = `${nom}=; Max-Age=0; path=/${d}`;
+    }
+  }
+}
+
 export function Analytics() {
   /**
    * `undefined` = on ne sait pas encore (rendu serveur ou premier rendu client).
@@ -62,7 +103,9 @@ export function Analytics() {
   const [consent, setConsent] = useState<Consent | null | undefined>(undefined);
 
   useEffect(() => {
-    setConsent(lire());
+    const memorise = lire();
+    if (memorise) appliquer(memorise);
+    setConsent(memorise);
     /*
      * Le consentement doit rester revocable a tout moment : sans cela le
      * bandeau n'a aucune valeur juridique. Le lien « Cookies » du pied de page
@@ -74,6 +117,8 @@ export function Analytics() {
       } catch {
         /* Sans stockage, le bandeau reapparait quand meme pour cette session. */
       }
+      /* Tant que le visiteur n'a pas re-tranche, on ne collecte plus. */
+      appliquer("denied");
       setConsent(null);
     };
     window.addEventListener(CONSENT_EVENT, rouvrir);
@@ -82,6 +127,7 @@ export function Analytics() {
 
   function choisir(v: Consent) {
     ecrire(v);
+    appliquer(v);
     setConsent(v);
   }
 
