@@ -30,8 +30,21 @@ import type { NextConfig } from "next";
  * accumulé depuis 2014, autant employer le code que tout le monde comprend.
  */
 
-/** Univers événementiel : l'ancien site éclatait la thématique en trois URLs. */
-const EVENT_THEMES = ["eventAudiovisuel", "eventMode", "eventEvent"];
+/**
+ * Univers événementiel : l'ancien site éclatait la thématique en trois URLs.
+ *
+ * `eventMode` visait /evenementiel comme les deux autres jusqu'à la création de
+ * la page /mode. Search Console montre que cette ancienne URL garde une audience
+ * reelle — 67 impressions en position 7,7 sur les 28 jours precedant le
+ * 2026-08-27, alors meme que le site Angular n'est plus en ligne. L'envoyer sur
+ * la page dediee plutot que sur la page generique transmet cet historique la ou
+ * il est pertinent, au lieu de le diluer.
+ */
+const EVENT_DESTINATIONS: Record<string, string> = {
+  eventAudiovisuel: "/evenementiel",
+  eventEvent: "/evenementiel",
+  eventMode: "/mode",
+};
 
 /**
  * URL canonique du site, resolue AU BUILD.
@@ -86,10 +99,11 @@ const nextConfig: NextConfig = {
       { source: "/prehome", destination: "/", statusCode: 301 },
       { source: "/home", destination: "/", statusCode: 301 },
 
-      // Univers événementiel — les trois thèmes fusionnent en une page.
-      ...EVENT_THEMES.map((theme) => ({
+      // Univers événementiel — audiovisuel et événement fusionnent sur
+      // /evenementiel ; la mode a désormais sa propre page.
+      ...Object.entries(EVENT_DESTINATIONS).map(([theme, destination]) => ({
         source: `/home/event/${theme}`,
-        destination: "/evenementiel",
+        destination,
         statusCode: 301,
       })),
       { source: "/home/event/:child*", destination: "/evenementiel", statusCode: 301 },

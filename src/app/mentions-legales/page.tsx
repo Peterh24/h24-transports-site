@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
-import { LEGAL, SIREN_FORMATTED, SITE } from "@/data/site";
+import { ANALYTICS, LEGAL, SIREN_FORMATTED, SITE } from "@/data/site";
 
 /**
  * Mentions légales.
@@ -181,10 +181,52 @@ export default function MentionsLegalesPage() {
             </div>
           </div>
 
+          <div className="about-row" style={rowStyle}>
+            <div>
+              <span className="eyebrow">
+                Article 5 — Cookies et mesure d&apos;audience
+              </span>
+              <p className="dim" style={textStyle}>
+                Le Site dépose un cookie de mesure d&apos;audience, fourni par
+                le service Google Analytics 4, dans le seul but de comprendre la
+                fréquentation des pages et d&apos;améliorer le contenu proposé.
+                Aucune donnée n&apos;est utilisée à des fins publicitaires, et
+                aucune n&apos;est cédée à des tiers.
+              </p>
+              <p className="dim" style={textStyle}>
+                Ce cookie n&apos;étant pas strictement nécessaire au
+                fonctionnement du Site, il n&apos;est déposé qu&apos;après
+                recueil du consentement de l&apos;Utilisateur, exprimé au moyen
+                du bandeau affiché lors de sa première visite. Tant que
+                l&apos;Utilisateur n&apos;a pas accepté, aucun script de mesure
+                n&apos;est chargé et aucun cookie n&apos;est écrit. La base
+                légale de ce traitement est le consentement, au sens de
+                l&apos;article 6-1-a du RGPD et de l&apos;article 82 de la loi
+                n°78-17 du 6 janvier 1978 modifiée.
+              </p>
+              <p className="dim" style={textStyle}>
+                La durée de conservation du cookie est limitée à{" "}
+                {ANALYTICS.cookieMaxAgeLabel}, conformément à la recommandation
+                de la CNIL. Les données collectées sont traitées par Google
+                Ireland Limited&nbsp;; les transferts éventuels hors de
+                l&apos;Union européenne sont encadrés par le cadre de protection
+                des données UE–États-Unis auquel Google a adhéré.
+              </p>
+              <p className="dim" style={textStyle}>
+                L&apos;Utilisateur peut modifier ou retirer son choix à tout
+                moment, sans justification, en cliquant sur le lien
+                «&nbsp;Cookies&nbsp;» situé en pied de page&nbsp;: le bandeau
+                réapparaît et permet de refuser la mesure. Le refus n&apos;a
+                aucune incidence sur l&apos;accès au Site ni sur ses
+                fonctionnalités.
+              </p>
+            </div>
+          </div>
+
           <div className="about-row" style={lastRowStyle}>
             <div>
               <span className="eyebrow">
-                Article 5 — Propriété intellectuelle
+                Article 6 — Propriété intellectuelle
               </span>
               <p className="dim" style={textStyle}>
                 La marque, les logos, les textes, les photographies, les vidéos

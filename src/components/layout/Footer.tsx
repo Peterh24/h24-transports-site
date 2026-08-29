@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { H24Logo } from "@/components/ui/H24Logo";
 import { SITE, SOCIALS } from "@/data/site";
+import { ConsentLink } from "@/components/analytics/ConsentLink";
 
 /* Icônes réseaux — SVG inline : pas de requête réseau, pas de dépendance. */
 function LinkedInIcon() {
@@ -112,6 +113,9 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/cgv">CGV</Link>
+              </li>
+              <li>
+                <ConsentLink />
               </li>
             </ul>
           </div>

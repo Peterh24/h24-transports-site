@@ -3268,3 +3268,71 @@ select:focus-visible,
     animation: none;
   }
 }
+
+/* ── Bandeau de consentement à la mesure d'audience ──────────────────────
+   Ancré en bas, au-dessus de tout le reste. Il n'apparaît qu'au premier
+   passage : dès que le visiteur a tranché, son choix est mémorisé et le
+   bandeau ne revient plus. */
+.consent {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 200;
+  margin: 0 auto;
+  max-width: 780px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 22px;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+}
+.consent-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-dim);
+}
+.consent-text a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.consent-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.consent-actions .btn {
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .consent {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .consent-actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* Bouton « Cookies » du pied de page : c'est un <button> (il ouvre un dialogue,
+   il ne navigue pas), mais il doit se lire comme les liens qui l'entourent. */
+.footer-linkish {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.footer-linkish:hover {
+  color: var(--accent);
+}

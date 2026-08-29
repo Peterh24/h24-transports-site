@@ -179,6 +179,22 @@ export type NavItem = {
   children?: { href: string; label: string }[];
 };
 
+/**
+ * Mesure d'audience. L'identifiant est celui qui tournait sur l'ancien site
+ * Angular : le conserver preserve la continuite de l'historique GA4 d'avant
+ * le 2026-08-19, au lieu de repartir d'une propriete vide.
+ */
+export const ANALYTICS = {
+  ga4: "G-LKKLCZHQSD",
+  /**
+   * 13 mois, plafond recommande par la CNIL pour un cookie de mesure
+   * d'audience. Sans ce reglage, gtag pose un cookie de 2 ans par defaut —
+   * et les mentions legales annonceraient une duree fausse.
+   */
+  cookieMaxAgeSeconds: 34_164_000,
+  cookieMaxAgeLabel: "13 mois",
+} as const;
+
 /** Liens de navigation principaux (vraies routes Next). */
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Accueil" },
