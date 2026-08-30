@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voice-notes-poc"
+version = "0.1.0"
+description = "POC local d'assistant vocal de prise de notes"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "faster-whisper==1.1.1",
+  "numpy==1.26.4",
+  "sounddevice==0.5.1",
+  "webrtcvad==2.0.10",
+  "rich==13.9.4"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
