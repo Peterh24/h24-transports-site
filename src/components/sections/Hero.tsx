@@ -81,7 +81,7 @@ export function Hero() {
           </p>
           <div className="hero-actions">
             <a
-              href={SITE.dashboard.login}
+              href={SITE.dashboard.order}
               className="btn btn-primary"
             >
               Demander un devis <span className="arrow"></span>

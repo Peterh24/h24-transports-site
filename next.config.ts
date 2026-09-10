@@ -73,11 +73,29 @@ const RESOLVED_SITE_URL =
   SITE_URLS[process.env.APP_ENV ?? ""] ||
   SITE_URLS.prod;
 
+/**
+ * URL de l'application client (dashboard), resolue AU BUILD selon la meme
+ * logique : sans cela, le site de recette envoyait ses visiteurs sur
+ * l'application de production (constate le 2026-09-10).
+ */
+const DASHBOARD_URLS: Record<string, string> = {
+  prod: "https://dashboard.h24transports.com",
+  dev: "https://develop-dashboard.h24transports.com",
+};
+
+const RESOLVED_DASHBOARD_URL =
+  process.env.NEXT_PUBLIC_DASHBOARD_URL ||
+  DASHBOARD_URLS[process.env.APP_ENV ?? ""] ||
+  DASHBOARD_URLS.prod;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   // Inline la valeur resolue ci-dessus dans les bundles serveur et client.
-  env: { NEXT_PUBLIC_SITE_URL: RESOLVED_SITE_URL },
+  env: {
+    NEXT_PUBLIC_SITE_URL: RESOLVED_SITE_URL,
+    NEXT_PUBLIC_DASHBOARD_URL: RESOLVED_DASHBOARD_URL,
+  },
   /**
    * Sortie autonome : Next produit dans `.next/standalone` un serveur Node
    * avec uniquement les dépendances réellement utilisées, et son propre

@@ -16,7 +16,7 @@ export function Cta() {
           <div className="cta-actions">
             <a
               className="btn btn-primary"
-              href={SITE.dashboard.login}
+              href={SITE.dashboard.order}
             >
               Devis en 2 minutes <span className="arrow" />
             </a>

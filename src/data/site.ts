@@ -12,6 +12,10 @@ const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://h24transports.com"
 ).replace(/\/+$/, "");
 
+const DASHBOARD_URL = (
+  process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://dashboard.h24transports.com"
+).replace(/\/+$/, "");
+
 /**
  * Profils officiels de l'entreprise.
  *
@@ -139,7 +143,13 @@ export const SITE = {
   ] as string[],
   dashboard: {
     // App client H24 — toute commande/devis passe par là (stratégie : forcer l'usage de l'app).
-    login: "https://dashboard.h24transports.com/auth",
+    // Base résolue au build par next.config.ts (prod / develop-dashboard selon APP_ENV).
+    base: DASHBOARD_URL,
+    // Connexion seule, pour les liens « accéder à l'application ».
+    login: `${DASHBOARD_URL}/auth`,
+    // Page d'entrée « Devis » : deux choix (j'ai un compte / je commande sans compte),
+    // le compte se crée en fin de parcours. Cible de tous les boutons Devis du site.
+    order: `${DASHBOARD_URL}/commander`,
   },
   /**
    * Endpoint de réception des demandes de contact.

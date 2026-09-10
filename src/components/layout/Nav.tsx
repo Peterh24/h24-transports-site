@@ -97,7 +97,7 @@ export function Nav() {
             </div>
             <a
               className="btn btn-primary"
-              href={SITE.dashboard.login}
+              href={SITE.dashboard.order}
             >
               Devis <span className="arrow" />
             </a>
@@ -144,7 +144,7 @@ export function Nav() {
         <div className="nav-mobile-cta">
           <a
             className="btn btn-primary"
-            href={SITE.dashboard.login}
+            href={SITE.dashboard.order}
           >
             Demander un devis <span className="arrow" />
           </a>
