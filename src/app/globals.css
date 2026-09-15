@@ -1149,6 +1149,251 @@ section {
   }
 }
 
+/* ===== CAMPAIGN (temps fort saisonnier) =====
+   Bloc intercalaire entre le hero et les univers. Il doit se distinguer sans
+   concurrencer le hero : fond d'un cran plus clair (--bg-1), filets haut et
+   bas, et un seul halo d'accent côté carte promo. */
+.campaign {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+/* Fond photo : même recette que le hero (photo + scrim horizontal pour le
+   texte, scrim vertical pour raccorder aux sections voisines). Désaturée pour
+   rester dans le noir/orange de la charte, et assez sombre pour que le
+   contraste du texte ne dépende jamais d'elle. */
+.campaign-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.campaign-photo {
+  object-fit: cover;
+  /* Désaturation partielle seulement : l'ambre des projecteurs tombe tout
+     près de l'accent H24, le passer en gris pur éteindrait le bloc. */
+  filter: grayscale(0.55) contrast(1.06);
+  opacity: 0.6;
+}
+.campaign-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(16, 14, 12, 0.95) 0%,
+      rgba(16, 14, 12, 0.86) 34%,
+      rgba(16, 14, 12, 0.3) 62%,
+      rgba(16, 14, 12, 0.5) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(16, 14, 12, 0.75) 0%,
+      rgba(16, 14, 12, 0.2) 28%,
+      rgba(16, 14, 12, 0.2) 68%,
+      rgba(16, 14, 12, 0.85) 100%
+    );
+}
+/* En une colonne, un fond plein ne marche plus : le bloc devient étroit et
+   très haut, et `cover` sur une photo 16:9 n'en montre plus qu'une bouillie
+   agrandie. La photo passe donc en bandeau haut, nette, fondue vers le bas —
+   elle illustre au lieu de texturer, et le contenu garde un fond propre. */
+@media (max-width: 1000px) {
+  .campaign {
+    padding-top: 280px;
+  }
+  /* 240 px et non 200 : la barre de navigation est fixe et recouvre les
+     premiers pixels du bandeau pendant la lecture du bloc. */
+  .campaign-bg {
+    inset: 0 0 auto 0;
+    height: 240px;
+  }
+  .campaign-photo {
+    opacity: 0.85;
+  }
+  .campaign-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(16, 14, 12, 0.3) 0%,
+      rgba(16, 14, 12, 0.55) 55%,
+      rgba(16, 14, 12, 1) 100%
+    );
+  }
+}
+
+.campaign-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 50% 90% at 88% 40%,
+    var(--accent-glow) 0%,
+    transparent 60%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+.campaign-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: clamp(40px, 5vw, 72px);
+  align-items: start;
+}
+.campaign-title {
+  margin-top: 18px;
+}
+.campaign-window {
+  margin-top: 22px;
+  color: var(--fg-dim);
+}
+.campaign-intro {
+  margin-top: 22px;
+  max-width: 52ch;
+  /* Évite le mot orphelin en dernière ligne, quelle que soit la largeur —
+     sans espace insécable codé en dur dans le texte de la campagne. */
+  text-wrap: pretty;
+}
+.campaign-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+  /* Sans plafond, les trois chiffres s'étalent sur toute la colonne et
+     perdent leur effet de série. */
+  max-width: 560px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.campaign-fact-value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1;
+  color: var(--accent);
+}
+.campaign-fact .mono {
+  margin-top: 8px;
+  display: block;
+}
+.campaign-source {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* --- carte du code promo --- */
+.campaign-promo {
+  background: var(--bg-2);
+  border: 1px solid rgba(245, 146, 57, 0.35);
+  border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 32px);
+  box-shadow: var(--shadow-soft);
+}
+.campaign-promo-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.campaign-promo-off {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 2.8vw, 40px);
+  line-height: 1;
+  color: var(--fg);
+}
+.campaign-conditions {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.campaign-conditions li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-dim);
+}
+.campaign-conditions li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 1px;
+  background: var(--accent);
+}
+.campaign-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.campaign-actions .btn-primary {
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* --- code promo cliquable (composant CopyCode) --- */
+.code-copy {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--accent-faint);
+  border: 1px dashed rgba(245, 146, 57, 0.45);
+  border-radius: var(--radius);
+  color: var(--fg);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.code-copy:hover {
+  background: rgba(245, 146, 57, 0.14);
+  border-color: var(--accent);
+}
+.code-copy-value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.code-copy-hint {
+  /* `--fg-mute` tombait sous 4,5:1 sur le fond ambré du bouton, à 11 px. */
+  color: var(--fg-dim);
+  letter-spacing: 0.2em;
+  flex-shrink: 0;
+}
+.code-copy:hover .code-copy-hint {
+  color: var(--accent);
+}
+
+@media (max-width: 1000px) {
+  .campaign-inner {
+    grid-template-columns: 1fr;
+  }
+  .campaign-promo {
+    max-width: 520px;
+  }
+}
+@media (max-width: 480px) {
+  /* Le libellé du bouton tient sur une ligne jusqu'au bout : au-delà, il se
+     coupe en deux et la flèche se retrouve seule au milieu de la hauteur. */
+  .campaign-actions .btn-primary {
+    padding-inline: 20px;
+    letter-spacing: 0.1em;
+  }
+}
+
 /* ===== UNIVERSES ===== */
 .universes {
   background: var(--bg-0);

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { Campaign } from "@/components/sections/Campaign";
 import { Hero } from "@/components/sections/Hero";
 import { Universes } from "@/components/sections/Universes";
 import { Fleet } from "@/components/sections/Fleet";
@@ -15,6 +16,14 @@ import { TESTIMONIALS } from "@/data/testimonials";
 import { faqPage, graph, review, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/");
+
+/**
+ * Le bloc « temps fort » (`Campaign`) dépend de la date du rendu : sans
+ * revalidation, la page prégénérée afficherait éternellement la campagne du
+ * dernier build — et continuerait à annoncer un code promo expiré. Une heure
+ * suffit largement, les fenêtres d'affichage se comptent en jours.
+ */
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   description:
@@ -80,6 +89,7 @@ export default function HomePage() {
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
       <Hero />
+      <Campaign />
       <Universes />
       <Fleet />
       <Zones />

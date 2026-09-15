@@ -30,7 +30,9 @@ export const PAGES: PageEntry[] = [
     label: "Accueil",
     summary:
       "Transport audiovisuel, événementiel et urgent exclusif à Paris et en Île-de-France, 24h/24 et 7j/7 depuis 2014. Flotte, zones desservies et délais d'intervention.",
-    updated: "2026-08-15",
+    /* Bloc « temps fort » ajouté le 2026-09-15 (cf. `src/data/campaigns.ts`) :
+       à rebumper à chaque nouvelle campagne, rien ne le fait tout seul. */
+    updated: "2026-09-15",
     indexable: true,
     priority: 1,
     changeFrequency: "monthly",
