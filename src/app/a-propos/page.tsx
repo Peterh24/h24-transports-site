@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
 import { Counter } from "@/components/ui/Counter";
 import { ACTIVITY } from "@/data/activity";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -54,7 +56,21 @@ const aboutRows = [
   {
     num: "03",
     title: "Des solutions de transport spécifiques pour des besoins particuliers",
-    text: "Notre expertise nous a permis de développer deux services spécifiques : la logistique audiovisuelle et événementielle, ainsi que le transport urgent exclusif. Et pour mieux répondre à vos besoins, nous avons développé une exploitation web/mobile pour un suivi précis grâce à un tableau de bord intuitif.",
+    /* Le seul `text` en JSX de la liste : il porte le lien vers la page pilier
+       audiovisuelle, dans la phrase qui décrit déjà ce métier. Le rendu est
+       inchangé pour les deux autres lignes, qui restent des chaînes. */
+    text: (
+      <>
+        Notre expertise nous a permis de développer deux services spécifiques :
+        la logistique audiovisuelle et événementielle — dont le{" "}
+        <Link href="/transport-materiel-audiovisuel-paris" className="link">
+          transport de matériel audiovisuel pour les tournages
+        </Link>{" "}
+        — ainsi que le transport urgent exclusif. Et pour mieux répondre à vos
+        besoins, nous avons développé une exploitation web/mobile pour un suivi
+        précis grâce à un tableau de bord intuitif.
+      </>
+    ),
   },
 ];
 

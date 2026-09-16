@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Values } from "@/components/sections/Values";
@@ -91,7 +93,23 @@ export default function ExpressPage() {
           </div>
         </div>
       </section>
+      {/* Lien vers la page pilier audiovisuelle : le remplacement de matériel
+          en cours de tournage est le cas d'urgence le plus fréquent du
+          secteur, donc le contexte le plus naturel pour ce lien. /express
+          garde son intention propre — la course dédiée urgente, tous secteurs
+          confondus — et ne revendique pas l'audiovisuel. */}
       <Values
+        intro={
+          <>
+            La course dédiée sert tous les secteurs. Quand l&apos;urgence
+            concerne une caméra, un projecteur ou du matériel de plateau, le
+            détail est sur la page{" "}
+            <Link href="/transport-materiel-audiovisuel-paris" className="link">
+              transport pour vos productions
+            </Link>
+            .
+          </>
+        }
         values={[
           {
             title: "Rapidité",

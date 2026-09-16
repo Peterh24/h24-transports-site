@@ -36,7 +36,9 @@ ${SITE.name} est une société de transport et de logistique fondée en ${SITE.f
 
 ## Métiers
 
-- **Transport audiovisuel et événementiel** — caméra, optiques, lumière, machinerie, décor et régie, pour la publicité, le cinéma, la mode, le luxe, les concerts, les tournées et les salons professionnels.
+- **Transport de matériel audiovisuel** — caméras, optiques, lumière et matériel électro, machinerie, grip, décors et régie, acheminés sur les lieux de tournage pour les productions cinéma et publicité, les studios, les loueurs de matériel et les régies. Course dédiée sans rupture de charge, service Man & Van, stockage sécurisé, 24h/24. Page dédiée : ${SITE.url}/transport-materiel-audiovisuel-paris
+- **Transport et logistique événementielle** — matériel technique, décor, mobilier et régie pour les concerts, les tournées, les festivals, les salons professionnels et les opérations de marque.
+- **Transport mode et luxe** — vêtements sur cintre, portants montés et collections, en véhicule équipé penderie.
 - **Transport urgent exclusif** — un véhicule entièrement dédié à une seule course, du point d'enlèvement au point de livraison, sans groupage ni passage par un centre de tri.
 - **Plis, colis et palettes** — messagerie et coursier dédié, en course express ou en livraison planifiée.
 - **Application de pilotage** — création de courses, carnet d'adresses, suivi des statuts et de l'heure d'arrivée en temps réel, facturation intégrée, accès multi-utilisateur.

@@ -31,7 +31,26 @@ const STARS = [
   { x: 28, y: 24, s: 1.5, d: 1.0, t: 3.9 },
 ];
 
-export function Fleet() {
+type FleetProps = {
+  /** Sur-titre de la section. Défaut : « Notre flotte ». */
+  eyebrow?: string;
+  /** Titre H2. Défaut : la formule de l'accueil. */
+  title?: React.ReactNode;
+  /** Colonne de droite du chapeau. Défaut : la formule de l'accueil. */
+  intro?: React.ReactNode;
+};
+
+/**
+ * Sélecteur de flotte — quatre formats réels, avec leurs côtes et leur charge
+ * utile (source : `src/data/vehicles.ts`).
+ *
+ * Le chapeau est paramétrable depuis le 2026-09-16 : la section est réemployée
+ * sur `/transport-materiel-audiovisuel-paris`, où le H2 doit parler de matériel
+ * audiovisuel et non de la promesse générique de l'accueil. Les valeurs par
+ * défaut reproduisent exactement le texte d'origine, donc l'accueil est
+ * inchangé.
+ */
+export function Fleet({ eyebrow, title, intro }: FleetProps = {}) {
   const [active, setActive] = useState(0);
   const v = VEHICLES[active];
 
@@ -91,12 +110,20 @@ export function Fleet() {
       <div className="container">
         <div className="section-head reveal">
           <div className="left">
-            <span className="eyebrow">Notre flotte</span>
-            <h2 className="display-l">Quatre formats.<br/>Une seule promesse.</h2>
+            <span className="eyebrow">{eyebrow ?? "Notre flotte"}</span>
+            <h2 className="display-l">
+              {title ?? (
+                <>
+                  Quatre formats.
+                  <br />
+                  Une seule promesse.
+                </>
+              )}
+            </h2>
           </div>
           <div className="right">
-            Tous nos véhicules sont équipés de matériel d'arrimage, géolocalisés
-            en temps réel et entretenus par nos équipes.
+            {intro ??
+              "Tous nos véhicules sont équipés de matériel d'arrimage, géolocalisés en temps réel et entretenus par nos équipes."}
           </div>
         </div>
 

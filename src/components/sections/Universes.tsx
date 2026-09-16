@@ -10,9 +10,17 @@ export const Universes = () => {
             <span className="eyebrow">Nos univers</span>
             <h2 className="display-l">Quatre métiers,<br/>une exigence&nbsp;: <span className="accent">la précision</span>.</h2>
           </div>
+          {/* Le lien sortant le plus haut de l'accueil vers la page pilier
+              audiovisuelle. Les cartes ci-dessous sont des `<Link>` entières :
+              on ne peut pas y imbriquer un second lien, d'où ce placement dans
+              le chapeau — qui a l'avantage d'être au-dessus de la grille. */}
           <div className="right">
-            Depuis 2014, nous structurons l'offre H24 autour de pôles complémentaires&nbsp;:
-            de l'audiovisuel à la palette. Choisissez le vôtre.
+            Depuis 2014, nous structurons l&apos;offre H24 autour de pôles
+            complémentaires&nbsp;: du{" "}
+            <Link href="/transport-materiel-audiovisuel-paris" className="link">
+              transport de matériel audiovisuel
+            </Link>{" "}
+            à la palette. Choisissez le vôtre.
           </div>
         </div>
 
