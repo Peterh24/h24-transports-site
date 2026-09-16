@@ -393,25 +393,33 @@ export default function TransportMaterielAudiovisuelPage() {
       <RevealOnScroll />
 
       {/*
-        En-tête sans photo de fond, contrairement aux cinq autres pages
-        « univers ». Deux raisons :
-        - la seule photo de tournage du site sert déjà d'en-tête à
-          /evenementiel ; la réutiliser ici donnerait deux pages jumelles.
-          Elle est réemployée plus bas, en contenu et en chargement différé ;
-        - sans image plein cadre, le candidat LCP devient le H1 — le meilleur
-          cas possible pour la page qu'on cherche à positionner.
+        Photo d'en-tête ajoutée le 2026-09-16 (la page est restée sans visuel
+        jusque-là). Ce n'est pas une prise de vue H24 : c'est la deuxième
+        exception du site après `campagnes/fashion-week-podium.webp`, et elle
+        est tracée dans `public/images/CREDITS.md` — source, auteur, licence
+        et recadrage.
 
-        `glow={false}` : le fond reste la grille de carreaux (`hero-grid`).
-        Les deux autres combinaisons ont été essayées et écartées après
-        capture, le 2026-09-16 :
-        - halo activé (défaut) : `HeroGlow` est dimensionné pour la vidéo de
-          l'accueil (130 % de large, 110 % de haut) ; sur un en-tête nu, il
-          passe par-dessus la seconde ligne du H1 et la rend floue ;
-        - rendu véhicule en `media` + `softGlow` (la recette de
-          /application) : le halo était corrigé, mais la colonne de texte
-          réduite faisait passer le H1 de 3 à 5 lignes, en coupant
-          « Île-de-France » en deux. Un H1 lisible vaut mieux qu'un en-tête
-          rempli.
+        Pourquoi celle-ci, après huit candidates examinées une par une :
+        - **aucune personne identifiable.** C'est le critère décisif, et pas
+          seulement esthétique : la licence Pexels ne couvre **pas** les
+          autorisations de personnes, donc un visage reconnaissable sur une
+          page qui promeut un service commercial est un risque réel. Deux
+          candidates par ailleurs excellentes ont été écartées pour ça ;
+        - palette déjà sombre avec des hautes lumières orangées, donc alignée
+          sur le fond du site sans retouche ;
+        - le sujet — caméra et optique de série — est le premier poste que la
+          page annonce ;
+        - 117 ko, contre 481 pour la photo de /evenementiel.
+
+        ⚠️ Réserve assumée : le boîtier porte un marquage « Canon » lisible.
+        Le recadrage ne peut pas l'exclure sans perdre la caméra. C'est une
+        marque d'**équipement** sur un plateau, pas l'identité d'une société
+        tierce — sans commune mesure avec l'écran de régie retiré du visuel
+        Fashion Week — mais la réserve est notée pour qu'elle soit révocable.
+
+        `photoTone="bright"` : le ton « dark » ajoute un voile prévu pour des
+        photos de jour ; cette image est déjà nocturne et il l'écrasait.
+        `glow={false}` comme les autres pages à photo.
       */}
       <PageHeader
         tag="/ service / audiovisuel"
@@ -419,7 +427,11 @@ export default function TransportMaterielAudiovisuelPage() {
         title="Transport de matériel audiovisuel"
         accent="à Paris &amp; en Île-de-France"
         lead="Caméras, optiques, lumière, machinerie, décors et régie — enlevés chez vos loueurs et livrés sur vos lieux de tournage, 24h/24. Une flotte dédiée de 3 à 20 m³ aux normes Euro 6d, des équipes habituées au matériel sensible, et un dispatch joignable en permanence."
+        image="/images/audiovisuel/camera-cinema.webp"
+        imageAlt="Caméra de cinéma équipée d'une optique de série, montée sur tête fluide sur un plateau de tournage"
+        imagePosition="60% center"
         glow={false}
+        photoTone="bright"
       />
 
       {/* Introduction : ce qu'on transporte, pour qui, où, quand. Le visiteur

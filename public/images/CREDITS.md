@@ -1,7 +1,8 @@
 # Crédits & licences des visuels
 
-**Les visuels en service sont des prises de vue H24**, à une exception près
-documentée plus bas (`campagnes/fashion-week-podium.webp`, Pexels).
+**Les visuels en service sont des prises de vue H24**, à deux exceptions près
+documentées plus bas (`campagnes/fashion-week-podium.webp` et
+`audiovisuel/camera-cinema.webp`, toutes deux Pexels).
 
 | Page | Fichier |
 |---|---|
@@ -10,13 +11,52 @@ documentée plus bas (`campagnes/fashion-week-podium.webp`, Pexels).
 | `/express` | `express/van-motion.webp` |
 | `/colis` | `colis/truck-boxes.webp` |
 | `/contact` | `contact/dispatch-desk.webp` |
+| `/transport-materiel-audiovisuel-paris` | `audiovisuel/camera-cinema.webp` |
 | `/` (bloc « temps fort ») | `campagnes/fashion-week-podium.webp` |
+
+## Exception : `audiovisuel/camera-cinema.webp`
+
+Ajoutée le 2026-09-16 pour l'en-tête de `/transport-materiel-audiovisuel-paris`,
+à la demande de Peter, le site n'ayant aucune photo de caméra ni de plateau
+de tournage en dehors de `evenementiel/event-tailgate.webp` — déjà en en-tête
+de `/evenementiel` et réemployée en contenu sur la page audiovisuelle.
+
+| | |
+|---|---|
+| Source | [Pexels — photo 2873486, « Black Camera »](https://www.pexels.com/photo/2873486/) |
+| Auteur | Bruno Massao ([profil](https://pexels.com/@brunomassao/)) |
+| Licence | Pexels License — usage commercial gratuit, attribution non obligatoire |
+| Original | 4480 × 6720, portrait |
+| Traitement | bande 3:2 prélevée à 3200×2133 depuis y=933 sur un rendu 3200×4800, redimensionnée en 1920×1280, WebP qualité 82 (117 ko) |
+
+### Pourquoi celle-là, et ce qu'il faut savoir avant de la remplacer
+
+**Le critère décisif a été l'absence de personne identifiable**, et ce n'est
+pas esthétique : la licence Pexels ne couvre **pas** les autorisations de
+personnes. Un visage reconnaissable sur une page qui promeut un service
+commercial est un risque réel, pas une question de goût. Deux candidates par
+ailleurs meilleures sur le sujet ont été écartées pour cette seule raison —
+dont un plateau de tournage en néons (Pexels 30878454) où deux comédiens sont
+parfaitement reconnaissables. À garder en tête pour tout remplacement.
+
+**Réserve connue : le boîtier porte un marquage « Canon » lisible**, ainsi que
+« Sumire Prime 35 » et « EOS C300 ». Le recadrage ne peut pas les exclure sans
+perdre la caméra. L'arbitrage retenu : c'est une marque d'**équipement** sur un
+plateau, pas l'identité d'une société tierce — donc sans commune mesure avec
+l'écran de régie « AQUAFINA » retiré du visuel Fashion Week ci-dessous. Le
+voile de l'en-tête l'atténue fortement et il tombe loin du titre. Réserve
+notée pour qu'elle reste révocable.
+
+**Écartée également : Pexels 32232618**, un pick-up de tournage qui semblait
+idéal pour un transporteur. La fiche Pexels affirmait « no recognizable faces,
+readable brand logos, or license plates » — c'était **faux** : logo « HALO HUB »
+deux fois, URL `WWW.HALOHUB.NET`, QR code et plaque `ZHB620` lisibles. Ne pas
+se fier aux descriptions de Pexels : ouvrir l'image avant de la retenir.
 
 ## Exception : `campagnes/fashion-week-podium.webp`
 
-**Seul visuel du site qui ne soit pas une prise de vue H24.** Ajouté le
-2026-09-15 pour le bloc « temps fort » de l'accueil, à la demande de Peter, le
-site n'ayant aucune photo de défilé.
+Ajouté le 2026-09-15 pour le bloc « temps fort » de l'accueil, à la demande de
+Peter, le site n'ayant aucune photo de défilé.
 
 | | |
 |---|---|
