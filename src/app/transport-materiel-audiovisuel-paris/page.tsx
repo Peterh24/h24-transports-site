@@ -394,32 +394,29 @@ export default function TransportMaterielAudiovisuelPage() {
 
       {/*
         Photo d'en-tête ajoutée le 2026-09-16 (la page est restée sans visuel
-        jusque-là). Ce n'est pas une prise de vue H24 : c'est la deuxième
-        exception du site après `campagnes/fashion-week-podium.webp`, et elle
-        est tracée dans `public/images/CREDITS.md` — source, auteur, licence
-        et recadrage.
+        jusque-là), fournie par Peter — `H24_TRANSPORTS_-16.webp`. Donc une
+        prise de vue H24, comme les autres en-têtes du site, et **pas** une
+        image de banque : une première tentative sous licence Pexels a été
+        remplacée par celle-ci et l'exception correspondante a été retirée de
+        `public/images/CREDITS.md`.
 
-        Pourquoi celle-ci, après huit candidates examinées une par une :
-        - **aucune personne identifiable.** C'est le critère décisif, et pas
-          seulement esthétique : la licence Pexels ne couvre **pas** les
-          autorisations de personnes, donc un visage reconnaissable sur une
-          page qui promeut un service commercial est un risque réel. Deux
-          candidates par ailleurs excellentes ont été écartées pour ça ;
-        - palette déjà sombre avec des hautes lumières orangées, donc alignée
-          sur le fond du site sans retouche ;
-        - le sujet — caméra et optique de série — est le premier poste que la
-          page annonce ;
-        - 117 ko, contre 481 pour la photo de /evenementiel.
-
-        ⚠️ Réserve assumée : le boîtier porte un marquage « Canon » lisible.
-        Le recadrage ne peut pas l'exclure sans perdre la caméra. C'est une
-        marque d'**équipement** sur un plateau, pas l'identité d'une société
-        tierce — sans commune mesure avec l'écran de régie retiré du visuel
-        Fashion Week — mais la réserve est notée pour qu'elle soit révocable.
+        Ce que l'image montre est aussi un argument, pas seulement un décor :
+        le rig porte les marquages **Vantage** et **Next Shot**, deux noms qui
+        figurent déjà dans `src/data/clients.ts` et défilent sur l'accueil.
+        C'est du matériel de clients réels de H24, sur un vrai plateau — la
+        question de la « marque tierce lisible » que pose `CREDITS.md` pour le
+        visuel Fashion Week ne se pose donc pas ici. Ne pas remplacer cette
+        photo par une image de banque sans mesurer ce qu'on perd.
 
         `photoTone="bright"` : le ton « dark » ajoute un voile prévu pour des
-        photos de jour ; cette image est déjà nocturne et il l'écrasait.
+        photos de jour. Les deux ont été comparés en capture mobile, la
+        différence est négligeable — la photo est déjà quasi noire — et
+        « bright » décrit plus honnêtement le voile réellement appliqué.
         `glow={false}` comme les autres pages à photo.
+
+        `imagePosition` n'a presque pas d'effet en desktop : l'en-tête est
+        plus large que haut, donc `object-fit: cover` rogne verticalement et
+        non horizontalement. Le réglage compte surtout en mobile.
       */}
       <PageHeader
         tag="/ service / audiovisuel"
