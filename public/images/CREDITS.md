@@ -10,27 +10,49 @@ documentée plus bas (`campagnes/fashion-week-podium.webp`, Pexels).
 | `/express` | `express/van-motion.webp` |
 | `/colis` | `colis/truck-boxes.webp` |
 | `/contact` | `contact/dispatch-desk.webp` |
-| `/transport-materiel-audiovisuel-paris` | `audiovisuel/camera-cinema.webp` |
+| `/transport-materiel-audiovisuel-paris` | `audiovisuel/camera-cinema.webp` + `audiovisuel/camera-cinema-mobile.webp` |
 | `/` (bloc « temps fort ») | `campagnes/fashion-week-podium.webp` |
 
-## `audiovisuel/camera-cinema.webp` — ce qu'elle montre
+## `audiovisuel/` — deux cadrages pour un seul en-tête
 
-Fournie par Peter le 2026-09-16 (`H24_TRANSPORTS_-16.webp`) pour l'en-tête de
-`/transport-materiel-audiovisuel-paris`, restée sans visuel jusque-là.
-Recadrée en bande 3:2 (1667×1111 depuis y=500 sur un original 1667×2500,
-portrait), WebP qualité 82 — **sans agrandissement**, comme
-`express/van-motion.webp` et `colis/truck-boxes.webp`.
+C'est le **seul en-tête du site à deux visuels**, et le seul rendu en
+`<picture>` plutôt qu'en `next/image` (cf. le commentaire dans
+`PageHeader.tsx`). Ce n'est pas du choix de résolution mais de la
+**direction artistique** : deux compositions différentes.
+
+| Fichier | Dimensions | Poids | Servi |
+|---|---|---|---|
+| `camera-cinema.webp` | 1672 × 941 (16:9) | 77 ko | au-dessus de 900 px |
+| `camera-cinema-mobile.webp` | 941 × 1672 (9:16) | 114 ko | jusqu'à 900 px |
+
+Le palier de 900 px n'est pas arbitraire : c'est celui où
+`.page-header.has-photo` change déjà de comportement dans `globals.css`
+(`min-height` au-delà de 901 px). Un seul palier, au même endroit.
+
+Le cadrage paysage place le rig **à droite**, ce qui laisse le studio sombre
+sous le titre — c'est ce qui rend le H1 lisible sans surcharger le voile.
+Ne pas recadrer au centre.
+
+Fournies par Peter le 2026-09-16, en versions retravaillées de sa prise de
+vue `H24_TRANSPORTS_-16.webp` du même jour. Converties en WebP qualité 82,
+**sans recadrage ni redimensionnement de ma part** : les deux fichiers
+arrivaient déjà aux bons formats.
 
 Le rig porte les marquages **Vantage** et **Next Shot**, deux noms présents
 dans `src/data/clients.ts` et affichés sur l'accueil. C'est donc du matériel
 de clients réels, et non une marque tierce comme l'écran de régie retiré du
-visuel Fashion Week ci-dessous — la remplacer par une image de banque ferait
-perdre cette authenticité.
+visuel Fashion Week ci-dessous — les remplacer par des images de banque
+ferait perdre cette authenticité.
+
+⚠️ Provenance à confirmer par Peter : ces visuels sont traités comme des
+prises de vue H24. Si le tirage d'origine est l'œuvre d'un tiers
+(photographe d'un client, loueur), le droit d'usage doit être vérifié et
+cette section corrigée.
 
 Historique : une photo Pexels (2873486, caméra Canon) a occupé cet en-tête
-quelques heures le même jour, avant d'être remplacée par celle-ci. Les deux
-écueils rencontrés pendant cette recherche méritent d'être retenus pour la
-prochaine fois :
+quelques heures le même jour, avant d'être remplacée par ces deux visuels.
+Les deux écueils rencontrés pendant cette recherche méritent d'être retenus
+pour la prochaine fois :
 
 - **la licence Pexels ne couvre pas les autorisations de personnes.** Un
   visage reconnaissable sur une page qui promeut un service commercial est
@@ -72,6 +94,7 @@ régénérée, refaire le flou — il n'est pas dans le fichier d'origine
 (`event.jpg` / `contact.jpg` du poste de travail).
 
 Les photos d'en-tête sont recadrées en 3:2 puis redimensionnées en 1920×1280,
-sauf `express/van-motion.webp` (1536×1024), `colis/truck-boxes.webp`
-(1448×965) et `audiovisuel/camera-cinema.webp` (1667×1111), livrées à la
-résolution de leur source — pas d'agrandissement.
+sauf `express/van-motion.webp` (1536×1024) et `colis/truck-boxes.webp`
+(1448×965), livrées à la résolution de leur source — pas d'agrandissement.
+`audiovisuel/` est le seul en-tête à deux visuels et ne suit pas ce gabarit
+(16:9 et 9:16, voir sa section).
