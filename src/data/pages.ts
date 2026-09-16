@@ -32,7 +32,7 @@ export const PAGES: PageEntry[] = [
       "Transport audiovisuel, événementiel et urgent exclusif à Paris et en Île-de-France, 24h/24 et 7j/7 depuis 2014. Flotte, zones desservies et délais d'intervention.",
     /* Bloc « temps fort » ajouté le 2026-09-15 (cf. `src/data/campaigns.ts`) :
        à rebumper à chaque nouvelle campagne, rien ne le fait tout seul. */
-    updated: "2026-09-15",
+    updated: "2026-09-16",
     indexable: true,
     priority: 1,
     changeFrequency: "monthly",
@@ -41,8 +41,32 @@ export const PAGES: PageEntry[] = [
     path: "/evenementiel",
     label: "Événementiel",
     summary:
-      "Transport et logistique pour l'audiovisuel et l'événementiel à Paris, en Île-de-France et partout en France : caméra, lumière, machinerie et décor, pour la publicité, le cinéma, la mode, le luxe, les concerts et les salons.",
-    updated: "2026-08-28",
+      "Transport et logistique événementielle à Paris, en Île-de-France et partout en France : concerts, tournées, salons professionnels, défilés et opérations de marque — matériel, décor et régie livrés dans les créneaux de montage.",
+    /* Recentrée sur l'événementiel large le 2026-09-16 : le transport de
+       matériel audiovisuel a désormais sa page dédiée
+       (/transport-materiel-audiovisuel-paris), les deux se répondaient sur les mêmes
+       requêtes. */
+    updated: "2026-09-16",
+    indexable: true,
+    priority: 0.9,
+    changeFrequency: "monthly",
+  },
+  {
+    /*
+     * Seul chemin du site en slug long plutôt qu'en nom d'univers court
+     * (/evenementiel, /mode, /express, /colis). Ce n'est pas une
+     * incohérence : les pages courtes sont la taxonomie de **marque** — les
+     * « univers » affichés dans la navigation — alors que celle-ci est une
+     * page de **service** alignée sur la façon dont la requête est écrite.
+     * Toutes les pages qui se positionnent sur cette intention portent le
+     * mot-clé dans leur URL ; y renoncer serait le seul levier on-page
+     * qu'on laisserait à la concurrence.
+     */
+    path: "/transport-materiel-audiovisuel-paris",
+    label: "Transport audiovisuel",
+    summary:
+      "Transport de matériel audiovisuel à Paris et en Île-de-France : caméra, optiques, lumière, machinerie, décor et régie acheminés sur les lieux de tournage, 24h/24. Flotte de 3 à 20 m³ aux normes Euro 6d, service Man & Van, stockage sécurisé et suivi géolocalisé.",
+    updated: "2026-09-16",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
@@ -52,7 +76,7 @@ export const PAGES: PageEntry[] = [
     label: "Mode & luxe",
     summary:
       "Transport de vêtements sur cintre, de portants montés et de collections à Paris, en Île-de-France et partout en France : showroom, défilé, Fashion Week, shooting et salon professionnel. Véhicules équipés penderie, 24h/24.",
-    updated: "2026-08-28",
+    updated: "2026-09-16",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
@@ -62,7 +86,7 @@ export const PAGES: PageEntry[] = [
     label: "Express",
     summary:
       "Coursier express et transport urgent exclusif à Paris : un véhicule entièrement dédié à une seule course, sans groupage ni passage par un centre de tri. Intervention en 1 h dans Paris, 3 h en Île-de-France, 12 h en France entière.",
-    updated: "2026-08-28",
+    updated: "2026-09-16",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
@@ -92,7 +116,7 @@ export const PAGES: PageEntry[] = [
     label: "À propos",
     summary:
       "Société fondée en 2014, spécialisée dans le transport audiovisuel, événementiel et urgent, avec interlocuteur unique, chauffeurs formés, géolocalisation et gardiennage vidéo-surveillé.",
-    updated: "2026-08-15",
+    updated: "2026-09-16",
     indexable: true,
     priority: 0.7,
     changeFrequency: "yearly",

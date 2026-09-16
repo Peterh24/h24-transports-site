@@ -15,28 +15,55 @@ import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/evenementiel");
 
+/**
+ * ⚠️ Répartition des intentions (2026-09-16).
+ *
+ * Cette page était titrée « Transport événementiel & audiovisuel à Paris » et
+ * revendiquait les deux intentions à la fois, sans qu'aucun de ses titres ne
+ * contienne la requête « transport de matériel audiovisuel ». Résultat : elle
+ * ne se positionnait vraiment sur aucune des deux.
+ *
+ * Depuis, la répartition est explicite :
+ *
+ * - `/transport-materiel-audiovisuel-paris` → **transport audiovisuel** :
+ *   caméra, lumière, machinerie, décor, tournages, cinéma, publicité.
+ * - `/evenementiel` (ici) → **transport événementiel** au sens large :
+ *   concerts, tournées, salons professionnels, opérations de marque. C'est
+ *   aussi la page parente du domaine, dont `/mode` et la page audiovisuelle
+ *   sont les deux déclinaisons (cf. leurs fils d'Ariane).
+ * - `/express` → **course dédiée urgente**, tous secteurs.
+ *
+ * Rien n'a été retiré du contenu de la page : seuls le `<title>`, le H1 et
+ * les intitulés qui revendiquaient l'audiovisuel ont été recentrés, et un
+ * lien vers la page audiovisuelle a été ajouté.
+ */
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Transport événementiel & audiovisuel à Paris",
+  title: "Transport événementiel à Paris",
   description:
-    "Transport audiovisuel et événementiel à Paris : caméra, lumière, machinerie et décor livrés à l'heure, en Île-de-France et partout en France.",
+    "Transport et logistique événementielle à Paris : concerts, tournées, salons et opérations de marque. Matériel, décor et régie livrés dans les créneaux de montage, 24h/24.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Transport événementiel & audiovisuel à Paris",
+    name: "Transport événementiel à Paris",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
   breadcrumb(PAGE.path, [{ name: PAGE.label, path: PAGE.path }]),
   service({
     path: PAGE.path,
-    name: "Transport audiovisuel et événementiel",
-    serviceType: "Transport de matériel audiovisuel et événementiel",
+    name: "Transport et logistique événementielle",
+    serviceType: "Transport de matériel événementiel",
     description:
-      "Transport de caméra, optiques, lumière, machinerie, décor et régie pour la publicité, le cinéma, la mode, le luxe, les concerts et les salons professionnels, 24h/24.",
-    offers: ["Publicité & cinéma", "Mode & luxe", "Concert & salon"],
+      "Transport de matériel technique, de décor, de mobilier et de régie pour les concerts, les tournées, les festivals, les salons professionnels et les opérations de marque, à Paris, en Île-de-France et partout en France, 24h/24.",
+    offers: [
+      "Concert & tournée",
+      "Salon professionnel",
+      "Opération de marque",
+      "Décor & régie",
+    ],
   }),
   faqPage(PAGE.path, FAQ_EVENEMENTIEL),
 );
@@ -110,17 +137,33 @@ export default function EventPage() {
     <>
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
+      {/* H1 recentré sur « transport événementiel » (2026-09-16). La formule de
+          marque « Le matériel arrive » est conservée, déplacée dans la seconde
+          ligne : c'est elle qui donnait son ton à la page, mais elle ne portait
+          aucune des deux requêtes que la page revendiquait. */}
       <PageHeader
-        eyebrow="Univers · Audiovisuel & Événementiel"
-        title="Le matériel arrive."
-        accent="L'événement peut commencer."
-        lead="Caméra, lumière, machinerie, décor — pour Pub & Cinéma, Mode & Luxe, Concert & Salon. Une expertise née sur le terrain à Paris, en 2014."
+        eyebrow="Univers · Événementiel"
+        title="Transport événementiel."
+        accent="Le matériel arrive à l'heure."
+        lead="Concerts, tournées, festivals, salons professionnels et opérations de marque — matériel technique, décor, mobilier et régie livrés dans les créneaux de montage, 24h/24. Une expertise née sur le terrain à Paris, en 2014."
         image="/images/evenementiel/event-tailgate.webp"
         imageAlt="Camion H24 Transports hayon déployé sur un tournage, chargé de matériel de machinerie et de lumière"
         glow={false}
         photoTone="bright"
       />
       <Values
+        intro={
+          <>
+            L&apos;événementiel et l&apos;audiovisuel partagent les mêmes
+            contraintes de créneau et de matériel sensible. Pour un plateau de
+            tournage, le détail des postes caméra, lumière et machinerie est sur
+            la page{" "}
+            <Link href="/transport-materiel-audiovisuel-paris" className="link">
+              transport de matériel audiovisuel
+            </Link>
+            .
+          </>
+        }
         values={[
           {
             title: "Rapidité",
@@ -155,7 +198,13 @@ export default function EventPage() {
               Stockage sécurisé, géolocalisation, assurances dédiées et équipes
               formées — vos marchandises entre de bonnes mains, du départ à la
               livraison.
-              <p style={{ marginTop: 18 }}>
+              <p style={{ marginTop: 18, display: "flex", flexWrap: "wrap", gap: 12 }}>
+                <Link
+                  href="/transport-materiel-audiovisuel-paris"
+                  className="btn btn-ghost"
+                >
+                  Solutions pour les tournages <span className="arrow" />
+                </Link>
                 <Link href="/mode" className="btn btn-ghost">
                   Transport mode &amp; vêtements sur cintre{" "}
                   <span className="arrow" />

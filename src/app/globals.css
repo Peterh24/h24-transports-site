@@ -366,6 +366,36 @@ section {
 }
 
 /* ===== utilities ===== */
+/**
+ * Lien dans du texte courant.
+ *
+ * Le reset global (`a { color: inherit; text-decoration: none }`) rend un lien
+ * de paragraphe rigoureusement identique au texte qui l'entoure : ça
+ * convenait tant que tous les liens du site étaient des `.btn`, des entrées de
+ * navigation ou des liens de footer, tous identifiables par leur contexte. Ce
+ * n'est plus le cas depuis le maillage interne posé le 2026-09-16, où des
+ * liens vivent au milieu d'une phrase.
+ *
+ * Couleur **et** soulignement, pas seulement la couleur : la couleur seule ne
+ * suffit pas à signaler un lien au milieu d'un texte (WCAG 1.4.1, l'info ne
+ * doit pas reposer sur la seule couleur). Reprend la mise en forme déjà
+ * employée par `.consent-text a`, seul lien en pleine phrase du site jusqu'ici.
+ *
+ * `/mentions-legales` et `/cgv` emploient `.accent` nu sur leurs liens de
+ * téléphone et d'e-mail : ils sont laissés tels quels, un numéro et une
+ * adresse e-mail se reconnaissant à leur forme.
+ */
+.link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--accent) 45%, transparent);
+  transition: text-decoration-color 0.2s ease;
+}
+.link:hover {
+  text-decoration-color: var(--accent);
+}
 .divider {
   height: 1px;
   background: var(--line);
@@ -2263,6 +2293,25 @@ section {
 @media (max-width: 900px) {
   .values-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+/**
+ * Une seule colonne sur téléphone, au même palier que `.engagements-grid` —
+ * l'autre grille de quatre cartes à texte du site.
+ *
+ * Ce n'est pas qu'une question de confort de lecture : en deux colonnes à
+ * 390 px, chaque carte n'offre que ~137 px de texte utile, et un titre d'un
+ * seul mot long ne peut s'y couper nulle part. La grille s'élargissait donc
+ * au-delà du viewport et la page entière gagnait une barre de défilement
+ * horizontale — mesuré le 2026-09-16 : 6 px sur
+ * `/transport-materiel-audiovisuel-paris` (« Spécialisation ») et 3 px sur
+ * `/mode` (« Manipulation », « Traçabilité »), les deux pages aux titres de
+ * valeurs les plus longs. Les pages dont les titres tiennent déjà
+ * (/evenementiel, /express, /colis) sont inchangées au-dessus de ce palier.
+ */
+@media (max-width: 520px) {
+  .values-grid {
+    grid-template-columns: 1fr;
   }
 }
 .value-card {

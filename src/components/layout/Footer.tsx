@@ -77,6 +77,14 @@ export function Footer() {
             <h5>Univers</h5>
             <ul>
               <li>
+                {/* Ancre complète ici, contrairement au menu de navigation qui
+                    manque de place : le footer est présent sur toutes les
+                    pages et peut porter la formulation exacte de la requête. */}
+                <Link href="/transport-materiel-audiovisuel-paris">
+                  Transport de matériel audiovisuel
+                </Link>
+              </li>
+              <li>
                 <Link href="/evenementiel">Événementiel</Link>
               </li>
               <li>

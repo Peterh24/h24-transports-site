@@ -205,12 +205,25 @@ export const ANALYTICS = {
   cookieMaxAgeLabel: "13 mois",
 } as const;
 
-/** Liens de navigation principaux (vraies routes Next). */
+/**
+ * Liens de navigation principaux (vraies routes Next).
+ *
+ * « Transport audiovisuel » ouvre le menu Services depuis le 2026-09-16 :
+ * c'est l'entrée la plus recherchée de l'offre, et un lien de navigation est
+ * présent sur **toutes** les pages du site — c'est le lien interne le plus
+ * fort qu'on puisse donner à la page pilier `/transport-materiel-audiovisuel-paris`.
+ * Le libellé est court volontairement : le menu déroulant n'a pas la place
+ * d'afficher « Transport de matériel audiovisuel ».
+ */
 export const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Accueil" },
   {
     label: "Services",
     children: [
+      {
+        href: "/transport-materiel-audiovisuel-paris",
+        label: "Transport audiovisuel",
+      },
       { href: "/evenementiel", label: "Événementiel" },
       { href: "/mode", label: "Mode & luxe" },
       { href: "/express", label: "Express" },

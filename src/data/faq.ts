@@ -57,21 +57,36 @@ export const FAQ_HOME: FaqItem[] = [
   },
 ];
 
+/**
+ * ⚠️ Répartition avec `FAQ_AUDIOVISUEL` (2026-09-16).
+ *
+ * Les trois questions strictement audiovisuelles qui figuraient ici
+ * (« Qui transporte du matériel audiovisuel à Paris ? », le matériel caméra
+ * fragile, les tournages de nuit) ont été portées sur
+ * `/transport-materiel-audiovisuel-paris`, qui est désormais la page de référence sur
+ * cette intention. Les garder aux deux endroits aurait fait répondre deux
+ * pages du même site à la même question, mot pour mot — le signal que Google
+ * interprète comme deux pages interchangeables.
+ *
+ * Cette liste couvre donc l'événementiel **au sens large** : concerts,
+ * tournées, salons, opérations de marque. Toute nouvelle question sur la
+ * caméra, la lumière ou les plateaux de tournage va dans `FAQ_AUDIOVISUEL`.
+ */
 export const FAQ_EVENEMENTIEL: FaqItem[] = [
   {
-    question: "Qui transporte du matériel audiovisuel à Paris ?",
+    question: "Qui assure le transport et la logistique d'un événement à Paris ?",
     answer:
-      "H24 Transports assure le transport de matériel audiovisuel à Paris et en Île-de-France depuis 2014 : caméra, optiques, lumière, machinerie, décor et régie. Les enlèvements et livraisons sont possibles 24h/24, y compris pour les tournages de nuit.",
+      "H24 Transports assure le transport et la logistique d'événements à Paris et en Île-de-France depuis 2014 : matériel technique, décor, mobilier et régie acheminés sur les lieux de concert, de tournée, de salon professionnel ou de défilé. Les enlèvements et livraisons sont possibles 24h/24, y compris pendant les nuits de montage.",
   },
   {
-    question: "H24 Transports transporte-t-il du matériel caméra fragile ?",
+    question: "H24 Transports intervient-il sur les salons professionnels ?",
     answer:
-      "Oui. Le transport de matériel caméra et lumière fragile fait partie du cœur de métier de H24 Transports. Les véhicules sont conduits par des chauffeurs et manutentionnaires formés à la manipulation de matériel sensible, et les envois sont suivis par géolocalisation.",
+      "Oui. H24 Transports livre et reprend le matériel, les stands et le décor sur les salons professionnels d'Île-de-France, dans les créneaux de montage et de démontage imposés par l'organisateur. Le dispatch est joignable 24h/24 au 01 80 27 54 60 pour caler l'intervention sur ces créneaux.",
   },
   {
-    question: "H24 Transports intervient-il sur les tournages de nuit ?",
+    question: "H24 Transports intervient-il la nuit pour les montages et démontages ?",
     answer:
-      "Oui. H24 Transports opère 24 heures sur 24, ce qui couvre les tournages de nuit, les montages et démontages nocturnes de plateaux et les urgences de remplacement de matériel en cours de tournage.",
+      "Oui. H24 Transports opère 24 heures sur 24 et 7 jours sur 7, ce qui couvre les montages et démontages nocturnes, les rotations entre deux dates d'une tournée et les urgences de remplacement de matériel pendant un événement.",
   },
   {
     question: "Pour quels secteurs H24 Transports assure-t-il la logistique événementielle ?",
@@ -82,6 +97,87 @@ export const FAQ_EVENEMENTIEL: FaqItem[] = [
     question: "Le matériel est-il sécurisé entre deux prestations ?",
     answer:
       "H24 Transports s'appuie sur des solutions de géolocalisation des véhicules et sur du gardiennage vidéo-surveillé pour sécuriser le matériel transporté et stationné.",
+  },
+];
+
+/**
+ * Transport audiovisuel — page `/transport-materiel-audiovisuel-paris`.
+ *
+ * C'est la FAQ la plus exposée du site : elle répond à l'intention
+ * commerciale sur laquelle la concurrence est la plus active. Deux
+ * conséquences pour toute modification ici :
+ *
+ * - **Chaque affirmation doit être sourçable dans le projet** ou sur une page
+ *   publique de H24. Les sources utilisées ci-dessous sont, dans l'ordre :
+ *   `src/data/vehicles.ts` (formats et charges utiles), `src/data/site.ts`
+ *   (délais, coordonnées), `src/data/cgv.ts` article « Assurances »,
+ *   la page `/application` (courses complexes, ETA par étape),
+ *   la page `/evenementiel` (locaux vidéo-surveillés, régisseur « junior »),
+ *   et la fiche publique H24 du guide des ressources Film Paris Region
+ *   (flotte 3–20 m³ Euro 6d, Man & Van, stockage sécurisé, support sur les
+ *   tournages).
+ * - **Pas de recoupement mot pour mot avec `FAQ_EVENEMENTIEL`** : voir
+ *   l'avertissement au-dessus de cette dernière.
+ */
+export const FAQ_AUDIOVISUEL: FaqItem[] = [
+  {
+    question: "Qui transporte du matériel audiovisuel à Paris ?",
+    answer:
+      "H24 Transports assure le transport de matériel audiovisuel à Paris et en Île-de-France depuis 2014 : caméra, optiques, lumière, machinerie, décor et régie. Les enlèvements et les livraisons sur les lieux de tournage sont possibles 24 heures sur 24, et le dispatch est joignable en permanence au 01 80 27 54 60.",
+  },
+  {
+    question: "Comment transporter du matériel audiovisuel fragile ?",
+    answer:
+      "Le transport de matériel audiovisuel fragile repose sur trois conditions : un véhicule équipé de matériel d'arrimage, une course dédiée sans groupage ni passage par un centre de tri, et des équipes formées à la manipulation. C'est le mode de fonctionnement de H24 Transports sur ses courses audiovisuelles — un véhicule pour un seul client, du point d'enlèvement jusqu'au plateau, avec suivi géolocalisé.",
+  },
+  {
+    question: "H24 Transports intervient-il la nuit et le week-end sur un tournage ?",
+    answer:
+      "Oui. H24 Transports opère 24 heures sur 24 et 7 jours sur 7, y compris la nuit, le week-end et les jours fériés. Cela couvre les tournages de nuit, les montages et démontages nocturnes de plateaux, et les remplacements de matériel en urgence pendant un tournage.",
+  },
+  {
+    question: "Quels véhicules H24 Transports utilise-t-il pour le matériel audiovisuel ?",
+    answer:
+      "La flotte de H24 Transports comprend quatre formats, aux normes Euro 6d : 3 m³ (415 kg de charge utile), 6 à 8 m³ (820 kg), 12 à 14 m³ (1 300 kg) et 20 m³ (700 kg, hayon inclus). Le format est choisi selon le volume du matériel, son poids et les contraintes d'accès du lieu de tournage. Tous les véhicules sont équipés de matériel d'arrimage et géolocalisés en temps réel.",
+  },
+  {
+    question: "Qu'est-ce que le service Man & Van pour un tournage ?",
+    answer:
+      "Le Man & Van de H24 Transports met à disposition d'une production un véhicule et son chauffeur pour la durée d'une mission, avec un appui à la manutention du matériel sur place — jusqu'au rôle de régisseur « junior » lorsque la production le demande. La formule s'adresse aux tournages qui enchaînent plusieurs lieux ou plusieurs postes dans la même journée.",
+  },
+  {
+    question: "H24 Transports intervient-il directement sur les lieux de tournage ?",
+    answer:
+      "Oui. H24 Transports achemine le matériel jusqu'au lieu de tournage et intervient en appui sur place, en respectant les contraintes d'organisation de la production : créneau de livraison, accès du site et ordre de déchargement. L'entreprise est référencée comme service de tournage dans le guide des ressources de Film Paris Region.",
+  },
+  {
+    question: "Peut-on organiser plusieurs enlèvements et plusieurs livraisons sur une même course ?",
+    answer:
+      "Oui. L'application H24 Transports permet de créer des courses simples comme des courses complexes, avec le suivi des statuts et l'estimation d'heure d'arrivée à chaque étape. Un même véhicule peut ainsi enchaîner plusieurs enlèvements chez des loueurs de matériel puis plusieurs livraisons sur les lieux de tournage.",
+  },
+  {
+    question: "Le matériel audiovisuel peut-il être stocké entre deux tournages ?",
+    answer:
+      "Oui. H24 Transports propose du stockage sécurisé dans ses installations et dispose de locaux vidéo-surveillés 24h/24, y compris pour des véhicules qui restent chargés entre deux prestations.",
+  },
+  {
+    question: "H24 Transports est-il assuré pour le transport de matériel audiovisuel ?",
+    answer:
+      "H24 Transports a souscrit une assurance sur le transport couvrant tout risque et en tout lieu. Une attestation peut être communiquée au donneur d'ordre sur demande. Les conditions applicables sont détaillées dans les conditions générales de vente et de transport publiées sur h24transports.com.",
+  },
+  {
+    question: "H24 Transports transporte-t-il du matériel audiovisuel en dehors de Paris ?",
+    answer: `Oui. H24 Transports intervient à Paris, dans toute l'Île-de-France et en France entière, avec des délais d'intervention de ${DELAIS}. La société est domiciliée 4 boulevard de Beaubourg, 77183 Croissy-Beaubourg, à l'est de Paris.`,
+  },
+  {
+    question: "H24 Transports transporte-t-il du matériel de cinéma ?",
+    answer:
+      "Oui. Le transport de matériel de cinéma fait partie du cœur de métier de H24 Transports : caméras et optiques, lumière, machinerie, grip, décors et régie, pour les longs métrages, les séries, les films publicitaires et les captations. L'entreprise est référencée comme service de tournage dans le guide des ressources de Film Paris Region.",
+  },
+  {
+    question: "Comment obtenir un devis pour un transport audiovisuel ?",
+    answer:
+      "Un devis de transport audiovisuel s'obtient de trois façons chez H24 Transports : par téléphone au 01 80 27 54 60, ligne ouverte 24h/24 ; depuis l'application H24, qui permet de créer la course et d'en suivre l'exécution ; ou par le formulaire de contact du site, avec une réponse sous 30 minutes ouvrées. Les éléments utiles sont la nature et le volume du matériel, les adresses d'enlèvement et de livraison, et le créneau imposé.",
   },
 ];
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Cta } from "@/components/sections/Cta";
 import { Faq } from "@/components/sections/Faq";
@@ -244,6 +245,16 @@ export default function ModePage() {
             <div className="right">
               Du showroom au défilé, du studio au salon — les mêmes pièces, des
               contraintes de délai et de manipulation à chaque fois différentes.
+              {/* Lien croisé vers la page pilier audiovisuelle : un shooting
+                  mode mobilise caméra, lumière et machinerie en plus des
+                  collections, donc le contexte est réel et non forcé. */}
+              <p style={{ marginTop: 14 }}>
+                Sur un shooting, le{" "}
+                <Link href="/transport-materiel-audiovisuel-paris" className="link">
+                  transport du matériel technique
+                </Link>{" "}
+                — caméra, lumière, machinerie — se traite sur la même course.
+              </p>
             </div>
           </div>
           <div className="engagements-grid reveal-stagger">
