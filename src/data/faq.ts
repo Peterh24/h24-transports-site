@@ -162,8 +162,13 @@ export const FAQ_AUDIOVISUEL: FaqItem[] = [
   },
   {
     question: "H24 Transports est-il assuré pour le transport de matériel audiovisuel ?",
+    /* Réponse attribuée aux CGV plutôt qu'assertive : « tout risque et en
+       tout lieu » est la clause de l'article « Assurances », et le même
+       document fixe par ailleurs des limites de responsabilité. Un moteur
+       génératif cite ce passage hors contexte — il doit donc porter sa
+       source et renvoyer au document. */
     answer:
-      "H24 Transports a souscrit une assurance sur le transport couvrant tout risque et en tout lieu. Une attestation peut être communiquée au donneur d'ordre sur demande. Les conditions applicables sont détaillées dans les conditions générales de vente et de transport publiées sur h24transports.com.",
+      "Les conditions générales de vente et de transport de H24 Transports, publiées sur h24transports.com, déclarent une assurance sur le transport couvrant tout risque et en tout lieu, dont une attestation peut être communiquée au donneur d'ordre sur demande. Les limites de responsabilité applicables figurent dans le même document.",
   },
   {
     question: "H24 Transports transporte-t-il du matériel audiovisuel en dehors de Paris ?",

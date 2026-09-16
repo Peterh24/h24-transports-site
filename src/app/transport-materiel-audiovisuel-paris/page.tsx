@@ -100,9 +100,16 @@ export const metadata: Metadata = pageMetadata({
    * une seconde fois la dupliquait dans l'onglet et dans les résultats.
    */
   title: "Transport de matériel audiovisuel à Paris",
-  /* 156 caractères. Requête principale en tête, bénéfice concret ensuite. */
+  /*
+   * 155 caractères, requête principale en tête et bénéfice concret ensuite.
+   *
+   * ⚠️ Compter en caractères, pas en octets : la version précédente était
+   * annotée « 156 » alors qu'elle en faisait 161 — un `${#var}` en shell
+   * compte les octets, et les accents comme le « ³ » en pèsent deux. Vérifier
+   * avec `"…".length` en JS.
+   */
   description:
-    "Transport de matériel audiovisuel à Paris : caméra, lumière, machinerie et décors livrés sur vos tournages 24h/24. Flotte dédiée de 3 à 20 m³, enlèvement en 1 h.",
+    "Transport de matériel audiovisuel à Paris : caméra, lumière, machinerie et décors livrés sur vos tournages, 24h/24. Enlèvement en 1 h, flotte de 3 à 20 m³.",
 });
 
 const jsonLd = graph(
@@ -434,18 +441,43 @@ export default function TransportMaterielAudiovisuelPage() {
                 Le matériel de tournage a trois particularités qui le rendent
                 mal adapté à la messagerie classique : il est fragile, il vaut
                 cher, et il est attendu à une heure précise sur un lieu qui
-                n&apos;est pas un entrepôt. C&apos;est pourquoi chaque course
-                est dédiée — un véhicule, un client, aucun groupage — et
-                pourquoi le dispatch reste joignable 24 heures sur 24 au{" "}
+                n&apos;est pas un entrepôt. C&apos;est pourquoi le transport
+                audiovisuel se fait en course dédiée — un véhicule, un client,
+                aucun groupage — et pourquoi le dispatch reste joignable
+                24 heures sur 24 au{" "}
                 <a className="tnum" href={SITE.phoneHref}>
                   {SITE.phone}
                 </a>
                 .
               </p>
             </div>
+            {/*
+              Lien sortant vers la fiche publique H24 du guide des ressources
+              de Film Paris Region. Formulation volontairement limitée à ce
+              qu'elle est — un référencement dans un guide professionnel — et
+              non un partenariat : rien sur la page de Film Paris Region ne
+              déclare de partenariat.
+
+              Pas de `nofollow` : c'est un lien éditorial vers un organisme
+              sectoriel légitime, ni sponsorisé ni généré par un utilisateur,
+              donc aucun des cas où Google attend un attribut.
+
+              ⚠️ Le Paris Images Production Forum n'est **pas** lié ici : deux
+              recherches (2026-09-16) n'ont trouvé aucune fiche H24 publique
+              sur ce site, et son certificat TLS est expiré. Ne pas ajouter le
+              lien sans une page publique qui confirme la présence.
+            */}
             <div className="right">
-              H24 Transports est référencée comme service de tournage dans le
-              guide des ressources de Film Paris Region.
+              H24 Transports est référencée comme service de tournage dans le{" "}
+              <a
+                className="link"
+                href="https://www.filmparisregion.com/en/resource-guide/h24-transports"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                guide des ressources de Film Paris Region
+              </a>
+              .
               <p style={{ marginTop: 18 }}>
                 <a className="btn btn-primary" href={SITE.dashboard.order}>
                   Demander un transport <span className="arrow" />
@@ -702,11 +734,20 @@ export default function TransportMaterielAudiovisuelPage() {
               <h3 className="display-s" style={{ marginTop: 12 }}>
                 Assurance transport
               </h3>
+              {/* Formulation attribuée, pas assertive : « tout risque et en
+                  tout lieu » est la clause des CGV de H24 (article
+                  « Assurances », cf. src/data/cgv.ts), pas une garantie
+                  illimitée. Dire d'où vient la phrase la rend vérifiable et
+                  renvoie le lecteur aux limites de responsabilité, qui font
+                  l'objet d'un autre article du même document. */}
               <p className="dim" style={{ marginTop: 14, lineHeight: 1.6 }}>
-                H24 Transports a souscrit une assurance sur le transport
-                couvrant tout risque et en tout lieu. Une attestation peut être
-                communiquée au donneur d&apos;ordre sur demande (
-                <Link href="/cgv" className="link">conditions générales</Link>).
+                Les{" "}
+                <Link href="/cgv" className="link">
+                  conditions générales
+                </Link>{" "}
+                de H24 Transports déclarent une assurance sur le transport
+                couvrant tout risque et en tout lieu, dont une attestation peut
+                être communiquée au donneur d&apos;ordre sur demande.
               </p>
               <div className="category-stat">
                 <span className="display-m accent">Tout risque</span>
