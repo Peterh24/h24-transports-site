@@ -393,25 +393,30 @@ export default function TransportMaterielAudiovisuelPage() {
       <RevealOnScroll />
 
       {/*
-        En-tête sans photo de fond, contrairement aux cinq autres pages
-        « univers ». Deux raisons :
-        - la seule photo de tournage du site sert déjà d'en-tête à
-          /evenementiel ; la réutiliser ici donnerait deux pages jumelles.
-          Elle est réemployée plus bas, en contenu et en chargement différé ;
-        - sans image plein cadre, le candidat LCP devient le H1 — le meilleur
-          cas possible pour la page qu'on cherche à positionner.
+        Photo d'en-tête ajoutée le 2026-09-16 (la page est restée sans visuel
+        jusque-là), fournie par Peter — `H24_TRANSPORTS_-16.webp`. Donc une
+        prise de vue H24, comme les autres en-têtes du site, et **pas** une
+        image de banque : une première tentative sous licence Pexels a été
+        remplacée par celle-ci et l'exception correspondante a été retirée de
+        `public/images/CREDITS.md`.
 
-        `glow={false}` : le fond reste la grille de carreaux (`hero-grid`).
-        Les deux autres combinaisons ont été essayées et écartées après
-        capture, le 2026-09-16 :
-        - halo activé (défaut) : `HeroGlow` est dimensionné pour la vidéo de
-          l'accueil (130 % de large, 110 % de haut) ; sur un en-tête nu, il
-          passe par-dessus la seconde ligne du H1 et la rend floue ;
-        - rendu véhicule en `media` + `softGlow` (la recette de
-          /application) : le halo était corrigé, mais la colonne de texte
-          réduite faisait passer le H1 de 3 à 5 lignes, en coupant
-          « Île-de-France » en deux. Un H1 lisible vaut mieux qu'un en-tête
-          rempli.
+        Ce que l'image montre est aussi un argument, pas seulement un décor :
+        le rig porte les marquages **Vantage** et **Next Shot**, deux noms qui
+        figurent déjà dans `src/data/clients.ts` et défilent sur l'accueil.
+        C'est du matériel de clients réels de H24, sur un vrai plateau — la
+        question de la « marque tierce lisible » que pose `CREDITS.md` pour le
+        visuel Fashion Week ne se pose donc pas ici. Ne pas remplacer cette
+        photo par une image de banque sans mesurer ce qu'on perd.
+
+        `photoTone="bright"` : le ton « dark » ajoute un voile prévu pour des
+        photos de jour. Les deux ont été comparés en capture mobile, la
+        différence est négligeable — la photo est déjà quasi noire — et
+        « bright » décrit plus honnêtement le voile réellement appliqué.
+        `glow={false}` comme les autres pages à photo.
+
+        `imagePosition` n'a presque pas d'effet en desktop : l'en-tête est
+        plus large que haut, donc `object-fit: cover` rogne verticalement et
+        non horizontalement. Le réglage compte surtout en mobile.
       */}
       <PageHeader
         tag="/ service / audiovisuel"
@@ -419,7 +424,11 @@ export default function TransportMaterielAudiovisuelPage() {
         title="Transport de matériel audiovisuel"
         accent="à Paris &amp; en Île-de-France"
         lead="Caméras, optiques, lumière, machinerie, décors et régie — enlevés chez vos loueurs et livrés sur vos lieux de tournage, 24h/24. Une flotte dédiée de 3 à 20 m³ aux normes Euro 6d, des équipes habituées au matériel sensible, et un dispatch joignable en permanence."
+        image="/images/audiovisuel/camera-cinema.webp"
+        imageAlt="Caméra de cinéma équipée d'une optique de série, montée sur tête fluide sur un plateau de tournage"
+        imagePosition="60% center"
         glow={false}
+        photoTone="bright"
       />
 
       {/* Introduction : ce qu'on transporte, pour qui, où, quand. Le visiteur

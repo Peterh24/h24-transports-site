@@ -10,7 +10,35 @@ documentée plus bas (`campagnes/fashion-week-podium.webp`, Pexels).
 | `/express` | `express/van-motion.webp` |
 | `/colis` | `colis/truck-boxes.webp` |
 | `/contact` | `contact/dispatch-desk.webp` |
+| `/transport-materiel-audiovisuel-paris` | `audiovisuel/camera-cinema.webp` |
 | `/` (bloc « temps fort ») | `campagnes/fashion-week-podium.webp` |
+
+## `audiovisuel/camera-cinema.webp` — ce qu'elle montre
+
+Fournie par Peter le 2026-09-16 (`H24_TRANSPORTS_-16.webp`) pour l'en-tête de
+`/transport-materiel-audiovisuel-paris`, restée sans visuel jusque-là.
+Recadrée en bande 3:2 (1667×1111 depuis y=500 sur un original 1667×2500,
+portrait), WebP qualité 82 — **sans agrandissement**, comme
+`express/van-motion.webp` et `colis/truck-boxes.webp`.
+
+Le rig porte les marquages **Vantage** et **Next Shot**, deux noms présents
+dans `src/data/clients.ts` et affichés sur l'accueil. C'est donc du matériel
+de clients réels, et non une marque tierce comme l'écran de régie retiré du
+visuel Fashion Week ci-dessous — la remplacer par une image de banque ferait
+perdre cette authenticité.
+
+Historique : une photo Pexels (2873486, caméra Canon) a occupé cet en-tête
+quelques heures le même jour, avant d'être remplacée par celle-ci. Les deux
+écueils rencontrés pendant cette recherche méritent d'être retenus pour la
+prochaine fois :
+
+- **la licence Pexels ne couvre pas les autorisations de personnes.** Un
+  visage reconnaissable sur une page qui promeut un service commercial est
+  un risque réel, pas une question de goût ;
+- **les descriptions de Pexels ne sont pas fiables.** La fiche de la photo
+  32232618 annonçait « no recognizable faces, readable brand logos, or
+  license plates » ; l'image montrait un logo « HALO HUB » deux fois, une
+  URL, un QR code et une plaque lisible. Toujours ouvrir l'image.
 
 ## Exception : `campagnes/fashion-week-podium.webp`
 
@@ -44,5 +72,6 @@ régénérée, refaire le flou — il n'est pas dans le fichier d'origine
 (`event.jpg` / `contact.jpg` du poste de travail).
 
 Les photos d'en-tête sont recadrées en 3:2 puis redimensionnées en 1920×1280,
-sauf `express/van-motion.webp` (1536×1024) et `colis/truck-boxes.webp`
-(1448×965), livrées à la résolution de leur source — pas d'agrandissement.
+sauf `express/van-motion.webp` (1536×1024), `colis/truck-boxes.webp`
+(1448×965) et `audiovisuel/camera-cinema.webp` (1667×1111), livrées à la
+résolution de leur source — pas d'agrandissement.
