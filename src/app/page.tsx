@@ -64,14 +64,13 @@ const jsonLd = graph(
     name: "Transport de matériel audiovisuel",
     serviceType: "Transport de matériel audiovisuel et de tournage",
     description:
-      "Transport de caméras, optiques, lumière, machinerie, décors et régie sur les lieux de tournage, en course dédiée et 24h/24, à Paris, en Île-de-France et en France entière. Flotte de 3 à 20 m³ avec hayon sur les grands formats, service Man & Van, stockage sécurisé et suivi géolocalisé.",
+      "Transport de caméras, optiques, lumière, machinerie, décors et régie sur les lieux de tournage, en course dédiée et 24h/24, à Paris, en Île-de-France et en France entière. Flotte de 3 à 20 m³ avec hayon sur les grands formats, stockage sécurisé et suivi géolocalisé.",
     offers: [
       "Transport de caméras, optiques et matériel vidéo",
       "Transport de lumière et de matériel électro",
       "Transport de machinerie, grip et accessoires",
       "Transport de décors et de régie",
       "Transport dédié sans rupture de charge",
-      "Man & Van pour tournage",
       "Stockage et gardiennage sécurisé de matériel audiovisuel",
     ],
   }),

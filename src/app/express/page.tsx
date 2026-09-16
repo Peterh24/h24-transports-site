@@ -105,7 +105,7 @@ export default function ExpressPage() {
             concerne une caméra, un projecteur ou du matériel de plateau, le
             détail est sur la page{" "}
             <Link href="/transport-materiel-audiovisuel-paris" className="link">
-              transport de matériel audiovisuel
+              transport pour vos productions
             </Link>
             .
           </>

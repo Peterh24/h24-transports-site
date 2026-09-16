@@ -63,13 +63,22 @@ import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
  * `/application` (courses complexes, ETA par étape),
  * et la fiche publique H24 du guide des ressources Film Paris Region
  * (« transport sécurisé d'équipements audiovisuels » vers les lieux de
- * tournage, flotte 3–20 m³ aux normes Euro 6d, service Man & Van, stockage
+ * tournage, flotte 3–20 m³ aux normes Euro 6d, stockage
  * sécurisé dans nos installations, conducteur et flotte à l'effigie de votre
  * marque).
  *
  * Rien d'autre. Pas de tarif, pas de délai garanti, pas de certification,
  * pas de « partenaire officiel » — la fiche Film Paris Region est un
  * référencement dans un guide, et c'est ainsi qu'elle est présentée.
+ *
+ * ⚠️ Le bloc « Man & Van » a été retiré de cette page le 2026-09-16, à la
+ * demande de Peter. Le service existe toujours (fiche publique H24 du guide
+ * Film Paris Region) et reste décrit par une question de `FAQ_AUDIOVISUEL`
+ * et par le `knowsAbout` de l'organisation. Le retirer de l'`OfferCatalog`
+ * du nœud `Service` était en revanche obligatoire : une offre balisée doit
+ * correspondre à une prestation visible sur la page. Conséquence SEO
+ * assumée — la requête « Man & Van tournage » ne garde qu'un ancrage de
+ * FAQ, plus une section entière.
  *
  * ⚠️ Non retenu volontairement : la présence de H24 au **Paris Images
  * Production Forum**. Aucune page publique ne la confirme (recherche du
@@ -112,7 +121,7 @@ const jsonLd = graph(
     name: "Transport de matériel audiovisuel",
     serviceType: "Transport de matériel audiovisuel et de tournage",
     description:
-      "Transport de caméras, optiques, lumière, machinerie, décors et régie sur les lieux de tournage, en course dédiée et 24h/24, à Paris, en Île-de-France et en France entière. Flotte de 3 à 20 m³ avec hayon sur les grands formats, service Man & Van, stockage sécurisé et suivi géolocalisé.",
+      "Transport de caméras, optiques, lumière, machinerie, décors et régie sur les lieux de tournage, en course dédiée et 24h/24, à Paris, en Île-de-France et en France entière. Flotte de 3 à 20 m³ avec hayon sur les grands formats, stockage sécurisé et suivi géolocalisé.",
     /* Chaque entrée correspond à une section visible de la page — règle
        Google sur les données structurées : elles décrivent ce qui est affiché. */
     offers: [
@@ -121,7 +130,6 @@ const jsonLd = graph(
       "Transport de machinerie, grip et accessoires",
       "Transport de décors et de régie",
       "Transport dédié sans rupture de charge",
-      "Man & Van pour tournage",
       "Stockage et gardiennage sécurisé de matériel audiovisuel",
     ],
   }),
@@ -242,7 +250,7 @@ const INTERLOCUTEURS = [
     num: "01",
     Icon: ClapIcon,
     title: "Productions cinéma & publicité",
-    text: "Longs métrages, séries, films publicitaires, clips et captations. Le transport se cale sur la feuille de service, pas sur des horaires d'agence.",
+    text: "Longs métrages, séries, films publicitaires, clips, shootings et captations. Le transport se cale sur la feuille de service, pas sur des horaires d'agence.",
   },
   {
     num: "02",
@@ -345,46 +353,6 @@ const CONTRAINTES = [
     titre: "Sensible, cher, et attendu intact",
     texte:
       "Une caméra ou un projecteur ne se remplace pas dans la journée. Matériel d'arrimage dans chaque véhicule, chauffeurs et manutentionnaires formés à la manipulation du matériel sensible, et une seule marchandise à bord.",
-  },
-];
-
-/**
- * Man & Van — service listé sur la fiche publique H24 de Film Paris Region.
- *
- * Quatre cas, et pas trois : la grille `engagements-grid` est en quatre
- * colonnes, une liste de trois y laissait une colonne vide (vu en capture le
- * 2026-09-16). Le quatrième cas n'a pas été inventé pour combler le trou — il
- * reprend l'attente sur place déjà annoncée par `/mode` (« avec attente sur
- * place ou reprise en fin de séance »).
- */
-const MAN_AND_VAN = [
-  {
-    num: "01",
-    title: "Accompagner un tournage",
-    text: "Le véhicule et son chauffeur restent affectés à la production pour la durée de la mission, au lieu de repartir après la livraison — avec un appui à la manutention sur place.",
-    stat: "Man & Van",
-    statLabel: "Véhicule + chauffeur",
-  },
-  {
-    num: "02",
-    title: "Attendre sur place",
-    text: "Le véhicule patiente pendant la séance ou la journée de tournage et repart chargé à la fin, au lieu de faire deux courses. Jusqu'au rôle de régisseur « junior » quand la production le demande.",
-    stat: "Attente",
-    statLabel: "Sur le lieu de tournage",
-  },
-  {
-    num: "03",
-    title: "Enchaîner les adresses",
-    text: "Plusieurs décors dans la journée, des rotations entre le loueur et le plateau : une même course peut comporter plusieurs enlèvements et plusieurs livraisons, suivis depuis l'application.",
-    stat: "Multi-étapes",
-    statLabel: "ETA à chaque étape",
-  },
-  {
-    num: "04",
-    title: "Rouler à votre image",
-    text: "Conducteur et véhicule à l'effigie de votre marque : le camion qui se gare sur le lieu de tournage peut porter votre habillage plutôt que le nôtre.",
-    stat: "Habillage",
-    statLabel: "À votre marque",
   },
 ];
 
@@ -678,45 +646,6 @@ export default function TransportMaterielAudiovisuelPage() {
         intro="Quatre formats aux normes Euro 6d, tous équipés de matériel d'arrimage et géolocalisés. Un 3 m³ pour un jeu d'optiques ou une caméra, un 20 m³ pour un décor complet — hayon inclus sur les deux plus grands formats."
       />
 
-      <section className="categories">
-        <div className="container">
-          <div className="section-head reveal">
-            <div className="left">
-              <span className="eyebrow">Man &amp; Van</span>
-              <h2 className="display-l" style={{ marginTop: 16 }}>
-                Man &amp; Van :
-                <br />
-                le véhicule reste.
-              </h2>
-            </div>
-            <div className="right">
-              Le Man &amp; Van met un véhicule et son chauffeur à disposition
-              d&apos;une production pour la durée d&apos;une mission. C&apos;est
-              la formule des journées qui bougent : plusieurs décors, des
-              rotations avec le parc du loueur, du matériel qui suit
-              l&apos;équipe.
-            </div>
-          </div>
-          <div className="engagements-grid reveal-stagger">
-            {MAN_AND_VAN.map((m) => (
-              <div className="category-card" key={m.num}>
-                <div className="mono dim">// cas {m.num}</div>
-                <h3 className="display-s" style={{ marginTop: 12 }}>
-                  {m.title}
-                </h3>
-                <p className="dim" style={{ marginTop: 14, lineHeight: 1.6 }}>
-                  {m.text}
-                </p>
-                <div className="category-stat">
-                  <span className="display-m accent">{m.stat}</span>
-                  <span className="mono dim">{m.statLabel}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="categories" style={{ background: "var(--bg-1)" }}>
         <div className="container">
           <div className="section-head reveal">
@@ -955,8 +884,12 @@ export default function TransportMaterielAudiovisuelPage() {
       {/* Références déjà affichées publiquement à l'accueil
           (src/data/clients.ts) — parmi elles des loueurs et studios
           audiovisuels, qui sont la preuve la plus parlante sur cette page.
-          Aucune n'est présentée comme un partenariat. */}
-      <Clients />
+          Aucune n'est présentée comme un partenariat : le chapô parle de
+          « donneurs d'ordre », ce qu'ils sont. */}
+      <Clients
+        eyebrow="Une expertise au service des productions"
+        lead="Productions, studios, loueurs de matériel et agences : quelques-uns des donneurs d'ordre de H24 Transports."
+      />
 
       <Faq
         items={FAQ_AUDIOVISUEL}

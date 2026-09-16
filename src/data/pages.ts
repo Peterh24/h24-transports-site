@@ -65,7 +65,7 @@ export const PAGES: PageEntry[] = [
     path: "/transport-materiel-audiovisuel-paris",
     label: "Transport audiovisuel",
     summary:
-      "Transport de matériel audiovisuel à Paris et en Île-de-France : caméra, optiques, lumière, machinerie, décor et régie acheminés sur les lieux de tournage, 24h/24. Flotte de 3 à 20 m³ aux normes Euro 6d, service Man & Van, stockage sécurisé et suivi géolocalisé.",
+      "Transport de matériel audiovisuel à Paris et en Île-de-France : caméra, optiques, lumière, machinerie, décor et régie acheminés sur les lieux de tournage, 24h/24. Flotte de 3 à 20 m³ aux normes Euro 6d, transport dédié sans rupture de charge, stockage sécurisé et suivi géolocalisé.",
     updated: "2026-09-16",
     indexable: true,
     priority: 0.9,

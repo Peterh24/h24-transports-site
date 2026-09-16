@@ -159,7 +159,7 @@ export default function EventPage() {
             tournage, le détail des postes caméra, lumière et machinerie est sur
             la page{" "}
             <Link href="/transport-materiel-audiovisuel-paris" className="link">
-              transport de matériel audiovisuel
+              transport de matériel de tournage
             </Link>
             .
           </>

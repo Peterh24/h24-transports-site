@@ -146,6 +146,12 @@ export function organization(): JsonLd {
       "Transport de matériel de tournage",
       "Transport de matériel caméra et lumière",
       "Transport de machinerie et de décor de tournage",
+      /* Reste déclaré alors que la section dédiée a été retirée de la page
+         pilier le 2026-09-16 : `knowsAbout` décrit une compétence de
+         l'entreprise, pas le plan d'une page. Le service figure sur la fiche
+         publique H24 du guide Film Paris Region et reste décrit par une
+         question de `FAQ_AUDIOVISUEL`, donc l'affirmation reste adossée à du
+         contenu visible. */
       "Man & Van pour tournage",
       "Logistique événementielle",
       "Transport urgent exclusif",
