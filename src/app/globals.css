@@ -2177,6 +2177,19 @@ section {
 .page-header-photo img {
   object-fit: cover;
 }
+/* En-tête à deux cadrages (`imageMobile`), rendu en `<picture>` plutôt qu'en
+   `next/image` : l'`<img>` nu n'hérite pas du positionnement absolu que `fill`
+   posait en style inline, il faut donc le reproduire ici. Le `<picture>`
+   lui-même est `display: inline` par défaut et ne doit pas créer de boîte. */
+.page-header-photo picture {
+  display: contents;
+}
+.page-header-photo picture > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 /* dégradés : sombre à gauche (lisibilité du texte) + pénombre haut/bas */
 .page-header-photo-scrim {
   position: absolute;

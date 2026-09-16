@@ -425,8 +425,9 @@ export default function TransportMaterielAudiovisuelPage() {
         accent="à Paris &amp; en Île-de-France"
         lead="Caméras, optiques, lumière, machinerie, décors et régie — enlevés chez vos loueurs et livrés sur vos lieux de tournage, 24h/24. Une flotte dédiée de 3 à 20 m³ aux normes Euro 6d, des équipes habituées au matériel sensible, et un dispatch joignable en permanence."
         image="/images/audiovisuel/camera-cinema.webp"
+        imageMobile="/images/audiovisuel/camera-cinema-mobile.webp"
         imageAlt="Caméra de cinéma équipée d'une optique de série, montée sur tête fluide sur un plateau de tournage"
-        imagePosition="60% center"
+        imagePosition="70% center"
         glow={false}
         photoTone="bright"
       />
