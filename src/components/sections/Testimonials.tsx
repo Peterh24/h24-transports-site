@@ -74,8 +74,8 @@ export function Testimonials() {
           <div>
             <span className="eyebrow">Avis clients</span>
             <h2 className="display-l" style={{ marginTop: 16 }}>
-              Ils dorment mieux<br />
-              <span className="accent">depuis qu&apos;ils nous appellent.</span>
+              Des années de collaboration.<br />
+              <span className="accent">Toujours 5 étoiles.</span>
             </h2>
           </div>
           <p className="lead t-lead">
