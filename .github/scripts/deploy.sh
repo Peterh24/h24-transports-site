@@ -8,6 +8,49 @@ DOCKER_REGISTRY="$3"
 DOCKER_REPO="$4"
 REPO_NAME="$5"
 
+# --- Serialisation des deploiements ---------------------------------------
+# Le serveur est partage par les trois projets, et plusieurs ressources le sont
+# aussi entre deux deploiements simultanes :
+#   - /tmp/deploy.sh et /tmp/deploy-files, ecrases par le run suivant ;
+#   - `docker image prune -a -f`, qui porte sur tout le daemon Docker et
+#     supprime l'image qu'un autre run vient de tirer mais pas encore demarree ;
+#   - /tmp/backup_script.sh, partage par les deux environnements de l'API.
+# Les chemins par depot (juste en dessous) reglent les deux premiers points,
+# pas les deux autres. Seul un verrou les regle tous : un deploiement a la fois
+# sur ce serveur, quel que soit le depot et quel que soit l'environnement.
+#
+# Constate trois fois : 2026-09-10 (API + dashboard), 2026-09-16 (develop puis
+# main du MEME depot a 11 s d'intervalle), 2026-09-21 (API + dashboard a 7 s,
+# le run API a execute le deploy.sh du dashboard).
+#
+# -w 420 : au-dela on echoue plutot que d'attendre sans fin. La valeur tient
+# sous le command_timeout de appleboy/ssh-action, attente et deploiement
+# compris. Le verrou est relache a la sortie du script, quelle qu'en soit la
+# cause : le descripteur 9 est ferme par le shell.
+LOCK_FILE="/tmp/h24-deploy.lock"
+exec 9>"$LOCK_FILE"
+if command -v flock >/dev/null 2>&1; then
+    echo "Attente du verrou de deploiement ($LOCK_FILE)..."
+    if ! flock -w 420 9; then
+        echo "ERREUR: verrou non obtenu apres 7 minutes, un autre deploiement est en cours ou bloque."
+        exit 1
+    fi
+    echo "Verrou obtenu, ce deploiement est seul sur le serveur."
+else
+    echo "AVERTISSEMENT: flock introuvable, les deploiements ne sont pas serialises."
+fi
+
+# --- Repertoire de transfert, propre a ce depot ----------------------------
+# Le workflow depose desormais dans /tmp/deploy-<depot>/. Le repli sur l'ancien
+# /tmp/deploy-files garde ce script compatible avec le workflow non encore mis
+# a jour : sans lui, ce correctif casserait le deploiement charge de le mettre
+# en place.
+DEPLOY_FILES="/tmp/deploy-${REPO_NAME}/deploy-files"
+if [ ! -d "$DEPLOY_FILES" ]; then
+    DEPLOY_FILES="/tmp/deploy-files"
+fi
+echo "Fichiers de deploiement lus depuis $DEPLOY_FILES"
+
 # Définir les variables selon l'environnement
 DOCKER_COMPOSE_FILE="docker-compose.${ENV}.yml"
 ENV_FILE=".env.${ENV}"
@@ -32,7 +75,7 @@ mkdir -p $APP_PATH/docker
 
 # Copier les fichiers Docker depuis le répertoire temporaire
 echo "Copie des fichiers Docker depuis le répertoire temporaire..."
-cp -a /tmp/deploy-files/. $APP_PATH
+cp -a "$DEPLOY_FILES"/. "$APP_PATH"
 
 # Générer le fichier docker/.env avec l'image Docker mise à jour uniquement
 # Les variables d'environnement Docker ne contiennent que l'image à utiliser
@@ -70,6 +113,6 @@ docker image prune -a -f
 echo "$COMMIT_HASH" > $APP_PATH/DEPLOYED_VERSION_$ENV
 
 # Supprimer le répertoire temporaire
-rm -rf /tmp/deploy-files
+rm -rf "$DEPLOY_FILES"
 
 echo "Déploiement terminé avec succès pour l'environnement $ENV"

@@ -34,6 +34,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    # File d'attente par depot : deux pushes rapproches sur le meme depot
+    # (develop puis main, cas du 2026-09-16) ne se deploient plus en parallele.
+    # `cancel-in-progress: false` : on met en attente, on n'annule pas, un
+    # deploiement entame doit aller jusqu'a son terme. Ce garde-fou ne couvre
+    # PAS le cas inter-depots, chaque depot appelant ce workflow depuis son
+    # propre contexte de concurrence : c'est le verrou flock pose dans les
+    # trois deploy.sh qui s'en charge.
+    concurrency:
+      group: h24-deploy-${{ github.repository }}
+      cancel-in-progress: false
+
     env:
       ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
 
@@ -83,11 +94,13 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: ".github/scripts/deploy.sh"
-          target: "/tmp"
+          # Un repertoire par depot. /tmp/deploy.sh etait partage par les trois
+          # projets : le run d'un depot se retrouvait a executer le script d'un
+          # autre, constate le 2026-09-21 (le run API a deploye avec le script
+          # du dashboard et a echoue). overwrite reste necessaire, le repertoire
+          # survivant d'un deploiement a l'autre.
+          target: "/tmp/deploy-${{ github.event.repository.name }}"
           strip_components: 2
-          # Sans overwrite, scp-action conserve le /tmp/deploy.sh deja present.
-          # Ce chemin est partage par tous les depots : un depot se retrouvait
-          # a deployer avec le script d'un autre. Pas de rm ici, la cible est /tmp.
           overwrite: true
           use_insecure_cipher: true
 
@@ -175,7 +188,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "deploy-files"
-          target: "/tmp"
+          # Meme raison que pour le script : /tmp/deploy-files etait partage, et
+          # chaque deploy.sh le supprimait en fin de course, sous les pieds d'un
+          # eventuel run concurrent.
+          target: "/tmp/deploy-${{ github.event.repository.name }}"
           overwrite: true
           use_insecure_cipher: true
 
@@ -186,9 +202,12 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script_stop: true
+          # 20m au lieu des 10m par defaut : le script peut desormais attendre
+          # jusqu'a 7 min que le verrou se libere, avant meme de commencer.
+          command_timeout: 20m
           script: |
-            chmod +x /tmp/deploy.sh
-            /tmp/deploy.sh "${{ env.ENVIRONMENT }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}" "${{ github.event.repository.name }}"
+            chmod +x /tmp/deploy-${{ github.event.repository.name }}/deploy.sh
+            /tmp/deploy-${{ github.event.repository.name }}/deploy.sh "${{ env.ENVIRONMENT }}" "${{ env.COMMIT_HASH }}" "${{ secrets.DOCKER_REGISTRY }}" "${{ secrets.DOCKER_REPO }}" "${{ github.event.repository.name }}"
           use_insecure_cipher: true
 
       - name: Deployment summary
