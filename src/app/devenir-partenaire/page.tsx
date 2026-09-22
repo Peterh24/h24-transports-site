@@ -10,20 +10,27 @@ import { SITE } from "@/data/site";
 import { getPage } from "@/data/pages";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumb, faqPage, graph, webPage } from "@/lib/schema";
+import { PARTNER_OG_ALT } from "./og-card";
 
 const PAGE = getPage("/devenir-partenaire");
 
+/**
+ * Titre et description écrits dans les mots d'un transporteur qui cherche du
+ * travail, pas dans ceux de H24 : « transporteur affrété », « sous-traitance ».
+ * « Devenir partenaire » est le libellé de navigation, pas une requête tapée.
+ */
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Devenir partenaire transporteur",
+  title: "Devenir transporteur affrété à Paris",
   description:
-    "H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés à Paris et en Île-de-France. Candidature en ligne : licence, véhicule et zone d'intervention.",
+    "H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés en sous-traitance à Paris et en Île-de-France. Candidature en ligne.",
+  socialImageAlt: PARTNER_OG_ALT,
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Devenir partenaire transporteur",
+    name: "Devenir transporteur affrété à Paris",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
@@ -44,17 +51,17 @@ const CONTRIBUTIONS = [
   {
     tag: "missions",
     title: "Des missions récurrentes",
-    text: "En tant que commissionnaire de transport, H24 Transports confie à ses transporteurs partenaires des missions récurrentes dans l'audiovisuel, l'événementiel et le transport urgent exclusif.",
+    text: "En tant que commissionnaire de transport, H24 Transports confie à ses transporteurs affrétés des missions récurrentes dans l'audiovisuel, l'événementiel et le transport urgent exclusif.",
   },
   {
     tag: "dispatch",
     title: "Un interlocuteur unique",
-    text: "Le dispatch H24 Transports reste l'interlocuteur unique du partenaire, du déclenchement de la mission jusqu'à son exécution, joignable 24 heures sur 24 et 7 jours sur 7.",
+    text: "Le dispatch H24 Transports reste l'interlocuteur unique du transporteur partenaire, du déclenchement de la mission jusqu'à son exécution, joignable 24 heures sur 24 et 7 jours sur 7.",
   },
   {
     tag: "zone",
     title: "Une zone resserrée",
-    text: "Les missions confiées aux transporteurs partenaires se concentrent sur Paris et l'Île-de-France, sans dispersion sur un territoire trop large.",
+    text: "Les missions sous-traitées se concentrent sur Paris et l'Île-de-France, sans dispersion sur un territoire trop large.",
   },
 ];
 
@@ -77,12 +84,16 @@ export default function DevenirPartenairePage() {
         comme sur /transport-materiel-audiovisuel-paris. `imagePosition` remonte
         légèrement le cadrage pour garder la ligne d'horizon de La Défense
         quand l'en-tête est plus large que haut.
+
+        Le h1 porte le mot que tape un transporteur (« affrété ») tout en
+        gardant la forme interrogative des autres en-têtes (« Une mission ? »
+        sur /contact).
       */}
       <PageHeader
         tag="/ partenaires / affrètement"
         eyebrow="Devenir partenaire"
-        title="Roulez"
-        accent="pour H24 Transports."
+        title="Transporteur affrété ?"
+        accent="Roulez pour H24 Transports."
         lead="H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés pour accompagner ses missions audiovisuelles, événementielles et urgentes à Paris et en Île-de-France."
         image="/images/partenaires/paris-nuit.webp"
         imageMobile="/images/partenaires/paris-nuit-mobile.webp"
@@ -101,6 +112,17 @@ export default function DevenirPartenairePage() {
                 <br />
                 <span className="accent">pas une sous-traitance de plus.</span>
               </h2>
+            </div>
+            {/* Paragraphe autoportant, écrit pour être cité tel quel par un
+                moteur génératif : le sujet est nommé, le rôle est défini, la
+                zone et les métiers sont explicites. */}
+            <div className="right">
+              H24 Transports exerce comme commissionnaire de transport : il
+              organise les transports de ses clients de l&apos;audiovisuel, de
+              l&apos;événementiel et de l&apos;urgence, et sous-traite
+              l&apos;exécution d&apos;une partie des missions à des
+              transporteurs affrétés, à Paris et en Île-de-France, sous la
+              coordination de son dispatch 24h/24.
             </div>
           </div>
           {/* Photo à droite ici, à gauche dans la section suivante : les deux
@@ -195,8 +217,8 @@ export default function DevenirPartenairePage() {
                 <p className="dim" style={{ marginTop: 8, lineHeight: 1.7 }}>
                   Complétez le formulaire ci-contre avec les informations de
                   votre entreprise, votre licence de transport et vos
-                  véhicules. H24 Transports revient vers les candidats dont le
-                  profil correspond à ses besoins.
+                  véhicules. H24 Transports revient vers les transporteurs
+                  dont le profil correspond à ses besoins.
                 </p>
               </div>
             </div>

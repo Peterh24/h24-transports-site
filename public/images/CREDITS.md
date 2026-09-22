@@ -94,6 +94,13 @@ par le `<picture>` de `PageHeader.tsx` au palier de 900 px.
 | Cadrage | 3:2, fenêtre de 4008 px de large décalée à 55 % vers la droite | 9:16, fenêtre de 2635 px centrée |
 | Livré | 1920 × 1280, WebP qualité 82 | 941 × 1672, WebP qualité 82 |
 
+`paris-nuit-og.jpg` (1200 × 630, JPEG qualité 82, 139 ko) est un troisième
+cadrage de la même source 30399118, bande centrale prise à 90 px du haut, pour
+la carte de partage (`opengraph-image` et `twitter-image` de la page). JPEG et
+non WebP parce que Satori, le moteur de `next/og`, ne lit pas le WebP. À ce
+format l'enseigne de la tour restait lisible sur un premier essai : le JPEG
+est donc produit depuis la source floutée, avec le même masque elliptique.
+
 **Traitement à refaire si la photo est régénérée** : au sommet de la tour en
 haut à droite du cadrage paysage, une enseigne d'hôtel est lisible sur
 l'original. Elle est **floutée à la source** (flou gaussien de rayon 14 sur la

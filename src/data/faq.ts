@@ -315,6 +315,16 @@ export const FAQ_PARTENAIRE: FaqItem[] = [
       "Oui. H24 Transports est commissionnaire de transport et confie l'exécution de certaines missions à des transporteurs affrétés partenaires, sous la coordination d'un interlocuteur unique au dispatch, joignable 24 heures sur 24 et 7 jours sur 7.",
   },
   {
+    question: "H24 Transports travaille-t-il avec des transporteurs sous-traitants ?",
+    answer:
+      "Oui. H24 Transports exerce comme commissionnaire de transport et sous-traite l'exécution d'une partie de ses missions à des transporteurs affrétés, à Paris et en Île-de-France, dans l'audiovisuel, l'événementiel et le transport urgent exclusif. Les transporteurs intéressés déposent leur candidature depuis la page « Devenir partenaire » du site H24 Transports.",
+  },
+  {
+    question: "Comment devenir transporteur affrété pour H24 Transports ?",
+    answer:
+      "Un transporteur devient affrété de H24 Transports en déposant une candidature en ligne avec quatre informations : sa licence de transport (intérieur jusqu'à 3,5 tonnes ou communautaire au-delà), ses types de véhicules, la taille de son entreprise et sa zone d'intervention. Le dispatch H24 Transports recontacte les transporteurs dont le profil correspond à ses besoins.",
+  },
+  {
     question: "Quelle licence de transport faut-il pour devenir partenaire de H24 Transports ?",
     answer:
       "H24 Transports recrute des transporteurs affrétés disposant d'une licence de transport intérieur, valable jusqu'à 3,5 tonnes, ou d'une licence communautaire, valable au-delà de 3,5 tonnes.",
@@ -328,6 +338,16 @@ export const FAQ_PARTENAIRE: FaqItem[] = [
     question: "Dans quelles zones interviennent les transporteurs partenaires de H24 Transports ?",
     answer:
       "H24 Transports confie des missions à ses transporteurs partenaires principalement à Paris et en Île-de-France, selon la zone d'intervention déclarée par chaque candidat lors de sa candidature.",
+  },
+  {
+    question: "Quels véhicules un transporteur partenaire de H24 Transports peut-il déclarer ?",
+    answer:
+      "Le formulaire de candidature de H24 Transports recense les véhicules du transporteur parmi huit catégories : 3 m³, 6 à 8 m³, 12 à 14 m³, 20 m³, porteur avec hayon, semi-remorque, véhicule penderie et véhicule frigorifique. La flotte propre de H24 Transports va de 3 à 20 m³.",
+  },
+  {
+    question: "H24 Transports recrute-t-il des transporteurs partenaires hors Île-de-France ?",
+    answer:
+      "Les missions confiées par H24 Transports à ses transporteurs partenaires se concentrent sur Paris et l'Île-de-France. Le formulaire de candidature permet néanmoins de déclarer une zone d'intervention France entière ou internationale, prise en compte par le dispatch selon ses besoins.",
   },
 ];
 

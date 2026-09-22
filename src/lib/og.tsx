@@ -72,3 +72,119 @@ export function renderBrandOg() {
     { ...OG_SIZE },
   );
 }
+
+/**
+ * Carte sociale sur photo (1200×630) : fond plein cadre assombri par un
+ * dégradé, texte en bas à gauche. Le dégradé n'est pas décoratif : sans lui
+ * le titre se perd sur une photo de nuit pleine de lumières.
+ *
+ * `backgroundDataUrl` : Satori ne charge ni URL relative ni WebP, la route
+ * appelante lit donc un JPEG sur le disque et le passe en data URL.
+ */
+export function renderPhotoOg(opts: {
+  backgroundDataUrl: string;
+  eyebrow: string;
+  title: string;
+  /** Une entrée par ligne : la coupe est choisie, jamais laissée au moteur. */
+  accentLines: string[];
+  footer: string;
+}) {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          position: "relative",
+          background: "#0a0908",
+          color: "#f5f2ec",
+          fontFamily: "sans-serif",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element -- Satori, pas le DOM */}
+        <img
+          src={opts.backgroundDataUrl}
+          alt=""
+          width={OG_SIZE.width}
+          height={OG_SIZE.height}
+          style={{ position: "absolute", inset: 0, objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(10,9,8,0.35) 0%, rgba(10,9,8,0.55) 45%, rgba(10,9,8,0.92) 100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: 80,
+            right: 80,
+            bottom: 64,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+              fontSize: 26,
+              letterSpacing: 3,
+              textTransform: "uppercase",
+              color: "#f59239",
+            }}
+          >
+            <div style={{ width: 44, height: 3, background: "#f59239" }} />
+            {opts.eyebrow}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 82,
+              fontWeight: 800,
+              lineHeight: 1.05,
+              marginTop: 22,
+            }}
+          >
+            {opts.title}
+          </div>
+          {opts.accentLines.map((line) => (
+            <div
+              key={line}
+              style={{
+                display: "flex",
+                fontSize: 82,
+                fontWeight: 800,
+                lineHeight: 1.05,
+                color: "#f59239",
+              }}
+            >
+              {line}
+            </div>
+          ))}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: 34,
+              fontSize: 24,
+              color: "rgba(245,242,236,0.72)",
+            }}
+          >
+            <div style={{ display: "flex" }}>{opts.footer}</div>
+            <div style={{ display: "flex", fontWeight: 800, color: "#f5f2ec" }}>
+              {SITE.name}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    { ...OG_SIZE },
+  );
+}

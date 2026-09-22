@@ -35,6 +35,15 @@ export function pageMetadata(opts: {
   description: string;
   /** `false` pour les pages `noindex` (mentions légales). */
   index?: boolean;
+  /**
+   * À renseigner quand la page possède ses propres routes `opengraph-image`
+   * et `twitter-image` (fichiers colocalisés dans son segment). Les cartes
+   * pointent alors vers `<url>/opengraph-image` et `<url>/twitter-image` au
+   * lieu des routes de marque de la racine, avec ce texte alternatif.
+   * Sans lui, une page qui déclare ces fichiers ne serait jamais servie :
+   * `openGraph.images` ci-dessous écrase ce que Next injecterait tout seul.
+   */
+  socialImageAlt?: string;
 }): Metadata {
   const url = `${SITE.url}${opts.path === "/" ? "" : opts.path}`;
 
@@ -46,16 +55,21 @@ export function pageMetadata(opts: {
    */
   const brandedTitle = `${opts.title} · ${SITE.name}`;
 
-  /** Image de marque générée — mêmes routes que celles servies à l'accueil. */
+  /**
+   * Image de marque générée par défaut (mêmes routes que l'accueil), ou les
+   * routes colocalisées de la page quand elle en déclare.
+   */
+  const imageBase = opts.socialImageAlt ? url : SITE.url;
+  const imageAlt = opts.socialImageAlt ?? OG_ALT;
   const ogImage = {
-    url: `${SITE.url}/opengraph-image`,
-    alt: OG_ALT,
+    url: `${imageBase}/opengraph-image`,
+    alt: imageAlt,
     type: OG_CONTENT_TYPE,
     ...OG_SIZE,
   };
   const twitterImage = {
-    url: `${SITE.url}/twitter-image`,
-    alt: OG_ALT,
+    url: `${imageBase}/twitter-image`,
+    alt: imageAlt,
     type: OG_CONTENT_TYPE,
     ...OG_SIZE,
   };

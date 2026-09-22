@@ -135,7 +135,7 @@ export const PAGES: PageEntry[] = [
     path: "/devenir-partenaire",
     label: "Devenir partenaire",
     summary:
-      "H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés à Paris et en Île-de-France : candidature en ligne avec licence de transport, type de véhicule et zone d'intervention.",
+      "H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés en sous-traitance à Paris et en Île-de-France : missions audiovisuelles, événementielles et urgentes, candidature en ligne avec licence de transport, types de véhicules et zone d'intervention.",
     updated: "2026-09-22",
     indexable: true,
     priority: 0.6,
