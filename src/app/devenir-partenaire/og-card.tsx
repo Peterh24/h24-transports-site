@@ -28,7 +28,7 @@ export function renderPartnerOg() {
   return renderPhotoOg({
     backgroundDataUrl: `data:image/jpeg;base64,${background.toString("base64")}`,
     eyebrow: "Devenir transporteur partenaire",
-    title: "Transporteur affrété ?",
+    title: "Transporteur affrété ?",
     accentLines: ["Roulez pour", "H24 Transports."],
     footer: "Commissionnaire de transport · Paris & Île-de-France · 24h/24, 7j/7",
   });

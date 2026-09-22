@@ -87,12 +87,14 @@ export default function DevenirPartenairePage() {
 
         Le h1 porte le mot que tape un transporteur (« affrété ») tout en
         gardant la forme interrogative des autres en-têtes (« Une mission ? »
-        sur /contact).
+        sur /contact). L'espace devant le « ? » est insécable : entre 900 et
+        1100 px, le titre tenait sur une ligne mais le point d'interrogation
+        passait seul sur la suivante (signalé par Peter le 2026-09-22).
       */}
       <PageHeader
         tag="/ partenaires / affrètement"
         eyebrow="Devenir partenaire"
-        title="Transporteur affrété ?"
+        title="Transporteur affrété ?"
         accent="Roulez pour H24 Transports."
         lead="H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés pour accompagner ses missions audiovisuelles, événementielles et urgentes à Paris et en Île-de-France."
         image="/images/partenaires/paris-nuit.webp"
