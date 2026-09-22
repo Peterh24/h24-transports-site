@@ -17,6 +17,14 @@ const DASHBOARD_URL = (
 ).replace(/\/+$/, "");
 
 /**
+ * Base de l'API H24 pour le formulaire « devenir partenaire ». Resolue au
+ * build par next.config.ts selon APP_ENV (prod -> prod-api, dev -> develop-api).
+ */
+const PARTNER_API_URL = (
+  process.env.NEXT_PUBLIC_PARTNER_API_URL || "https://prod-api.h24transports.com"
+).replace(/\/+$/, "");
+
+/**
  * Profils officiels de l'entreprise.
  *
  * Source unique : alimente à la fois les liens visibles du footer et le
@@ -169,6 +177,23 @@ export const SITE = {
   contactApi:
     process.env.NEXT_PUBLIC_CONTACT_API_URL ||
     "https://api.h24transports.com/api/send-email",
+  /**
+   * Endpoint de réception des candidatures de transporteurs partenaires
+   * (affrétés). Même contrainte que `contactApi` : l'appel part **du
+   * navigateur du visiteur**, jamais du serveur (le conteneur du site n'a
+   * aucune sortie réseau, constaté en prod le 2026-08-21).
+   *
+   * La différence est ailleurs : `contactApi` reste figée sur l'ancienne API
+   * (`api.h24transports.com`) quel que soit l'environnement de build, une
+   * dette connue et assumée (le formulaire de contact d'un site de dev écrit
+   * dans la boîte de production). Cette route-ci est neuve, il n'y a rien à
+   * reconduire, donc elle suit normalement l'environnement : résolue au build
+   * par `next.config.ts` selon `APP_ENV` (`prod-api` / `develop-api`).
+   *
+   * `NEXT_PUBLIC_` indispensable pour la même raison que `contactApi` : la
+   * valeur doit être inlinée dans le bundle client.
+   */
+  partnerApi: `${PARTNER_API_URL}/partner-applications`,
 } as const;
 
 /**

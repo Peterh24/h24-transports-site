@@ -153,12 +153,31 @@ export default function MentionsLegalesPage() {
                 porte sur un devis.
               </p>
               <p className="dim" style={textStyle}>
+                Les données transmises via le formulaire de candidature de la
+                page « Devenir partenaire » (identité de l&apos;entreprise et
+                de son contact, informations de licence de transport, de
+                véhicules et de zone d&apos;intervention) sont collectées
+                par {LEGAL.denomination} aux seules fins d&apos;étudier la
+                candidature d&apos;un transporteur souhaitant devenir affrété
+                partenaire. La base légale de ce traitement est l&apos;intérêt
+                légitime de l&apos;Éditeur à instruire les candidatures qui lui
+                sont adressées, ainsi que l&apos;exécution de mesures
+                précontractuelles lorsque la candidature aboutit à une relation
+                d&apos;affrètement.
+              </p>
+              <p className="dim" style={textStyle}>
                 Ces données sont destinées aux seuls services de
                 l&apos;Éditeur&nbsp;; elles ne font l&apos;objet d&apos;aucune
                 cession ni d&apos;aucun transfert hors de l&apos;Union
-                européenne. Elles sont conservées le temps nécessaire au
-                traitement de la demande, puis pendant la durée de la relation
-                commerciale et les délais légaux de prescription applicables.
+                européenne. Les données du formulaire de contact sont
+                conservées le temps nécessaire au traitement de la demande,
+                puis pendant la durée de la relation commerciale et les délais
+                légaux de prescription applicables. Les données d&apos;une
+                candidature de partenaire suivent une durée de conservation
+                distincte&nbsp;: le temps nécessaire à l&apos;instruction de la
+                candidature, puis, si elle aboutit à une relation
+                d&apos;affrètement, pendant la durée de cette relation et les
+                délais légaux de prescription applicables.
               </p>
               <p className="dim" style={textStyle}>
                 Conformément au Règlement (UE) 2016/679 (RGPD) et à la loi

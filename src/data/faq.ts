@@ -308,6 +308,29 @@ export const FAQ_CONTACT: FaqItem[] = [
   },
 ];
 
+export const FAQ_PARTENAIRE: FaqItem[] = [
+  {
+    question: "H24 Transports est-il commissionnaire de transport ?",
+    answer:
+      "Oui. H24 Transports est commissionnaire de transport et confie l'exécution de certaines missions à des transporteurs affrétés partenaires, sous la coordination d'un interlocuteur unique au dispatch, joignable 24 heures sur 24 et 7 jours sur 7.",
+  },
+  {
+    question: "Quelle licence de transport faut-il pour devenir partenaire de H24 Transports ?",
+    answer:
+      "H24 Transports recrute des transporteurs affrétés disposant d'une licence de transport intérieur, valable jusqu'à 3,5 tonnes, ou d'une licence communautaire, valable au-delà de 3,5 tonnes.",
+  },
+  {
+    question: "Comment déposer une candidature de partenaire chez H24 Transports ?",
+    answer:
+      "Une candidature de transporteur partenaire se dépose via le formulaire de la page « Devenir partenaire » du site H24 Transports, avec les informations de l'entreprise, la licence de transport et le type de véhicule.",
+  },
+  {
+    question: "Dans quelles zones interviennent les transporteurs partenaires de H24 Transports ?",
+    answer:
+      "H24 Transports confie des missions à ses transporteurs partenaires principalement à Paris et en Île-de-France, selon la zone d'intervention déclarée par chaque candidat lors de sa candidature.",
+  },
+];
+
 export const FAQ_A_PROPOS: FaqItem[] = [
   {
     question: "Depuis combien de temps H24 Transports existe-t-il ?",

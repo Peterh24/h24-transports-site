@@ -132,6 +132,16 @@ export const PAGES: PageEntry[] = [
     changeFrequency: "yearly",
   },
   {
+    path: "/devenir-partenaire",
+    label: "Devenir partenaire",
+    summary:
+      "H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés à Paris et en Île-de-France : candidature en ligne avec licence de transport, type de véhicule et zone d'intervention.",
+    updated: "2026-09-22",
+    indexable: true,
+    priority: 0.6,
+    changeFrequency: "monthly",
+  },
+  {
     path: "/mentions-legales",
     label: "Mentions légales",
     summary: "Éditeur, hébergeur, accès au site et traitement des données personnelles.",

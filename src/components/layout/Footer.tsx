@@ -112,6 +112,9 @@ export function Footer() {
                 <Link href="/contact">Contact</Link>
               </li>
               <li>
+                <Link href="/devenir-partenaire">Devenir partenaire</Link>
+              </li>
+              <li>
                 {/* Pointe la section « Délais d'intervention » de l'accueil,
                     cible des redirections de l'ancienne page /delay. */}
                 <Link href="/#zones">Délais d&apos;intervention</Link>
