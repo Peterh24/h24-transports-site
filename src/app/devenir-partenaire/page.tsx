@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { PartnerForm } from "@/components/sections/PartnerForm";
 import { Faq } from "@/components/sections/Faq";
@@ -31,26 +32,27 @@ const jsonLd = graph(
 );
 
 /**
- * Trois apports, pas quatre : `<Values>` a été essayé ici, mais sa grille est
- * câblée en dur sur 4 colonnes (`.values-grid { grid-template-columns:
- * repeat(4, 1fr) }`) et laisse une case vide visible avec 3 éléments. Plutôt
- * qu'inventer un quatrième argument pour la remplir, on reprend le motif de
- * lignes numérotées de `/a-propos` (`.about-row`), qui accepte n'importe
- * quel nombre d'entrées.
+ * Trois apports, rendus dans la colonne texte d'un `split-grid`, sur le
+ * modèle exact du bloc « contraintes » de `/mode` : étiquette mono, titre,
+ * paragraphe, séparés par un filet. La première version de la page les
+ * présentait en lignes numérotées pleine largeur (`.about-row`), sans aucun
+ * visuel : la page était la seule du site sans photo, et se lisait comme une
+ * fiche administrative. `<Values>` avait aussi été écarté, sa grille étant
+ * câblée sur 4 colonnes et laissant une case vide avec 3 éléments.
  */
 const CONTRIBUTIONS = [
   {
-    num: "01",
+    tag: "missions",
     title: "Des missions récurrentes",
     text: "En tant que commissionnaire de transport, H24 Transports confie à ses transporteurs partenaires des missions récurrentes dans l'audiovisuel, l'événementiel et le transport urgent exclusif.",
   },
   {
-    num: "02",
+    tag: "dispatch",
     title: "Un interlocuteur unique",
     text: "Le dispatch H24 Transports reste l'interlocuteur unique du partenaire, du déclenchement de la mission jusqu'à son exécution, joignable 24 heures sur 24 et 7 jours sur 7.",
   },
   {
-    num: "03",
+    tag: "zone",
     title: "Une zone resserrée",
     text: "Les missions confiées aux transporteurs partenaires se concentrent sur Paris et l'Île-de-France, sans dispersion sur un territoire trop large.",
   },
@@ -68,12 +70,25 @@ export default function DevenirPartenairePage() {
     <>
       <JsonLd data={jsonLd} />
       <RevealOnScroll />
+      {/*
+        Deux cadrages de la même scène (Paris de nuit depuis l'Arc de
+        Triomphe, Pexels, cf. public/images/CREDITS.md) : paysage au-dessus de
+        900 px, portrait en dessous, servis par le `<picture>` de PageHeader
+        comme sur /transport-materiel-audiovisuel-paris. `imagePosition` remonte
+        légèrement le cadrage pour garder la ligne d'horizon de La Défense
+        quand l'en-tête est plus large que haut.
+      */}
       <PageHeader
         tag="/ partenaires / affrètement"
         eyebrow="Devenir partenaire"
         title="Roulez"
         accent="pour H24 Transports."
         lead="H24 Transports, commissionnaire de transport, recrute des transporteurs affrétés pour accompagner ses missions audiovisuelles, événementielles et urgentes à Paris et en Île-de-France."
+        image="/images/partenaires/paris-nuit.webp"
+        imageMobile="/images/partenaires/paris-nuit-mobile.webp"
+        imageAlt="Paris la nuit vu depuis l'Arc de Triomphe, avenue de la Grande-Armée éclairée et tours de La Défense à l'horizon"
+        imagePosition="50% 40%"
+        glow={false}
       />
 
       <section>
@@ -88,24 +103,43 @@ export default function DevenirPartenairePage() {
               </h2>
             </div>
           </div>
-          {CONTRIBUTIONS.map((c) => (
-            <div className="about-row reveal" key={c.num}>
-              <div className="about-row-num">{c.num}</div>
-              <div className="about-row-title">
-                <h3 className="display-m">{c.title}</h3>
-              </div>
-              <div className="about-row-text">
-                <p className="dim" style={{ lineHeight: 1.7 }}>
-                  {c.text}
-                </p>
-              </div>
+          {/* Photo à droite ici, à gauche dans la section suivante : les deux
+              blocs alternent pour ne pas répéter la même composition. */}
+          <div className="split-grid reveal">
+            <div>
+              {CONTRIBUTIONS.map((c, i) => (
+                <div
+                  key={c.tag}
+                  style={{
+                    marginTop: i === 0 ? 0 : 28,
+                    paddingTop: i === 0 ? 0 : 28,
+                    borderTop: i === 0 ? "none" : "1px solid var(--line)",
+                  }}
+                >
+                  <span className="mono dim">// {c.tag}</span>
+                  <h3 className="display-s" style={{ marginTop: 12 }}>
+                    {c.title}
+                  </h3>
+                  <p className="dim" style={{ marginTop: 10, lineHeight: 1.6 }}>
+                    {c.text}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
+            <Image
+              className="split-photo"
+              src="/images/partenaires/voie-rapide-nuit.webp"
+              width={1240}
+              height={1040}
+              alt="Voie rapide urbaine la nuit en pose longue, traînées de phares blanches et rouges sous les lampadaires"
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </section>
 
       <section className="section-tight">
-        <div className="container" style={{ maxWidth: 820 }}>
+        <div className="container">
           <div className="section-head reveal">
             <div className="left">
               <span className="eyebrow">Ce que nous attendons</span>
@@ -116,17 +150,29 @@ export default function DevenirPartenairePage() {
               </h2>
             </div>
           </div>
-          <p className="dim" style={{ lineHeight: 1.7 }}>
-            H24 Transports étudie chaque candidature de transporteur affrété au
-            regard de quatre points&nbsp;:
-          </p>
-          {/* .cgv-list : même traitement que la liste de src/app/cgv/page.tsx,
-              réutilisé tel quel plutôt que dupliqué en styles locaux. */}
-          <ul className="cgv-list dim">
-            {EXPECTATIONS.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div className="split-grid reveal">
+            <Image
+              className="split-photo"
+              src="/images/partenaires/cartons-utilitaire.webp"
+              width={1240}
+              height={1040}
+              alt="Cartons empilés dans un utilitaire blanc, porte arrière ouverte, étiquettes fragile"
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
+            <div>
+              <p className="dim" style={{ lineHeight: 1.7 }}>
+                H24 Transports étudie chaque candidature de transporteur
+                affrété au regard de quatre points&nbsp;:
+              </p>
+              {/* .cgv-list : même traitement que la liste de src/app/cgv/page.tsx,
+                  réutilisé tel quel plutôt que dupliqué en styles locaux. */}
+              <ul className="cgv-list dim">
+                {EXPECTATIONS.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
