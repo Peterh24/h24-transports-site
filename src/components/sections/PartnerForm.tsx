@@ -168,7 +168,7 @@ function MultiChoice({
   const errorId = error ? `${legendId}-error` : undefined;
   return (
     <div className="form-field">
-      <span className="mono dim" id={legendId}>
+      <span className="mono accent" id={legendId}>
         {legend}
       </span>
       <div
@@ -217,7 +217,7 @@ function SingleChoice({
   const errorId = error ? `${legendId}-error` : undefined;
   return (
     <div className="form-field">
-      <span className="mono dim" id={legendId}>
+      <span className="mono accent" id={legendId}>
         {legend}
       </span>
       <div
@@ -472,7 +472,7 @@ export function PartnerForm() {
     <form className="contact-form" onSubmit={onSubmit} noValidate>
       <div className="form-row">
         <label htmlFor="company-name">
-          <span className="mono dim">Entreprise *</span>
+          <span className="mono accent">Entreprise *</span>
           <input
             id="company-name"
             type="text"
@@ -484,7 +484,7 @@ export function PartnerForm() {
           <FieldError id="company-name-error" message={fieldErrors.companyName} />
         </label>
         <label htmlFor="siren">
-          <span className="mono dim">SIREN (optionnel)</span>
+          <span className="mono accent">SIREN (optionnel)</span>
           <input
             id="siren"
             type="text"
@@ -500,7 +500,7 @@ export function PartnerForm() {
 
       <div className="form-row">
         <label htmlFor="contact-first-name">
-          <span className="mono dim">Prénom du contact *</span>
+          <span className="mono accent">Prénom du contact *</span>
           <input
             id="contact-first-name"
             type="text"
@@ -514,7 +514,7 @@ export function PartnerForm() {
           <FieldError id="contact-first-name-error" message={fieldErrors.contactFirstName} />
         </label>
         <label htmlFor="contact-last-name">
-          <span className="mono dim">Nom du contact *</span>
+          <span className="mono accent">Nom du contact *</span>
           <input
             id="contact-last-name"
             type="text"
@@ -531,7 +531,7 @@ export function PartnerForm() {
 
       <div className="form-row">
         <label htmlFor="email">
-          <span className="mono dim">Email *</span>
+          <span className="mono accent">Email *</span>
           <input
             id="email"
             type="email"
@@ -543,7 +543,7 @@ export function PartnerForm() {
           <FieldError id="email-error" message={fieldErrors.email} />
         </label>
         <label htmlFor="phone">
-          <span className="mono dim">Téléphone *</span>
+          <span className="mono accent">Téléphone *</span>
           <input
             id="phone"
             type="tel"
@@ -613,7 +613,7 @@ export function PartnerForm() {
       </div>
 
       <label htmlFor="message">
-        <span className="mono dim">Message (optionnel)</span>
+        <span className="mono accent">Message (optionnel)</span>
         <textarea
           id="message"
           rows={5}
