@@ -386,7 +386,7 @@ export function PartnerForm() {
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       setStatus("error");
-      setError("Merci de corriger les champs signalés ci-dessous.");
+      setError("Merci de corriger les champs signalés ci-dessus.");
       return;
     }
 
@@ -450,7 +450,7 @@ export function PartnerForm() {
       }
       setFieldErrors(body.errors ?? {});
       setStatus("error");
-      setError("Merci de corriger les champs signalés ci-dessous.");
+      setError("Merci de corriger les champs signalés ci-dessus.");
       return;
     }
 
