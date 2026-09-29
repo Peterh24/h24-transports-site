@@ -50,6 +50,10 @@
   --accent-glow: rgba(245, 146, 57, 0.35);
   --accent-faint: rgba(245, 146, 57, 0.08);
 
+  /* erreurs de formulaire : rouge distinct de l'accent orange, qui sert aux
+     titres des champs. Contraste d'environ 6:1 sur les fonds sombres. */
+  --danger: #ff5c52;
+
   /* misc */
   --radius-sm: 4px;
   --radius: 6px;
@@ -2978,7 +2982,7 @@ section {
   margin-top: 16px;
 }
 .form-note {
-  color: var(--accent);
+  color: var(--danger);
 }
 /* Variante multi-choix (licences, véhicules, zones du formulaire partenaire) :
    même layout que .service-radio, mais plusieurs boutons peuvent rester actifs
@@ -2990,15 +2994,15 @@ section {
   gap: 8px;
   flex-wrap: wrap;
 }
-/* Bordure d'un champ en erreur : même couleur que .form-note, pas de rouge
-   ajouté à une palette qui n'en a pas. */
+/* Bordure d'un champ en erreur : même rouge que .form-note. L'orange de
+   l'accent se confondait avec les titres des champs, l'erreur passait inaperçue. */
 .contact-form input[aria-invalid="true"],
 .contact-form textarea[aria-invalid="true"] {
-  border-color: var(--accent);
+  border-color: var(--danger);
 }
 /* Message d'erreur sous un champ précis (contact & partenaire). */
 .field-error {
-  color: var(--accent);
+  color: var(--danger);
   font-size: 13px;
   margin-top: -4px;
 }
