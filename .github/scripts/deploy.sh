@@ -59,6 +59,17 @@ APP_PATH=$([ "$ENV" == "prod" ] && echo "/home/ubuntu/workspace/h24-transports-s
 
 echo "Déploiement en environnement: $ENV avec le fichier $DOCKER_COMPOSE_FILE dans $APP_PATH"
 
+# Journaux du conteneur sauvegardes avant son remplacement : `docker logs`
+# disparait avec le conteneur, donc a chaque deploiement. Un fichier par
+# deploiement dans /home/ubuntu/logs/h24-site-<env>/, les 30 derniers gardes.
+LOG_PATH="/home/ubuntu/logs/h24-site-${ENV}"
+mkdir -p "$LOG_PATH"
+if docker ps -aq -f name="^/${CONTAINER_NAME}$" | grep -q .; then
+    echo "Sauvegarde des journaux de $CONTAINER_NAME dans $LOG_PATH"
+    docker logs --timestamps "$CONTAINER_NAME" > "$LOG_PATH/$(date -u +%Y%m%d_%H%M%S).log" 2>&1 || true
+    ls -1t "$LOG_PATH"/*.log 2>/dev/null | tail -n +31 | xargs -r rm -f --
+fi
+
 # Arrêter et supprimer l'ancien conteneur si il existe
 if docker ps -q -f name=$CONTAINER_NAME | grep -q .; then
 echo "Arrêt du conteneur existant: $CONTAINER_NAME"
