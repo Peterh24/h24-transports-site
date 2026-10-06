@@ -39,6 +39,23 @@ export type CampaignPromo = {
   conditions: string[];
 };
 
+/**
+ * Un rendez-vous d'une campagne « agenda » (plusieurs événements dans une même
+ * fenêtre). Ses dates servent à l'afficher comme terminé ou en cours à
+ * l'instant du rendu, sans avoir à republier le site entre deux salons.
+ */
+export type CampaignEvent = {
+  name: string;
+  /** Dates en clair, telles qu'affichées. */
+  dates: string;
+  venue: string;
+  /** Ce qu'on y transporte, en une ligne. */
+  cargo: string;
+  /** Même format que `showFrom` : offset obligatoire. */
+  start: string;
+  end: string;
+};
+
 export type CampaignEntry = {
   id: string;
   /** Étiquette de contexte, au-dessus du titre. */
@@ -53,6 +70,11 @@ export type CampaignEntry = {
   /** D'où sortent les `facts` — affiché sous les chiffres. */
   source: string;
   promo?: CampaignPromo;
+  /**
+   * Agenda affiché à la place de la carte promo quand la campagne n'a pas de
+   * code. Les deux sont exclusifs : une campagne a l'un, l'autre ou aucun.
+   */
+  agenda?: CampaignEvent[];
   /**
    * Fond d'ambiance du bloc, servi depuis `public/`.
    *
@@ -109,8 +131,59 @@ export const CAMPAIGNS: CampaignEntry[] = [
     showFrom: "2026-09-15T00:00:00+02:00",
     showUntil: "2026-10-06T23:59:59+02:00",
   },
+  {
+    id: "salons-2026-11",
+    eyebrow: "Temps forts · Paris",
+    title: "Trois salons en novembre.",
+    titleAccent: "Vos stands arrivent avant l'ouverture.",
+    window: "Salons · 4 → 19 novembre 2026",
+    intro:
+      "Image et son, photographie, événementiel : nos véhicules livrent matériel, décor et mobilier de stand dans les créneaux de montage, et reviennent pour le démontage, de jour comme de nuit.",
+    facts: [
+      { value: "206", label: "Exposants au SATIS 2025" },
+      { value: "29e", label: "Édition de Paris Photo" },
+      { value: "490", label: "Exposants à Heavent" },
+    ],
+    source:
+      "// Bilan officiel SATIS 2025 · parisphoto.com · heavent-paris.com",
+    /* Les œuvres de Paris Photo voyagent avec des transporteurs d'art
+       spécialisés : la ligne `cargo` ne promet que ce qui les entoure, comme
+       le post LinkedIn du 3 novembre. */
+    agenda: [
+      {
+        name: "SATIS",
+        dates: "4 et 5 nov.",
+        venue: "Docks de Paris, La Plaine Saint-Denis",
+        cargo: "Image et son : caméras, lumière, machinerie",
+        start: "2026-11-04T00:00:00+01:00",
+        end: "2026-11-05T23:59:59+01:00",
+      },
+      {
+        name: "Paris Photo",
+        dates: "12 → 15 nov.",
+        venue: "Grand Palais",
+        cargo: "Scénographie, éclairage et mobilier de stand",
+        start: "2026-11-12T00:00:00+01:00",
+        end: "2026-11-15T23:59:59+01:00",
+      },
+      {
+        name: "Heavent",
+        dates: "17 → 19 nov.",
+        venue: "Paris Expo Porte de Versailles",
+        cargo: "Événementiel : décor, régie, matériel",
+        start: "2026-11-17T00:00:00+01:00",
+        end: "2026-11-19T23:59:59+01:00",
+      },
+    ],
+    /* Hall de salon de nuit pendant le montage, sans stand ni marque
+       identifiable : décor seul, le sens est porté par l'agenda. */
+    image: { src: "/images/campagnes/salons-novembre.webp", position: "right center" },
+    link: { href: "/evenementiel", label: "Notre offre événementielle" },
+    /* Bascule à l'heure d'hiver le 25 octobre : la fin porte +01:00. */
+    showFrom: "2026-10-20T00:00:00+02:00",
+    showUntil: "2026-11-19T23:59:59+01:00",
+  },
 ];
-
 /**
  * Contrôle d'intégrité du registre, joué à l'import — donc au build.
  *
@@ -134,6 +207,29 @@ for (const [i, c] of CAMPAIGNS.entries()) {
     if (!FORMAT_DATE.test(valeur)) {
       throw new Error(
         `Campagne « ${c.id} » : ${champ} = "${valeur}" n'est pas au format attendu 2026-09-15T00:00:00+02:00 (offset obligatoire).`,
+      );
+    }
+  }
+
+  if (c.promo && c.agenda) {
+    throw new Error(
+      `Campagne « ${c.id} » : promo et agenda sont exclusifs, la carte de droite ne peut en montrer qu'un.`,
+    );
+  }
+  for (const e of c.agenda ?? []) {
+    for (const [champ, valeur] of [
+      ["start", e.start],
+      ["end", e.end],
+    ] as const) {
+      if (!FORMAT_DATE.test(valeur) || Number.isNaN(new Date(valeur).getTime())) {
+        throw new Error(
+          `Campagne « ${c.id} », agenda « ${e.name} » : ${champ} = "${valeur}" invalide (format 2026-11-04T00:00:00+01:00, offset obligatoire).`,
+        );
+      }
+    }
+    if (new Date(e.end).getTime() <= new Date(e.start).getTime()) {
+      throw new Error(
+        `Campagne « ${c.id} », agenda « ${e.name} » : end n'est pas après start.`,
       );
     }
   }
@@ -175,4 +271,17 @@ export const activeCampaign = (
     (c) =>
       t >= new Date(c.showFrom).getTime() && t <= new Date(c.showUntil).getTime(),
   );
+};
+
+/** Où en est un rendez-vous d'agenda à l'instant `now`. */
+export type CampaignEventStatus = "a-venir" | "en-cours" | "termine";
+
+export const eventStatus = (
+  event: CampaignEvent,
+  now: Date = new Date(),
+): CampaignEventStatus => {
+  const t = now.getTime();
+  if (t > new Date(event.end).getTime()) return "termine";
+  if (t >= new Date(event.start).getTime()) return "en-cours";
+  return "a-venir";
 };

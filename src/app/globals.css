@@ -1374,6 +1374,54 @@ section {
   justify-content: space-between;
 }
 
+/* --- agenda (campagne sans code promo) : même carte que le code promo --- */
+.campaign-events {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.campaign-event {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.campaign-event-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.campaign-event-dates {
+  color: var(--accent);
+}
+.campaign-event.is-en-cours .campaign-event-badge {
+  color: var(--accent);
+}
+.campaign-event-name {
+  margin-top: 8px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(20px, 2vw, 24px);
+  line-height: 1.1;
+  color: var(--fg);
+}
+.campaign-event-venue {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--fg-dim);
+}
+.campaign-event-cargo {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+/* Un salon passé reste lisible (le bloc dit « trois salons ») mais s'efface
+   derrière ceux qui restent à venir. */
+.campaign-event.is-termine {
+  opacity: 0.45;
+}
+.campaign-event.is-termine .campaign-event-dates {
+  color: var(--fg-dim);
+}
+
 /* --- code promo cliquable (composant CopyCode) --- */
 .code-copy {
   width: 100%;
