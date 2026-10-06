@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CopyCode } from "@/components/ui/CopyCode";
-import { activeCampaign } from "@/data/campaigns";
+import { activeCampaign, eventStatus } from "@/data/campaigns";
 import { SITE } from "@/data/site";
 
 /**
@@ -13,10 +13,13 @@ import { SITE } from "@/data/site";
  * `src/data/campaigns.ts`, jamais ici.
  */
 export function Campaign() {
-  const campaign = activeCampaign();
+  // Un seul instant pour tout le rendu : la campagne et le statut de chaque
+  // rendez-vous de l'agenda doivent être jugés à la même heure.
+  const now = new Date();
+  const campaign = activeCampaign(now);
   if (!campaign) return null;
 
-  const { promo } = campaign;
+  const { promo, agenda } = campaign;
 
   return (
     <section
@@ -84,6 +87,56 @@ export function Campaign() {
             <div className="campaign-actions">
               <a className="btn btn-primary" href={SITE.dashboard.order}>
                 Commander avec le code <span className="arrow" />
+              </a>
+              <Link className="btn-arrow" href={campaign.link.href}>
+                {campaign.link.label} <span className="arrow" />
+              </Link>
+            </div>
+          </aside>
+        ) : null}
+
+        {agenda ? (
+          <aside className="campaign-promo campaign-agenda reveal">
+            <div className="campaign-promo-head">
+              <span className="mono dim">// agenda</span>
+            </div>
+
+            <ol className="campaign-events">
+              {agenda.map((event) => {
+                const status = eventStatus(event, now);
+                return (
+                  <li
+                    className={`campaign-event is-${status}`}
+                    key={event.name}
+                  >
+                    <div className="campaign-event-head">
+                      <span className="mono campaign-event-dates">
+                        {event.dates}
+                      </span>
+                      {status === "en-cours" ? (
+                        <span className="mono campaign-event-badge">
+                          En cours
+                        </span>
+                      ) : null}
+                      {status === "termine" ? (
+                        <span className="mono dim campaign-event-badge">
+                          Terminé
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="campaign-event-name">{event.name}</div>
+                    <div className="campaign-event-venue">{event.venue}</div>
+                    <div className="mono dim campaign-event-cargo">
+                      {event.cargo}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+
+            <div className="campaign-actions">
+              <a className="btn btn-primary" href={SITE.dashboard.order}>
+                Demander un devis <span className="arrow" />
               </a>
               <Link className="btn-arrow" href={campaign.link.href}>
                 {campaign.link.label} <span className="arrow" />
