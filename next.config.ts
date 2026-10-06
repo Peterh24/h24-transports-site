@@ -88,6 +88,24 @@ const RESOLVED_DASHBOARD_URL =
   DASHBOARD_URLS[process.env.APP_ENV ?? ""] ||
   DASHBOARD_URLS.prod;
 
+/**
+ * Base de l'API H24 pour le formulaire « devenir partenaire », resolue AU
+ * BUILD selon la meme logique que `SITE_URLS` et `DASHBOARD_URLS` ci-dessus.
+ *
+ * A la difference de `SITE.contactApi` (voir son commentaire dans
+ * src/data/site.ts), cette route est bien branchee sur l'environnement de
+ * build : c'est un nouvel endpoint, sans dette a reconduire.
+ */
+const PARTNER_API_URLS: Record<string, string> = {
+  prod: "https://prod-api.h24transports.com",
+  dev: "https://develop-api.h24transports.com",
+};
+
+const RESOLVED_PARTNER_API_URL =
+  process.env.NEXT_PUBLIC_PARTNER_API_URL ||
+  PARTNER_API_URLS[process.env.APP_ENV ?? ""] ||
+  PARTNER_API_URLS.prod;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -95,6 +113,7 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_SITE_URL: RESOLVED_SITE_URL,
     NEXT_PUBLIC_DASHBOARD_URL: RESOLVED_DASHBOARD_URL,
+    NEXT_PUBLIC_PARTNER_API_URL: RESOLVED_PARTNER_API_URL,
   },
   /**
    * Sortie autonome : Next produit dans `.next/standalone` un serveur Node

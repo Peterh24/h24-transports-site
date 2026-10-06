@@ -50,6 +50,10 @@
   --accent-glow: rgba(245, 146, 57, 0.35);
   --accent-faint: rgba(245, 146, 57, 0.08);
 
+  /* erreurs de formulaire : rouge distinct de l'accent orange, qui sert aux
+     titres des champs. Contraste d'environ 6:1 sur les fonds sombres. */
+  --danger: #ff5c52;
+
   /* misc */
   --radius-sm: 4px;
   --radius: 6px;
@@ -2907,6 +2911,16 @@ section {
   flex-direction: column;
   gap: 8px;
 }
+/* Groupe de choix : même mise en forme qu'un libellé de champ, sans en être un.
+   Un `label` qui enveloppe des `button` transfère le clic de sa légende au
+   premier bouton du groupe (comportement HTML standard, pas un défaut de
+   rendu), ce qui sélectionnait une option que le visiteur n'avait pas
+   choisie. */
+.contact-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2968,7 +2982,41 @@ section {
   margin-top: 16px;
 }
 .form-note {
-  color: var(--accent);
+  color: var(--danger);
+}
+/* Variante multi-choix (licences, véhicules, zones du formulaire partenaire) :
+   même layout que .service-radio, mais plusieurs boutons peuvent rester actifs
+   en même temps, alors que .service-radio n'en admet qu'un. La contrainte
+   vient du composant, pas de la classe, d'où un nom distinct pour ne pas
+   laisser croire à un comportement radio à qui la relit. */
+.service-multi {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+/* Bordure d'un champ en erreur : même rouge que .form-note. L'orange de
+   l'accent se confondait avec les titres des champs, l'erreur passait inaperçue. */
+.contact-form input[aria-invalid="true"],
+.contact-form textarea[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+/* Message d'erreur sous un champ précis (contact & partenaire). */
+.field-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin-top: -4px;
+}
+/* Champ honeypot : hors du flux et masqué à l'oeil, mais présent dans le DOM
+   pour piéger les robots qui remplissent tous les champs sans regarder le
+   rendu. `aria-hidden` sur le conteneur suffit à l'écarter des lecteurs
+   d'écran ; ce bloc ne fait que le retirer visuellement et du flux normal. */
+.field-trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* ===== FAQ ===== */

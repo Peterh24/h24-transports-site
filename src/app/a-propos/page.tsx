@@ -134,6 +134,16 @@ export default function AboutPage() {
               </div>
             </div>
           ))}
+          {/* Seul lien vers /devenir-partenaire hors du pied de page : la
+              navigation reste pointée client, et c'est ici qu'atterrit un
+              professionnel qui cherche à comprendre qui nous sommes. */}
+          <p className="dim reveal" style={{ marginTop: 40, lineHeight: 1.7 }}>
+            Vous êtes transporteur et cherchez des missions à Paris et en
+            Île-de-France&nbsp;?{" "}
+            <Link href="/devenir-partenaire" className="link">
+              Devenir transporteur affrété de H24 Transports
+            </Link>
+          </p>
         </div>
       </section>
       <Faq items={FAQ_A_PROPOS} />

@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/data/faq";
+import { insecables } from "@/lib/typo";
 
 type Props = {
   items: FaqItem[];
@@ -14,6 +15,10 @@ type Props = {
  * surtout les réponses sont présentes dans le HTML servi même repliées — donc
  * lisibles par les crawlers qui n'exécutent pas de JS. Le balisage `FAQPage`
  * correspondant est déclaré par la page, dans son graphe schema.org.
+ *
+ * Questions et réponses passent par `insecables()` au rendu : sans cela un
+ * « ? » ou un « : » peut se retrouver seul en début de ligne sur les
+ * largeurs intermédiaires (cf. src/lib/typo.ts).
  */
 export function Faq({
   items,
@@ -36,10 +41,10 @@ export function Faq({
           {items.map((item) => (
             <details className="faq-item" key={item.question}>
               <summary className="faq-q">
-                <span>{item.question}</span>
+                <span>{insecables(item.question)}</span>
                 <span className="faq-marker" aria-hidden="true" />
               </summary>
-              <p className="faq-a dim">{item.answer}</p>
+              <p className="faq-a dim">{insecables(item.answer)}</p>
             </details>
           ))}
         </div>
