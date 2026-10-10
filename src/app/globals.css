@@ -3741,3 +3741,21 @@ select:focus-visible,
 .footer-linkish:hover {
   color: var(--accent);
 }
+
+/* ===== pastille d'environnement (recette et local, jamais en production) ===== */
+.env-badge {
+  position: fixed;
+  left: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 1000;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(-45deg, #e8590c 0 10px, #d9480f 10px 20px);
+  color: #fff;
+  font: 700 11px/1 var(--font-inter, system-ui), system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  user-select: none;
+}

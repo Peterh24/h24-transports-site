@@ -106,6 +106,19 @@ const RESOLVED_PARTNER_API_URL =
   PARTNER_API_URLS[process.env.APP_ENV ?? ""] ||
   PARTNER_API_URLS.prod;
 
+/**
+ * Libelle de la pastille d'environnement, resolu AU BUILD : affiche sur la
+ * recette (`APP_ENV=dev`) et en local (`next dev`), jamais en production,
+ * pour ne pas confondre les deux sites. Vide = pas de pastille.
+ */
+const RESOLVED_ENV_LABEL =
+  process.env.NEXT_PUBLIC_ENV_LABEL ??
+  (process.env.APP_ENV === "dev"
+    ? "Environnement de dev"
+    : process.env.NODE_ENV === "development"
+      ? "Environnement local"
+      : "");
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -114,6 +127,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_SITE_URL: RESOLVED_SITE_URL,
     NEXT_PUBLIC_DASHBOARD_URL: RESOLVED_DASHBOARD_URL,
     NEXT_PUBLIC_PARTNER_API_URL: RESOLVED_PARTNER_API_URL,
+    NEXT_PUBLIC_ENV_LABEL: RESOLVED_ENV_LABEL,
   },
   /**
    * Sortie autonome : Next produit dans `.next/standalone` un serveur Node
