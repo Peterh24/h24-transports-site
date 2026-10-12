@@ -103,6 +103,10 @@ export default function AppPage() {
         accent="Du brief à la facture."
         lead="Après 2 ans de développement, l'app pensée pour les transporteurs audiovisuels et les équipes événementielles est disponible. Intuitive, sécurisée, conçue pour gérer toutes vos demandes de bout en bout."
         media="/images/app/app-header-mac.webp"
+        mediaVideo={{
+          mp4: "/videos/app/ecran-planning.mp4",
+          poster: "/images/app/ecran-planning-poster.webp",
+        }}
         grid={false}
         softGlow
       />
