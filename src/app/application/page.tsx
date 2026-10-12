@@ -104,8 +104,8 @@ export default function AppPage() {
         lead="Après 2 ans de développement, l'app pensée pour les transporteurs audiovisuels et les équipes événementielles est disponible. Intuitive, sécurisée, conçue pour gérer toutes vos demandes de bout en bout."
         media="/images/app/app-header-mac.webp"
         mediaVideo={{
-          mp4: "/videos/app/presentation-45s.mp4",
-          poster: "/images/app/presentation-45s-poster.webp",
+          mp4: "/videos/app/presentation-45s-ecran.mp4",
+          poster: "/images/app/presentation-45s-ecran-poster.webp",
           title: "H24 Transports : une course, de la demande à la livraison signée",
         }}
         grid={false}

@@ -2161,10 +2161,12 @@ section {
 }
 .page-header-media-screen {
   position: absolute;
-  left: 9.6774%; /* 192 / 1984 */
-  top: 9.0044%; /* 123 / 1366 */
-  width: 80.6452%; /* 1600 / 1984 */
-  height: 73.2064%; /* 1000 / 1366 */
+  /* 2 px de débord de chaque côté : couvre l'ancienne capture d'écran du
+     visuel, dont le bord blanc dépassait d'un pixel une fois mis à l'échelle */
+  left: 9.5766%; /* (192 - 2) / 1984 */
+  top: 8.858%; /* (123 - 2) / 1366 */
+  width: 80.8468%; /* (1600 + 4) / 1984 */
+  height: 73.4993%; /* (1000 + 4) / 1366 */
 }
 /* vidéo dans un visuel : bouton plein cadre, lecture avec le son au clic */
 .screen-video {
@@ -2172,7 +2174,7 @@ section {
   padding: 0;
   border: 0;
   margin: 0;
-  background: #0a0908; /* même noir que le fond de la vidéo : bandes invisibles */
+  background: #0a0908; /* même noir que le fond de la vidéo */
   cursor: pointer;
   overflow: hidden;
 }
@@ -2180,7 +2182,7 @@ section {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* vidéo 4:5 dans un écran 16:10 : rien n'est rogné */
+  object-fit: cover; /* vidéo montée en 16:10, au format exact de l'écran */
 }
 .screen-video-cta {
   position: absolute;
@@ -2212,7 +2214,8 @@ section {
   padding: 0;
   border: 0;
   background: transparent;
-  max-width: min(92vw, 560px);
+  width: min(92vw, 1200px);
+  max-width: none;
   overflow: visible;
 }
 .screen-video-dialog::backdrop {
@@ -2221,7 +2224,7 @@ section {
 .screen-video-dialog video {
   display: block;
   width: 100%;
-  max-height: 86vh;
+  max-height: 84vh;
   background: #0a0908;
 }
 .screen-video-close {
