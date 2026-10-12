@@ -6,23 +6,23 @@ import { useEffect, useRef } from "react";
 const SCREENS: { src: string; w: number; h: number; alt: string; caption: string }[] = [
   {
     src: "/images/app/app-accueil.webp",
-    w: 1080,
-    h: 2050,
-    alt: "Application H24 Transports — écran d'accueil et sélection de la société",
+    w: 1074,
+    h: 2376,
+    alt: "Application H24 Transports, écran d'accueil : société de facturation et bouton pour commander un transport",
     caption: "Accueil & société",
   },
   {
     src: "/images/app/app-creer-demande.webp",
-    w: 1160,
-    h: 2120,
-    alt: "Application H24 Transports — sélection du véhicule lors d'une demande",
+    w: 1074,
+    h: 2376,
+    alt: "Application H24 Transports, création d'une demande : choix du type de transport",
     caption: "Créer une demande",
   },
   {
     src: "/images/app/app-suivi.webp",
-    w: 1140,
-    h: 2080,
-    alt: "Application H24 Transports — suivi des transports en temps réel",
+    w: 1074,
+    h: 2376,
+    alt: "Application H24 Transports, suivi d'une course : étapes validées, signature du destinataire et preuve de livraison",
     caption: "Suivi des transports",
   },
 ];

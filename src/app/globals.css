@@ -2153,6 +2153,21 @@ section {
   /* atterrissage au chargement : tombe d'en haut, rebond léger, se pose */
   animation: mac-land 1.15s cubic-bezier(0.33, 1, 0.45, 1) 0.1s both;
 }
+/* vidéo posée sur l'écran du Mac (app-header-mac.webp, 1984 × 1366) : l'écran
+   y occupe exactement 1600 × 1000 px à partir de (192, 123), mesurés sur le
+   fichier. Si le visuel change, ces quatre valeurs sont à remesurer. */
+.page-header-media {
+  position: relative;
+}
+.page-header-media-screen {
+  position: absolute;
+  left: 9.6774%; /* 192 / 1984 */
+  top: 9.0044%; /* 123 / 1366 */
+  width: 80.6452%; /* 1600 / 1984 */
+  height: 73.2064%; /* 1000 / 1366 */
+  object-fit: cover;
+  background: #0a0908;
+}
 @keyframes mac-land {
   0% {
     opacity: 0;
