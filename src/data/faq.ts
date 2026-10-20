@@ -98,6 +98,16 @@ export const FAQ_EVENEMENTIEL: FaqItem[] = [
     answer:
       "H24 Transports s'appuie sur des solutions de géolocalisation des véhicules et sur du gardiennage vidéo-surveillé pour sécuriser le matériel transporté et stationné.",
   },
+  {
+    question: "Comment organiser le transport d'un stand pour un salon à Paris ?",
+    answer:
+      "Pour un salon professionnel à Paris, H24 Transports a besoin du volume du stand, de l'adresse d'enlèvement, du lieu du salon et des créneaux de montage et de démontage fixés par l'organisateur. Le véhicule, de 3 à 20 m³, est choisi en fonction du volume, et la reprise peut être planifiée dans la même demande.",
+  },
+  {
+    question: "Que faire s'il manque du matériel pendant un événement ?",
+    answer:
+      "H24 Transports organise une course dédiée en urgence : un véhicule part chercher le matériel manquant et le livre en direct sur le lieu de l'événement, en 1 heure dans Paris intramuros et 3 heures en Île-de-France. Le dispatch est joignable 24h/24 au 01 80 27 54 60.",
+  },
 ];
 
 /**
@@ -243,6 +253,21 @@ export const FAQ_EXPRESS: FaqItem[] = [
     answer:
       "Oui. H24 Transports prend en charge les courses ponctuelles comme les courses récurrentes, standards ou spéciales, avec un service client dédié pour construire des solutions sur mesure.",
   },
+  {
+    question: "Comment commander un coursier urgent à Paris ?",
+    answer:
+      "Une course urgente se commande auprès du dispatch de H24 Transports au 01 80 27 54 60, joignable 24h/24 et 7j/7, ou depuis l'application H24 Transports. Le véhicule part dès l'enlèvement et roule en direct jusqu'à l'adresse de livraison.",
+  },
+  {
+    question: "Un coursier H24 Transports peut-il intervenir la nuit ou le week-end ?",
+    answer:
+      "Oui. H24 Transports opère 24 heures sur 24 et 7 jours sur 7 à Paris et en Île-de-France. Une course urgente peut donc être commandée et réalisée la nuit, le samedi ou le dimanche, quand les services de messagerie classiques sont fermés.",
+  },
+  {
+    question: "Avec quels véhicules H24 Transports réalise-t-il ses courses urgentes ?",
+    answer:
+      "H24 Transports réalise ses courses urgentes en utilitaire, et non en deux-roues : quatre formats de 3 à 20 m³, de 415 à 1 300 kg de charge utile, avec hayon sur les formats 12 à 14 m³ et 20 m³. Une course urgente peut ainsi porter un carton comme un chargement complet.",
+  },
 ];
 
 export const FAQ_COLIS: FaqItem[] = [
@@ -264,6 +289,21 @@ export const FAQ_COLIS: FaqItem[] = [
     question: "Peut-on suivre un colis confié à H24 Transports ?",
     answer:
       "Oui. Chaque envoi confié à H24 Transports est traçable depuis l'application, avec les statuts d'avancement et l'estimation d'heure d'arrivée. Les véhicules sont géolocalisés.",
+  },
+  {
+    question: "Comment transporter une palette en urgence à Paris ?",
+    answer:
+      "H24 Transports transporte les palettes en course dédiée : un utilitaire part pour cet envoi seul et roule en direct, en 1 heure dans Paris intramuros et 3 heures en Île-de-France. Les formats 12 à 14 m³ et 20 m³ sont équipés d'un hayon pour charger et décharger la palette.",
+  },
+  {
+    question: "H24 Transports fournit-il une preuve de livraison ?",
+    answer:
+      "Oui. L'application H24 Transports enregistre les étapes validées de chaque course et peut recueillir la signature du destinataire comme preuve de livraison.",
+  },
+  {
+    question: "Quelle différence entre une course dédiée et une livraison planifiée ?",
+    answer:
+      "Chez H24 Transports, la course dédiée part dès que possible avec un véhicule réservé à un seul envoi, pour les urgences. La livraison planifiée est fixée à une date et un créneau choisis, et convient aux envois prévus à l'avance et aux tournées récurrentes.",
   },
 ];
 
