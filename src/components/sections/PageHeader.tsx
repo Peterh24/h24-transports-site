@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { HeroGlow } from "@/components/ui/HeroGlow";
+import { ScreenVideo } from "@/components/ui/ScreenVideo";
 
 type CommonProps = {
   eyebrow: string;
@@ -12,6 +13,12 @@ type CommonProps = {
   glow?: boolean;
   /** Image (ex. rendu véhicule sur fond sombre) affichée à la place du grand numéro. */
   media?: string;
+  /**
+   * Vidéo posée sur l'écran du visuel `media` (boucle muette, lecture avec le
+   * son au clic). Uniquement pour `app-header-mac.webp` : la zone d'écran est
+   * calée en CSS sur ce visuel (`.page-header-media-screen`, cf. globals.css).
+   */
+  mediaVideo?: { mp4: string; poster: string; title: string };
   /** Affiche la grille de carreaux en fond (défaut true ; sans effet si `image`). */
   grid?: boolean;
   /** Atténue le halo orange (utile quand un visuel occupe déjà l'en-tête). */
@@ -66,6 +73,7 @@ export function PageHeader(props: Props) {
     tag,
     glow = true,
     media,
+    mediaVideo,
     grid = true,
     softGlow = false,
   } = props;
@@ -187,8 +195,18 @@ export function PageHeader(props: Props) {
           <div
             className="page-header-media"
             style={{ backgroundImage: `url(${media})` }}
-            aria-hidden="true"
-          />
+            // visuel décoratif, sauf s'il porte une vidéo : son bouton doit rester accessible
+            aria-hidden={mediaVideo ? undefined : "true"}
+          >
+            {mediaVideo && (
+              <ScreenVideo
+                className="page-header-media-screen"
+                mp4={mediaVideo.mp4}
+                poster={mediaVideo.poster}
+                title={mediaVideo.title}
+              />
+            )}
+          </div>
         )}
       </div>
     </section>

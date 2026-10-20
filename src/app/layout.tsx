@@ -5,14 +5,22 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@/components/analytics/Analytics";
-import { SITE } from "@/data/site";
+import { ANALYTICS, SITE } from "@/data/site";
 import { graph, logoImage, organization, website } from "@/lib/schema";
+
+/**
+ * Libellé d'environnement résolu au build (voir `next.config.ts`) : vide en
+ * production. Ailleurs, pastille visible, préfixe dans le titre de l'onglet
+ * et barre d'état orange.
+ */
+const ENV_LABEL = process.env.NEXT_PUBLIC_ENV_LABEL ?? "";
+const TITLE_PREFIX = ENV_LABEL ? "[DEV] " : "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
-    template: `%s · ${SITE.name}`,
+    default: `${TITLE_PREFIX}${SITE.name} — ${SITE.tagline}`,
+    template: `${TITLE_PREFIX}%s · ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
@@ -57,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0908",
+  themeColor: ENV_LABEL ? "#E8590C" : "#0A0908",
   width: "device-width",
   initialScale: 1,
 };
@@ -86,7 +94,12 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
-        <Analytics />
+        {ANALYTICS.enabled && <Analytics />}
+        {ENV_LABEL && (
+          <div className="env-badge" role="status" data-testid="env-badge">
+            {ENV_LABEL}
+          </div>
+        )}
       </body>
     </html>
   );

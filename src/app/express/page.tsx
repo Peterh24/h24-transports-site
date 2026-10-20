@@ -5,6 +5,9 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Values } from "@/components/sections/Values";
 import { Faq } from "@/components/sections/Faq";
+import { Fleet } from "@/components/sections/Fleet";
+import { RelatedServices } from "@/components/sections/RelatedServices";
+import { ServiceZones } from "@/components/sections/ServiceZones";
 import { Cta } from "@/components/sections/Cta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_EXPRESS } from "@/data/faq";
@@ -14,17 +17,27 @@ import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/express");
 
+/**
+ * Référencement retravaillé le 2026-10-20.
+ *
+ * Sur « coursier express transport urgent Paris », la page ne sortait pas des
+ * 20 premiers résultats : la requête est tenue par des sites de coursiers à
+ * deux-roues, et le H1 (« Du Point A au Point B. ») ne portait aucun mot
+ * cherché. La page vise désormais « coursier urgent à Paris » avec ce qui la
+ * distingue réellement : un utilitaire dédié de 3 à 20 m³, 24h/24. La formule
+ * de marque passe en seconde ligne du H1.
+ */
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Coursier express & transport urgent à Paris",
+  title: "Coursier urgent à Paris, course dédiée 24h/24",
   description:
-    "Coursier express et transport urgent à Paris : un véhicule dédié à votre seule course, sans groupage. Enlèvement en 1 h dans Paris, partout en France en 12 h.",
+    "Coursier urgent à Paris : un utilitaire de 3 à 20 m³ dédié à votre seule course, sans groupage, 24h/24 et 7j/7. Sur place en 1 h dans Paris, 3 h en Île-de-France.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Coursier express & transport urgent à Paris",
+    name: "Coursier urgent à Paris, course dédiée 24h/24",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
@@ -40,6 +53,33 @@ const jsonLd = graph(
   faqPage(PAGE.path, FAQ_EXPRESS),
 );
 
+/**
+ * Cas d'usage d'une course dédiée. Ce sont des situations types, pas des
+ * références clients : aucune n'affirme un chiffre ni un nom.
+ */
+const CAS = [
+  {
+    num: "01",
+    title: "Une activité à l'arrêt",
+    text: "Une pièce, un outil ou une fourniture manque et bloque une production, un chantier ou une boutique. Le véhicule part dès l'enlèvement et roule en direct.",
+  },
+  {
+    num: "02",
+    title: "Un oubli avant l'ouverture",
+    text: "Du matériel ou des documents restés à l'atelier la veille d'un salon, d'un tournage ou d'un défilé. Le dispatch cale l'enlèvement sur l'heure d'ouverture du lieu.",
+  },
+  {
+    num: "03",
+    title: "Un envoi sensible",
+    text: "Un original à remettre, un objet de valeur, un prototype : un seul envoi à bord, sans centre de tri ni manipulation intermédiaire, avec la signature du destinataire possible à la livraison.",
+  },
+  {
+    num: "04",
+    title: "La nuit et le week-end",
+    text: "Quand la messagerie classique est fermée, le dispatch H24 Transports répond 24h/24 et 7j/7 et une course peut partir à toute heure.",
+  },
+];
+
 export default function ExpressPage() {
   return (
     <>
@@ -50,9 +90,9 @@ export default function ExpressPage() {
           (le phare du véhicule fait déjà la source lumineuse). */}
       <PageHeader
         eyebrow="Univers · Coursier & urgent exclusif"
-        title="Du Point A au Point B."
-        accent="Sans escale."
-        lead="Coursier express à Paris et en Île-de-France : un véhicule entièrement dédié à votre course, sans groupage ni centre de tri. Courses ponctuelles, récurrentes ou spéciales, 24h/24."
+        title={"Coursier urgent à Paris."}
+        accent="Du Point A au Point B, sans escale."
+        lead="Coursier express à Paris et en Île-de-France : un utilitaire entièrement dédié à votre course, sans groupage ni centre de tri. Courses ponctuelles, récurrentes ou spéciales, 24h/24 et 7j/7."
         image="/images/express/van-motion.webp"
         imageAlt="Fourgon H24 Transports en course dans une rue de ville, à la tombée du jour"
         imagePosition="50% 78%"
@@ -93,6 +133,71 @@ export default function ExpressPage() {
           </div>
         </div>
       </section>
+      {/* Ce qui distingue la page des coursiers à deux-roues qui tiennent la
+          requête : le véhicule. Cotes et charges réelles (src/data/vehicles.ts). */}
+      <Fleet
+        eyebrow="Coursier en utilitaire"
+        title={
+          <>
+            Un utilitaire,
+            <br />
+            pas un scooter.
+          </>
+        }
+        intro="Une course urgente ne tient pas toujours dans un top-case. Quatre formats de 3 à 20 m³, de 415 à 1 300 kg de charge utile, géolocalisés, hayon inclus sur les deux plus grands."
+      />
+      <section className="about-content">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="left">
+              <span className="eyebrow">Quand appeler</span>
+              <h2 className="display-l" style={{ marginTop: 16 }}>
+                Coursier urgent,
+                <br />
+                à toute heure.
+              </h2>
+            </div>
+            <div className="right">
+              Une course dédiée sert quand la messagerie du lendemain arrive
+              trop tard. Quatre situations reviennent le plus souvent.
+            </div>
+          </div>
+          {CAS.map((c) => (
+            <div className="about-row reveal" key={c.num}>
+              <div className="about-row-num">{c.num}</div>
+              <div className="about-row-title">
+                <h3 className="display-m">{c.title}</h3>
+              </div>
+              <div className="about-row-text">
+                <p className="dim" style={{ lineHeight: 1.7 }}>
+                  {c.text}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <ServiceZones
+        title={
+          <>
+            Coursier à Paris
+            <br />
+            et en Île-de-France.
+          </>
+        }
+        intro="Les délais courent depuis la prise en charge de la demande par le dispatch, joignable 24h/24 au 01 80 27 54 60."
+        note={
+          <>
+            Au-delà de l&apos;Île-de-France, la course part de Paris et roule
+            en direct jusqu&apos;à destination, partout en France. Pour un
+            envoi qui peut attendre un créneau, la{" "}
+            <Link href="/colis" className="link">
+              livraison planifiée de colis et palettes
+            </Link>{" "}
+            est plus adaptée.
+          </>
+        }
+      />
       {/* Lien vers la page pilier audiovisuelle : le remplacement de matériel
           en cours de tournage est le cas d'urgence le plus fréquent du
           secteur, donc le contexte le plus naturel pour ce lien. /express
@@ -129,6 +234,7 @@ export default function ExpressPage() {
           },
         ]}
       />
+      <RelatedServices current="/express" />
       <Faq items={FAQ_EXPRESS} />
       <Cta />
     </>

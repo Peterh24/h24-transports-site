@@ -2153,6 +2153,93 @@ section {
   /* atterrissage au chargement : tombe d'en haut, rebond léger, se pose */
   animation: mac-land 1.15s cubic-bezier(0.33, 1, 0.45, 1) 0.1s both;
 }
+/* vidéo posée sur l'écran du Mac (app-header-mac.webp, 1984 × 1366) : l'écran
+   y occupe exactement 1600 × 1000 px à partir de (192, 123), mesurés sur le
+   fichier. Si le visuel change, ces quatre valeurs sont à remesurer. */
+.page-header-media {
+  position: relative;
+}
+.page-header-media-screen {
+  position: absolute;
+  /* 2 px de débord de chaque côté : couvre l'ancienne capture d'écran du
+     visuel, dont le bord blanc dépassait d'un pixel une fois mis à l'échelle */
+  left: 9.5766%; /* (192 - 2) / 1984 */
+  top: 8.858%; /* (123 - 2) / 1366 */
+  width: 80.8468%; /* (1600 + 4) / 1984 */
+  height: 73.4993%; /* (1000 + 4) / 1366 */
+}
+/* vidéo dans un visuel : bouton plein cadre, lecture avec le son au clic */
+.screen-video {
+  display: block;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background: #0a0908; /* même noir que le fond de la vidéo */
+  cursor: pointer;
+  overflow: hidden;
+}
+.screen-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* vidéo montée en 16:10, au format exact de l'écran */
+}
+.screen-video-cta {
+  position: absolute;
+  right: 4%;
+  bottom: 6%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--accent, #f59239);
+  color: #0a0908;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+.screen-video:hover .screen-video-cta,
+.screen-video:focus-visible .screen-video-cta {
+  transform: translateY(-2px);
+}
+.screen-video:focus-visible {
+  outline: 2px solid var(--accent, #f59239);
+  outline-offset: 3px;
+}
+.screen-video-dialog {
+  /* la remise à zéro globale des marges casse le centrage natif d'un <dialog> modal */
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  width: min(92vw, 1200px);
+  max-width: none;
+  overflow: visible;
+}
+.screen-video-dialog::backdrop {
+  background: rgba(10, 9, 8, 0.88);
+}
+.screen-video-dialog video {
+  display: block;
+  width: 100%;
+  max-height: 84vh;
+  background: #0a0908;
+}
+.screen-video-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(245, 242, 236, 0.4);
+  background: transparent;
+  color: #f5f2ec;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
 @keyframes mac-land {
   0% {
     opacity: 0;
@@ -3740,4 +3827,22 @@ select:focus-visible,
 }
 .footer-linkish:hover {
   color: var(--accent);
+}
+
+/* ===== pastille d'environnement (recette et local, jamais en production) ===== */
+.env-badge {
+  position: fixed;
+  left: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 1000;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(-45deg, #e8590c 0 10px, #d9480f 10px 20px);
+  color: #fff;
+  font: 700 11px/1 var(--font-inter, system-ui), system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  user-select: none;
 }

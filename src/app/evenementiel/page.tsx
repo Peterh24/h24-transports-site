@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Cta } from "@/components/sections/Cta";
 import { Faq } from "@/components/sections/Faq";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { Process } from "@/components/sections/Process";
+import { RelatedServices } from "@/components/sections/RelatedServices";
 import { Values } from "@/components/sections/Values";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -36,18 +38,24 @@ const PAGE = getPage("/evenementiel");
  * Rien n'a été retiré du contenu de la page : seuls le `<title>`, le H1 et
  * les intitulés qui revendiquaient l'audiovisuel ont été recentrés, et un
  * lien vers la page audiovisuelle a été ajouté.
+ *
+ * 2026-10-20 : la page restait hors des 20 premiers résultats sur « transport
+ * événementiel Paris », face à des concurrents qui détaillent salons, lieux et
+ * créneaux. Ajouts : les sous-requêtes dans le `<title>` (salons, concerts,
+ * tournées), une section sur les horaires de montage, une section « organiser
+ * le transport d'un salon » et le maillage vers /express et /colis.
  */
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Transport événementiel à Paris",
+  title: "Transport événementiel à Paris : salons, concerts, tournées",
   description:
-    "Transport et logistique événementielle à Paris : concerts, tournées, salons et opérations de marque. Matériel, décor et régie livrés dans les créneaux de montage, 24h/24.",
+    "Transport et logistique événementielle à Paris : salons, concerts, tournées et opérations de marque. Stands, décor et régie livrés dans vos créneaux de montage, 24h/24.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Transport événementiel à Paris",
+    name: "Transport événementiel à Paris : salons, concerts, tournées",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
@@ -129,6 +137,29 @@ const ENGAGEMENTS = [
     Icon: PeopleIcon,
     title: "Équipes formées",
     text: "Manutention spécialisée, casque, régisseur « junior » possible.",
+  },
+];
+
+const TEMPS = [
+  {
+    num: "01",
+    title: "Le montage",
+    text: "Stands, décor, mobilier et régie livrés dans le créneau de montage imposé par l'organisateur, souvent la nuit ou au petit matin avant l'ouverture.",
+  },
+  {
+    num: "02",
+    title: "Pendant l'événement",
+    text: "Un câble, un écran ou un élément de décor manque : une course urgente part en direct, en 1 heure dans Paris intramuros et 3 heures en Île-de-France.",
+  },
+  {
+    num: "03",
+    title: "Le démontage",
+    text: "La reprise du matériel commence dès la fermeture, quand le lieu doit être libéré pour l'événement suivant, souvent dans la nuit.",
+  },
+  {
+    num: "04",
+    title: "Entre deux dates",
+    text: "Pour une tournée ou un festival, le matériel passe d'une date à la suivante, et peut être stocké en locaux vidéo-surveillés entre deux prestations.",
   },
 ];
 
@@ -236,6 +267,70 @@ export default function EventPage() {
           </div>
         </div>
       </section>
+      {/* Les horaires réels d'un événement : c'est ce que les pages
+          concurrentes ne détaillent pas, et ce que le 24h/24 couvre. */}
+      <section className="about-content">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="left">
+              <span className="eyebrow">Montage et démontage</span>
+              <h2 className="display-l" style={{ marginTop: 16 }}>
+                Logistique événementielle
+                <br />
+                24h/24 et 7j/7.
+              </h2>
+            </div>
+            <div className="right">
+              Un événement se monte la nuit, se joue le jour et se démonte dès
+              la fermeture. Le transport suit ce calendrier, pas
+              l&apos;inverse.
+            </div>
+          </div>
+          {TEMPS.map((t) => (
+            <div className="about-row reveal" key={t.num}>
+              <div className="about-row-num">{t.num}</div>
+              <div className="about-row-title">
+                <h3 className="display-m">{t.title}</h3>
+              </div>
+              <div className="about-row-text">
+                <p className="dim" style={{ lineHeight: 1.7 }}>
+                  {t.text}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <Process
+        eyebrow="Salons professionnels"
+        title={
+          <>
+            Transport de stand
+            <br />
+            pour un salon à&nbsp;Paris.
+          </>
+        }
+        intro="Paris Expo Porte de Versailles, Grand Palais, Docks de Paris : chaque lieu impose ses créneaux de montage et ses accès. Quatre étapes pour que le stand soit en place à l'ouverture."
+        steps={[
+          {
+            title: "La demande",
+            text: "Un appel au dispatch au 01 80 27 54 60, ou une demande depuis l'application H24. La ligne est ouverte 24h/24, y compris la nuit et le week-end.",
+          },
+          {
+            title: "Le stand et le salon",
+            text: "Volume du stand, mobilier et décor, adresse d'enlèvement, lieu du salon, créneaux de montage et de démontage fixés par l'organisateur.",
+          },
+          {
+            title: "Le véhicule et les créneaux",
+            text: "Le format de 3 à 20 m³ est choisi au volume, le hayon tranché, l'aller calé sur le montage et la reprise sur le démontage.",
+          },
+          {
+            title: "La livraison et la reprise",
+            text: "Course géolocalisée, statuts et heure d'arrivée estimée dans l'application, puis reprise du stand à la fermeture du salon.",
+          },
+        ]}
+      />
+      <RelatedServices current="/evenementiel" />
       <Faq items={FAQ_EVENEMENTIEL} />
       <Cta />
     </>

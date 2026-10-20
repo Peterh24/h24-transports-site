@@ -47,7 +47,7 @@ export const PAGES: PageEntry[] = [
        matériel audiovisuel a désormais sa page dédiée
        (/transport-materiel-audiovisuel-paris), les deux se répondaient sur les mêmes
        requêtes. */
-    updated: "2026-09-16",
+    updated: "2026-10-20",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
@@ -87,7 +87,7 @@ export const PAGES: PageEntry[] = [
     label: "Express",
     summary:
       "Coursier express et transport urgent exclusif à Paris : un véhicule entièrement dédié à une seule course, sans groupage ni passage par un centre de tri. Intervention en 1 h dans Paris, 3 h en Île-de-France, 12 h en France entière.",
-    updated: "2026-09-16",
+    updated: "2026-10-20",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",
@@ -97,7 +97,7 @@ export const PAGES: PageEntry[] = [
     label: "Colis",
     summary:
       "Livraison de plis, colis et palettes en course dédiée ou planifiée, à Paris, en Île-de-France et en France entière, avec suivi en temps réel.",
-    updated: "2026-08-28",
+    updated: "2026-10-20",
     indexable: true,
     priority: 0.9,
     changeFrequency: "monthly",

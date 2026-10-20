@@ -222,6 +222,11 @@ export type NavItem = {
 export const ANALYTICS = {
   ga4: "G-LKKLCZHQSD",
   /**
+   * Faux hors production (recette, local) : resolu au build par
+   * `next.config.ts`. Ni tag ni bandeau de consentement n'y sont alors rendus.
+   */
+  enabled: process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "1",
+  /**
    * 13 mois, plafond recommande par la CNIL pour un cookie de mesure
    * d'audience. Sans ce reglage, gtag pose un cookie de 2 ans par defaut —
    * et les mentions legales annonceraient une duree fausse.
