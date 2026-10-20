@@ -119,6 +119,22 @@ const RESOLVED_ENV_LABEL =
       ? "Environnement local"
       : "");
 
+/**
+ * Mesure d'audience GA4, resolue AU BUILD : active uniquement en production.
+ *
+ * La recette et le local partageaient l'identifiant GA4 de la production et y
+ * envoyaient leurs visites (pages « [DEV] » dans les rapports d'octobre 2026),
+ * ce qui gonflait l'audience. Meme logique que les URL ci-dessus : `APP_ENV`
+ * absent vaut production, `next dev` ne mesure jamais.
+ * `NEXT_PUBLIC_ANALYTICS_ENABLED=1` (ou `0`) force le choix si besoin.
+ */
+const RESOLVED_ANALYTICS_ENABLED =
+  process.env.NEXT_PUBLIC_ANALYTICS_ENABLED ??
+  ((process.env.APP_ENV ?? "prod") === "prod" &&
+  process.env.NODE_ENV === "production"
+    ? "1"
+    : "0");
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -128,6 +144,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_DASHBOARD_URL: RESOLVED_DASHBOARD_URL,
     NEXT_PUBLIC_PARTNER_API_URL: RESOLVED_PARTNER_API_URL,
     NEXT_PUBLIC_ENV_LABEL: RESOLVED_ENV_LABEL,
+    NEXT_PUBLIC_ANALYTICS_ENABLED: RESOLVED_ANALYTICS_ENABLED,
   },
   /**
    * Sortie autonome : Next produit dans `.next/standalone` un serveur Node

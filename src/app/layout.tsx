@@ -5,7 +5,7 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@/components/analytics/Analytics";
-import { SITE } from "@/data/site";
+import { ANALYTICS, SITE } from "@/data/site";
 import { graph, logoImage, organization, website } from "@/lib/schema";
 
 /**
@@ -94,7 +94,7 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
-        <Analytics />
+        {ANALYTICS.enabled && <Analytics />}
         {ENV_LABEL && (
           <div className="env-badge" role="status" data-testid="env-badge">
             {ENV_LABEL}
