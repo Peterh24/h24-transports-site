@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Values } from "@/components/sections/Values";
 import { Faq } from "@/components/sections/Faq";
+import { Fleet } from "@/components/sections/Fleet";
+import { RelatedServices } from "@/components/sections/RelatedServices";
+import { ServiceZones } from "@/components/sections/ServiceZones";
 import { Cta } from "@/components/sections/Cta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_COLIS } from "@/data/faq";
@@ -12,17 +16,25 @@ import { breadcrumb, faqPage, graph, service, webPage } from "@/lib/schema";
 
 const PAGE = getPage("/colis");
 
+/**
+ * Référencement retravaillé le 2026-10-20.
+ *
+ * La page ne sortait pas des 20 premiers résultats sur « transport colis
+ * palettes Paris » : H1 sans mot cherché (« Du pli à la palette. »), pas de
+ * H2 sur la palette, aucun lien depuis les autres pages services. Le titre
+ * met désormais « palettes » en tête, la requête la plus commerciale du lot.
+ */
 export const metadata: Metadata = pageMetadata({
   path: PAGE.path,
-  title: "Transport de colis et palettes à Paris",
+  title: "Transport de palettes et colis à Paris et en Île-de-France",
   description:
-    "Du pli urgent à la palette : messagerie et coursier dédié, en express ou planifié, avec suivi en temps réel — Paris, Île-de-France et France entière.",
+    "Transport de palettes, colis et plis à Paris et en Île-de-France : course dédiée ou livraison planifiée, suivi en temps réel et preuve de livraison, 24h/24.",
 });
 
 const jsonLd = graph(
   webPage({
     path: PAGE.path,
-    name: "Transport de colis et palettes à Paris",
+    name: "Transport de palettes et colis à Paris et en Île-de-France",
     description: PAGE.summary,
     dateModified: PAGE.updated,
   }),
@@ -132,6 +144,19 @@ const CATEGORIES = [
   },
 ];
 
+const MODES = [
+  {
+    num: "01",
+    title: "Course dédiée",
+    text: "Un utilitaire part pour votre seul envoi et roule en direct, sans groupage ni centre de tri : 1 heure dans Paris intramuros, 3 heures en Île-de-France, 12 heures pour la France entière.",
+  },
+  {
+    num: "02",
+    title: "Livraison planifiée",
+    text: "Une date et un créneau fixés à l'avance, pour un envoi prévu ou une tournée récurrente. Statuts, heure d'arrivée estimée et preuve de livraison restent consultables dans l'application.",
+  },
+];
+
 export default function ColisPage() {
   return (
     <>
@@ -139,8 +164,8 @@ export default function ColisPage() {
       <RevealOnScroll />
       <PageHeader
         eyebrow="Univers · Colis, pli & palette"
-        title="Du pli à la palette."
-        accent="Livré dans les temps."
+        title="Transport de colis et palettes."
+        accent="Du pli à la palette, livré à l'heure."
         lead="Messagerie et coursier dédié, en express ou planifié. Du document urgent à la palette volumineuse, on enlève vite, on trace en temps réel et on livre dans les délais — Paris, Île-de-France et France entière."
         image="/images/colis/truck-boxes.webp"
         imageAlt="Camion H24 Transports hayon déployé, chargé de cartons sur palettes"
@@ -203,6 +228,50 @@ export default function ColisPage() {
         </div>
       </section>
 
+      <section className="about-content">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="left">
+              <span className="eyebrow">Deux façons d&apos;expédier</span>
+              <h2 className="display-l" style={{ marginTop: 16 }}>
+                Course dédiée
+                <br />
+                ou livraison planifiée.
+              </h2>
+            </div>
+            <div className="right">
+              Le même véhicule, le même suivi. Ce qui change, c&apos;est le
+              moment du départ.
+            </div>
+          </div>
+          {MODES.map((m) => (
+            <div className="about-row reveal" key={m.num}>
+              <div className="about-row-num">{m.num}</div>
+              <div className="about-row-title">
+                <h3 className="display-m">{m.title}</h3>
+              </div>
+              <div className="about-row-text">
+                <p className="dim" style={{ lineHeight: 1.7 }}>
+                  {m.text}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Fleet
+        eyebrow="Transport de palettes"
+        title={
+          <>
+            Le bon utilitaire
+            <br />
+            pour vos palettes.
+          </>
+        }
+        intro="Quatre formats de 3 à 20 m³ et de 415 à 1 300 kg de charge utile. Le format se choisit au volume, au poids et à l'accès du lieu de livraison ; les 12 à 14 m³ et 20 m³ ont un hayon."
+      />
+
       <Values
         values={[
           {
@@ -223,6 +292,26 @@ export default function ColisPage() {
           },
         ]}
       />
+      <ServiceZones
+        title={
+          <>
+            Livraison à Paris,
+            <br />
+            en Île-de-France et au-delà.
+          </>
+        }
+        intro="Délais d'une course dédiée, depuis la prise en charge de la demande par le dispatch. En livraison planifiée, c'est vous qui fixez la date et le créneau."
+        note={
+          <>
+            Un envoi qui ne peut pas attendre ? Le{" "}
+            <Link href="/express" className="link">
+              coursier urgent à Paris
+            </Link>{" "}
+            met un utilitaire à votre seule disposition, 24h/24.
+          </>
+        }
+      />
+      <RelatedServices current="/colis" />
       <Faq items={FAQ_COLIS} />
       <Cta />
     </>
