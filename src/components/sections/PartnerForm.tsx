@@ -389,9 +389,16 @@ export function PartnerForm() {
   const [hydrated, setHydrated] = useState(false);
 
   /* Recherche d'entreprise (annuaire SIRENE) sur le champ « Entreprise »,
-     comme à l'inscription client du dashboard. Choisir un résultat remplit
-     raison sociale, SIREN et numéro de TVA ; rien n'empêche de tout saisir à
-     la main, la liste n'est qu'une aide. */
+     comme à l'inscription client du dashboard, avec ses trois états :
+     - search : le candidat tape, la liste propose ;
+     - selected : entreprise choisie, rappelée sur une ligne (raison sociale,
+       SIREN, ville) avec « Changer » ; le champ SIREN n'est pas affiché, il
+       ferait doublon ;
+     - manual : « Je ne trouve pas mon entreprise », ou recherche en panne :
+       raison sociale et SIREN saisis à la main.
+     Le numéro de TVA reste toujours visible et modifiable. */
+  const [companyMode, setCompanyMode] = useState<"search" | "selected" | "manual">("search");
+  const [companyPicked, setCompanyPicked] = useState<CompanyResult | null>(null);
   const [companyResults, setCompanyResults] = useState<CompanyResult[]>([]);
   const [companyListOpen, setCompanyListOpen] = useState(false);
   const [companyActive, setCompanyActive] = useState(-1);
@@ -415,7 +422,7 @@ export function PartnerForm() {
     if (companyTimer.current) clearTimeout(companyTimer.current);
     companyAbort.current?.abort();
 
-    if (value.trim().length < COMPANY_SEARCH_MIN_LENGTH) {
+    if (companyMode === "manual" || value.trim().length < COMPANY_SEARCH_MIN_LENGTH) {
       setCompanyResults([]);
       setCompanyListOpen(false);
       return;
@@ -427,6 +434,8 @@ export function PartnerForm() {
       const results = await searchCompanies(value, controller.signal);
       if (controller.signal.aborted) return;
       setCompanySearchFailed(results === null);
+      // Annuaire injoignable : bascule en saisie manuelle, SIREN compris.
+      if (results === null) setCompanyMode("manual");
       setCompanyResults(results ?? []);
       setCompanyActive(-1);
       setCompanyListOpen((results ?? []).length > 0);
@@ -443,7 +452,31 @@ export function PartnerForm() {
     }
     setCompanyListOpen(false);
     setCompanyResults([]);
+    setCompanyPicked(company);
+    setCompanyMode("selected");
     setFieldErrors((prev) => ({ ...prev, companyName: undefined, siren: undefined, vatNumber: undefined }));
+  }
+
+  /** « Changer » : retour à la recherche, l'entreprise choisie est oubliée. */
+  function resetCompany() {
+    setCompanyName("");
+    setSiren("");
+    if (normaliserTva(vatNumber) === autoVat.current) {
+      setVatNumber("");
+      autoVat.current = "";
+    }
+    setCompanyPicked(null);
+    setCompanyMode("search");
+    // Le champ réapparaît au rendu suivant : focus une fois qu'il existe.
+    setTimeout(() => document.getElementById("company-name")?.focus(), 0);
+  }
+
+  function switchToManual() {
+    if (companyTimer.current) clearTimeout(companyTimer.current);
+    companyAbort.current?.abort();
+    setCompanyListOpen(false);
+    setCompanyResults([]);
+    setCompanyMode("manual");
   }
 
   function onCompanyKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -468,7 +501,13 @@ export function PartnerForm() {
     const draft = lireBrouillon();
     if (draft) {
       if (typeof draft.companyName === "string") setCompanyName(draft.companyName);
-      if (typeof draft.siren === "string") setSiren(draft.siren);
+      if (typeof draft.siren === "string") {
+        setSiren(draft.siren);
+        // Un SIREN déjà saisi doit rester visible et corrigeable : sans la
+        // ville de l'annuaire, le brouillon ne permet pas de rejouer l'état
+        // « entreprise choisie », la saisie manuelle le montre tel quel.
+        if (draft.siren) setCompanyMode("manual");
+      }
       if (typeof draft.vatNumber === "string") setVatNumber(draft.vatNumber);
       if (typeof draft.contactFirstName === "string") setContactFirstName(draft.contactFirstName);
       if (typeof draft.contactLastName === "string") setContactLastName(draft.contactLastName);
@@ -690,74 +729,133 @@ export function PartnerForm() {
 
   return (
     <form className="contact-form" onSubmit={onSubmit} noValidate>
-      <label htmlFor="company-name" className="company-search">
-        <span className="mono accent">Entreprise *</span>
-        <span className="pricing-hint" id="company-name-hint">
-          {companySearchFailed
-            ? "Recherche indisponible pour le moment : saisissez vos informations à la main."
-            : "Tapez le nom ou le SIREN, puis choisissez votre entreprise : SIREN et TVA se remplissent seuls."}
-        </span>
-        <input
-          id="company-name"
-          type="text"
-          role="combobox"
-          autoComplete="off"
-          aria-autocomplete="list"
-          aria-expanded={companyListOpen}
-          aria-controls="company-results"
-          aria-activedescendant={companyActive >= 0 ? `company-result-${companyActive}` : undefined}
-          value={companyName}
-          onChange={(e) => onCompanyNameChange(e.target.value)}
-          onKeyDown={onCompanyKeyDown}
-          onBlur={() => setCompanyListOpen(false)}
-          onFocus={() => setCompanyListOpen(companyResults.length > 0)}
-          aria-invalid={Boolean(fieldErrors.companyName)}
-          aria-describedby={
-            fieldErrors.companyName ? "company-name-hint company-name-error" : "company-name-hint"
-          }
-        />
-        {companyListOpen && (
-          <ul className="company-results" id="company-results" role="listbox">
-            {companyResults.map((c, i) => (
-              <li
-                key={c.siren}
-                id={`company-result-${i}`}
-                role="option"
-                aria-selected={i === companyActive}
-                className={i === companyActive ? "active" : undefined}
-                // mousedown et non click : le blur du champ fermerait la liste
-                // avant que le clic ne l'atteigne.
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                  chooseCompany(c);
-                }}
-              >
-                <span className="company-result-name">{c.label}</span>
-                <span className="company-result-meta">
-                  SIREN {c.siren}
-                  {c.city ? ` · ${c.postcode} ${c.city}` : ""}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-        <FieldError id="company-name-error" message={fieldErrors.companyName} />
-      </label>
-
-      <div className="form-row">
-        <label htmlFor="siren">
-          <span className="mono accent">SIREN (optionnel)</span>
+      {companyMode === "selected" && companyPicked ? (
+        <div className="form-field">
+          <span className="mono accent" id="company-legend">
+            Entreprise *
+          </span>
+          <div className="company-picked" aria-labelledby="company-legend">
+            <div className="company-picked-text">
+              <span className="company-result-name">{companyPicked.name}</span>
+              <span className="company-result-meta">
+                SIREN {companyPicked.siren}
+                {companyPicked.city ? ` · ${companyPicked.postcode} ${companyPicked.city}` : ""}
+              </span>
+            </div>
+            <button type="button" className="service-opt" onClick={resetCompany}>
+              Changer
+            </button>
+          </div>
+        </div>
+      ) : (
+        <label htmlFor="company-name" className="company-search">
+          <span className="mono accent">Entreprise *</span>
+          {companyMode === "search" && (
+            <span className="pricing-hint" id="company-name-hint">
+              Tapez le nom ou le SIREN de votre entreprise, puis choisissez-la dans la liste.
+            </span>
+          )}
+          {companyMode === "manual" && companySearchFailed && (
+            <span className="pricing-hint" id="company-name-hint">
+              Recherche indisponible pour le moment : saisissez vos informations à la main.
+            </span>
+          )}
           <input
-            id="siren"
+            id="company-name"
             type="text"
-            inputMode="numeric"
-            value={siren}
-            onChange={(e) => setSiren(e.target.value)}
-            aria-invalid={Boolean(fieldErrors.siren)}
-            aria-describedby={fieldErrors.siren ? "siren-error" : undefined}
+            {...(companyMode === "search"
+              ? {
+                  role: "combobox",
+                  "aria-autocomplete": "list" as const,
+                  "aria-expanded": companyListOpen,
+                  "aria-controls": "company-results",
+                  "aria-activedescendant":
+                    companyActive >= 0 ? `company-result-${companyActive}` : undefined,
+                  autoComplete: "off",
+                }
+              : { autoComplete: "organization" })}
+            value={companyName}
+            onChange={(e) => onCompanyNameChange(e.target.value)}
+            onKeyDown={onCompanyKeyDown}
+            onBlur={() => setCompanyListOpen(false)}
+            onFocus={() => setCompanyListOpen(companyMode === "search" && companyResults.length > 0)}
+            aria-invalid={Boolean(fieldErrors.companyName)}
+            aria-describedby={
+              [
+                companyMode === "search" || companySearchFailed ? "company-name-hint" : "",
+                fieldErrors.companyName ? "company-name-error" : "",
+              ]
+                .filter(Boolean)
+                .join(" ") || undefined
+            }
           />
-          <FieldError id="siren-error" message={fieldErrors.siren} />
+          {companyListOpen && (
+            <ul className="company-results" id="company-results" role="listbox">
+              {companyResults.map((c, i) => (
+                <li
+                  key={c.siren}
+                  id={`company-result-${i}`}
+                  role="option"
+                  aria-selected={i === companyActive}
+                  className={i === companyActive ? "active" : undefined}
+                  // mousedown et non click : le blur du champ fermerait la liste
+                  // avant que le clic ne l'atteigne.
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    chooseCompany(c);
+                  }}
+                >
+                  <span className="company-result-name">{c.label}</span>
+                  <span className="company-result-meta">
+                    SIREN {c.siren}
+                    {c.city ? ` · ${c.postcode} ${c.city}` : ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <FieldError id="company-name-error" message={fieldErrors.companyName} />
         </label>
+      )}
+      {companyMode === "search" && (
+        <button type="button" className="company-mode-link" onClick={switchToManual}>
+          Je ne trouve pas mon entreprise
+        </button>
+      )}
+      {companyMode === "manual" && !companySearchFailed && (
+        <button
+          type="button"
+          className="company-mode-link"
+          onClick={() => {
+            // Un SIREN tapé à la main ne doit pas partir, invisible, avec
+            // l'entreprise qui sera choisie ensuite dans l'annuaire.
+            setSiren("");
+            setCompanyMode("search");
+          }}
+        >
+          Rechercher mon entreprise dans l&apos;annuaire
+        </button>
+      )}
+
+      {/* SIREN affiché seulement en saisie manuelle : après un choix dans
+          l'annuaire il est déjà rappelé sur la ligne de l'entreprise. Sans
+          lui, la TVA prend toute la largeur plutôt qu'une demi-ligne vide. */}
+      <div className={companyMode === "manual" ? "form-row" : undefined}>
+        {companyMode === "manual" && (
+          <label htmlFor="siren">
+            <span className="mono accent">SIREN (optionnel)</span>
+            <input
+              id="siren"
+              type="text"
+              inputMode="numeric"
+              value={siren}
+              onChange={(e) => setSiren(e.target.value)}
+              aria-invalid={Boolean(fieldErrors.siren)}
+              aria-describedby={fieldErrors.siren ? "siren-error" : undefined}
+            />
+            <FieldError id="siren-error" message={fieldErrors.siren} />
+          </label>
+        )}
         <label htmlFor="vat-number">
           <span className="mono accent">N° de TVA intracommunautaire *</span>
           <input
@@ -777,7 +875,7 @@ export function PartnerForm() {
 
       <div className="form-row">
         <label htmlFor="contact-first-name">
-          <span className="mono accent">Prénom du contact *</span>
+          <span className="mono accent">Prénom *</span>
           <input
             id="contact-first-name"
             type="text"
@@ -791,7 +889,7 @@ export function PartnerForm() {
           <FieldError id="contact-first-name-error" message={fieldErrors.contactFirstName} />
         </label>
         <label htmlFor="contact-last-name">
-          <span className="mono accent">Nom du contact *</span>
+          <span className="mono accent">Nom *</span>
           <input
             id="contact-last-name"
             type="text"
