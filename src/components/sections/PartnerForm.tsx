@@ -1,7 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SITE } from "@/data/site";
+import {
+  COMPANY_SEARCH_MIN_LENGTH,
+  searchCompanies,
+  vatFromSiren,
+  type CompanyResult,
+} from "@/lib/company-search";
+
+/** Délai d'anti-rebond de la recherche d'entreprise, le même que dans le dashboard. */
+const COMPANY_SEARCH_DEBOUNCE_MS = 300;
 
 type Option = { v: string; l: string };
 
@@ -51,6 +60,16 @@ const AVAILABLE_OPTIONS: Option[] = [
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const SIREN_RE = /^\d{9}$/;
 const MESSAGE_MAX = 2000;
+const PRICING_TEXT_MAX = 5000;
+
+/** Format commun aux numéros de TVA européens : deux lettres de pays, puis 2 à 13 caractères. */
+const VAT_RE = /^[A-Z]{2}[0-9A-Z]{2,13}$/;
+const VAT_FR_RE = /^FR([0-9A-Z]{2})(\d{9})$/;
+
+/** Mêmes formats et même plafond que l'API (`PartnerApplicationPricingFile`). */
+const PRICING_FILE_EXTENSIONS = ["pdf", "xls", "xlsx", "ods", "csv", "doc", "docx", "jpg", "jpeg", "png"];
+const PRICING_FILE_ACCEPT = PRICING_FILE_EXTENSIONS.map((e) => `.${e}`).join(",");
+const PRICING_FILE_MAX = 5 * 1024 * 1024;
 
 /**
  * Même plafond que `ContactForm` (20 s, et non 10) : l'infrastructure API est
@@ -58,6 +77,13 @@ const MESSAGE_MAX = 2000;
  * vaut mieux qu'une requête coupée trop tôt.
  */
 const TIMEOUT_MS = 20_000;
+
+/**
+ * Avec une grille jointe (jusqu'à 5 Mo, soit près de 7 Mo une fois encodée),
+ * 20 s ne suffisent pas depuis une connexion mobile moyenne : la requête
+ * serait coupée alors que l'envoi progresse.
+ */
+const TIMEOUT_WITH_FILE_MS = 90_000;
 
 /** Clé de brouillon localStorage : préfixe `h24-` comme `h24-consent` dans Analytics.tsx. */
 const DRAFT_KEY = "h24-partner-form-draft";
@@ -67,6 +93,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 type FieldKey =
   | "companyName"
   | "siren"
+  | "vatNumber"
   | "contactFirstName"
   | "contactLastName"
   | "email"
@@ -77,14 +104,22 @@ type FieldKey =
   | "fleetSize"
   | "zones"
   | "available247"
+  | "pricing"
+  | "pricingText"
+  | "pricingFile"
   | "message";
 
 type FieldErrors = Partial<Record<FieldKey, string>>;
 
-/** Forme du brouillon persisté : mêmes champs que l'état du formulaire. */
+/**
+ * Forme du brouillon persisté : mêmes champs que l'état du formulaire, sauf
+ * le fichier de grille tarifaire (un `File` ne se sérialise pas, et 5 Mo
+ * dépasseraient de toute façon le quota du localStorage).
+ */
 type Draft = {
   companyName: string;
   siren: string;
+  vatNumber: string;
   contactFirstName: string;
   contactLastName: string;
   email: string;
@@ -95,6 +130,7 @@ type Draft = {
   fleetSize: string;
   zones: string[];
   available247: boolean | null;
+  pricingText: string;
   message: string;
 };
 
@@ -247,6 +283,68 @@ function SingleChoice({
   );
 }
 
+/** Même normalisation que l'API : espaces, points et tirets retirés, majuscules. */
+function normaliserTva(value: string): string {
+  return value.replace(/[\s.\-]+/g, "").toUpperCase();
+}
+
+/**
+ * Contrôle du numéro de TVA, aligné sur `PartnerApplicationVatNumber` côté
+ * API : format européen, et pour un numéro français, clé recalculée à partir
+ * du SIREN (c'est elle qui attrape une faute de frappe) et cohérence avec le
+ * SIREN saisi. L'API refait ce contrôle, celui-ci évite un aller-retour.
+ */
+function erreurTva(vat: string, sirenDigits: string): string | undefined {
+  if (!vat) return "Merci d'indiquer le numéro de TVA intracommunautaire.";
+  if (!VAT_RE.test(vat)) return "Le numéro de TVA semble invalide (exemple : FR32123456789).";
+  if (!vat.startsWith("FR")) return undefined;
+  const fr = VAT_FR_RE.exec(vat);
+  if (!fr) {
+    return "Un numéro de TVA français s'écrit FR, une clé de 2 caractères, puis les 9 chiffres du SIREN.";
+  }
+  const [, key, vatSiren] = fr;
+  if (/^\d{2}$/.test(key) && Number(key) !== (12 + 3 * (Number(vatSiren) % 97)) % 97) {
+    return "Le numéro de TVA saisi est incorrect, vérifiez-le.";
+  }
+  if (sirenDigits && SIREN_RE.test(sirenDigits) && sirenDigits !== vatSiren) {
+    return "Le numéro de TVA ne correspond pas au SIREN indiqué.";
+  }
+  return undefined;
+}
+
+function extension(name: string): string {
+  const dot = name.lastIndexOf(".");
+  return dot === -1 ? "" : name.slice(dot + 1).toLowerCase();
+}
+
+function tailleLisible(bytes: number): string {
+  return bytes < 1024 * 1024
+    ? `${Math.max(1, Math.round(bytes / 1024))} Ko`
+    : `${(bytes / (1024 * 1024)).toFixed(1).replace(".", ",")} Mo`;
+}
+
+function erreurFichier(file: File): string | undefined {
+  if (!PRICING_FILE_EXTENSIONS.includes(extension(file.name))) {
+    return "Format non accepté. Formats acceptés : PDF, Excel, CSV, Word, JPG ou PNG.";
+  }
+  if (file.size > PRICING_FILE_MAX) return "Le fichier dépasse 5 Mo.";
+  if (file.size === 0) return "Le fichier est vide.";
+  return undefined;
+}
+
+/** Contenu du fichier en base64, sans le préfixe `data:...;base64,` que rend FileReader. */
+function lireEnBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === "string" ? reader.result : "";
+      resolve(result.slice(result.indexOf(",") + 1));
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
 function toggleValue(list: string[], value: string): string[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
 }
@@ -266,6 +364,7 @@ function toggleValue(list: string[], value: string): string[] {
 export function PartnerForm() {
   const [companyName, setCompanyName] = useState("");
   const [siren, setSiren] = useState("");
+  const [vatNumber, setVatNumber] = useState("");
   const [contactFirstName, setContactFirstName] = useState("");
   const [contactLastName, setContactLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -276,6 +375,8 @@ export function PartnerForm() {
   const [fleetSize, setFleetSize] = useState("");
   const [zones, setZones] = useState<string[]>([]);
   const [available247, setAvailable247] = useState<boolean | null>(null);
+  const [pricingText, setPricingText] = useState("");
+  const [pricingFile, setPricingFile] = useState<File | null>(null);
   const [message, setMessage] = useState("");
   /* Honeypot : jamais rempli par un visiteur humain (masqué en CSS et aux
      lecteurs d'écran, hors navigation clavier). Sa valeur réelle part dans le
@@ -287,12 +388,88 @@ export function PartnerForm() {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [hydrated, setHydrated] = useState(false);
 
+  /* Recherche d'entreprise (annuaire SIRENE) sur le champ « Entreprise »,
+     comme à l'inscription client du dashboard. Choisir un résultat remplit
+     raison sociale, SIREN et numéro de TVA ; rien n'empêche de tout saisir à
+     la main, la liste n'est qu'une aide. */
+  const [companyResults, setCompanyResults] = useState<CompanyResult[]>([]);
+  const [companyListOpen, setCompanyListOpen] = useState(false);
+  const [companyActive, setCompanyActive] = useState(-1);
+  const [companySearchFailed, setCompanySearchFailed] = useState(false);
+  const companyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const companyAbort = useRef<AbortController | null>(null);
+  /* Dernier numéro de TVA rempli automatiquement : choisir une autre
+     entreprise le remplace, mais jamais un numéro tapé par le candidat. */
+  const autoVat = useRef("");
+
+  useEffect(
+    () => () => {
+      if (companyTimer.current) clearTimeout(companyTimer.current);
+      companyAbort.current?.abort();
+    },
+    [],
+  );
+
+  function onCompanyNameChange(value: string) {
+    setCompanyName(value);
+    if (companyTimer.current) clearTimeout(companyTimer.current);
+    companyAbort.current?.abort();
+
+    if (value.trim().length < COMPANY_SEARCH_MIN_LENGTH) {
+      setCompanyResults([]);
+      setCompanyListOpen(false);
+      return;
+    }
+
+    companyTimer.current = setTimeout(async () => {
+      const controller = new AbortController();
+      companyAbort.current = controller;
+      const results = await searchCompanies(value, controller.signal);
+      if (controller.signal.aborted) return;
+      setCompanySearchFailed(results === null);
+      setCompanyResults(results ?? []);
+      setCompanyActive(-1);
+      setCompanyListOpen((results ?? []).length > 0);
+    }, COMPANY_SEARCH_DEBOUNCE_MS);
+  }
+
+  function chooseCompany(company: CompanyResult) {
+    setCompanyName(company.name);
+    setSiren(company.siren);
+    const vat = vatFromSiren(company.siren);
+    if (!vatNumber.trim() || normaliserTva(vatNumber) === autoVat.current) {
+      setVatNumber(vat);
+      autoVat.current = vat;
+    }
+    setCompanyListOpen(false);
+    setCompanyResults([]);
+    setFieldErrors((prev) => ({ ...prev, companyName: undefined, siren: undefined, vatNumber: undefined }));
+  }
+
+  function onCompanyKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (!companyListOpen || companyResults.length === 0) return;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setCompanyActive((i) => (i + 1) % companyResults.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setCompanyActive((i) => (i <= 0 ? companyResults.length - 1 : i - 1));
+    } else if (event.key === "Enter" && companyActive >= 0) {
+      // Sans ce preventDefault, Entrée enverrait le formulaire.
+      event.preventDefault();
+      chooseCompany(companyResults[companyActive]);
+    } else if (event.key === "Escape") {
+      setCompanyListOpen(false);
+    }
+  }
+
   // Restauration du brouillon au montage.
   useEffect(() => {
     const draft = lireBrouillon();
     if (draft) {
       if (typeof draft.companyName === "string") setCompanyName(draft.companyName);
       if (typeof draft.siren === "string") setSiren(draft.siren);
+      if (typeof draft.vatNumber === "string") setVatNumber(draft.vatNumber);
       if (typeof draft.contactFirstName === "string") setContactFirstName(draft.contactFirstName);
       if (typeof draft.contactLastName === "string") setContactLastName(draft.contactLastName);
       if (typeof draft.email === "string") setEmail(draft.email);
@@ -303,6 +480,7 @@ export function PartnerForm() {
       if (typeof draft.fleetSize === "string") setFleetSize(draft.fleetSize);
       if (Array.isArray(draft.zones)) setZones(draft.zones);
       if (typeof draft.available247 === "boolean") setAvailable247(draft.available247);
+      if (typeof draft.pricingText === "string") setPricingText(draft.pricingText);
       if (typeof draft.message === "string") setMessage(draft.message);
     }
     // Le brouillon est restauré (ou absent) : la sauvegarde peut démarrer.
@@ -317,6 +495,7 @@ export function PartnerForm() {
     ecrireBrouillon({
       companyName,
       siren,
+      vatNumber,
       contactFirstName,
       contactLastName,
       email,
@@ -327,12 +506,14 @@ export function PartnerForm() {
       fleetSize,
       zones,
       available247,
+      pricingText,
       message,
     });
   }, [
     hydrated,
     companyName,
     siren,
+    vatNumber,
     contactFirstName,
     contactLastName,
     email,
@@ -343,6 +524,7 @@ export function PartnerForm() {
     fleetSize,
     zones,
     available247,
+    pricingText,
     message,
   ]);
 
@@ -353,12 +535,25 @@ export function PartnerForm() {
         ? "Candidature envoyée ✓"
         : "Envoyer ma candidature";
 
+  function onPricingFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0] ?? null;
+    // Valeur remise à zéro : choisir à nouveau le même fichier après l'avoir
+    // retiré doit redéclencher `change`.
+    event.target.value = "";
+    if (!file) return;
+    setPricingFile(file);
+    const fileError = erreurFichier(file);
+    setFieldErrors((prev) => ({ ...prev, pricing: undefined, pricingFile: fileError }));
+  }
+
   function validate(sirenDigits: string): FieldErrors {
     const errors: FieldErrors = {};
     if (!companyName.trim()) errors.companyName = "Merci d'indiquer le nom de l'entreprise.";
     if (sirenDigits && !SIREN_RE.test(sirenDigits)) {
       errors.siren = "Le SIREN doit comporter 9 chiffres.";
     }
+    const vatError = erreurTva(normaliserTva(vatNumber), sirenDigits);
+    if (vatError) errors.vatNumber = vatError;
     if (!contactFirstName.trim()) errors.contactFirstName = "Merci d'indiquer un prénom.";
     if (!contactLastName.trim()) errors.contactLastName = "Merci d'indiquer un nom.";
     if (!email.trim()) errors.email = "Merci d'indiquer une adresse email.";
@@ -369,6 +564,15 @@ export function PartnerForm() {
     if (!companySize) errors.companySize = "Sélectionnez la taille de l'entreprise.";
     if (available247 === null) {
       errors.available247 = "Indiquez si vous êtes disponible 24h/24 et 7j/7.";
+    }
+    if (pricingText.trim().length > PRICING_TEXT_MAX) {
+      errors.pricingText = `La grille tarifaire ne doit pas dépasser ${PRICING_TEXT_MAX} caractères.`;
+    }
+    if (pricingFile) {
+      const fileError = erreurFichier(pricingFile);
+      if (fileError) errors.pricingFile = fileError;
+    } else if (!pricingText.trim()) {
+      errors.pricing = "Merci d'indiquer votre grille tarifaire : saisissez-la ou joignez un fichier.";
     }
     if (message.trim().length > MESSAGE_MAX) {
       errors.message = `Le message ne doit pas dépasser ${MESSAGE_MAX} caractères.`;
@@ -394,9 +598,22 @@ export function PartnerForm() {
     setStatus("sending");
     setError("");
 
+    let pricingFilePayload: { name: string; content: string } | undefined;
+    if (pricingFile) {
+      try {
+        pricingFilePayload = { name: pricingFile.name, content: await lireEnBase64(pricingFile) };
+      } catch {
+        setFieldErrors({ pricingFile: "Impossible de lire ce fichier, joignez-le à nouveau." });
+        setStatus("error");
+        setError("Merci de corriger les champs signalés ci-dessus.");
+        return;
+      }
+    }
+
     const payload = {
       companyName: companyName.trim(),
       ...(sirenDigits ? { siren: sirenDigits } : {}),
+      vatNumber: normaliserTva(vatNumber),
       contactFirstName: contactFirstName.trim(),
       contactLastName: contactLastName.trim(),
       email: email.trim(),
@@ -407,6 +624,8 @@ export function PartnerForm() {
       ...(fleetSize ? { fleetSize } : {}),
       ...(zones.length > 0 ? { zones } : {}),
       available247: available247 as boolean,
+      ...(pricingText.trim() ? { pricingText: pricingText.trim() } : {}),
+      ...(pricingFilePayload ? { pricingFile: pricingFilePayload } : {}),
       ...(message.trim() ? { message: message.trim() } : {}),
       website,
     };
@@ -415,7 +634,7 @@ export function PartnerForm() {
     // quoi l'appel lèverait un TypeError sur un navigateur ancien.
     const signal =
       typeof AbortSignal.timeout === "function"
-        ? AbortSignal.timeout(TIMEOUT_MS)
+        ? AbortSignal.timeout(pricingFile ? TIMEOUT_WITH_FILE_MS : TIMEOUT_MS)
         : undefined;
 
     let response: Response;
@@ -438,6 +657,7 @@ export function PartnerForm() {
     if (response.status === 201) {
       setStatus("sent");
       effacerBrouillon();
+      setPricingFile(null);
       return;
     }
 
@@ -470,19 +690,61 @@ export function PartnerForm() {
 
   return (
     <form className="contact-form" onSubmit={onSubmit} noValidate>
+      <label htmlFor="company-name" className="company-search">
+        <span className="mono accent">Entreprise *</span>
+        <span className="pricing-hint" id="company-name-hint">
+          {companySearchFailed
+            ? "Recherche indisponible pour le moment : saisissez vos informations à la main."
+            : "Tapez le nom ou le SIREN, puis choisissez votre entreprise : SIREN et TVA se remplissent seuls."}
+        </span>
+        <input
+          id="company-name"
+          type="text"
+          role="combobox"
+          autoComplete="off"
+          aria-autocomplete="list"
+          aria-expanded={companyListOpen}
+          aria-controls="company-results"
+          aria-activedescendant={companyActive >= 0 ? `company-result-${companyActive}` : undefined}
+          value={companyName}
+          onChange={(e) => onCompanyNameChange(e.target.value)}
+          onKeyDown={onCompanyKeyDown}
+          onBlur={() => setCompanyListOpen(false)}
+          onFocus={() => setCompanyListOpen(companyResults.length > 0)}
+          aria-invalid={Boolean(fieldErrors.companyName)}
+          aria-describedby={
+            fieldErrors.companyName ? "company-name-hint company-name-error" : "company-name-hint"
+          }
+        />
+        {companyListOpen && (
+          <ul className="company-results" id="company-results" role="listbox">
+            {companyResults.map((c, i) => (
+              <li
+                key={c.siren}
+                id={`company-result-${i}`}
+                role="option"
+                aria-selected={i === companyActive}
+                className={i === companyActive ? "active" : undefined}
+                // mousedown et non click : le blur du champ fermerait la liste
+                // avant que le clic ne l'atteigne.
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  chooseCompany(c);
+                }}
+              >
+                <span className="company-result-name">{c.label}</span>
+                <span className="company-result-meta">
+                  SIREN {c.siren}
+                  {c.city ? ` · ${c.postcode} ${c.city}` : ""}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <FieldError id="company-name-error" message={fieldErrors.companyName} />
+      </label>
+
       <div className="form-row">
-        <label htmlFor="company-name">
-          <span className="mono accent">Entreprise *</span>
-          <input
-            id="company-name"
-            type="text"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            aria-invalid={Boolean(fieldErrors.companyName)}
-            aria-describedby={fieldErrors.companyName ? "company-name-error" : undefined}
-          />
-          <FieldError id="company-name-error" message={fieldErrors.companyName} />
-        </label>
         <label htmlFor="siren">
           <span className="mono accent">SIREN (optionnel)</span>
           <input
@@ -495,6 +757,21 @@ export function PartnerForm() {
             aria-describedby={fieldErrors.siren ? "siren-error" : undefined}
           />
           <FieldError id="siren-error" message={fieldErrors.siren} />
+        </label>
+        <label htmlFor="vat-number">
+          <span className="mono accent">N° de TVA intracommunautaire *</span>
+          <input
+            id="vat-number"
+            type="text"
+            autoCapitalize="characters"
+            spellCheck={false}
+            placeholder="FR32123456789"
+            value={vatNumber}
+            onChange={(e) => setVatNumber(e.target.value)}
+            aria-invalid={Boolean(fieldErrors.vatNumber)}
+            aria-describedby={fieldErrors.vatNumber ? "vat-number-error" : undefined}
+          />
+          <FieldError id="vat-number-error" message={fieldErrors.vatNumber} />
         </label>
       </div>
 
@@ -610,6 +887,75 @@ export function PartnerForm() {
           onSelect={(v) => setAvailable247(v === "oui")}
           error={fieldErrors.available247}
         />
+      </div>
+
+      {/* Grille tarifaire : texte OU fichier, l'un des deux suffit. Un
+          `div.form-field` (et pas un `label`) pour la même raison que
+          `MultiChoice` : le bloc contient deux contrôles, un `label` sans
+          `for` enverrait tout clic vers le premier. */}
+      <div className="form-field">
+        <span className="mono accent" id="pricing-legend">
+          Grille tarifaire *
+        </span>
+        <span className="pricing-hint" id="pricing-hint">
+          Saisissez vos tarifs ci-dessous ou joignez votre grille (PDF, Excel, CSV, Word ou photo,
+          5 Mo maximum). L&apos;un ou l&apos;autre suffit.
+        </span>
+        <textarea
+          id="pricing-text"
+          rows={5}
+          maxLength={PRICING_TEXT_MAX}
+          placeholder="Exemple : Paris intra-muros 45 € HT la course, Île-de-France 1,20 € HT/km, attente 30 € HT/h…"
+          value={pricingText}
+          onChange={(e) => {
+            setPricingText(e.target.value);
+            if (fieldErrors.pricing) setFieldErrors((prev) => ({ ...prev, pricing: undefined }));
+          }}
+          aria-labelledby="pricing-legend"
+          aria-invalid={Boolean(fieldErrors.pricingText || fieldErrors.pricing)}
+          aria-describedby={[
+            "pricing-hint",
+            fieldErrors.pricingText ? "pricing-text-error" : "",
+            fieldErrors.pricing ? "pricing-error" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        />
+        <FieldError id="pricing-text-error" message={fieldErrors.pricingText} />
+        <div className="pricing-file">
+          {pricingFile ? (
+            <>
+              <span className="pricing-file-name">
+                {pricingFile.name} <span className="dim">({tailleLisible(pricingFile.size)})</span>
+              </span>
+              <button
+                type="button"
+                className="service-opt"
+                onClick={() => {
+                  setPricingFile(null);
+                  setFieldErrors((prev) => ({ ...prev, pricingFile: undefined }));
+                }}
+              >
+                Retirer
+              </button>
+            </>
+          ) : (
+            <label htmlFor="pricing-file" className="service-opt pricing-file-button">
+              Joindre un fichier
+              <input
+                id="pricing-file"
+                type="file"
+                className="pricing-file-input"
+                accept={PRICING_FILE_ACCEPT}
+                onChange={onPricingFileChange}
+                aria-describedby={fieldErrors.pricingFile ? "pricing-hint pricing-file-error" : "pricing-hint"}
+                aria-invalid={Boolean(fieldErrors.pricingFile)}
+              />
+            </label>
+          )}
+        </div>
+        <FieldError id="pricing-file-error" message={fieldErrors.pricingFile} />
+        <FieldError id="pricing-error" message={fieldErrors.pricing} />
       </div>
 
       <label htmlFor="message">
