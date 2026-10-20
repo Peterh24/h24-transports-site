@@ -3184,6 +3184,42 @@ section {
   color: var(--fg-dim);
   font-size: 12px;
 }
+/* Entreprise choisie dans l'annuaire : rappel sur une ligne, à la place du
+   champ, avec « Changer ». */
+.company-picked {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+}
+.company-picked-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* Bascule recherche / saisie manuelle : lien discret collé au champ (le
+   formulaire espace ses blocs de 24px, d'où la marge négative). */
+.company-mode-link {
+  align-self: flex-start;
+  margin-top: -16px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--fg-dim);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.company-mode-link:hover {
+  color: var(--accent);
+}
 /* Grille tarifaire du formulaire partenaire : consigne sous la légende, puis
    texte libre et pièce jointe. */
 .pricing-hint {
