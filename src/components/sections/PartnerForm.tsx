@@ -90,6 +90,9 @@ const DRAFT_KEY = "h24-partner-form-draft";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+/** Message global affiché sous le bouton tant qu'un champ est signalé. */
+const FIELDS_ERROR_MESSAGE = "Merci de corriger les champs signalés ci-dessus.";
+
 type FieldKey =
   | "companyName"
   | "siren"
@@ -417,8 +420,24 @@ export function PartnerForm() {
     [],
   );
 
+  /**
+   * Retire l'erreur des champs que le candidat vient de modifier : sans ça,
+   * un champ signalé à l'envoi resterait rouge jusqu'à l'envoi suivant, même
+   * corrigé. La validation complète est refaite au prochain envoi. Mise à
+   * jour par fonction : deux corrections dans le même rendu ne s'écrasent pas.
+   */
+  function clearFieldErrors(...keys: FieldKey[]) {
+    setFieldErrors((prev) => {
+      if (!keys.some((key) => prev[key])) return prev;
+      const next = { ...prev };
+      for (const key of keys) delete next[key];
+      return next;
+    });
+  }
+
   function onCompanyNameChange(value: string) {
     setCompanyName(value);
+    clearFieldErrors("companyName");
     if (companyTimer.current) clearTimeout(companyTimer.current);
     companyAbort.current?.abort();
 
@@ -454,7 +473,7 @@ export function PartnerForm() {
     setCompanyResults([]);
     setCompanyPicked(company);
     setCompanyMode("selected");
-    setFieldErrors((prev) => ({ ...prev, companyName: undefined, siren: undefined, vatNumber: undefined }));
+    clearFieldErrors("companyName", "siren", "vatNumber");
   }
 
   /** « Changer » : retour à la recherche, l'entreprise choisie est oubliée. */
@@ -567,6 +586,11 @@ export function PartnerForm() {
     message,
   ]);
 
+  // Tous les champs signalés ont été corrigés : le message qui y renvoie n'a plus lieu d'être.
+  const showError =
+    status === "error" &&
+    !(error === FIELDS_ERROR_MESSAGE && !Object.values(fieldErrors).some(Boolean));
+
   const label =
     status === "sending"
       ? "Envoi…"
@@ -582,7 +606,8 @@ export function PartnerForm() {
     if (!file) return;
     setPricingFile(file);
     const fileError = erreurFichier(file);
-    setFieldErrors((prev) => ({ ...prev, pricing: undefined, pricingFile: fileError }));
+    if (fileError) setFieldErrors((prev) => ({ ...prev, pricing: undefined, pricingFile: fileError }));
+    else clearFieldErrors("pricing", "pricingFile");
   }
 
   function validate(sirenDigits: string): FieldErrors {
@@ -629,7 +654,7 @@ export function PartnerForm() {
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       setStatus("error");
-      setError("Merci de corriger les champs signalés ci-dessus.");
+      setError(FIELDS_ERROR_MESSAGE);
       return;
     }
 
@@ -644,7 +669,7 @@ export function PartnerForm() {
       } catch {
         setFieldErrors({ pricingFile: "Impossible de lire ce fichier, joignez-le à nouveau." });
         setStatus("error");
-        setError("Merci de corriger les champs signalés ci-dessus.");
+        setError(FIELDS_ERROR_MESSAGE);
         return;
       }
     }
@@ -707,10 +732,12 @@ export function PartnerForm() {
       } catch {
         // 422 sans corps JSON exploitable : on retombe sur le message générique ci-dessous.
       }
-      setFieldErrors(body.errors ?? {});
-      setStatus("error");
-      setError("Merci de corriger les champs signalés ci-dessus.");
-      return;
+      if (body.errors && Object.values(body.errors).some(Boolean)) {
+        setFieldErrors(body.errors);
+        setStatus("error");
+        setError(FIELDS_ERROR_MESSAGE);
+        return;
+      }
     }
 
     if (response.status === 429) {
@@ -849,7 +876,11 @@ export function PartnerForm() {
               type="text"
               inputMode="numeric"
               value={siren}
-              onChange={(e) => setSiren(e.target.value)}
+              onChange={(e) => {
+                setSiren(e.target.value);
+                // La TVA est contrôlée contre le SIREN : corriger l'un peut régler l'autre.
+                clearFieldErrors("siren", "vatNumber");
+              }}
               aria-invalid={Boolean(fieldErrors.siren)}
               aria-describedby={fieldErrors.siren ? "siren-error" : undefined}
             />
@@ -865,7 +896,10 @@ export function PartnerForm() {
             spellCheck={false}
             placeholder="FR32123456789"
             value={vatNumber}
-            onChange={(e) => setVatNumber(e.target.value)}
+            onChange={(e) => {
+              setVatNumber(e.target.value);
+              clearFieldErrors("vatNumber");
+            }}
             aria-invalid={Boolean(fieldErrors.vatNumber)}
             aria-describedby={fieldErrors.vatNumber ? "vat-number-error" : undefined}
           />
@@ -880,7 +914,10 @@ export function PartnerForm() {
             id="contact-first-name"
             type="text"
             value={contactFirstName}
-            onChange={(e) => setContactFirstName(e.target.value)}
+            onChange={(e) => {
+              setContactFirstName(e.target.value);
+              clearFieldErrors("contactFirstName");
+            }}
             aria-invalid={Boolean(fieldErrors.contactFirstName)}
             aria-describedby={
               fieldErrors.contactFirstName ? "contact-first-name-error" : undefined
@@ -894,7 +931,10 @@ export function PartnerForm() {
             id="contact-last-name"
             type="text"
             value={contactLastName}
-            onChange={(e) => setContactLastName(e.target.value)}
+            onChange={(e) => {
+              setContactLastName(e.target.value);
+              clearFieldErrors("contactLastName");
+            }}
             aria-invalid={Boolean(fieldErrors.contactLastName)}
             aria-describedby={
               fieldErrors.contactLastName ? "contact-last-name-error" : undefined
@@ -911,7 +951,10 @@ export function PartnerForm() {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              clearFieldErrors("email");
+            }}
             aria-invalid={Boolean(fieldErrors.email)}
             aria-describedby={fieldErrors.email ? "email-error" : undefined}
           />
@@ -923,7 +966,10 @@ export function PartnerForm() {
             id="phone"
             type="tel"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {
+              setPhone(e.target.value);
+              clearFieldErrors("phone");
+            }}
             aria-invalid={Boolean(fieldErrors.phone)}
             aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
           />
@@ -936,7 +982,10 @@ export function PartnerForm() {
         legend="Licences de transport *"
         options={LICENSES}
         selected={licenses}
-        onToggle={(v) => setLicenses((prev) => toggleValue(prev, v))}
+        onToggle={(v) => {
+          setLicenses((prev) => toggleValue(prev, v));
+          clearFieldErrors("licenses");
+        }}
         error={fieldErrors.licenses}
       />
 
@@ -945,7 +994,10 @@ export function PartnerForm() {
         legend="Types de véhicules *"
         options={VEHICLE_TYPES}
         selected={vehicleTypes}
-        onToggle={(v) => setVehicleTypes((prev) => toggleValue(prev, v))}
+        onToggle={(v) => {
+          setVehicleTypes((prev) => toggleValue(prev, v));
+          clearFieldErrors("vehicleTypes");
+        }}
         error={fieldErrors.vehicleTypes}
       />
 
@@ -955,7 +1007,10 @@ export function PartnerForm() {
           legend="Taille de l'entreprise *"
           options={COMPANY_SIZES}
           selected={companySize}
-          onSelect={setCompanySize}
+          onSelect={(v) => {
+            setCompanySize(v);
+            clearFieldErrors("companySize");
+          }}
           error={fieldErrors.companySize}
         />
         <SingleChoice
@@ -963,7 +1018,10 @@ export function PartnerForm() {
           legend="Taille du parc (optionnel)"
           options={FLEET_SIZES}
           selected={fleetSize}
-          onSelect={setFleetSize}
+          onSelect={(v) => {
+            setFleetSize(v);
+            clearFieldErrors("fleetSize");
+          }}
           error={fieldErrors.fleetSize}
         />
       </div>
@@ -974,7 +1032,10 @@ export function PartnerForm() {
           legend="Zones d'intervention (optionnel)"
           options={ZONES_OPTIONS}
           selected={zones}
-          onToggle={(v) => setZones((prev) => toggleValue(prev, v))}
+          onToggle={(v) => {
+            setZones((prev) => toggleValue(prev, v));
+            clearFieldErrors("zones");
+          }}
           error={fieldErrors.zones}
         />
         <SingleChoice
@@ -982,7 +1043,10 @@ export function PartnerForm() {
           legend="Disponible 24h/24 et 7j/7 *"
           options={AVAILABLE_OPTIONS}
           selected={available247 === null ? "" : available247 ? "oui" : "non"}
-          onSelect={(v) => setAvailable247(v === "oui")}
+          onSelect={(v) => {
+            setAvailable247(v === "oui");
+            clearFieldErrors("available247");
+          }}
           error={fieldErrors.available247}
         />
       </div>
@@ -1007,7 +1071,7 @@ export function PartnerForm() {
           value={pricingText}
           onChange={(e) => {
             setPricingText(e.target.value);
-            if (fieldErrors.pricing) setFieldErrors((prev) => ({ ...prev, pricing: undefined }));
+            clearFieldErrors("pricing", "pricingText");
           }}
           aria-labelledby="pricing-legend"
           aria-invalid={Boolean(fieldErrors.pricingText || fieldErrors.pricing)}
@@ -1031,7 +1095,7 @@ export function PartnerForm() {
                 className="service-opt"
                 onClick={() => {
                   setPricingFile(null);
-                  setFieldErrors((prev) => ({ ...prev, pricingFile: undefined }));
+                  clearFieldErrors("pricingFile");
                 }}
               >
                 Retirer
@@ -1064,7 +1128,10 @@ export function PartnerForm() {
           maxLength={MESSAGE_MAX}
           placeholder="Expérience, secteurs déjà couverts, disponibilités particulières…"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            clearFieldErrors("message");
+          }}
           aria-invalid={Boolean(fieldErrors.message)}
           aria-describedby={fieldErrors.message ? "message-error" : undefined}
         />
@@ -1100,7 +1167,7 @@ export function PartnerForm() {
           {label} <span className="arrow" />
         </button>
         <span className="mono dim">
-          {status === "error" ? (
+          {showError ? (
             <span className="form-note" role="alert">
               {error}
             </span>
