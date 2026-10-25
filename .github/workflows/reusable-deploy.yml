@@ -22,7 +22,7 @@ on:
         description: 'Version de Node.js à utiliser'
         required: false
         type: string
-        default: '20'
+        default: '24'
       prepare_command:
         description: 'Commande à exécuter avant le build (npm install, etc.)'
         required: false

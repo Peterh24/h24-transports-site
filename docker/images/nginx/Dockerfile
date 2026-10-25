@@ -13,7 +13,7 @@
 # - `output: "standalone"` doit rester activé dans `next.config.ts`.
 
 # ---------- 1. Dépendances ----------
-FROM node:20-alpine AS deps
+FROM node:24-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 # `npm ci` installe aussi les dépendances optionnelles, dont `sharp`
@@ -21,7 +21,7 @@ COPY package.json package-lock.json ./
 RUN npm ci && npm cache clean --force
 
 # ---------- 2. Build ----------
-FROM node:20-alpine AS build
+FROM node:24-alpine AS build
 ARG APP_ENV=prod
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -30,7 +30,7 @@ COPY . .
 RUN npm run build
 
 # ---------- 3. Production ----------
-FROM node:20-alpine AS production
+FROM node:24-alpine AS production
 ARG APP_ENV=prod
 LABEL build.environment=$APP_ENV
 WORKDIR /app
