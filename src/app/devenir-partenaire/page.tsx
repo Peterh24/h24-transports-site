@@ -102,6 +102,14 @@ export default function DevenirPartenairePage() {
         imageAlt="Paris la nuit vu depuis l'Arc de Triomphe, avenue de la Grande-Armée éclairée et tours de La Défense à l'horizon"
         imagePosition="50% 40%"
         glow={false}
+        actions={
+          /* Ancre posée sur le <form> lui-même (PartnerForm), pas sur la
+             section : sous 900 px, la colonne d'infos passe au-dessus du
+             formulaire et l'ancre de section s'arrêterait dessus. */
+          <a href="#candidature" className="btn btn-primary">
+            Postuler <span className="arrow"></span>
+          </a>
+        }
       />
 
       <section>

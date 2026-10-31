@@ -755,7 +755,12 @@ export function PartnerForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={onSubmit} noValidate>
+    <form
+      id="candidature"
+      className="contact-form anchor-target"
+      onSubmit={onSubmit}
+      noValidate
+    >
       {companyMode === "selected" && companyPicked ? (
         <div className="form-field">
           <span className="mono accent" id="company-legend">
