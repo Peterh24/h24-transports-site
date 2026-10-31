@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import { HeroGlow } from "@/components/ui/HeroGlow";
 import { ScreenVideo } from "@/components/ui/ScreenVideo";
@@ -23,6 +24,8 @@ type CommonProps = {
   grid?: boolean;
   /** Atténue le halo orange (utile quand un visuel occupe déjà l'en-tête). */
   softGlow?: boolean;
+  /** Boutons d'appel à l'action sous le chapô, rendus dans un `.hero-actions`. */
+  actions?: ReactNode;
 };
 
 /**
@@ -76,6 +79,7 @@ export function PageHeader(props: Props) {
     mediaVideo,
     grid = true,
     softGlow = false,
+    actions,
   } = props;
 
   /**
@@ -190,6 +194,7 @@ export function PageHeader(props: Props) {
           <p className="lead" style={{ marginTop: 30 }}>
             {lead}
           </p>
+          {actions && <div className="hero-actions">{actions}</div>}
         </div>
         {media && (
           <div
