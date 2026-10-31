@@ -346,6 +346,17 @@ section {
   position: relative;
   padding: clamp(80px, 10vw, 140px) 0;
 }
+/* Cible d'un lien d'ancre : s'arrête sous la barre de navigation fixe au lieu
+   de passer dessous (ex. bouton « Postuler » de /devenir-partenaire). */
+.anchor-target {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+/* Dans un bloc `.reveal` pas encore apparu, la cible est encore décalée de
+   30px (translateY) quand le navigateur calcule le défilement, puis remonte
+   d'autant : sans cette compensation, elle finit sous la barre de navigation. */
+.reveal .anchor-target {
+  scroll-margin-top: calc(var(--nav-h) + 54px);
+}
 .section-tight {
   padding: clamp(60px, 6vw, 100px) 0;
 }
