@@ -17,7 +17,7 @@ const DASHBOARD_URL = (
 ).replace(/\/+$/, "");
 
 /**
- * Base de l'API H24 pour le formulaire « devenir partenaire ». Resolue au
+ * Base de l'API H24 pour les formulaires « devenir partenaire » et contact. Resolue au
  * build par next.config.ts selon APP_ENV (prod -> prod-api, dev -> develop-api).
  */
 const PARTNER_API_URL = (
@@ -160,34 +160,30 @@ export const SITE = {
     order: `${DASHBOARD_URL}/commander`,
   },
   /**
-   * Endpoint de réception des demandes de contact.
+   * Endpoint de réception des demandes de contact : route `/contact-messages`
+   * de l'API H24 (`h24api`), résolue au build selon `APP_ENV` comme
+   * `partnerApi` (`prod-api` / `develop-api`).
    *
-   * C'est celui qu'utilisait déjà le site Angular, appelé **depuis le
-   * navigateur du visiteur** — et c'est volontairement ce fonctionnement qui
-   * est conservé : la même requête partie du conteneur serveur n'aboutit pas
-   * (constaté en prod le 2026-08-21, échec immédiat avant même que l'API ne
-   * soit atteinte). L'API autorise le CORS pour les origines du site
-   * (`h24transports.com`, `www`, `develop`, `localhost`), donc l'appel navigateur
-   * passe. Ne pas rebasculer côté serveur sans avoir d'abord réparé la sortie
-   * réseau du conteneur.
+   * Jusqu'au 2026-11-12, le formulaire appelait l'ancienne API v1
+   * (`api.h24transports.com/api/send-email`), sans aucun filtre : un spam y
+   * passait directement dans la boîte contact@. La nouvelle route applique la
+   * limite de débit, le champ piège et la liste noire (table `liste_noire`).
+   * Effet de bord voulu : le site de dev n'écrit plus dans la boîte de
+   * production, ses mails restent interceptés par develop-api.
+   *
+   * L'appel part **du navigateur du visiteur**, jamais du serveur : la même
+   * requête émise par le conteneur du site n'aboutit pas (constaté en prod le
+   * 2026-08-21). L'API autorise le CORS pour les origines du site.
    *
    * `NEXT_PUBLIC_` est indispensable : la valeur doit être inlinée dans le
-   * bundle client. Ne renseigner la variable que si le back déménage.
+   * bundle client.
    */
-  contactApi:
-    process.env.NEXT_PUBLIC_CONTACT_API_URL ||
-    "https://api.h24transports.com/api/send-email",
+  contactApi: `${PARTNER_API_URL}/contact-messages`,
   /**
    * Endpoint de réception des candidatures de transporteurs partenaires
    * (affrétés). Même contrainte que `contactApi` : l'appel part **du
    * navigateur du visiteur**, jamais du serveur (le conteneur du site n'a
-   * aucune sortie réseau, constaté en prod le 2026-08-21).
-   *
-   * La différence est ailleurs : `contactApi` reste figée sur l'ancienne API
-   * (`api.h24transports.com`) quel que soit l'environnement de build, une
-   * dette connue et assumée (le formulaire de contact d'un site de dev écrit
-   * dans la boîte de production). Cette route-ci est neuve, il n'y a rien à
-   * reconduire, donc elle suit normalement l'environnement : résolue au build
+   * aucune sortie réseau, constaté en prod le 2026-08-21). Résolue au build
    * par `next.config.ts` selon `APP_ENV` (`prod-api` / `develop-api`).
    *
    * `NEXT_PUBLIC_` indispensable pour la même raison que `contactApi` : la

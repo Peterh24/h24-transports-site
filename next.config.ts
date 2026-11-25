@@ -92,9 +92,8 @@ const RESOLVED_DASHBOARD_URL =
  * Base de l'API H24 pour le formulaire « devenir partenaire », resolue AU
  * BUILD selon la meme logique que `SITE_URLS` et `DASHBOARD_URLS` ci-dessus.
  *
- * A la difference de `SITE.contactApi` (voir son commentaire dans
- * src/data/site.ts), cette route est bien branchee sur l'environnement de
- * build : c'est un nouvel endpoint, sans dette a reconduire.
+ * Base commune aux formulaires partenaire et contact (`SITE.partnerApi`,
+ * `SITE.contactApi`), branchee sur l'environnement de build.
  */
 const PARTNER_API_URLS: Record<string, string> = {
   prod: "https://prod-api.h24transports.com",

@@ -28,21 +28,32 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 /**
  * Au-delà, on rend la main au visiteur plutôt que de le laisser attendre.
- * 20 s et non 10 : l'API a été mesurée à 9,8 s sur un premier appel à froid
- * (0,8 s à chaud). Un plafond à 10 s coupait donc une requête qui aboutissait.
+ * 20 s : hérité de l'ancienne API, mesurée à 9,8 s sur un premier appel à
+ * froid. La route actuelle envoie le mail en différé et répond bien plus vite,
+ * le plafond ne sert plus que de garde-fou.
  */
 const TIMEOUT_MS = 20_000;
+
+/*
+ * Longueurs maximales : celles de l'API (ContactMessagePostDTO), pour qu'un
+ * texte trop long soit arrêté par le navigateur au lieu de finir en erreur
+ * générique. Message à 4 900 et non 5 000 : le site y ajoute le libellé du
+ * service (« [Événementiel / audiovisuel] » et deux retours à la ligne).
+ */
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 /**
  * Formulaire de contact.
  *
- * L'envoi part **du navigateur du visiteur**, comme le faisait le site Angular
- * (`this.http.post('https://api.h24transports.com/api/send-email', ...)`).
- * C'est un choix, pas un oubli : la même requête émise par le conteneur
- * serveur (Server Action) échoue avant même d'atteindre l'API. Voir le
- * commentaire de `SITE.contactApi`.
+ * L'envoi part **du navigateur du visiteur** vers `SITE.contactApi`
+ * (route `/contact-messages` de l'API H24). C'est un choix, pas un oubli : la
+ * même requête émise par le conteneur serveur (Server Action) échoue avant
+ * même d'atteindre l'API. Voir le commentaire de `SITE.contactApi`.
+ *
+ * Un envoi refusé par l'API (liste noire, 400) affiche le même message
+ * d'erreur qu'une panne : rien ne dit à un spammeur qu'il est filtré, et un
+ * vrai client bloqué par erreur est invité à appeler.
  *
  * ⚠️ Règle à ne pas casser : ne JAMAIS afficher un succès sans la confirmation
  * que la demande est bien partie. Une fausse confirmation est pire qu'une
@@ -77,6 +88,9 @@ export function ContactForm() {
       message: get("message"),
     };
 
+    // Champ piège (voir le rendu plus bas) : jamais rempli par un humain.
+    const website = get("website");
+
     if (Object.values(data).some((value) => !value)) {
       setStatus("error");
       setError("Merci de remplir tous les champs obligatoires.");
@@ -92,12 +106,13 @@ export function ContactForm() {
     setStatus("sending");
     setError("");
 
-    // L'API attend exactement ces six champs. Plutôt que d'y ajouter un
-    // `service` qu'elle ignorerait (ou qui la ferait échouer), on préfixe le
+    // L'API attend ces six champs (contrat repris de l'ancienne API) plus le
+    // champ piège. Plutôt que d'y ajouter un `service`, on préfixe le
     // message : l'information arrive au dispatch sans toucher au contrat.
     const payload = {
       ...data,
       message: `[${SERVICE_LABELS[service] ?? service}]\n\n${data.message}`,
+      website,
     };
 
     // `AbortSignal.timeout` n'existe qu'à partir de Safari 16. Sans ce
@@ -119,6 +134,14 @@ export function ContactForm() {
         cache: "no-store",
       });
 
+      if (response.status === 429) {
+        setStatus("error");
+        setError(
+          `Trop de tentatives. Réessayez dans quelques minutes, ou appelez-nous au ${SITE.phone}.`,
+        );
+        return;
+      }
+
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
     } catch {
       setStatus("error");
@@ -136,27 +159,27 @@ export function ContactForm() {
       <div className="form-row">
         <label>
           <span className="mono dim">Nom *</span>
-          <input type="text" name="nom" required />
+          <input type="text" name="nom" required maxLength={100} />
         </label>
         <label>
           <span className="mono dim">Prénom *</span>
-          <input type="text" name="prenom" required />
+          <input type="text" name="prenom" required maxLength={100} />
         </label>
       </div>
 
       <label>
         <span className="mono dim">Société *</span>
-        <input type="text" name="societe" required />
+        <input type="text" name="societe" required maxLength={150} />
       </label>
 
       <div className="form-row">
         <label>
           <span className="mono dim">Email *</span>
-          <input type="email" name="email" required />
+          <input type="email" name="email" required maxLength={255} />
         </label>
         <label>
           <span className="mono dim">Téléphone *</span>
-          <input type="tel" name="tel" required />
+          <input type="tel" name="tel" required maxLength={40} />
         </label>
       </div>
 
@@ -182,9 +205,27 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          maxLength={4900}
           placeholder="Décrivez votre besoin : trajet, dates, type de matériel…"
         />
       </label>
+
+      {/* Champ piège : invisible à l'oeil et aux lecteurs d'écran, hors de
+          portée du clavier. Un robot qui remplit tous les champs le remplit
+          aussi, et l'API ignore alors l'envoi. Même dispositif que
+          PartnerForm. */}
+      <div className="field-trap" aria-hidden="true">
+        <label htmlFor="contact-website">
+          Site web
+          <input
+            id="contact-website"
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
+      </div>
 
       <div className="form-actions">
         <button
